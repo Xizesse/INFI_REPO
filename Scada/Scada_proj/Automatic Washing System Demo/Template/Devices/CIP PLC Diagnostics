@@ -1,0 +1,2776 @@
+#Access: 0
+#Pos: 327,165
+#Size: 686,511
+#BkColor: clBtnFace
+#Gates: 10
+  #NUM: CIP_PLC_DI.Ch00,0
+  #NUM: CIP_PLC_DI.Ch01,0
+  #NUM: CIP_PLC_DI.Ch02,0
+  #NUM: CIP_PLC_DI.Ch03,0
+  #NUM: CIP_PLC_DI.Ch04,0
+  #NUM: CIP_PLC_DO.Ch10,0
+  #NUM: CIP_PLC_DO.Ch11,0
+  #NUM: CIP_PLC_DO.Ch12,0
+  #NUM: CIP_PLC_DO.Ch13,0
+  #NUM: CIP_PLC_DO.Ch14,0
+#Style: Fixed
+#StayOnTop: 0
+#Object: TabSheet
+  #ID: 0
+  #Pos: 8,8
+  #Size: 670,495
+  #Object: TabPage
+    #ID: 0
+    #Label: Ingressi e uscite digitali
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 638,95
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: MS Sans Serif,9,0000
+      #Label: Modulo base
+      #Align: 0
+      #Object: Frame
+        #ID: 0
+        #Pos: 12,24
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 0CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXXX1XXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXXX1XXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 152,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXXX1XXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 167,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 0,13,XXXXXXXXXXXXXXXXXXXX1XXXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 08
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 09
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 151,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 10
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 166,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 11
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 197,24
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 1CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXXX1XXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXXX1XXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 152,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXXX1XXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 167,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 1,13,XXXXXXXXXXXXXXXXXXXX1XXXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 08
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 09
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 151,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 10
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 166,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 11
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 382,24
+        #Size: 119,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 119,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 10CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 5,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 507,24
+        #Size: 119,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 119,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 11CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,145
+      #Size: 200,165
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: MS Sans Serif,9,0000
+      #Label: Primo modulo d'espansione
+      #Align: 0
+      #Object: Frame
+        #ID: 0
+        #Pos: 11,24
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 2CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXXX1XXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXXX1XXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 152,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXXX1XXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 167,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 2,13,XXXXXXXXXXXXXXXXXXXX1XXXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 08
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 09
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 151,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 10
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 166,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 11
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 11,94
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 12CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 7,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 235,145
+      #Size: 200,165
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: MS Sans Serif,9,0000
+      #Label: Secondo modulo d'espansione
+      #Align: 0
+      #Object: Frame
+        #ID: 0
+        #Pos: 11,24
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 3CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXXX1XXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXXX1XXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 152,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXXX1XXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 167,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 3,13,XXXXXXXXXXXXXXXXXXXX1XXXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 08
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 09
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 151,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 10
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 166,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 11
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 11,94
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 13CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 8,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 454,145
+      #Size: 200,165
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: MS Sans Serif,9,0000
+      #Label: Terzo modulo d'espansione
+      #Align: 0
+      #Object: Frame
+        #ID: 0
+        #Pos: 11,24
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 4CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 2,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 1,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 17,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXXX1XXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXXX1XXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 152,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXXX1XXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 167,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_green.png
+          #BmpBkC: 0,128,128
+          #On: 4,13,XXXXXXXXXXXXXXXXXXXX1XXXXXXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 08
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 09
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 151,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 10
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 166,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 11
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 11,94
+        #Size: 179,55
+        #BkColor: clBtnFace
+        #Style: 1
+        #Access: 0
+        #Object: Label
+          #ID: 0
+          #Pos: 0,0
+          #Size: 179,18
+          #BkColor: 0,0,0
+          #Cursor: 0
+          #TxtColor: 255,255,255
+          #Font: MS Sans Serif,9,0001
+          #Label: 14CH
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 32,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 31,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 00
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 47,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 62,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 77,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 92,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 107,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXXX1XXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 122,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXXX1XXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Led
+          #ID: 0
+          #Pos: 137,26
+          #Size: 10,10
+          #Cursor: 0
+          #OffPBmpFile: Devices\PLC\Led_gray.png
+          #OnPBmpFile: Devices\PLC\Led_red.png
+          #BmpBkC: 0,128,128
+          #On: 9,13,XXXXXXXXXXXXXXXXXXXXXXXX1XXXXXXX
+          #Flashing: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 46,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 01
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 61,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 02
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 76,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 03
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 91,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 04
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 106,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 05
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 121,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 06
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 136,39
+          #Size: 12,12
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: MS Sans Serif,9,0000
+          #Label: 07
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+    #EndObj
+  #EndObj
+#EndObj

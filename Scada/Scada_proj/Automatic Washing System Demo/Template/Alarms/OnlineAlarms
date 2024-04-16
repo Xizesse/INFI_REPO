@@ -1,0 +1,24 @@
+#Access: 0
+#Pos: 166,96
+#Size: 848,580
+#BkColor: clBtnFace
+#Gates: 0
+#Style: Fixed
+#StayOnTop: 0
+#Object: OnlineView
+  #ID: 0
+  #Pos: 0,-10
+  #Size: 848,590
+  #Class1: 0
+  #Class2: 
+  #AlarmsOrEvents: 1
+  #ShowSortButton: 1
+  #ShowFilterButton: 1
+  #ShowConfirmButton: 1
+  #ShowConfirmAllButton: 1
+  #ShowExcludeChkBox: 1
+  #WndBkgndColor: clBtnFace
+  #AlarmListBkgndColor: clWhite
+  #UseCustomColumns: 1
+  #Columns: "Active","Attivo","50","Ack","Conferma","50","Message","Messaggio","309","Date","Data","80","Time","Ora","80","Class 1","Classe_1","80","Class 2","Classe_2","80","To Ack","A_Ritenuta","51","Excluded","Escluso","64"
+#EndObj

@@ -1,0 +1,744 @@
+#Access: 0
+#Pos: 0,0
+#Size: 1014,676
+#BkColor: clBtnFace
+#Gates: 18
+  #NUM: 101Loop1.PV,0
+  #NUM: 101Loop1.Alarms,0
+  #NUM: 101Loop2.Alarms,0
+  #NUM: 101UO1.Value,0
+  #NUM: 101cSP1.Value,0
+  #NUM: 101VatWeight,0
+  #NUM: 101MixerManual,0
+  #NUM: 101MixerOffTime,0
+  #NUM: 101MixerOnTime,0
+  #NUM: 101VatStatus,0
+  #DIG: 101MixerRelayAlarm,0
+  #DIG: 101MixerThermalAlarm,0
+  #DIG: 101Unload,0
+  #STR: 101VatName,0
+  #STR: 101MixerInfo_Large,0
+  #STR: 101VatInfo_Large_1,0
+  #STR: 101VatInfo_Large_2,0
+  #CMP: 101VatLevel,0
+#Style: Fixed
+#StayOnTop: 0
+#Object: Chart
+  #ID: 0
+  #Pos: 381,216
+  #Size: 654,433
+  #TimeRange: 3600
+  #SetName: 101_Vat
+  #EnableGroups: 1
+  #TimeRangeOptions: 0
+  #SaveGroupModification: 0
+  #Autorange: 0
+  #ShowSelGraphLegend: 0
+  #EnableGrid: 1
+  #YGridDivision: 10
+  #EnablePoints: 0
+  #LineWidth: 2
+  #Interpolation: 2
+  #EnableOnLine: 1
+  #showTimeCursorButton: 1
+  #showOnlineButton: 1
+  #ZoomEnabled: 1
+  #showResetZoomButton: 1
+  #ScaleSwitchingEnabled: 0
+  #MouseRightButtonEnabled: 0
+  #showYAxisLabels: 0
+  #showRxAxis: 1
+  #showOnlyTime: 0
+  #showServerButton: 0
+  #DefaultServer: Local
+  #showGroupsButton: 0
+  #showTimeAxisButton: 0
+  #showAspectButton: 0
+  #ChartsWndBkgndColor: clBtnFace
+  #GrWndBkgndColor: 255,255,255
+  #GridLineColor: 192,192,192
+  #ScaleColor: 128,128,128
+  #DateScaleColor: 60,60,60
+  #TimeScaleColor: clBlack
+  #showCursorWindowNew: 0
+  #showLegendWindow: 0
+  #LegendStyle: 7
+  #LegendColorBox: 1
+  #ShowLabelDescription: 0
+  #LegendFont: Segoe UI,8,0000
+  #LegendTxtColor: clWindowText
+  #LegendBkgndColor: clBtnFace
+  #LegendMaxItems: 10
+  #LegendColumns: 1
+  #CursorType: 1
+  #CursorStyle: 7
+  #CursorColorBox: 0
+  #CursorFont: Segoe UI,8,0000
+  #CursorTxtColor: clWindowText
+  #CursorBkgndColor: clBtnFace
+  #CursorMaxItems: 2
+  #CursorColumns: 1
+#EndObj
+#Object: Frame
+  #ID: 0
+  #Pos: -3,53
+  #Size: 410,625
+  #BkColor: clBtnFace
+  #Style: 1
+  #Access: 0
+  #Object: Bitmap
+    #ID: 0
+    #Pos: 5,-2
+    #Size: 400,600
+    #Cursor: 0
+    #PBmpFile: 0,Vats\HotVat.png
+    #CycleTime: 0,1
+    #Access: 0
+    #Object: Gauge
+      #ID: 0
+      #Pos: 98,104
+      #Size: 236,242
+      #BkColor: clNone
+      #Cursor: 0
+      #Color: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 17
+      #Range: 0,100
+      #Label: %.*lf
+      #Style: Clip
+      #PBmpFile: Vats\HotVatCutaway.png
+      #BmpMinOffset: 0
+      #BmpMaxOffset: 0
+      #Segs: 1
+      #Spaces: 0
+      #Dir: 1
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Bitmap
+      #ID: 0
+      #Pos: 143,104
+      #Size: 141,235
+      #Cursor: 0
+      #PBmpFile: 0,Vats\HotVatMixer_1.png
+      #PBmpFile: 1,Vats\HotVatMixer_1.png
+      #PBmpFile: 1,Vats\HotVatMixer_2.png
+      #PBmpFile: 1,Vats\HotVatMixer_3.png
+      #PBmpFile: 1,Vats\HotVatMixer_2.png
+      #Status: 1,6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX11
+      #CycleTime: 0,1
+      #CycleTime: 1,0
+      #Access: 0
+    #EndObj
+    #Object: Switch
+      #ID: 0
+      #Pos: 207,543
+      #Size: 21,47
+      #TransparentColor: 0,128,128
+      #Cursor: 0
+      #PBmpFile: Vats\UnloadSwitch.png
+      #NeedApply: 0
+      #Mode: 1
+      #OnBit: 12,0,1
+      #Access: 0
+    #EndObj
+  #EndObj
+#EndObj
+#Object: Frame
+  #ID: 0
+  #Pos: 418,1
+  #Size: 593,210
+  #BkColor: clBtnFace
+  #Style: 1
+  #Access: 0
+  #Object: GroupBox
+    #ID: 0
+    #Pos: 5,5
+    #Size: 150,110
+    #BkColor: clBtnFace
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura
+    #Align: 0
+    #Object: Edit
+      #ID: 0
+      #Pos: 45,49
+      #Size: 65,20
+      #BkColor: 255,255,255
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 4
+      #NeedApply: 0
+      #Style: 2
+      #Access: 0
+    #EndObj
+    #Object: Frame
+      #ID: 0
+      #Pos: 45,75
+      #Size: 85,20
+      #BkColor: 0,0,0
+      #Style: 1
+      #Access: 0
+      #Object: Gauge
+        #ID: 0
+        #Pos: 1,1
+        #Size: 83,18
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #Color: 0,0,160
+        #Font: Segoe UI,8,0000
+        #Gate: 3
+        #Range: 0,100
+        #Label: %g %
+        #Style: Standard
+        #BmpMinOffset: 0
+        #BmpMaxOffset: 0
+        #Segs: 1
+        #Spaces: 0
+        #Dir: 0
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 20,23
+      #Size: 21,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: PV
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 115,23
+      #Size: 16,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: °C
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: St_Bar
+      #ID: 0
+      #Pos: 45,23
+      #Size: 65,20
+      #Cursor: 0
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Align: 38
+      #Frame: 3
+      #Status: 185,0,0,clBtnFace,1,1,0,KO      ,-1
+      #Status: 255,255,255,0,0,0,1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX,KO      ,-1
+      #Status: 255,255,255,185,0,0,1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X,%4.1lf ,0
+      #Status: 255,255,255,0,97,193,1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1,%4.1lf ,0
+      #Status: 0,0,0,clBtnFace,1,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX0XX00,%4.1lf ,0
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 20,75
+      #Size: 21,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Out
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 20,49
+      #Size: 21,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: SP
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 115,49
+      #Size: 16,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: °C
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+  #EndObj
+  #Object: GroupBox
+    #ID: 0
+    #Pos: 5,123
+    #Size: 150,85
+    #BkColor: clBtnFace
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Livello
+    #Align: 0
+    #Object: Label
+      #ID: 0
+      #Pos: 20,23
+      #Size: 21,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: PV
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 20,49
+      #Size: 21,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: PV
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 115,23
+      #Size: 16,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: %
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 115,49
+      #Size: 16,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: kg
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: St_Bar
+      #ID: 0
+      #Pos: 45,23
+      #Size: 65,20
+      #Cursor: 0
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Align: 38
+      #Frame: 3
+      #Status: 185,0,0,clBtnFace,2,1,0,KO      ,-1
+      #Status: 255,255,255,0,0,0,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX,KO      ,-1
+      #Status: 255,255,255,185,0,0,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX,%4.1lf ,17
+      #Status: 255,255,255,0,97,193,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX,%4.1lf ,17
+      #Status: 0,0,0,clBtnFace,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX000XX,%4.1lf ,17
+      #Access: 0
+    #EndObj
+    #Object: St_Bar
+      #ID: 0
+      #Pos: 45,49
+      #Size: 65,20
+      #Cursor: 0
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Align: 38
+      #Frame: 3
+      #Status: 185,0,0,clBtnFace,2,1,0,KO      ,-1
+      #Status: 255,255,255,0,0,0,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX,KO      ,-1
+      #Status: 255,255,255,185,0,0,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX,%4.1lf ,5
+      #Status: 255,255,255,0,97,193,2,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX,%4.1lf ,5
+      #Status: 0,0,0,clBtnFace,2,7,28,%4.1lf ,5
+      #Access: 0
+    #EndObj
+  #EndObj
+  #Object: GroupBox
+    #ID: 0
+    #Pos: 170,123
+    #Size: 415,85
+    #BkColor: clBtnFace
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Informazioni
+    #Align: 0
+    #Object: Label
+      #ID: 0
+      #Pos: 20,49
+      #Size: 380,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 16
+      #Label: %s
+      #Align: 37
+      #Frame: 3
+      #Access: 0
+    #EndObj
+    #Object: St_Bar
+      #ID: 0
+      #Pos: 20,23
+      #Size: 380,20
+      #Cursor: 0
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Align: 37
+      #Frame: 3
+      #Status: 255,255,255,0,64,128,9,13,XXXXXXXXXXXXXXXX0000000000010000,Trattamento '%s' in corso,15
+      #Status: 0,0,0,clBtnFace,9,13,XXXXXXXXXXXXXXXX0000000000010001,Eseguito trattamento '%s' ,15
+      #Status: 0,0,0,255,255,0,9,13,XXXXXXXXXXXXXXXX0000000000010010,Trattamento '%s' interrotto,15
+      #Status: 255,255,255,180,0,0,9,13,XXXXXXXXXXXXXXXX0000000000010011,Allarme durante il trattamento '%s',15
+      #Status: 0,0,0,255,255,255,9,13,XXXXXXXXXXXXXXXX0000000000100000,%s,15
+      #Access: 0
+    #EndObj
+  #EndObj
+  #Object: GroupBox
+    #ID: 0
+    #Pos: 170,5
+    #Size: 415,110
+    #BkColor: clBtnFace
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Agitatore
+    #Align: 0
+    #Object: CheckBox
+      #ID: 0
+      #Pos: 20,49
+      #Size: 52,20
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Cursor: 0
+      #Label: Off
+      #NeedApply: 0
+      #OnMask: 6,03,02
+      #Style: PushLike
+      #Access: 0
+    #EndObj
+    #Object: Edit
+      #ID: 0
+      #Pos: 196,49
+      #Size: 65,20
+      #BkColor: 255,255,255
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 7
+      #NeedApply: 0
+      #Style: 2
+      #Access: 0
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 300,17
+      #Size: 100,79
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Allarmi
+      #Align: 0
+      #Object: Led
+        #ID: 0
+        #Pos: 15,22
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 31
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 10,6,1
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 15,47
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 31
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 11,6,1
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 38,22
+        #Size: 55,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Comando
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 38,47
+        #Size: 45,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Termica
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: CheckBox
+      #ID: 0
+      #Pos: 20,75
+      #Size: 52,20
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Cursor: 0
+      #Label: On
+      #NeedApply: 0
+      #OnMask: 6,03,03
+      #Style: PushLike
+      #Access: 0
+    #EndObj
+    #Object: Edit
+      #ID: 0
+      #Pos: 196,75
+      #Size: 65,20
+      #BkColor: 255,255,255
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 8
+      #NeedApply: 0
+      #Style: 2
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 110,23
+      #Size: 31,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Timer
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 110,49
+      #Size: 71,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Durata pausa
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 110,75
+      #Size: 71,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Durata lavoro
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 266,49
+      #Size: 25,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: min
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 266,75
+      #Size: 25,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: min
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 153,23
+      #Size: 108,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 14
+      #Label: %s
+      #Align: 36
+      #Frame: 3
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 20,24
+      #Size: 31,17
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Stato
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 266,23
+      #Size: 25,20
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: min
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Led
+      #ID: 0
+      #Pos: 54,24
+      #Size: 17,17
+      #Cursor: 0
+      #OffBmpRes: 31
+      #OnBmpRes: 11
+      #BmpBkC: 0,128,128
+      #On: 6,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX11
+      #Flashing: 0
+      #Access: 0
+    #EndObj
+  #EndObj
+#EndObj
+#Object: Frame
+  #ID: 0
+  #Pos: 457,650
+  #Size: 544,31
+  #BkColor: clBtnFace
+  #Style: 1
+  #Access: 0
+  #Object: Frame
+    #ID: 0
+    #Pos: 227,7
+    #Size: 20,15
+    #BkColor: 0,128,0
+    #Style: 2
+    #Access: 0
+  #EndObj
+  #Object: Frame
+    #ID: 0
+    #Pos: 412,7
+    #Size: 20,15
+    #BkColor: 0,0,0
+    #Style: 2
+    #Access: 0
+  #EndObj
+  #Object: Frame
+    #ID: 0
+    #Pos: 22,7
+    #Size: 20,15
+    #BkColor: 0,0,255
+    #Style: 2
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 51,7
+    #Size: 117,15
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Valore di temperatura
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 256,7
+    #Size: 93,15
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Livello sostanza
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 441,7
+    #Size: 87,15
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Stato agitatore
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: Label
+  #ID: 0
+  #Pos: 10,12
+  #Size: 391,33
+  #BkColor: 255,166,166
+  #Cursor: 0
+  #TxtColor: 0,0,0
+  #Font: Arial Black,18,0000
+  #Gate: 13
+  #Label: Tino %s
+  #Align: 37
+  #Frame: 3
+  #Access: 0
+#EndObj

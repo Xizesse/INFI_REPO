@@ -1,0 +1,55 @@
+#Access: 0
+#Pos: 0,96
+#Size: 160,580
+#BkColor: clBtnFace
+#Gates: 0
+#PBkBmp: 15,15,134,37,Alarms\LeftBarButtons\OnlineAlarmsButton.png
+#PBkBmp: 15,60,134,37,Alarms\LeftBarButtons\HistoricalAlarmsButton.png
+#PBkBmp: 15,150,134,37,Alarms\LeftBarButtons\OperatorLogButton.png
+#PBkBmp: 15,105,134,37,Alarms\LeftBarButtons\HistoricalEventsButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: Button
+  #ID: 0
+  #Pos: 56,23
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Allarmi on-line
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,onlineAlarms
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,68
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Storico allarmi
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,historicalAlarms
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,113
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Storico eventi
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,historicalEvents
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,158
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Attività utenti
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,operatorLog
+#EndObj

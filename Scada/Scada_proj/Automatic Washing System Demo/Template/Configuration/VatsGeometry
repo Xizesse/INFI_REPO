@@ -1,0 +1,1916 @@
+#Access: 0
+#Pos: 227,96
+#Size: 786,580
+#BkColor: clMenu
+#Gates: 64
+  #NUM: 101VatDiameter_Cy,0
+  #NUM: 101VatHeight_Cy,0
+  #NUM: 101VatDiameter_Co,0
+  #NUM: 101VatHeight_Co,0
+  #NUM: 102VatDiameter_Cy,0
+  #NUM: 102VatHeight_Cy,0
+  #NUM: 102VatDiameter_Co,0
+  #NUM: 102VatHeight_Co,0
+  #NUM: 103VatDiameter_Cy,0
+  #NUM: 103VatHeight_Cy,0
+  #NUM: 103VatDiameter_Co,0
+  #NUM: 103VatHeight_Co,0
+  #NUM: 104VatDiameter_Cy,0
+  #NUM: 104VatHeight_Cy,0
+  #NUM: 104VatDiameter_Co,0
+  #NUM: 104VatHeight_Co,0
+  #NUM: 105VatDiameter_Cy,0
+  #NUM: 105VatHeight_Cy,0
+  #NUM: 105VatDiameter_Co,0
+  #NUM: 105VatHeight_Co,0
+  #NUM: 106VatDiameter_Cy,0
+  #NUM: 106VatHeight_Cy,0
+  #NUM: 106VatDiameter_Co,0
+  #NUM: 106VatHeight_Co,0
+  #NUM: 107VatDiameter_Cy,0
+  #NUM: 107VatHeight_Cy,0
+  #NUM: 107VatDiameter_Co,0
+  #NUM: 107VatHeight_Co,0
+  #NUM: 108VatDiameter_Cy,0
+  #NUM: 108VatHeight_Cy,0
+  #NUM: 108VatDiameter_Co,0
+  #NUM: 108VatHeight_Co,0
+  #NUM: 109VatDiameter_Cy,0
+  #NUM: 109VatHeight_Cy,0
+  #NUM: 109VatDiameter_Co,0
+  #NUM: 109VatHeight_Co,0
+  #NUM: 110VatDiameter_Cy,0
+  #NUM: 110VatHeight_Cy,0
+  #NUM: 110VatDiameter_Co,0
+  #NUM: 110VatHeight_Co,0
+  #NUM: 111VatDiameter_Cy,0
+  #NUM: 111VatHeight_Cy,0
+  #NUM: 111VatDiameter_Co,0
+  #NUM: 111VatHeight_Co,0
+  #NUM: 112VatDiameter_Cy,0
+  #NUM: 112VatHeight_Cy,0
+  #NUM: 112VatDiameter_Co,0
+  #NUM: 112VatHeight_Co,0
+  #NUM: 113VatDiameter_Cy,0
+  #NUM: 113VatHeight_Cy,0
+  #NUM: 113VatDiameter_Co,0
+  #NUM: 113VatHeight_Co,0
+  #NUM: 114VatDiameter_Cy,0
+  #NUM: 114VatHeight_Cy,0
+  #NUM: 114VatDiameter_Co,0
+  #NUM: 114VatHeight_Co,0
+  #NUM: 115VatDiameter_Cy,0
+  #NUM: 115VatHeight_Cy,0
+  #NUM: 115VatDiameter_Co,0
+  #NUM: 115VatHeight_Co,0
+  #NUM: 116VatDiameter_Cy,0
+  #NUM: 116VatHeight_Cy,0
+  #NUM: 116VatDiameter_Co,0
+  #NUM: 116VatHeight_Co,0
+#PBkBmp: 644,533,134,37,Configuration\ApplyButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: Button
+  #ID: 0
+  #Pos: 685,541
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Applica
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: Apply
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,15
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino A
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 0
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 1
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 2
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 3
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 171,15
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino B
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 4
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 5
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 6
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 7
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 327,15
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino C
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 8
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 9
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 10
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 11
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,145
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino D
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 12
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 13
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 14
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 15
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 171,145
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino E
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 16
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 17
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 18
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 19
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 327,145
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino F
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 20
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 21
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 22
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 23
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,275
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino G
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 24
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 25
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 26
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 27
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 171,275
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino H
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 28
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 29
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 30
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 31
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 327,275
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino I
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 32
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 33
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 34
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 35
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 483,275
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino L
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 36
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 37
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 38
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 39
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 639,275
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino M
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 40
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 41
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 42
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 43
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: Bitmap
+  #ID: 0
+  #Pos: 540,11
+  #Size: 185,255
+  #Cursor: 0
+  #PBmpFile: 0,Configuration\DimensionedVat.png
+  #CycleTime: 0,1
+  #Access: 0
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,405
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino N
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 44
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 45
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 46
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 47
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 171,405
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino O
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 48
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 49
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 50
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 51
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 327,405
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino P
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 52
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 53
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 54
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 55
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 483,405
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino Q
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 56
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 57
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 58
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 59
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 639,405
+  #Size: 140,120
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Segoe UI,9,0000
+  #Label: Tino R
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,19
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 60
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,41
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 61
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,63
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 62
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 65,85
+    #Size: 60,21
+    #BkColor: 251,253,253
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 63
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,19
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,41
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H1 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,63
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: D2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,85
+    #Size: 45,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: H2 [m]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj

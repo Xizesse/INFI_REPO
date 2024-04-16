@@ -1,0 +1,47 @@
+#Access: 0
+#Pos: 0,0
+#Size: 1014,50
+#BkColor: 255,255,255
+#Gates: 8
+  #NUM: Rec_proc_substance,1
+  #NUM: Rec_proc_substance,2
+  #NUM: Rec_proc_substance,3
+  #NUM: Rec_proc_substance,4
+  #NUM: Rec_proc_substance,5
+  #NUM: Rec_proc_substance,6
+  #NUM: Rec_proc_substance,7
+  #NUM: Rec_proc_substance,8
+#Style: Fixed
+#Object: Frame
+  #ID: 0
+  #Pos: 0,0
+  #Size: 1014,50
+  #BkColor: 255,255,255
+  #Style: 1
+  #Object: St_Bar
+    #ID: 0
+    #Pos: 15,5
+    #Size: 140,19
+    #BkColor: 192,192,192
+    #Font: MS Sans Serif,9,0000
+    #Align: 37
+    #Frame: 1
+    #Status: 0,0,0,140,183,176,0,6,0,1,-1
+    #Status: 0,0,0,228,206,119,0,6,1,1,-1
+    #Status: 0,0,0,138,195,143,0,6,2,1,-1
+    #Status: 255,255,255,0,0,0,0,6,3,1,-1
+  #EndObj
+  #Object: St_Bar
+    #ID: 0
+    #Pos: 156,5
+    #Size: 140,19
+    #BkColor: 192,192,192
+    #Font: MS Sans Serif,9,0000
+    #Align: 37
+    #Frame: 1
+    #Status: 0,0,0,140,183,176,1,6,0,2,-1
+    #Status: 0,0,0,228,206,119,1,6,1,2,-1
+    #Status: 0,0,0,138,195,143,1,6,2,2,-1
+    #Status: 255,255,255,0,0,0,1,6,3,2,-1
+  #EndObj
+#EndObj

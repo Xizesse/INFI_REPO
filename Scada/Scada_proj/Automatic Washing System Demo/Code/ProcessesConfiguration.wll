@@ -1,0 +1,144 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        ProcessesConfiguration
+//
+// Management of treatments configuration (load, save and delete treatment
+// recipes)
+//-----------------------------------------------------------------------------
+
+//*****************************************************************************
+// loadProcess
+//
+// Load the recipe associated to treatment which name is selected in
+// FileListBox (gate 'Rec_proc_title')
+//*****************************************************************************
+function void loadProcess()
+
+   string fileName;
+   string recipeName;
+   bool error = false;
+
+   // Exit if no treatment is selected
+   if (GetStrGateValue("Rec_proc_title", 0) == "") then return; end
+
+   // Check if recipe file exists
+   recipeName = GetStrGateValue("Rec_proc_title", 0);
+   fileName = GetProjectPath() + "\Recipes\Treatments.rcf\" + recipeName + ".rcf";
+
+   if (FileExist(fileName) == false) then
+       // File not foud: show error
+       error = true;
+   else
+       if (RecipeExecute("Treatments", recipeName, false) == false) then
+           // Loading problems: show error
+           error = true;
+       end
+   end
+
+   // Show error if required
+   if (error == true) then
+       IconMessageBox("Unable to open treatment '" + recipeName + "'", "Error", 2, 6, 1);
+   end
+end
+
+//*****************************************************************************
+// saveProcess
+//
+// Save treatment parameters as a recipe
+//*****************************************************************************
+function void saveProcess()
+
+   string fileName;
+   string recipeName;
+   bool reloop;
+   bool error = false;
+
+   do
+       reloop = false;
+
+       // Ask for treatment name
+       recipeName = InputDialog("Insert treatment name", "Saving treatment", "");
+       if (recipeName == "") then return; end
+
+       // Check name validity
+       if (0 == 1) then
+           IconMessageBox("Inserted treatment name is not valid", "Warning", 2, 1, 1);
+           reloop = true;
+       else
+           // Check if file already exists
+           fileName = GetProjectPath() + "\Recipes\Treatments.rcf\" + recipeName + ".rcf";
+           if (FileExist(fileName) == true) then
+               if (IconMessageBox("A treatment with the samen name already exists, overwrite ?", "Warning!", 5, 1, 2) == 4) then
+                   reloop = true;
+               end
+           end
+       end
+   while (reloop == true)
+
+   if (FileExist(fileName) == true) then
+       // Overwrite existing recipe
+       if (RecipeImport("Treatments", recipeName, false) == false) then
+           error = true;
+       end
+   else
+       // Create a new recipe
+       if (RecipeCreate("Treatments", recipeName, false) == false) then
+           error = true;
+       else
+           if (RecipeImport("Treatments", recipeName, false) == false) then
+               error = true;
+           end
+       end
+   end
+
+   // Show error if required
+   if (error == true) then
+       IconMessageBox("Can't save treatment '" + recipeName + "'", "Error", 2, 6, 1);
+   end
+
+   // Reload FileListBox
+   reloadLeftBar("_ProcessesLeftBar");
+end
+
+//*****************************************************************************
+// deleteProcess
+//
+// Delete the recipe associated to treatment which name is selected in
+// FileListBox (gate 'Rec_proc_title')
+//*****************************************************************************
+function void deleteProcess()
+
+   string fileName;
+   string recipeName;
+   bool error = false;
+
+   // Exit if no treatment is selected
+   if (GetStrGateValue("Rec_proc_title", 0) == "") then return; end
+
+   recipeName = GetStrGateValue("Rec_proc_title", 0);
+   fileName = GetProjectPath() + "\Recipes\Treatments.rcf\" + recipeName + ".rcf";
+
+   // Confirm request
+   if (IconMessageBox("Confirm deletion of treatment '" + recipeName + "'?", "Confirm", 5, 5, 2) == 7) then
+
+       // Check if recipe file is existing
+       if (FileExist(fileName) == false) then
+           // File not found: show error
+           error = true;
+       else
+           if (FileDelete(fileName) == false) then
+               // Deleting problems: show error
+               error = true;
+           end
+       end
+
+       // Show error if enabled
+       if (error == true) then
+           IconMessageBox("Unable to delete treatment '" + recipeName + "'", "Error", 2, 6, 1);
+       end
+
+       // Reload FileListBox
+       reloadLeftBar("_ProcessesLeftBar");
+   end
+end
+

@@ -1,0 +1,156 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        Report
+//
+// Management of Treatment reports
+//-----------------------------------------------------------------------------
+
+
+//*****************************************************************************
+// inizializeReport
+//
+// Initialize gates containing treatment startup information, needed for the
+// Treatment report.
+//*****************************************************************************
+function void inizializeReport()
+   SetNumGateValue("Rep_proc_startD", 0, GetDayOfMonth());
+   SetNumGateValue("Rep_proc_startM", 0, GetMonth());
+   SetNumGateValue("Rep_proc_startY", 0, GetYear());
+   SetNumGateValue("Rep_proc_startHH", 0, GetHour());
+   SetNumGateValue("Rep_proc_startMM", 0, GetMinute());
+   SetNumGateValue("Rep_proc_startSS", 0, GetSecond());
+   SetStrGateValue("Rep_proc_startTime", 0, formatDateTimeFromNumGates("Rep_proc_start"));
+   SetStrGateValue("Rep_proc_title", 0, GetStrGateValue("Proc_currentTitle", 0));
+   SetStrGateValue("Rep_proc_startOp", 0, GetStrGateValue("Proc_operator", 0));
+end
+
+
+//*****************************************************************************
+// createReport
+//
+// Initialize gates containing the information of the end of treatment, needed
+// for the Treatment report.
+// Then create report
+//*****************************************************************************
+function void createReport(string endProcessCause, bool operatorName)
+
+   // Set gates for the report creation
+   SetNumGateValue("Rep_proc_endD", 0, GetDayOfMonth());
+   SetNumGateValue("Rep_proc_endM", 0, GetMonth());
+   SetNumGateValue("Rep_proc_endY", 0, GetYear());
+   SetNumGateValue("Rep_proc_endHH", 0, GetHour());
+   SetNumGateValue("Rep_proc_endMM", 0, GetMinute());
+   SetNumGateValue("Rep_proc_endSS", 0, GetSecond());
+   SetStrGateValue("Rep_proc_endTime", 0, formatDateTimeFromNumGates("Rep_proc_end"));
+   SetStrGateValue("Rep_proc_endCause", 0, endProcessCause);
+   if (operatorName == true) then
+       SetStrGateValue("Rep_proc_endOp", 0, GetStrGateValue("Proc_operator", 0));
+   else
+       SetStrGateValue("Rep_proc_endOp", 0, "");
+   end
+
+   // Create chart
+   generateReportChart();
+   ChartSetTimeRange(GetNumGateValue("Rep_proc_startD", 0),
+                     GetNumGateValue("Rep_proc_startM", 0),
+                     GetNumGateValue("Rep_proc_startY", 0),
+                     GetNumGateValue("Rep_proc_startHH", 0),
+                     GetNumGateValue("Rep_proc_startMM", 0),
+                     GetNumGateValue("Rep_proc_startSS", 0),
+                     GetNumGateValue("Rep_proc_endD", 0),
+                     GetNumGateValue("Rep_proc_endM", 0),
+                     GetNumGateValue("Rep_proc_endY", 0),
+                     GetNumGateValue("Rep_proc_endHH", 0),
+                     GetNumGateValue("Rep_proc_endMM", 0),
+                     GetNumGateValue("Rep_proc_endSS", 0));
+
+   // Create report
+   if (ReportCreate("Treatment") == false) then
+       IconMessageBox("Can't create report", "Error", 2, 6, 1);
+   end
+end
+
+
+//*****************************************************************************
+// generateReportChart
+//
+// Create at runtime the chart group file (Process.crt)
+//*****************************************************************************
+function void generateReportChart()
+
+   string fileName;
+   int fileHandle;
+   int fileAttrs;
+   int codedVats;
+   int vat;
+
+   string color1 = "255";
+   string color2 = "16711680";
+   string color3 = "8421376";
+   string color;
+
+   int vatNo = 1;
+
+   fileName = GetProjectPath() + "\Charts\Process.crt";
+
+   // Remove read-only attribute
+   fileAttrs = FileGetAttr(fileName);
+   FileSetAttr(fileName, ResetBit(fileAttrs, 0));
+
+   // Create .crt file
+   fileHandle = FileOpen(fileName, "wt");
+   codedVats = GetNumGateValue("Proc_vatsIR", 0) * 256 + GetNumGateValue("Proc_vatsAH", 0);
+   if (fileHandle != 0) then
+       color = color1;
+       SetStrGateValue("Rep_proc_vat1", 0, "");
+       SetStrGateValue("Rep_proc_vat2", 0, "");
+       SetStrGateValue("Rep_proc_vat3", 0, "");
+       for vat = 0 to 15 do
+           if (GetBit(codedVats, vat) == 1) then
+               FileWriteLn(fileHandle, "#Gate: " + IntToStr(101 + vat) + "Loop1.PV,0,0," + color + ",0,100");
+               if (color == color2) then color = color3; end
+               if (color == color1) then color = color2; end
+               SetStrGateValue("Rep_proc_vat" + IntToStr(vatNo), 0, GetStrGateValue(IntToStr(101 + vat) + "VatName", 0));
+               vatNo = vatNo + 1;
+           end
+       end
+   end
+   FileWriteLn(fileHandle, "#Gate: 117Loop1.PV,0,0,0,0,100");
+   FileWriteLn(fileHandle, "#Gate: Rep_proc_stepChange,0,0,0,0,100");
+   FileClose(fileHandle);
+end
+
+
+//*****************************************************************************
+// insertLegend
+//*****************************************************************************
+function void report_insertLegend()
+end
+
+
+//*****************************************************************************
+// formatDateTimeFromNumGates
+//
+// Format a "dd/mm/yy - hh:mm:ss" string from a set of numerical gates
+// referred by the specified prefix
+//*****************************************************************************
+function string formatDateTimeFromNumGates(string numGatesPrefix)
+
+   int a;
+   int b;
+   int c;
+   string dateTime;
+
+   a = GetNumGateValue(numGatesPrefix + "D", 0);
+   b = GetNumGateValue(numGatesPrefix + "M", 0);
+   c = GetNumGateValue(numGatesPrefix + "Y", 0);
+   dateTime = formatDate_ddmmyy2ddmmyy(a, b, c);
+
+   a = GetNumGateValue(numGatesPrefix + "HH", 0);
+   b = GetNumGateValue(numGatesPrefix + "MM", 0);
+   c = GetNumGateValue(numGatesPrefix + "SS", 0);
+   dateTime = dateTime + " - " + formatTime_hhmmss2hhmmss(a, b, c);
+
+   return dateTime;
+end
+

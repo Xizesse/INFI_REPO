@@ -1,0 +1,263 @@
+#Access: 0
+#Pos: 227,96
+#Size: 786,580
+#BkColor: clBtnFace
+#Gates: 8
+  #NUM: Cfg_pump_onDelay,0
+  #NUM: Cfg_pump_offDelay,0
+  #NUM: Cfg_heater_minTime,0
+  #NUM: Cfg_heater_maxTime,0
+  #NUM: Cfg_vAHP_onDelay,0
+  #NUM: Cfg_vAHP_offDelay,0
+  #NUM: Cfg_vIRP_onDelay,0
+  #NUM: Cfg_vIRP_offDelay,0
+#Style: Fixed
+#StayOnTop: 0
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,15
+  #Size: 555,95
+  #BkColor: clBtnFace
+  #TxtColor: clWindowText
+  #Font: Segoe UI,9,0000
+  #Label: Pompe e valvole CIP
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,27
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 0
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,55
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 1
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,27
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Ritardo fra l'apertura delle valvole e l'attivazione della pompa [s]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,55
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Ritardo fra la disattivazione della pompa e la chiusura delle valvole [s]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,125
+  #Size: 555,95
+  #BkColor: clBtnFace
+  #TxtColor: clWindowText
+  #Font: Segoe UI,9,0000
+  #Label: Riscaldamento sostanze nello scambiatore
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,27
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 2
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,55
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 3
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,27
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Tempo minimo per cui la sostanza attraversa lo scambiatore [s]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,55
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Tempo massimo per il riscaldamento della sostanza [s]
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,235
+  #Size: 555,95
+  #BkColor: clBtnFace
+  #TxtColor: clWindowText
+  #Font: Segoe UI,9,0000
+  #Label: Pompe e valvole tini A-H
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,27
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 4
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,55
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 5
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,55
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Ritardo fra la disattivaione della pompa e la chiusura delle valvole (tini A-H)
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,27
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Ritardo fra l'apertura delle valvole e l'attivazione della pompa (tini A-H)
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,345
+  #Size: 555,95
+  #BkColor: clBtnFace
+  #TxtColor: clWindowText
+  #Font: Segoe UI,9,0000
+  #Label: Pompe e valvole tini I-R
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,27
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 6
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 450,55
+    #Size: 90,21
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 7
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,27
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Ritardo fra l'apertura delle valvole e l'attivazione della pompa (tini I-R)
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,55
+    #Size: 400,21
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Ritardo fra la disattivazione della pompa e la chiusura delle valvole (tini I-R)
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj

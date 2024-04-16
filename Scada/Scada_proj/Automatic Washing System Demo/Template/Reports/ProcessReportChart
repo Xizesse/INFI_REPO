@@ -1,0 +1,63 @@
+#Access: 0
+#Pos: 0,0
+#Size: 700,525
+#BkColor: 255,255,255
+#Gates: 0
+#Style: Fixed
+#StayOnTop: 0
+#Object: Chart
+  #ID: 0
+  #Pos: -15,0
+  #Size: 715,525
+  #TimeRange: 3600
+  #SetName: Process
+  #EnableGroups: 0
+  #TimeRangeOptions: 10
+  #SaveGroupModification: 0
+  #Autorange: 0
+  #ShowSelGraphLegend: 0
+  #EnableGrid: 1
+  #YGridDivision: 10
+  #EnablePoints: 0
+  #LineWidth: 2
+  #Interpolation: 2
+  #EnableOnLine: 0
+  #showTimeCursorButton: 0
+  #showOnlineButton: 0
+  #ZoomEnabled: 0
+  #showResetZoomButton: 0
+  #ScaleSwitchingEnabled: 0
+  #MouseRightButtonEnabled: 0
+  #showYAxisLabels: 0
+  #showRxAxis: 0
+  #showOnlyTime: 0
+  #showServerButton: 0
+  #DefaultServer: Local
+  #showGroupsButton: 0
+  #showTimeAxisButton: 0
+  #showAspectButton: 0
+  #ChartsWndBkgndColor: 255,255,255
+  #GrWndBkgndColor: 255,255,255
+  #GridLineColor: 192,192,192
+  #ScaleColor: 128,128,128
+  #DateScaleColor: clGray
+  #TimeScaleColor: clBlack
+  #showCursorWindowNew: 0
+  #showLegendWindow: 0
+  #LegendStyle: 7
+  #LegendColorBox: 1
+  #ShowLabelDescription: 0
+  #LegendFont: Segoe UI,8,0000
+  #LegendTxtColor: clWindowText
+  #LegendBkgndColor: clBtnFace
+  #LegendMaxItems: 10
+  #LegendColumns: 1
+  #CursorType: 1
+  #CursorStyle: 7
+  #CursorColorBox: 0
+  #CursorFont: Segoe UI,8,0000
+  #CursorTxtColor: clWindowText
+  #CursorBkgndColor: clBtnFace
+  #CursorMaxItems: 2
+  #CursorColumns: 1
+#EndObj

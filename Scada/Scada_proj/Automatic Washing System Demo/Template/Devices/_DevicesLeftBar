@@ -1,0 +1,259 @@
+#Access: 0
+#Pos: 0,96
+#Size: 321,580
+#BkColor: clBtnFace
+#Gates: 0
+#PBkBmp: 15,15,134,37,Devices\LeftBarButtons\VatAR2-50BButton.png
+#PBkBmp: 15,60,134,37,Devices\LeftBarButtons\VatBR2-50BButton.png
+#PBkBmp: 15,105,134,37,Devices\LeftBarButtons\VatCR2-50BButton.png
+#PBkBmp: 15,150,134,37,Devices\LeftBarButtons\VatDR2-50BButton.png
+#PBkBmp: 15,195,134,37,Devices\LeftBarButtons\VatER2-50BButton.png
+#PBkBmp: 15,240,134,37,Devices\LeftBarButtons\VatFR2-50BButton.png
+#PBkBmp: 15,285,134,37,Devices\LeftBarButtons\VatGR2-50BButton.png
+#PBkBmp: 15,330,134,37,Devices\LeftBarButtons\VatHR2-50BButton.png
+#PBkBmp: 15,375,134,37,Devices\LeftBarButtons\VatsA-HPLCButton.png
+#PBkBmp: 15,420,134,37,Devices\LeftBarButtons\CipPLCButton.png
+#PBkBmp: 170,15,134,37,Devices\LeftBarButtons\VatIR2-50BButton.png
+#PBkBmp: 170,60,134,37,Devices\LeftBarButtons\VatLR2-50BButton.png
+#PBkBmp: 170,105,134,37,Devices\LeftBarButtons\VatMR2-50BButton.png
+#PBkBmp: 170,150,134,37,Devices\LeftBarButtons\VatNR2-50BButton.png
+#PBkBmp: 170,195,134,37,Devices\LeftBarButtons\VatOR2-50BButton.png
+#PBkBmp: 170,240,134,37,Devices\LeftBarButtons\VatPR2-50BButton.png
+#PBkBmp: 170,285,134,37,Devices\LeftBarButtons\VatQR2-50BButton.png
+#PBkBmp: 170,330,134,37,Devices\LeftBarButtons\VatRR2-50BButton.png
+#PBkBmp: 170,375,134,37,Devices\LeftBarButtons\VatsI-RPLCButton.png
+#PBkBmp: 170,420,134,37,Devices\LeftBarButtons\CipPLCButton.png
+#PBkBmp: 170,495,134,37,Devices\LeftBarButtons\DevicesStatusButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: Button
+  #ID: 0
+  #Pos: 56,23
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatA
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,68
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatB
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,113
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatC
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,158
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatD
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,203
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatE
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,248
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatF
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,293
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatG
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,338
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatH
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,23
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatI
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,68
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatL
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,113
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatM
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,158
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatN
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,203
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatO
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,248
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatP
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,293
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatQ
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,338
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_vatR
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,383
+  #Size: 86,23
+  #Cursor: 0
+  #Label: PLC
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesPLC_vatsAH
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,383
+  #Size: 86,23
+  #Cursor: 0
+  #Label: PLC
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesPLC_vatsIR
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 56,428
+  #Size: 86,23
+  #Cursor: 0
+  #Label: R2-50B
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesR250B_CIP
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,428
+  #Size: 86,23
+  #Cursor: 0
+  #Label: PLC
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesPLC_CIP
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 211,503
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Stato dispositivi
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,devicesStatus
+#EndObj

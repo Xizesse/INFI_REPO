@@ -1,0 +1,5 @@
+#Gate: 110Loop1.PV,0,0,255,0,100
+#Gate: 111Loop1.PV,0,0,16711680,0,100
+#Gate: 112Loop1.PV,0,0,8421376,0,100
+#Gate: 117Loop1.PV,0,0,0,0,100
+#Gate: Rep_proc_stepChange,0,0,0,0,100

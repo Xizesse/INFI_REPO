@@ -1,0 +1,112 @@
+function void simulation()
+#startup
+
+    real pi = 3.14159;
+    real span = 5;
+
+    real initT = 20; real factorT = 5; real TT = 0;
+    real initL = 50; real factorL = 10; real TL = pi;
+    real initP = 30; real factorP = 3; real TP = 2 * pi;
+
+    real initW = 30; real factorW = 10;
+    real initB = 20; real factorB = 5;
+    real initA = 10; real factorA = 3;
+    real initD = 60; real factorD = 15;
+
+    int i;
+    real level; int commands;
+
+    while (WindowIsOpen())
+        Sleep(500);
+
+        // R2-50B simulation
+        for i = 101 to 117 do
+            SetNumGateValue(IntToStr(i) + "Loop1.PV", 0, SinRandom(TT, initT, factorT, span));
+            SetNumGateValue(IntToStr(i) + "Loop2.PV", 0, SinRandom(TL, initL, factorL, span));
+            SetNumGateValue(IntToStr(i) + "UO1.Value", 0, SinRandom(TP, initP, factorP, span));
+        end
+
+        TT = TT + 2 * pi / 80;
+        if (TT > 2 * pi) then TT = 0; end
+        TL = TL + 2 * pi / 60;
+        if (TL > 2 * pi) then TL = 0; end
+        TP = TP + 2 * pi / 40;
+        if (TP > 2 * pi) then TP = 0; end
+
+        // Water tank level simulation
+        level = GetNumGateValue("Water_level", 0);
+        commands = GetBit(GetNumGateValue("Commands_man.2", 0), 0) + GetBit(GetNumGateValue("Commands_man.1", 0), 0) * 2;
+        if (commands == 0x01) then
+            if (level < 89) then
+                level = level + 1;
+            end
+        end
+        if (commands == 0x02) then
+            if (level > 11) then
+                level = level - 1;
+            end
+        end
+        if (commands == 0x03) then
+            level = SinRandom(level, initW, factorW, span);
+        end
+        SetNumGateValue("Water_level", 0, level);
+
+        // Base tank level simulation
+        level = GetNumGateValue("Base_level", 0);
+        commands = GetBit(GetNumGateValue("Commands_man.2", 0), 1) + GetBit(GetNumGateValue("Commands_man.1", 0), 1) * 2;
+        if (commands == 0x01) then
+            if (level < 89) then
+                level = level + 1;
+            end
+        end
+        if (commands == 0x02) then
+            if (level > 11) then
+                level = level - 1;
+            end
+        end
+        if (commands == 0x03) then
+            level = SinRandom(level, initB, factorB, span);
+        end
+        SetNumGateValue("Base_level", 0, level);
+
+        // Acid tank level simulation
+        level = GetNumGateValue("Acid_level", 0);
+        commands = GetBit(GetNumGateValue("Commands_man.2", 0), 2) + GetBit(GetNumGateValue("Commands_man.1", 0), 2) * 2;
+        if (commands == 0x01) then
+            if (level < 89) then
+                level = level + 1;
+            end
+        end
+        if (commands == 0x02) then
+            if (level > 11) then
+                level = level - 1;
+            end
+        end
+        if (commands == 0x03) then
+            level = SinRandom(level, initA, factorA, span);
+        end
+        SetNumGateValue("Acid_level", 0, level);
+
+        // Disinfectant tank level simulation
+        level = GetNumGateValue("Disinfectant_level", 0);
+        commands = GetBit(GetNumGateValue("Commands_man.2", 0), 3) + GetBit(GetNumGateValue("Commands_man.1", 0), 3) * 2;
+        if (commands == 0x01) then
+            if (level < 89) then
+                level = level + 1;
+            end
+        end
+        if (commands == 0x02) then
+            if (level > 11) then
+                level = level - 1;
+            end
+        end
+        if (commands == 0x03) then
+            level = SinRandom(level, initD, factorD, span);
+        end
+        SetNumGateValue("Disinfectant_level", 0, level);
+    end
+end
+
+function real SinRandom(real t, real init, real factor, real span)
+    return init + factor * Sin(t) + span * (50 - Rand(100)) / 100;
+end

@@ -1,0 +1,529 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        TemplateManagement
+//
+// Management of navigation through the templates
+//-----------------------------------------------------------------------------
+
+global int tid_bottomBar = 0;
+global int tid_leftBar = 0;
+global int tid_main = 0;
+global int tid_title = 0;
+global int tid_subtitle = 0;
+
+global string tname_bottomBar = "";
+global string tname_leftBar = "";
+global string tname_main = "";
+global string tname_title = "";
+global string tname_subtitle = "";
+
+global string vatDeviceId;
+global string vatPage;
+
+
+//-----------------------------------------------------------------------------
+// STARTUP FUNCTION
+//-----------------------------------------------------------------------------
+
+function void templateManagement()
+#startup
+   // Show the main template and corresponding lower bar
+   showPage("Main", "_MainBottomBar", "", "", "");
+end
+
+
+//-----------------------------------------------------------------------------
+// HANDLERS OF COMMON NAVIGATION EVENTS
+//-----------------------------------------------------------------------------
+
+function void mainPage()
+   SetStrGateValue("Rec_proc_title", 0, "");
+   showPage("Main", "_MainBottomBar", "", "", "");
+end
+
+function void reportsPage()
+   showPage("Reports", "_MainBottomBar", "", "_ReportsTitle", "");
+end
+
+function void alarmsPage()
+   onlineAlarms();
+end
+
+function void configurationPage()
+   alarmsConfiguration();
+end
+
+function void devicesPage()
+   devicesStatus();
+end
+
+function void loginUser()
+   TemplatePassword();
+end
+
+function void logoutUser()
+   logout();
+end
+
+function void gateStatus()
+   // Function can be activated by pressing the F5 key
+   // when the bottomBar is active
+   templateGatesStatus();
+end
+
+
+//-----------------------------------------------------------------------------
+// HANDLERS OF NAVIGATION EVENTS IN MAIN PAGE
+//-----------------------------------------------------------------------------
+
+function void showVatDetail(string detailTemplate)
+   vatDeviceId = StrSubString(detailTemplate, 1, 3);
+   vatPage = "Large";
+   showPage(detailTemplate, "_VatLargeBottomBar", "", "", "");
+end
+
+function void vatDetail_vatA()
+   showVatDetail("101_Vat_Large");
+end
+
+function void vatDetail_vatB()
+   showVatDetail("102_Vat_Large");
+end
+
+function void vatDetail_vatC()
+   showVatDetail("103_Vat_Large");
+end
+
+function void vatDetail_vatD()
+   showVatDetail("104_Vat_Large");
+end
+
+function void vatDetail_vatE()
+   showVatDetail("105_Vat_Large");
+end
+
+function void vatDetail_vatF()
+   showVatDetail("106_Vat_Large");
+end
+
+function void vatDetail_vatG()
+   showVatDetail("107_Vat_Large");
+end
+
+function void vatDetail_vatH()
+   showVatDetail("108_Vat_Large");
+end
+
+function void vatDetail_vatI()
+   showVatDetail("109_Vat_Large");
+end
+
+function void vatDetail_vatL()
+   showVatDetail("110_Vat_Large");
+end
+
+function void vatDetail_vatM()
+   showVatDetail("111_Vat_Large");
+end
+
+function void vatDetail_vatN()
+   showVatDetail("112_Vat_Large");
+end
+
+function void vatDetail_vatO()
+   showVatDetail("113_Vat_Large");
+end
+
+function void vatDetail_vatP()
+   showVatDetail("114_Vat_Large");
+end
+
+function void vatDetail_vatQ()
+   showVatDetail("115_Vat_Large");
+end
+
+function void vatDetail_vatR()
+   showVatDetail("116_Vat_Large");
+end
+
+function void cipDetail()
+   showPage("CIP", "_CIPBottomBar", "", "", "");
+end
+
+
+//-----------------------------------------------------------------------------
+// HANDLERS OF NAVIGATION EVENTS IN VAT PAGES
+//-----------------------------------------------------------------------------
+
+function void vatChart()
+   vatPage = "Chart";
+   showPage(vatDeviceId + "_Vat_Chart", "_VatChartBottomBar", "", "", "");
+end
+
+function void vatAlarms()
+   vatPage = "Alarms";
+   showPage(vatDeviceId + "_Vat_Alarms", "_VatAlarmsBottomBar", "", "", "");
+end
+
+function void vatEvents()
+   vatPage = "Events";
+   showPage(vatDeviceId + "_Vat_Events", "_VatEventsBottomBar", "", "", "");
+end
+
+function void vatDetail()
+   vatPage = "Large";
+   showPage(vatDeviceId + "_Vat_Large", "_VatLargeBottomBar", "", "", "");
+end
+
+function void previousVat()
+   int deviceId;
+
+   deviceId = StrToInt(vatDeviceId);
+   deviceId = deviceId - 1;
+   if (deviceId < 101) then deviceId = 116; end
+   vatDeviceId = IntToStr(deviceId);
+
+   showPage(vatDeviceId + "_Vat_" + vatPage, "_Vat" + vatPage + "BottomBar", "", "", "");
+end
+
+function void nextVat()
+   int deviceId;
+
+   deviceId = StrToInt(vatDeviceId);
+   deviceId = deviceId + 1;
+   if (deviceId > 116) then deviceId = 101; end
+   vatDeviceId = IntToStr(deviceId);
+
+   showPage(vatDeviceId + "_Vat_" + vatPage, "_Vat" + vatPage + "BottomBar", "", "", "");
+end
+
+
+//-----------------------------------------------------------------------------
+// HANDLERS OF NAVIGATION EVENTS IN ALARMS PAGE
+//-----------------------------------------------------------------------------
+
+function void onlineAlarms()
+   SetStrGateValue("alarm_info", 0, "On-line alarms");
+   showPage("OnlineAlarms", "_MainBottomBar", "_AlarmsLeftBar", "_AlarmsTitle", "");
+end
+
+function void historicalAlarms()
+   SetStrGateValue("alarm_info", 0, "Hystorical alarms");
+   showPage("HistoricalAlarms", "_MainBottomBar", "_AlarmsLeftBar", "_AlarmsTitle", "");
+end
+
+function void historicalEvents()
+   SetStrGateValue("alarm_info", 0, "Hystorical events");
+   showPage("HistoricalEvents", "_MainBottomBar", "_AlarmsLeftBar", "_AlarmsTitle", "");
+end
+
+function void operatorLog()
+   SetStrGateValue("alarm_info", 0, "User activities");
+   showPage("OperatorLog", "_MainBottomBar", "_AlarmsLeftBar", "_AlarmsTitle", "");
+end
+
+
+//-----------------------------------------------------------------------------
+// HANDLERS OF NAVIGATION EVENTS IN CONFIGURATION PAGE
+//-----------------------------------------------------------------------------
+
+function void alarmsConfiguration()
+   SetStrGateValue("config_info", 0, "Alarms configuration");
+   showPage("AlarmsConfiguration", "_MainBottomBar", "_ConfigurationLeftBar", "_ConfigurationTitle", "");
+end
+
+function void processParameters()
+   SetStrGateValue("config_info", 0, "Process parameters configuration");
+   showPage("ProcessParameters", "_MainBottomBar", "_ConfigurationLeftBar", "_ConfigurationTitle", "");
+end
+
+function void processesConfiguration()
+   SetStrGateValue("Rec_proc_title", 0, "");
+   SetStrGateValue("config_info", 0, "Treatments configuration");
+   showPage("ProcessesConfiguration", "_MainBottomBar", "_ProcessesLeftBar", "_ConfigurationTitle", "");
+end
+
+function void vatsGeometry()
+   SetStrGateValue("config_info", 0, "Vats geometric parameters configuration");
+   showPage("VatsGeometry", "_MainBottomBar", "_ConfigurationLeftBar", "_ConfigurationTitle", "");
+end
+
+function void usersConfiguration()
+   SetStrGateValue("config_info", 0, "Users configuration");
+   initUsersConfigurationTemplate();
+   showPage("UsersConfiguration", "_MainBottomBar", "_ConfigurationLeftBar", "_ConfigurationTitle", "");
+end
+
+function void initUsersConfigurationTemplate()
+   // Init fields
+   int i;
+   for i = 1 to 7 do
+      SetStrGateValue("Username", i, "-");
+      SetStrGateValue("UserGroup", i, "-");
+   end
+   SetNumGateValue("NewGroup", 0, 2);
+   SetStrGateValue("NewUser", 0, "");
+   SetStrGateValue("NewPsw", 0, "");
+
+   // Fill user list
+   int g;
+   int handle = UserFindFirst();
+   i = 0;
+   if (UserNameFound(handle) != "") then
+      do
+         i = i + 1;
+         SetStrGateValue("Username", i, UserNameFound(handle));
+         g = UserGroupsFound(handle);
+         if (g == 1) then
+            SetStrGateValue("UserGroup", i, "Administrator");
+         else
+            SetStrGateValue("UserGroup", i, "Operator");
+         end
+      while (UserFindNext(handle) == true && i <= 7)
+   end
+   UserFindClose(handle);
+   SetNumGateValue("UserCount", 0, i);
+end
+
+function void addUser()
+   string name = GetStrGateValue("NewUser", 0);
+   string password = GetStrGateValue("NewPsw", 0);
+   int group = GetNumGateValue("NewGroup", 0);
+
+   int ret = AddUser(name, password, group, true);
+   string error = "";
+
+   if (ret == 1) then error = "Name field is empty"; end
+   if (ret == 2) then error = "Name length exceeds the maximum length"; end
+   if (ret == 3) then error = "Password field is empty"; end
+   if (ret == 4) then error = "Password length exceeds the maximum length"; end
+   if (ret >= 5) then error = "Unknown error"; end
+
+   if (error != "") then
+      IconMessageBox(error, "Error", 2, 7, 1);
+   else
+      initUsersConfigurationTemplate();
+   end
+end
+
+function void removeUser(int i)
+#modal
+   string name;
+   if (i >= 1 && i <= 7) then
+      name = GetStrGateValue("Username", i);
+      RemoveUser(name);
+      initUsersConfigurationTemplate();
+   end
+end
+
+
+//----------------------------------------------------------------------------
+// HANDLERS OF NAVIGATION EVENTS IN DEVICES PAGE
+//-----------------------------------------------------------------------------
+
+function void devicesR250B_vatA()
+   SetStrGateValue("disp_info", 0, "R2-50B vat A");
+   showPage("101_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatB()
+   SetStrGateValue("disp_info", 0, "R2-50B vat B");
+   showPage("102_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatC()
+   SetStrGateValue("disp_info", 0, "R2-50B vat C");
+   showPage("103_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatD()
+   SetStrGateValue("disp_info", 0, "R2-50B vat D");
+   showPage("104_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatE()
+   SetStrGateValue("disp_info", 0, "R2-50B vat E");
+   showPage("105_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatF()
+   SetStrGateValue("disp_info", 0, "R2-50B vat F");
+   showPage("106_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatG()
+   SetStrGateValue("disp_info", 0, "R2-50B vat G");
+   showPage("107_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatH()
+   SetStrGateValue("disp_info", 0, "R2-50B vat H");
+   showPage("108_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatI()
+   SetStrGateValue("disp_info", 0, "R2-50B vat I");
+   showPage("109_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatL()
+   SetStrGateValue("disp_info", 0, "R2-50B vat L");
+   showPage("110_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatM()
+   SetStrGateValue("disp_info", 0, "R2-50B vat M");
+   showPage("111_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatN()
+   SetStrGateValue("disp_info", 0, "R2-50B vat N");
+   showPage("112_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatO()
+   SetStrGateValue("disp_info", 0, "R2-50B vat O");
+   showPage("113_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatP()
+   SetStrGateValue("disp_info", 0, "R2-50B vat P");
+   showPage("114_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatQ()
+   SetStrGateValue("disp_info", 0, "R2-50B vat Q");
+   showPage("115_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_vatR()
+   SetStrGateValue("disp_info", 0, "R2-50B tino R");
+   showPage("116_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesPLC_vatsAH()
+   SetStrGateValue("disp_info", 0, "PLC tini A-H");
+   showPage("Vats A-H PLC Diagnostics", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesPLC_vatsIR()
+   SetStrGateValue("disp_info", 0, "PLC tini I-R");
+   showPage("Vats I-R PLC Diagnostics", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesR250B_CIP()
+   SetStrGateValue("disp_info", 0, "R2-50B CIP");
+   showPage("117_R2-50B Configuration", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesPLC_CIP()
+   SetStrGateValue("disp_info", 0, "PLC CIP");
+   showPage("CIP PLC Diagnostics", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+function void devicesStatus()
+   SetStrGateValue("disp_info", 0, "Devices status");
+   showPage("DevicesStatus", "_MainBottomBar", "_DevicesLeftBar", "_DevicesTitle", "_DevicesSubTitle");
+end
+
+
+//-----------------------------------------------------------------------------
+// AUXILIARY FUNCTIONS
+//-----------------------------------------------------------------------------
+
+//*****************************************************************************
+// showPage
+//
+// Open a page compound of template 'main', 'bottomBar', 'leftBar',
+// 'title', 'subtitle'
+//*****************************************************************************
+function void showPage(string main, string bottomBar, string leftBar, string title, string subtitle)
+
+   // Template 'main' closing
+   if ((main == "") || (main != tname_main)) then
+       if (tid_main != 0) then
+           TPageClose(tid_main);
+           tid_main = 0;
+           tname_main = "";
+       end
+   end
+
+   // Template 'bottomBar' closing
+   if ((bottomBar == "") || (bottomBar != tname_bottomBar)) then
+       if (tid_bottomBar != 0) then
+           TPageClose(tid_bottomBar);
+           tid_bottomBar = 0;
+           tname_bottomBar = "";
+       end
+   end
+
+   // Template 'leftBar' closing
+   if ((leftBar == "") || (leftBar != tname_leftBar)) then
+       if (tid_leftBar != 0) then
+           TPageClose(tid_leftBar);
+           tid_leftBar = 0;
+           tname_leftBar = "";
+       end
+   end
+
+   // Template 'title' closing
+   if ((title == "") || (title != tname_title)) then
+       if (tid_title != 0) then
+           TPageClose(tid_title);
+           tid_title = 0;
+           tname_title = "";
+       end
+   end
+
+   // Template 'subtitle' closing
+   if ((subtitle == "") || (subtitle != tname_subtitle)) then
+       if (tid_subtitle != 0) then
+           TPageClose(tid_subtitle);
+           tid_subtitle = 0;
+           tname_subtitle = "";
+       end
+   end
+
+   // Template 'bottomBar' opening
+   if ((bottomBar != "") && (tid_bottomBar == 0)) then
+       tid_bottomBar = TPageOpen(bottomBar);
+       tname_bottomBar = bottomBar;
+   end
+
+   // Template 'title' opening
+   if ((title != "") && (tid_title == 0)) then
+       tid_title = TPageOpen(title);
+       tname_title = title;
+   end
+
+   // Template 'leftBar' opening
+   if ((leftBar != "") && (tid_leftBar == 0)) then
+       tid_leftBar = TPageOpen(leftBar);
+       tname_leftBar = leftBar;
+   end
+
+   // Template 'subtitle' opening
+   if ((subtitle != "") && (tid_subtitle == 0)) then
+       tid_subtitle = TPageOpen(subtitle);
+       tname_subtitle = subtitle;
+   end
+
+   // Template 'main' opening
+   if ((main != "") && (tid_main == 0)) then
+       tid_main = TPageOpen(main);
+       tname_main = main;
+   end
+end
+
+//*****************************************************************************
+// reloadLeftBar
+//
+// Force reloading (closing + opening) of specified 'leftBar'
+// (only if already open)
+//*****************************************************************************
+function void reloadLeftBar(string leftBar)
+   if ((leftBar != "") && (leftBar == tname_leftBar) && (tid_leftBar != 0)) then
+       TPageClose(tid_leftBar);
+       tid_leftBar = TPageOpen(leftBar);
+   end
+end

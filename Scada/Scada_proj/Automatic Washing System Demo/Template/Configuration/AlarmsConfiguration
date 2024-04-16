@@ -1,0 +1,1582 @@
+#Access: 0
+#Pos: 227,96
+#Size: 786,580
+#BkColor: clBtnFace
+#Gates: 16
+  #NUM: Alarms_enable.1,0
+  #NUM: Alarms_enable.2,0
+  #NUM: Alarms_enable.3ab,0
+  #NUM: Alarms_enable.3c,0
+  #NUM: Cfg_vAHV_alarmTime,0
+  #NUM: Cfg_vAHP_alarmTime,0
+  #NUM: Cfg_vAHM_AlarmTime,0
+  #NUM: Cfg_vAH_fAlarmTime,0
+  #NUM: Alarms_enable.4ab,0
+  #NUM: Alarms_enable.4c,0
+  #NUM: Cfg_vIRV_alarmTime,0
+  #NUM: Cfg_vIRP_alarmTime,0
+  #NUM: Cfg_vIRM_AlarmTime,0
+  #NUM: Cfg_vIR_fAlarmTime,0
+  #NUM: Cfg_valves_alarmTime,0
+  #NUM: Cfg_pump_alarmTime,0
+#PBkBmp: 646,538,134,37,Configuration\ApplyButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: Button
+  #ID: 0
+  #Pos: 687,546
+  #Size: 86,23
+  #Cursor: 0
+  #Label: Applica
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: Apply
+#EndObj
+#Object: TabSheet
+  #ID: 0
+  #Pos: 15,15
+  #Size: 765,515
+  #Object: TabPage
+    #ID: 0
+    #Label: Allarmi tini A-H
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,33
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino A
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,0,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,8,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,0,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 268,33
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino B
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,1,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,9,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,1,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 516,33
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino C
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,2,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,10,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,2,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,190
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino D
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,3,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,11,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,3,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 268,190
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino E
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,4,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,12,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,4,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 516,190
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino F
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,5,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,13,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,5,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,349
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino G
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,6,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,14,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,6,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 268,349
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino H
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 2,7,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 2,15,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 3,7,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 516,349
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Filtro allarmi
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,27
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 4
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,55
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 5
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,83
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 6
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,111
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 7
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro valvole di scarico [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro pompe di scarico [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro agitatori [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro flusso [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Allarmi tini I-R
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,33
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino I
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,0,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,8,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,0,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 268,33
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino L
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,1,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,9,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,1,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 516,33
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino M
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,2,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,10,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,2,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,190
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino N
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,3,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,11,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,3,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 516,190
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino P
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,5,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,13,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,5,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 268,190
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino O
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,4,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,12,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,4,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,349
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino Q
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,6,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,14,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,6,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 268,349
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Tino R
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola di scarico
+        #NeedApply: 1
+        #OnBit: 8,7,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa di scarico
+        #NeedApply: 1
+        #OnBit: 8,15,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Agitatore
+        #NeedApply: 1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Flusso
+        #NeedApply: 1
+        #OnBit: 9,7,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 516,349
+      #Size: 230,145
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Filtri allarmi
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,27
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 10
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,55
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 11
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,83
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 12
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 160,111
+        #Size: 55,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 13
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,27
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro valvole di scarico [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,55
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro pompe di scarico [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,83
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro agitatori [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,111
+        #Size: 140,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro flusso [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Allarmi CIP
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,33
+      #Size: 534,173
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Circuito di mandata 
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 260,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V01 (mandata CIP da serbatoio acqua)
+        #NeedApply: 1
+        #OnBit: 0,0,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 260,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V02 (mandata CIP da serbatoio base)
+        #NeedApply: 1
+        #OnBit: 0,1,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 260,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V03 (mandata CIP da serbatoio acido)
+        #NeedApply: 1
+        #OnBit: 0,2,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 260,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V05 (mandata CIP da serbatoio disinf.)
+        #NeedApply: 1
+        #OnBit: 0,3,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,139
+        #Size: 260,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V100 (drenaggio mandata CIP)
+        #NeedApply: 1
+        #OnBit: 0,4,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 290,27
+        #Size: 240,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V07A (riscaldo nello scambiatore)  
+        #NeedApply: 1
+        #OnBit: 0,5,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 290,55
+        #Size: 240,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V07B (riscaldo nello scambiatore) 
+        #NeedApply: 1
+        #OnBit: 0,6,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 290,83
+        #Size: 240,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V06 (by-pass scambiatore) 
+        #NeedApply: 1
+        #OnBit: 0,7,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 290,111
+        #Size: 240,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V102 (mandata CIP)
+        #NeedApply: 1
+        #OnBit: 0,8,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 290,139
+        #Size: 240,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Pompa P1200/01/02 (pompa di mandata)
+        #NeedApply: 1
+        #OnBit: 0,14,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 572,33
+      #Size: 174,173
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Livello minimo serbatoi
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 107,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Serbatoio acqua
+        #NeedApply: 1
+        #OnBit: 1,4,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 102,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Serbatoio base
+        #NeedApply: 1
+        #OnBit: 1,5,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 102,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Serbatoio acido
+        #NeedApply: 1
+        #OnBit: 1,6,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 142,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Serbatoio disinfettante
+        #NeedApply: 1
+        #OnBit: 1,7,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,218
+      #Size: 353,201
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Circuito di ritorno
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V01A (ritorno CIP in serbatoio acqua)
+        #NeedApply: 1
+        #OnBit: 0,9,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V02A (ritorno CIP in serbatoio base)
+        #NeedApply: 1
+        #OnBit: 0,10,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V03A (ritorno CIP in serbatoio acido)
+        #NeedApply: 1
+        #OnBit: 0,11,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V05A (ritorno CIP in serbatoio disinfettante)
+        #NeedApply: 1
+        #OnBit: 0,12,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,139
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V04  (drenaggio ritorno CIP)
+        #NeedApply: 1
+        #OnBit: 0,13,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,167
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: PH-metro
+        #NeedApply: 1
+        #OnBit: 1,8,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 391,218
+      #Size: 355,201
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Valvole carico acqua nei serbatoi
+      #Align: 0
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,27
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V01B (carico acqua in serbatoio acqua)
+        #NeedApply: 1
+        #OnBit: 1,0,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,55
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V02B (carico acqua in serbatoio base)
+        #NeedApply: 1
+        #OnBit: 1,1,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,83
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V03B (carico acqua in serbatoio acido)
+        #NeedApply: 1
+        #OnBit: 1,2,1
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 16,111
+        #Size: 310,17
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Valvola V05B (carico acqua in serbatoio disinfettante)
+        #NeedApply: 1
+        #OnBit: 1,3,1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 20,431
+      #Size: 726,63
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Filtri allarmi
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 157,27
+        #Size: 80,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 14
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 629,27
+        #Size: 80,21
+        #BkColor: 255,255,255
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 15
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,27
+        #Size: 125,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro allarmi valvole [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 426,27
+        #Size: 195,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtro allarmi pompa di mandata [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+#EndObj

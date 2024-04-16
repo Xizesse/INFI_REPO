@@ -1,0 +1,574 @@
+#Access: 0
+#Pos: 227,96
+#Size: 786,580
+#BkColor: clBtnFace
+#Gates: 20
+  #STR: Username,1
+  #STR: Username,2
+  #STR: Username,3
+  #STR: Username,4
+  #STR: Username,5
+  #STR: Username,6
+  #STR: Username,7
+  #STR: UserGroup,1
+  #STR: UserGroup,2
+  #STR: UserGroup,3
+  #STR: UserGroup,4
+  #STR: UserGroup,5
+  #STR: UserGroup,6
+  #STR: UserGroup,7
+  #STR: NewUser,0
+  #STR: NewPsw,0
+  #NUM: NewGroup,0
+  #NUM: UserCount,0
+  #STR: RemoveUser,0
+  #STR: RemovePsw,0
+#Style: Fixed
+#StayOnTop: 0
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,15
+  #Size: 440,280
+  #BkColor: clBtnFace
+  #TxtColor: clWindowText
+  #Font: Segoe UI,9,0000
+  #Label: Utenti definiti
+  #Align: 0
+  #Object: Frame
+    #ID: 0
+    #Pos: 31,50
+    #Size: 168,1
+    #BkColor: clWindowText
+    #Style: 1
+    #Access: 0
+  #EndObj
+  #Object: Frame
+    #ID: 0
+    #Pos: 201,50
+    #Size: 168,1
+    #BkColor: clWindowText
+    #Style: 1
+    #Access: 0
+  #EndObj
+  #Object: Frame
+    #ID: 0
+    #Pos: 371,50
+    #Size: 49,1
+    #BkColor: clWindowText
+    #Style: 1
+    #Access: 0
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,60
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,1
+    #OnClick: StartF,removeUser(1)
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,90
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,2
+    #OnClick: StartF,removeUser(2)
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,120
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,3
+    #OnClick: StartF,removeUser(3)
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,150
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,4
+    #OnClick: StartF,removeUser(4)
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,180
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,5
+    #OnClick: StartF,removeUser(5)
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,210
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,6
+    #OnClick: StartF,removeUser(6)
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 380,240
+    #Size: 25,20
+    #Cursor: 0
+    #Label: X
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,5,7
+    #OnClick: StartF,removeUser(7)
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,60
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 0
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,120
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 2
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,90
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 1
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,150
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 3
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,180
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 4
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,210
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 5
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,240
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 6
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,60
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 7
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,120
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 9
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,90
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 8
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,150
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 10
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,180
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 11
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,210
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 12
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,240
+    #Size: 165,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 13
+    #Label: %s
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 30,25
+    #Size: 170,25
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 37
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 200,25
+    #Size: 170,25
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Label: Gruppo
+    #Align: 37
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 370,25
+    #Size: 50,25
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Label: Elimina
+    #Align: 37
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,60
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 1.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,90
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 2.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,120
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 3.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,150
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 4.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,180
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 5.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,210
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 6.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,240
+    #Size: 15,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0001
+    #Label: 7.
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 474,15
+  #Size: 305,170
+  #BkColor: clBtnFace
+  #TxtColor: clWindowText
+  #Font: Segoe UI,9,0000
+  #Label: Aggiungi utente
+  #Align: 0
+  #Object: Edit
+    #ID: 0
+    #Pos: 130,27
+    #Size: 155,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 14
+    #NeedApply: 1
+    #Style: 0
+    #Access: 0
+    #Enabled: 17,2,7
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 130,55
+    #Size: 155,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 15
+    #NeedApply: 1
+    #Style: 32
+    #Access: 0
+    #Enabled: 17,2,7
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 130,83
+    #Size: 155,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 1
+    #Item: 16,2,Operators
+    #Item: 16,1,Administators
+    #Enabled: 17,2,7
+    #Access: 0
+  #EndObj
+  #Object: Button
+    #ID: 0
+    #Pos: 198,123
+    #Size: 86,25
+    #Cursor: 0
+    #Label: OK
+    #Font: Segoe UI,9,0000
+    #FunctionKey: -1
+    #Access: 0
+    #Enabled: 17,2,7
+    #OnClick: Apply
+    #OnClick: StartF,addUser()
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,27
+    #Size: 110,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,55
+    #Size: 110,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Label: Password
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 15,83
+    #Size: 110,23
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Label: Gruppo
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj

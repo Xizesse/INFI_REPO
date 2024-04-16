@@ -1,0 +1,5480 @@
+#Name: Configurazione R2-50B
+#Access: 0
+#Pos: 327,165
+#Size: 686,511
+#BkColor: clBtnFace
+#Gates: 146
+  #NUM: 108Device.ID1,0
+  #NUM: 108Device.ID2,0
+  #NUM: 108Device.SWVers,0
+  #NUM: 108Loop1.PV,0
+  #NUM: 108Loop1.SV,0
+  #NUM: 108Loop1.Alarms,0
+  #NUM: 108Loop1.Status,0
+  #NUM: 108Loop2.PV,0
+  #NUM: 108Loop2.SV,0
+  #NUM: 108Loop2.Alarms,0
+  #NUM: 108Loop2.Status,0
+  #NUM: 108Device.Status,0
+  #NUM: 108Device.Led,0
+  #NUM: 108UO1.Value,0
+  #NUM: 108UO2.Value,0
+  #NUM: 108DI.Value,0
+  #NUM: 108cAI1.Type,0
+  #NUM: 108cAI1.LineRes,0
+  #NUM: 108cAI1.InLo,0
+  #NUM: 108cAI1.InHi,0
+  #NUM: 108cAI1.TempLo,0
+  #NUM: 108cAI1.TempHi,0
+  #NUM: 108cAI1.Options,0
+  #NUM: 108cAI1.TempRes,0
+  #NUM: 108cAI2.Type,0
+  #NUM: 108cAI2.LineRes,0
+  #NUM: 108cAI2.InLo,0
+  #NUM: 108cAI2.InHi,0
+  #NUM: 108cAI2.TempLo,0
+  #NUM: 108cAI2.TempHi,0
+  #NUM: 108cAI2.Options,0
+  #NUM: 108cAI2.TempRes,0
+  #NUM: 108cUO1.Value,0
+  #NUM: 108cUO1.Type,0
+  #NUM: 108cUO1.Cycle,0
+  #NUM: 108cUO1.Lo,0
+  #NUM: 108cUO1.Hi,0
+  #NUM: 108cUO1.Slope,0
+  #NUM: 108cUO1.DeadBand,0
+  #NUM: 108cUO1.StrokeTime,0
+  #NUM: 108cUO1.XStrokeTime,0
+  #NUM: 108cUO2.Value,0
+  #NUM: 108cUO2.Type,0
+  #NUM: 108cUO2.Cycle,0
+  #NUM: 108cUO2.Lo,0
+  #NUM: 108cUO2.Hi,0
+  #NUM: 108cUO2.Slope,0
+  #NUM: 108cUO2.DeadBand,0
+  #NUM: 108cUO2.StrokeTime,0
+  #NUM: 108cUO2.XStrokeTime,0
+  #NUM: 108cSP1.Value,0
+  #NUM: 108cSP1.HiLim,0
+  #NUM: 108cSP1.LoLim,0
+  #NUM: 108cSP1.SlopeUp_0,0
+  #NUM: 108cSP1.SlopeUp_1,0
+  #NUM: 108cSP1.SlopeDown_0,0
+  #NUM: 108cSP1.SlopeDown_1,0
+  #NUM: 108cSP1.Options,0
+  #NUM: 108cSP2.Value,0
+  #NUM: 108cSP2.HiLim,0
+  #NUM: 108cSP2.LoLim,0
+  #NUM: 108cSP2.SlopeUp_0,0
+  #NUM: 108cSP2.SlopeUp_1,0
+  #NUM: 108cSP2.SlopeDown_0,0
+  #NUM: 108cSP2.SlopeDown_1,0
+  #NUM: 108cSP2.Options,0
+  #NUM: 108cAl1.LoLim,0
+  #NUM: 108cAl1.HiLim,0
+  #NUM: 108cAl1.MinLim,0
+  #NUM: 108cAl1.MaxLim,0
+  #NUM: 108cAl1.Mask,0
+  #NUM: 108cAl2.LoLim,0
+  #NUM: 108cAl2.HiLim,0
+  #NUM: 108cAl2.MinLim,0
+  #NUM: 108cAl2.MaxLim,0
+  #NUM: 108cAl2.Mask,0
+  #NUM: 108cAlO1.Mask1,0
+  #NUM: 108cAlO1.Mask2,0
+  #NUM: 108cAlO1.MaskG,0
+  #NUM: 108cAlO1.EnFilter,0
+  #NUM: 108cAlO1.DisFilter,0
+  #NUM: 108cAlO1.Options,0
+  #NUM: 108cAlO1.Output,0
+  #NUM: 108cAlO2.Mask1,0
+  #NUM: 108cAlO2.Mask2,0
+  #NUM: 108cAlO2.MaskG,0
+  #NUM: 108cAlO2.EnFilter,0
+  #NUM: 108cAlO2.DisFilter,0
+  #NUM: 108cAlO2.Options,0
+  #NUM: 108cAlO2.Output,0
+  #NUM: 108cAlO3.Mask1,0
+  #NUM: 108cAlO3.Mask2,0
+  #NUM: 108cAlO3.MaskG,0
+  #NUM: 108cAlO3.EnFilter,0
+  #NUM: 108cAlO3.DisFilter,0
+  #NUM: 108cAlO3.Options,0
+  #NUM: 108cAlO3.Output,0
+  #NUM: 108cReg.Policy,0
+  #NUM: 108cReg.Ratio,0
+  #NUM: 108cReg1.Type,0
+  #NUM: 108cReg1.Cycle,0
+  #NUM: 108cReg1.PB,0
+  #NUM: 108cReg1.Ti,0
+  #NUM: 108cReg1.Td,0
+  #NUM: 108cReg1.PulseResp,0
+  #NUM: 108cReg1.LoBI,0
+  #NUM: 108cReg1.HiBI,0
+  #NUM: 108cReg1.CPB,0
+  #NUM: 108cReg1.DeadBandHC,0
+  #NUM: 108cReg2.Type,0
+  #NUM: 108cReg2.Cycle,0
+  #NUM: 108cReg2.PB,0
+  #NUM: 108cReg2.Ti,0
+  #NUM: 108cReg2.Td,0
+  #NUM: 108cReg2.PulseResp,0
+  #NUM: 108cReg2.LoBI,0
+  #NUM: 108cReg2.HiBI,0
+  #NUM: 108cReg2.CPB,0
+  #NUM: 108cReg2.DeadBandHC,0
+  #NUM: 108cLoop1.WStatus,0
+  #NUM: 108cLoop1.Auto,0
+  #NUM: 108cLoop1.Man,0
+  #NUM: 108cLoop2.WStatus,0
+  #NUM: 108cLoop2.Auto,0
+  #NUM: 108cLoop2.Man,0
+  #NUM: 108Device.Time_HH,0
+  #NUM: 108Device.Time_MM,0
+  #NUM: 108Device.Time_DD,0
+  #NUM: 108cReg1.DeadBand,0
+  #NUM: 108cReg2.DeadBand,0
+  #NUM: 108yCyc1.Status,0
+  #NUM: 108yCyc1.Timer,0
+  #NUM: 108yCyc1.Options,0
+  #NUM: 108yCyc1.On_HHMM,0
+  #NUM: 108yCyc1.On_MMSS,0
+  #NUM: 108yCyc1.Off_HHMM,0
+  #NUM: 108yCyc1.Off_MMSS,0
+  #CMP: 108yCyc1.TTimer_sec,0
+  #NUM: 108yCyc2.Status,0
+  #NUM: 108yCyc2.Timer,0
+  #NUM: 108yCyc2.Options,0
+  #NUM: 108yCyc2.Off_HHMM,0
+  #NUM: 108yCyc2.Off_MMSS,0
+  #NUM: 108yCyc2.On_HHMM,0
+  #NUM: 108yCyc2.On_MMSS,0
+  #CMP: 108yCyc2.TTimer_sec,0
+#PBkBmp: 544,470,134,37,Devices\R2-50B\ApplyButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: TabSheet
+  #ID: 0
+  #Pos: 8,8
+  #Size: 670,458
+  #Object: TabPage
+    #ID: 0
+    #Label: Stato
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 208,186
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Loop 1
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 107,77
+        #Size: 85,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 50
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 107,103
+        #Size: 85,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 120,0,disabilitata
+        #Item: 120,1,ingr. digit. 1
+        #Item: 120,2,ingr. digit. 2
+        #Item: 120,3,orologio
+        #Item: 120,4,abilitata
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 107,128
+        #Size: 85,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 121,0,disabilitata
+        #Item: 121,1,ingr. digit. 1
+        #Item: 121,2,ingr. digit. 2
+        #Item: 121,3,abilitata
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,23
+        #Size: 90,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: PV1
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 107,23
+        #Size: 85,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 3
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,77
+        #Size: 90,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: SP1 finale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 107,50
+        #Size: 85,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 4
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,50
+        #Size: 90,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: SP1 attuale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,103
+        #Size: 90,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Attiv. regolaz.
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,129
+        #Size: 90,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Attiv. manuale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: St_Bar
+        #ID: 0
+        #Pos: 107,156
+        #Size: 85,20
+        #Cursor: 0
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Align: 37
+        #Frame: 3
+        #Status: 0,0,0,0,255,128,6,6,0,Automatico,-1
+        #Status: 0,0,0,255,255,128,6,6,1,Manuale,-1
+        #Status: 0,0,0,255,0,0,6,6,2,Disabilitato,-1
+        #Status: 0,0,0,0,128,255,6,6,3,Tuning,-1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,156
+        #Size: 90,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato regolaz.
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 240,35
+      #Size: 208,186
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Loop 2
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 107,77
+        #Size: 85,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 58
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 107,103
+        #Size: 85,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 123,0,disabilitata
+        #Item: 123,1,ingr. digit. 1
+        #Item: 123,2,ingr. digit. 2
+        #Item: 123,3,orologio
+        #Item: 123,4,abilitata
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 107,128
+        #Size: 85,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 124,0,disabilitata
+        #Item: 124,1,ingr. digit. 1
+        #Item: 124,2,ingr. digit. 2
+        #Item: 124,3,abilitata
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,22
+        #Size: 90,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: PV2
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 107,23
+        #Size: 85,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 7
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,76
+        #Size: 90,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: SP2 finale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 107,50
+        #Size: 85,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 8
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,49
+        #Size: 90,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: SP2 attuale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,103
+        #Size: 90,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Attiv. regolaz.
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,130
+        #Size: 90,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Attiv. manuale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,155
+        #Size: 90,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato regolaz.
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: St_Bar
+        #ID: 0
+        #Pos: 107,156
+        #Size: 85,20
+        #Cursor: 0
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Align: 37
+        #Frame: 3
+        #Status: 0,0,0,0,255,128,10,6,0,Automatico,-1
+        #Status: 0,0,0,255,255,128,10,6,1,Manuale,-1
+        #Status: 0,0,0,255,0,0,10,6,2,Disabilitato,-1
+        #Status: 0,0,0,0,128,255,10,6,3,Tuning,-1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 464,35
+      #Size: 182,154
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: PV1              Allarmi              PV2
+      #Align: 1
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 16,24
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,70,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0
+        #Status: 1,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+        #Status: 2,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 150,24
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,75,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0
+        #Status: 1,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+        #Status: 2,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 16,48
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,70,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0X
+        #Status: 1,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+        #Status: 2,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0X
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 150,48
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,75,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0X
+        #Status: 1,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+        #Status: 2,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0X
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 16,72
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,70,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX0XX
+        #Status: 1,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+        #Status: 2,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX0XX
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 150,72
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,75,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX0XX
+        #Status: 1,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+        #Status: 2,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX0XX
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 16,96
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,70,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX0XXX
+        #Status: 1,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+        #Status: 2,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX0XXX
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 150,96
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 0,Devices\R2-50B\Led_gray.png
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 0,75,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX0XXX
+        #Status: 1,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+        #Status: 2,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX0XXX
+        #CycleTime: 0,1
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 16,120
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 1,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+        #Status: 2,5,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX0XXXX
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Bitmap
+        #ID: 0
+        #Pos: 150,120
+        #Size: 17,17
+        #Cursor: 0
+        #PBmpFile: 1,Devices\R2-50B\Led_red.png
+        #PBmpFile: 2,Devices\R2-50B\Led_green.png
+        #Status: 1,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+        #Status: 2,9,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX0XXXX
+        #CycleTime: 1,1
+        #CycleTime: 2,1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 35,24
+        #Size: 111,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Allarme di bassa
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 35,48
+        #Size: 111,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Allarme di alta
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 35,72
+        #Size: 111,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Allarme di minima
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 35,96
+        #Size: 111,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Allarme di massima
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 35,120
+        #Size: 111,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Allarme di lettura
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,226
+      #Size: 208,91
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di regolazione 1
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 127,52
+        #Size: 65,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 32
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 90,24
+        #Size: 102,21
+        #BkColor: 0,0,0
+        #Style: 1
+        #Access: 0
+        #Object: Gauge
+          #ID: 0
+          #Pos: 1,1
+          #Size: 100,19
+          #BkColor: 255,255,255
+          #Cursor: 0
+          #Color: 0,0,160
+          #Font: Segoe UI,9,0000
+          #Gate: 13
+          #Range: 0,100
+          #Label: %g %
+          #Style: Standard
+          #BmpMinOffset: 0
+          #BmpMaxOffset: 0
+          #Segs: 1
+          #Spaces: 0
+          #Dir: 0
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 71,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Val. attuale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 106,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Val. in manuale [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 240,226
+      #Size: 208,91
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di regolazione 2
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 127,52
+        #Size: 65,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 41
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Frame
+        #ID: 0
+        #Pos: 90,24
+        #Size: 102,21
+        #BkColor: 0,0,0
+        #Style: 1
+        #Access: 0
+        #Object: Gauge
+          #ID: 0
+          #Pos: 1,1
+          #Size: 100,19
+          #BkColor: 255,255,255
+          #Cursor: 0
+          #Color: 0,0,160
+          #Font: Segoe UI,9,0000
+          #Gate: 14
+          #Range: 0,100
+          #Label: %g %
+          #Style: Standard
+          #BmpMinOffset: 0
+          #BmpMaxOffset: 0
+          #Segs: 1
+          #Spaces: 0
+          #Dir: 0
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 71,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Val. attuale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 106,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Val. in manuale [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 464,203
+      #Size: 182,130
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Allarmi generali
+      #Align: 0
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,210
+        #Size: 192,160
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Condizioni di allarme generali
+        #Align: 0
+        #Object: Bitmap
+          #ID: 0
+          #Pos: 16,24
+          #Size: 17,17
+          #Cursor: 0
+          #PBmpFile: 1,Devices\R2-50B\Led_red.png
+          #PBmpFile: 2,Devices\R2-50B\Led_green.png
+          #BmpBkC: 0,128,128
+          #BkColor: clBtnFace
+          #Status: 1,12,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+          #Status: 2,12,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX0XX
+          #CycleTime: 1,1
+          #CycleTime: 2,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,24
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 11,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,72
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 11,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,48
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 11,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,96
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 11,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,24
+        #Size: 130,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Allarme E²PROM
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,72
+        #Size: 130,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Usc. 2 ciclo programma
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,48
+        #Size: 130,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Usc. 1 ciclo programma
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,96
+        #Size: 130,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Fine ciclo programma
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 240,324
+      #Size: 208,107
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscite di allarme
+      #Align: 0
+      #Object: Led
+        #ID: 0
+        #Pos: 16,24
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 12,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XX
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,72
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 12,13,XXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,48
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 11
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 12,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXX
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,48
+        #Size: 141,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Uscita di allarme 'AL2'
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,72
+        #Size: 141,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Uscita di allarme 'AL3'
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,24
+        #Size: 141,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Uscita di allarme 'AL1'
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 464,348
+      #Size: 182,83
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Ingressi digitali
+      #Align: 0
+      #Object: Led
+        #ID: 0
+        #Pos: 16,24
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 31
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 15,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 16,48
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 31
+        #OnBmpRes: 01
+        #BmpBkC: 0,128,128
+        #On: 15,13,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1X
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,24
+        #Size: 130,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ingresso digitale 'IN1'
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 46,48
+        #Size: 130,17
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ingresso digitale 'IN2'
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: Bitmap
+      #ID: 0
+      #Pos: 21,329
+      #Size: 50,102
+      #Cursor: 0
+      #PBmpFile: 0,Devices\R2-50B\R2-50B tiny.png
+      #CycleTime: 0,1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 80,369
+      #Size: 90,23
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Arial,14,0001
+      #Label: R2 - 50 B
+      #Align: 32
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 80,416
+      #Size: 136,15
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 2
+      #Label: Versione software: %3.2lf
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 80,396
+      #Size: 12,15
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 125
+      #Label: %02.0lf
+      #Align: 38
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 98,396
+      #Size: 12,15
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Gate: 126
+      #Label: %02.0lf
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+    #Object: St_Bar
+      #ID: 0
+      #Pos: 114,396
+      #Size: 75,15
+      #Cursor: 0
+      #BkColor: clBtnFace
+      #Font: Segoe UI,9,0000
+      #Align: 36
+      #Frame: 1
+      #Status: 0,0,0,clBtnFace,127,6,1,- Lunedi,-1
+      #Status: 0,0,0,clBtnFace,127,6,2,- Martedi,-1
+      #Status: 0,0,0,clBtnFace,127,6,3,- Mercoledi,-1
+      #Status: 0,0,0,clBtnFace,127,6,4,- Giovedi,-1
+      #Status: 0,0,0,clBtnFace,127,6,5,- Venerdi,-1
+      #Status: 0,0,0,clBtnFace,127,6,6,- Sabato,-1
+      #Status: 0,0,0,clBtnFace,127,6,7,- Domenica,-1
+      #Access: 0
+    #EndObj
+    #Object: Label
+      #ID: 0
+      #Pos: 94,396
+      #Size: 2,15
+      #BkColor: clBtnFace
+      #Cursor: 0
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: :
+      #Align: 36
+      #Frame: 1
+      #Access: 0
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Ingressi
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 307,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Ingresso analogico PV1
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 16,0,RTD
+        #Item: 16,1,TC - J
+        #Item: 16,2,TC - K
+        #Item: 16,3,TC - N
+        #Item: 16,4,TC - R
+        #Item: 16,5,TC - S
+        #Item: 16,6,TC - T
+        #Item: 16,7,0 - 50 mV
+        #Item: 16,8,0 - 5 V
+        #Item: 16,9,0 - 10 V
+        #Item: 16,10,0 - 20 mA
+        #Item: 16,11,4 - 20 mA
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,52
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 17
+        #NeedApply: 1
+        #Validator: #[#][.#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,80
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 18
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,108
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 19
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,136
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 20
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,164
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 21
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 195,202
+        #Size: 95,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 23,0,0.1
+        #Item: 23,1,0.2
+        #Item: 23,2,0.5
+        #Item: 23,3,1.0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,241
+        #Size: 275,137
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,24
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Autocalcolo resistenza di linea
+          #NeedApply: 1
+          #OnBit: 22,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,50
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Filtro del primo ordine
+          #NeedApply: 1
+          #OnBit: 22,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,76
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Estrazione radice quadrata
+          #NeedApply: 1
+          #OnBit: 22,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,102
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Visualizzazione con punto decimale
+          #NeedApply: 1
+          #OnBit: 22,5,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tipo di sensore
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,80
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Inizio scala [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Resistenza di linea [ohm]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,108
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Fondo scala [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,136
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Inizio scala (val. ingegneristico)
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,164
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Fondo scala (val. ingegneristico)
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,202
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Arrotondamento
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 339,35
+      #Size: 307,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Ingresso analogico PV2
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 24,0,RTD
+        #Item: 24,1,TC - J
+        #Item: 24,2,TC - K
+        #Item: 24,3,TC - N
+        #Item: 24,4,TC - R
+        #Item: 24,5,TC - S
+        #Item: 24,6,TC - T
+        #Item: 24,7,0 - 50 mV
+        #Item: 24,8,0 - 5 V
+        #Item: 24,9,0 - 10 V
+        #Item: 24,10,0 - 20 mA
+        #Item: 24,11,4 - 20 mA
+        #Item: 24,13,Nessuno
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,52
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 25
+        #NeedApply: 1
+        #Validator: #[#][.#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,80
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 26
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,108
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 27
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,136
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 28
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,164
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 29
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 195,202
+        #Size: 95,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 31,0,0.1
+        #Item: 31,1,0.2
+        #Item: 31,2,0.5
+        #Item: 31,3,1.0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,241
+        #Size: 275,137
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,24
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Autocalcolo resistenza di linea
+          #NeedApply: 1
+          #OnBit: 30,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,50
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Filtro del primo ordine
+          #NeedApply: 1
+          #OnBit: 30,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,76
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Estrazione radice quadrata
+          #NeedApply: 1
+          #OnBit: 30,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,102
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Visualizzazione con punto decimale
+          #NeedApply: 1
+          #OnBit: 30,5,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tipo di sensore
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,80
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Inizio scala [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Resistenza di linea [ohm]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,108
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Fondo scala [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,136
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Inizio scala (val. ingegneristico)
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,164
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Fondo scala (val. ingegneristico)
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,202
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Arrotondamento
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Uscite di regolazione
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 307,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di regolazione 1
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 16,46
+        #Size: 274,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 33,0,nessuno
+        #Item: 33,1,uscita a relè di tipo on/off
+        #Item: 33,2,uscita logica di tipo on/off
+        #Item: 33,3,doppia uscita a relè per controllo incrementale
+        #Item: 33,4,uscita logica a parzializzatore di tempo (SSR)
+        #Item: 33,5,uscita analogica 0-10 V
+        #Item: 33,6,uscita analogica 0-20 mA
+        #Item: 33,7,uscita analogica 4-20 mA
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,80
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 35
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,108
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 36
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,146
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 37
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,181
+        #Size: 275,63
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni uscita a parzializzazione di tempo
+        #Align: 0
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,24
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 34
+          #NeedApply: 1
+          #Validator: #[#][#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,24
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Ciclo di uscita [s]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,258
+        #Size: 275,120
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni uscita per controllo incrementale
+        #Align: 0
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,24
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 39
+          #NeedApply: 1
+          #Validator: #[#][#][.#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,52
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 40
+          #NeedApply: 1
+          #Validator: #[#][#][.#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,80
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 38
+          #NeedApply: 1
+          #Validator: #[#][#][.#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,24
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Corsa [s]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,52
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Extra corsa [s]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,80
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Banda morta [%]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tipo di uscita
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,80
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore minimo [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,108
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore massimo [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,146
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Pendenza [%/s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 339,35
+      #Size: 307,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di regolazione 2
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 16,46
+        #Size: 274,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 42,0,nessuno
+        #Item: 42,1,uscita a relè di tipo on/off
+        #Item: 42,2,uscita logica di tipo on/off
+        #Item: 42,3,doppia uscita a relè per controllo incrementale
+        #Item: 42,4,uscita logica a parzializzatore di tempo (SSR)
+        #Item: 42,5,uscita analogica 0-10 V
+        #Item: 42,6,uscita analogica 0-20 mA
+        #Item: 42,7,uscita analogica 4-20 mA
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,80
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 44
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,108
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 45
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,146
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 46
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,181
+        #Size: 275,63
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni uscita a parzializzazione di tempo
+        #Align: 0
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,24
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 43
+          #NeedApply: 1
+          #Validator: #[#][#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,24
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Ciclo di uscita [s]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,258
+        #Size: 275,120
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni uscita per controllo incrementale
+        #Align: 0
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,24
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 48
+          #NeedApply: 1
+          #Validator: #[#][#][.#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,52
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 49
+          #NeedApply: 1
+          #Validator: #[#][#][.#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 163,80
+          #Size: 95,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 47
+          #NeedApply: 1
+          #Validator: #[#][#][.#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,24
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Corsa [s]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,52
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Extra corsa [s]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,80
+          #Size: 125,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Banda morta [%]
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tipo di uscita
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,80
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore minimo [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,108
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore massimo [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,146
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Pendenza [%/s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Regolazione
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 630,62
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Strategia di controllo
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 16,24
+        #Size: 379,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 97,0,nessuna regolazione
+        #Item: 97,1,loop 1 a regolazione semplice
+        #Item: 97,2,loop 1 e loop 2 a regolazione semplice
+        #Item: 97,3,loop 1 a regolazione caldo/freddo
+        #Item: 97,4,loop 1 a regolazione caldo/freddo ridotta
+        #Item: 97,5,loop 1 a regolazione caldo/freddo ridotta e loop 2 a regolazione semplice
+        #Item: 97,6,loop 1 e loop 2 a regolazione caldo/freddo ridotta
+        #Item: 97,7,regolazione in cascata
+        #Item: 97,8,regolazione con set-point remoto
+        #Item: 97,9,regolazione con override di minima
+        #Item: 97,10,regolazione con override di massima
+        #Item: 97,11,regolazione con override pesato
+        #Item: 97,12,regolazione feed-forward
+        #Item: 97,13,controllo posizione valvola
+        #Item: 97,14,regolazione posizione valvola
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 518,24
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 98
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 425,24
+        #Size: 91,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Percentuale [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,111
+      #Size: 307,321
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Regolazione loop 1
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 99,0,caldo
+        #Item: 99,1,freddo
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,48
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 100
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,72
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 101
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,120
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 102
+        #NeedApply: 1
+        #Validator: #[#][#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,144
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 103
+        #NeedApply: 1
+        #Validator: #[#][#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,168
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 104
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,192
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 105
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,216
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 106
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,240
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 107
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,264
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 108
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 14,288
+        #Size: 276,21
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Autotuning dei parametri
+        #NeedApply: 1
+        #OnMask: 119,03,02
+        #Style: RightBtn
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,96
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 128
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tipo di regolazione
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,48
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ciclo PID [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,72
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda proporzionale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,120
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tempo integrale [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,144
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tempo derivativo [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,168
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Risposta all'impulso
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,192
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda integrale inferiore
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,216
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda integrale superiore
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,240
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda propozionale freddo
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,264
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda morta caldo/freddo [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,96
+        #Size: 160,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda morta
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 339,111
+      #Size: 307,321
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Regolazione loop 2
+      #Align: 0
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 109,0,caldo
+        #Item: 109,1,freddo
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,48
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 110
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,72
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 111
+        #NeedApply: 1
+        #Validator: #[#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,120
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 112
+        #NeedApply: 1
+        #Validator: #[#][#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,144
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 113
+        #NeedApply: 1
+        #Validator: #[#][#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,168
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 114
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,192
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 115
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,216
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 116
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,240
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 117
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,264
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 118
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: CheckBox
+        #ID: 0
+        #Pos: 14,288
+        #Size: 274,21
+        #BkColor: clBtnFace
+        #Font: Segoe UI,9,0000
+        #Cursor: 0
+        #Label: Autotuning dei parametri
+        #NeedApply: 1
+        #OnMask: 122,03,02
+        #Style: RightBtn
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,96
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 129
+        #NeedApply: 1
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tipo di regolazione
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,48
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ciclo PID [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,72
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda proporzionale
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,120
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tempo integrale [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,144
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Tempo derivativo [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,168
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Risposta all'impulso
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,192
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda integrale inferiore
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,216
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda integrale superiore
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,240
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda propozionale freddo
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,264
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda morta caldo/freddo [%]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,96
+        #Size: 160,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Banda morta
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Set-point
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 307,281
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Set-point loop 1 (SP1)
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 52
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,52
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 51
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,90
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 53
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 247,90
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 54
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,118
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 55
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 247,118
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 56
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,156
+        #Size: 275,107
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,48
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Soft start
+          #NeedApply: 1
+          #OnBit: 57,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,72
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Holdback
+          #NeedApply: 1
+          #OnBit: 57,1,1
+          #Access: 0
+        #EndObj
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 120,25
+          #Size: 63,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [mm:ss]
+          #NeedApply: 1
+          #OnBit: 57,7,1
+          #Access: 0
+        #EndObj
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 195,25
+          #Size: 68,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [hh:mm]
+          #NeedApply: 1
+          #OnBit: 57,7,0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,25
+          #Size: 76,17
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata rampe
+          #Align: 32
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore minimo
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore massimo
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,90
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ciclo incremento
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 240,90
+        #Size: 6,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Arial,8,0001
+        #Label: :
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,118
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ciclo decremento
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 240,118
+        #Size: 6,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Arial,8,0001
+        #Label: :
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 339,35
+      #Size: 307,281
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Set-point loop 2 (SP2)
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 60
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,52
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 59
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,90
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 61
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 247,90
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 62
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,118
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 63
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 247,118
+        #Size: 43,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 64
+        #NeedApply: 1
+        #Validator: #[#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,156
+        #Size: 275,107
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Opzioni
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,48
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Soft start
+          #NeedApply: 1
+          #OnBit: 65,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,72
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Holdback
+          #NeedApply: 1
+          #OnBit: 65,1,1
+          #Access: 0
+        #EndObj
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 195,25
+          #Size: 68,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [hh:mm]
+          #NeedApply: 1
+          #OnBit: 65,7,0
+          #Access: 0
+        #EndObj
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 120,25
+          #Size: 63,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [mm:ss]
+          #NeedApply: 1
+          #OnBit: 65,7,1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,25
+          #Size: 76,17
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata rampe
+          #Align: 32
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore minimo
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Valore massimo
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,90
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ciclo incremento
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 240,90
+        #Size: 6,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Arial,8,0001
+        #Label: :
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,118
+        #Size: 170,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Ciclo decremento
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 240,118
+        #Size: 6,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Arial,8,0001
+        #Label: :
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Allarmi
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 307,305
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Allarmi PV1
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 66
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,52
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 67
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,90
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 68
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,118
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 69
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,156
+        #Size: 275,131
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Maschera allarmi
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,24
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di bassa
+          #NeedApply: 1
+          #OnBit: 70,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,48
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di alta
+          #NeedApply: 1
+          #OnBit: 70,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,72
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di minima
+          #NeedApply: 1
+          #OnBit: 70,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,96
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di massima
+          #NeedApply: 1
+          #OnBit: 70,3,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia relativa di bassa
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia relativa di alta
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,90
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia di minima
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,118
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia di massima
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 339,35
+      #Size: 307,305
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Allarmi PV2
+      #Align: 0
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,24
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 71
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,52
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 72
+        #NeedApply: 1
+        #Validator: #[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,90
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 73
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 195,118
+        #Size: 95,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 74
+        #NeedApply: 1
+        #Validator: [+][-]#[#][#][#][.#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,156
+        #Size: 275,131
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Maschera allarmi
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,24
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di bassa
+          #NeedApply: 1
+          #OnBit: 75,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,48
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di alta
+          #NeedApply: 1
+          #OnBit: 75,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,72
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di minima
+          #NeedApply: 1
+          #OnBit: 75,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,96
+          #Size: 242,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme di massima
+          #NeedApply: 1
+          #OnBit: 75,3,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,24
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia relativa di bassa
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,52
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia relativa di alta
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,90
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia di minima
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,118
+        #Size: 145,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Soglia di massima
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Uscite di allarme
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 200,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di allarme AL1
+      #Align: 0
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,20
+        #Size: 170,130
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: PV1    Maschera allarmi    PV2
+        #Align: 1
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,20
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 76,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,40
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 76,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,60
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 76,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,80
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 76,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,100
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 76,4,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,20
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 77,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,40
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 77,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,60
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 77,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,80
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 77,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,100
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 77,4,1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,20
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di bassa
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,40
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di alta
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,60
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: All. di minima
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,80
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: All. di massima
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,100
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di lettura
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,161
+        #Size: 170,130
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Maschera allarmi generali
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,20
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme comunicazione
+          #NeedApply: 1
+          #OnBit: 78,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,40
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme E²PROM
+          #NeedApply: 1
+          #OnBit: 78,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,60
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Usc. 1 ciclo programma
+          #NeedApply: 1
+          #OnBit: 78,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,80
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Usc. 2 ciclo programma
+          #NeedApply: 1
+          #OnBit: 78,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,100
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Fine ciclo programma
+          #NeedApply: 1
+          #OnBit: 78,4,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 92,302
+        #Size: 45,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 79
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 141,302
+        #Size: 45,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 80
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 121,330
+        #Size: 65,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 82,0,nessuna
+        #Item: 82,1,OUT1
+        #Item: 82,2,OUT2
+        #Item: 82,3,OUT3
+        #Item: 82,4,OUT4
+        #Item: 82,5,OUT5
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 121,358
+        #Size: 65,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #MaskItem: 81,0,3,NA
+        #MaskItem: 81,1,3,NC
+        #MaskItem: 81,2,3,NA+Rit
+        #MaskItem: 81,3,3,NC+Rit
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,302
+        #Size: 79,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtri att/dis [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,330
+        #Size: 104,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Uscita di allarme
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,358
+        #Size: 104,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato di allarme
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 231,35
+      #Size: 200,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di allarme AL2
+      #Align: 0
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,20
+        #Size: 170,130
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: PV1    Maschera allarmi    PV2
+        #Align: 1
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,20
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 83,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,40
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 83,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,60
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 83,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,80
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 83,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,100
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 83,4,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,20
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 84,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,40
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 84,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,60
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 84,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,80
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 84,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,100
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 84,4,1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,20
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di bassa
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,40
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di alta
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,60
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: All. di minima
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,80
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: All. di massima
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,100
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di lettura
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,160
+        #Size: 170,130
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Maschera allarmi generali
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,20
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme comunicazione
+          #NeedApply: 1
+          #OnBit: 85,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,40
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme E²PROM
+          #NeedApply: 1
+          #OnBit: 85,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,60
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Usc. 1 ciclo programma
+          #NeedApply: 1
+          #OnBit: 85,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,80
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Usc. 2 ciclo programma
+          #NeedApply: 1
+          #OnBit: 85,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,100
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Fine ciclo programma
+          #NeedApply: 1
+          #OnBit: 85,4,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 92,302
+        #Size: 45,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 86
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 141,302
+        #Size: 45,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 87
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 121,332
+        #Size: 65,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 89,0,nessuna
+        #Item: 89,1,OUT1
+        #Item: 89,2,OUT2
+        #Item: 89,3,OUT3
+        #Item: 89,4,OUT4
+        #Item: 89,5,OUT5
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 121,358
+        #Size: 65,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 88,0,NA
+        #Item: 88,1,NC
+        #Item: 88,2,NA+Rit
+        #Item: 88,3,NC+Rit
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,302
+        #Size: 79,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtri att/dis [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,332
+        #Size: 104,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Uscita di allarme
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,358
+        #Size: 104,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato di allarme
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 446,35
+      #Size: 200,396
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Uscita di allarme AL3
+      #Align: 0
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,20
+        #Size: 170,130
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: PV1    Maschera allarmi    PV2
+        #Align: 1
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,20
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 90,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,40
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 90,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,60
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 90,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,80
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 90,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,100
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 90,4,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,20
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 91,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,40
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 91,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,60
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 91,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,80
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 91,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 140,100
+          #Size: 16,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: CheckBox
+          #NeedApply: 1
+          #OnBit: 91,4,1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,20
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di bassa
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,40
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di alta
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,60
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: All. di minima
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,80
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: All. di massima
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 36,100
+          #Size: 95,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Allarme di lettura
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 16,160
+        #Size: 170,130
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Maschera allarmi generali
+        #Align: 0
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,20
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme comunicazione
+          #NeedApply: 1
+          #OnBit: 92,0,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,40
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Allarme E²PROM
+          #NeedApply: 1
+          #OnBit: 92,1,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,60
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Usc. 1 ciclo programma
+          #NeedApply: 1
+          #OnBit: 92,2,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,80
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Usc. 2 ciclo programma
+          #NeedApply: 1
+          #OnBit: 92,3,1
+          #Access: 0
+        #EndObj
+        #Object: CheckBox
+          #ID: 0
+          #Pos: 16,100
+          #Size: 150,21
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: Fine ciclo programma
+          #NeedApply: 1
+          #OnBit: 92,4,1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 92,302
+        #Size: 45,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 93
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: Edit
+        #ID: 0
+        #Pos: 141,302
+        #Size: 45,21
+        #BkColor: clWindow
+        #Cursor: 0
+        #TxtColor: clWindowText
+        #Font: Segoe UI,9,0000
+        #Gate: 94
+        #NeedApply: 1
+        #Validator: #[#][#]
+        #Style: 0
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 121,332
+        #Size: 65,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 96,0,nessuna
+        #Item: 96,1,OUT1
+        #Item: 96,2,OUT2
+        #Item: 96,3,OUT3
+        #Item: 96,4,OUT4
+        #Item: 96,5,OUT5
+        #Access: 0
+      #EndObj
+      #Object: ComboBox
+        #ID: 0
+        #Pos: 121,358
+        #Size: 65,23
+        #ListH: 90
+        #Cursor: 0
+        #Font: Segoe UI,9,0000
+        #NeedApply: 1
+        #Item: 95,0,NA
+        #Item: 95,1,NC
+        #Item: 95,2,NA+Rit
+        #Item: 95,3,NC+Rit
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,302
+        #Size: 79,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Filtri att/dis [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,332
+        #Size: 104,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Uscita di allarme
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,358
+        #Size: 104,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato di allarme
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+  #Object: TabPage
+    #ID: 0
+    #Label: Cicli
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 16,35
+      #Size: 307,192
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Ciclo 1
+      #Align: 0
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 15,54
+        #Size: 275,120
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Configurazione
+        #Align: 0
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 120,25
+          #Size: 63,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [mm:ss]
+          #NeedApply: 1
+          #OnBit: 132,7,1
+          #Access: 0
+        #EndObj
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 195,25
+          #Size: 68,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [hh:mm]
+          #NeedApply: 1
+          #OnBit: 132,7,0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 164,52
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 135
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 216,52
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 136
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 164,80
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 133
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 216,80
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 134
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,52
+          #Size: 75,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata pausa
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,25
+          #Size: 71,17
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata ciclo
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,80
+          #Size: 75,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata lavoro
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 210,52
+          #Size: 6,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Arial,8,0001
+          #Label: :
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 210,80
+          #Size: 6,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Arial,8,0001
+          #Label: :
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 56,24
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 31
+        #OnBmpRes: 11
+        #BmpBkC: 0,128,128
+        #On: 130,7,0
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 176,22
+        #Size: 50,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 131
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 227,22
+        #Size: 12,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: /
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 240,22
+        #Size: 50,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 137
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,22
+        #Size: 35,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 121,22
+        #Size: 50,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Timer [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+    #EndObj
+    #Object: GroupBox
+      #ID: 0
+      #Pos: 339,35
+      #Size: 307,192
+      #BkColor: clBtnFace
+      #TxtColor: 0,0,0
+      #Font: Segoe UI,9,0000
+      #Label: Ciclo 2
+      #Align: 0
+      #Object: GroupBox
+        #ID: 0
+        #Pos: 15,54
+        #Size: 275,120
+        #BkColor: clBtnFace
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Configurazione
+        #Align: 0
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 120,25
+          #Size: 63,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [mm:ss]
+          #NeedApply: 1
+          #OnBit: 140,7,1
+          #Access: 0
+        #EndObj
+        #Object: RadioBtn
+          #ID: 0
+          #Pos: 195,25
+          #Size: 68,17
+          #BkColor: clBtnFace
+          #Font: Segoe UI,9,0000
+          #Cursor: 0
+          #Label: [hh:mm]
+          #NeedApply: 1
+          #OnBit: 140,7,0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 164,52
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 141
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 216,52
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 142
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 164,80
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 143
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Edit
+          #ID: 0
+          #Pos: 216,80
+          #Size: 43,21
+          #BkColor: clWindow
+          #Cursor: 0
+          #TxtColor: clWindowText
+          #Font: Segoe UI,9,0000
+          #Gate: 144
+          #NeedApply: 1
+          #Validator: #[#]
+          #Style: 0
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,52
+          #Size: 75,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata pausa
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,25
+          #Size: 71,17
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata ciclo
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 16,80
+          #Size: 75,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Segoe UI,9,0000
+          #Label: Durata lavoro
+          #Align: 36
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 210,52
+          #Size: 6,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Arial,8,0001
+          #Label: :
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+        #Object: Label
+          #ID: 0
+          #Pos: 210,80
+          #Size: 6,21
+          #BkColor: clBtnFace
+          #Cursor: 0
+          #TxtColor: 0,0,0
+          #Font: Arial,8,0001
+          #Label: :
+          #Align: 37
+          #Frame: 1
+          #Access: 0
+        #EndObj
+      #EndObj
+      #Object: Led
+        #ID: 0
+        #Pos: 56,24
+        #Size: 17,17
+        #Cursor: 0
+        #OffBmpRes: 31
+        #OnBmpRes: 11
+        #BmpBkC: 0,128,128
+        #On: 138,7,0
+        #Flashing: 0
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 16,22
+        #Size: 35,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Stato
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 121,22
+        #Size: 50,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: Timer [s]
+        #Align: 36
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 176,22
+        #Size: 50,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 139
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 227,22
+        #Size: 12,21
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Label: /
+        #Align: 37
+        #Frame: 1
+        #Access: 0
+      #EndObj
+      #Object: Label
+        #ID: 0
+        #Pos: 240,22
+        #Size: 50,20
+        #BkColor: clBtnFace
+        #Cursor: 0
+        #TxtColor: 0,0,0
+        #Font: Segoe UI,9,0000
+        #Gate: 145
+        #Label: %g
+        #Align: 37
+        #Frame: 3
+        #Access: 0
+      #EndObj
+    #EndObj
+  #EndObj
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 585,478
+  #Size: 85,23
+  #Cursor: 0
+  #Label: Applica
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: Apply
+#EndObj

@@ -1,0 +1,149 @@
+#Access: 0
+#Pos: 0,0
+#Size: 1014,676
+#BkColor: clBtnFace
+#Gates: 1
+  #STR: 114VatName,0
+#Style: Fixed
+#StayOnTop: 0
+#Object: Frame
+  #ID: 0
+  #Pos: 447,15
+  #Size: 544,31
+  #BkColor: clBtnFace
+  #Style: 1
+  #Access: 0
+  #Object: Frame
+    #ID: 0
+    #Pos: 227,7
+    #Size: 20,15
+    #BkColor: 0,128,0
+    #Style: 2
+    #Access: 0
+  #EndObj
+  #Object: Frame
+    #ID: 0
+    #Pos: 412,7
+    #Size: 20,15
+    #BkColor: 0,0,0
+    #Style: 2
+    #Access: 0
+  #EndObj
+  #Object: Frame
+    #ID: 0
+    #Pos: 22,7
+    #Size: 20,15
+    #BkColor: 0,0,255
+    #Style: 2
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 51,7
+    #Size: 117,15
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Valore di temperatura
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 256,7
+    #Size: 93,15
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Livello sostanza
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 441,7
+    #Size: 87,15
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Stato agitatore
+    #Align: 36
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: Chart
+  #ID: 0
+  #Pos: 16,50
+  #Size: 979,618
+  #TimeRange: 3600
+  #SetName: 114_ColdVat
+  #EnableGroups: 1
+  #TimeRangeOptions: 0
+  #SaveGroupModification: 0
+  #Autorange: 0
+  #ShowSelGraphLegend: 0
+  #EnableGrid: 1
+  #YGridDivision: 10
+  #EnablePoints: 0
+  #LineWidth: 2
+  #Interpolation: 2
+  #EnableOnLine: 1
+  #showTimeCursorButton: 1
+  #showOnlineButton: 1
+  #ZoomEnabled: 1
+  #showResetZoomButton: 1
+  #ScaleSwitchingEnabled: 0
+  #MouseRightButtonEnabled: 0
+  #showYAxisLabels: 0
+  #showRxAxis: 1
+  #showOnlyTime: 0
+  #showServerButton: 0
+  #DefaultServer: Local
+  #showGroupsButton: 0
+  #showTimeAxisButton: 0
+  #showAspectButton: 0
+  #ChartsWndBkgndColor: clBtnFace
+  #GrWndBkgndColor: 255,255,255
+  #GridLineColor: 192,192,192
+  #ScaleColor: 128,128,128
+  #DateScaleColor: 60,60,60
+  #TimeScaleColor: clBlack
+  #showCursorWindowNew: 0
+  #showLegendWindow: 0
+  #LegendStyle: 7
+  #LegendColorBox: 1
+  #ShowLabelDescription: 0
+  #LegendFont: Segoe UI,8,0000
+  #LegendTxtColor: clWindowText
+  #LegendBkgndColor: clBtnFace
+  #LegendMaxItems: 10
+  #LegendColumns: 1
+  #CursorType: 1
+  #CursorStyle: 7
+  #CursorColorBox: 0
+  #CursorFont: Segoe UI,8,0000
+  #CursorTxtColor: clWindowText
+  #CursorBkgndColor: clBtnFace
+  #CursorMaxItems: 2
+  #CursorColumns: 1
+#EndObj
+#Object: Label
+  #ID: 0
+  #Pos: 77,14
+  #Size: 286,33
+  #BkColor: 127,181,201
+  #Cursor: 0
+  #TxtColor: 0,0,0
+  #Font: Arial Black,18,0000
+  #Gate: 0
+  #Label: Tino %s
+  #Align: 37
+  #Frame: 3
+  #Access: 0
+#EndObj

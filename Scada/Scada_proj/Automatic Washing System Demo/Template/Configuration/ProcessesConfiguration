@@ -1,0 +1,1383 @@
+#Access: 0
+#Pos: 227,96
+#Size: 786,580
+#BkColor: clBtnFace
+#Gates: 48
+  #NUM: Rec_proc_enable,1
+  #NUM: Rec_proc_substance,1
+  #NUM: Rec_proc_temp,1
+  #NUM: Rec_proc_time,1
+  #NUM: Rec_proc_type,1
+  #NUM: Rec_proc_enable,2
+  #NUM: Rec_proc_substance,2
+  #NUM: Rec_proc_temp,2
+  #NUM: Rec_proc_time,2
+  #NUM: Rec_proc_type,2
+  #NUM: Rec_proc_enable,3
+  #NUM: Rec_proc_substance,3
+  #NUM: Rec_proc_temp,3
+  #NUM: Rec_proc_time,3
+  #NUM: Rec_proc_type,3
+  #NUM: Rec_proc_enable,4
+  #NUM: Rec_proc_substance,4
+  #NUM: Rec_proc_temp,4
+  #NUM: Rec_proc_time,4
+  #NUM: Rec_proc_type,4
+  #NUM: Rec_proc_enable,5
+  #NUM: Rec_proc_substance,5
+  #NUM: Rec_proc_temp,5
+  #NUM: Rec_proc_time,5
+  #NUM: Rec_proc_type,5
+  #NUM: Rec_proc_enable,6
+  #NUM: Rec_proc_substance,6
+  #NUM: Rec_proc_temp,6
+  #NUM: Rec_proc_time,6
+  #NUM: Rec_proc_type,6
+  #NUM: Rec_proc_enable,7
+  #NUM: Rec_proc_substance,7
+  #NUM: Rec_proc_temp,7
+  #NUM: Rec_proc_time,7
+  #NUM: Rec_proc_type,7
+  #NUM: Rec_proc_enable,8
+  #NUM: Rec_proc_substance,8
+  #NUM: Rec_proc_temp,8
+  #NUM: Rec_proc_time,8
+  #NUM: Rec_proc_type,8
+  #STR: Rec_proc_name,1
+  #STR: Rec_proc_name,2
+  #STR: Rec_proc_name,3
+  #STR: Rec_proc_name,4
+  #STR: Rec_proc_name,5
+  #STR: Rec_proc_name,6
+  #STR: Rec_proc_name,7
+  #STR: Rec_proc_name,8
+#Style: Fixed
+#StayOnTop: 0
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,10
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 0,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 40
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 1,0,Acqua
+    #Item: 1,1,Base
+    #Item: 1,2,Acido
+    #Item: 1,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 2
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 3
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 4,0,Preriscaldo
+    #Item: 4,1,Recupero
+    #Item: 4,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 1
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,80
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 5,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 41
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 6,0,Acqua
+    #Item: 6,1,Base
+    #Item: 6,2,Acido
+    #Item: 6,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 7
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 8
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 9,0,Preriscaldo
+    #Item: 9,1,Recupero
+    #Item: 9,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 2
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,150
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 10,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 42
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 11,0,Acqua
+    #Item: 11,1,Base
+    #Item: 11,2,Acido
+    #Item: 11,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 12
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 13
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 14,0,Preriscaldo
+    #Item: 14,1,Recupero
+    #Item: 14,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 3
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,220
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 15,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 43
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 16,0,Acqua
+    #Item: 16,1,Base
+    #Item: 16,2,Acido
+    #Item: 16,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 17
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 18
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 19,0,Preriscaldo
+    #Item: 19,1,Recupero
+    #Item: 19,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 4
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,290
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 20,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: clWindow
+    #Cursor: 0
+    #TxtColor: clWindowText
+    #Font: Segoe UI,9,0000
+    #Gate: 44
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 21,0,Acqua
+    #Item: 21,1,Base
+    #Item: 21,2,Acido
+    #Item: 21,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 22
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 23
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 24,0,Preriscaldo
+    #Item: 24,1,Recupero
+    #Item: 24,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 5
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,360
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 25,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 45
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 26,0,Acqua
+    #Item: 26,1,Base
+    #Item: 26,2,Acido
+    #Item: 26,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 27
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 28
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 29,0,Preriscaldo
+    #Item: 29,1,Recupero
+    #Item: 29,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 6
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,430
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 30,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 46
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 31,0,Acqua
+    #Item: 31,1,Base
+    #Item: 31,2,Acido
+    #Item: 31,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 32
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 33
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 34,0,Preriscaldo
+    #Item: 34,1,Recupero
+    #Item: 34,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 7
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj
+#Object: GroupBox
+  #ID: 0
+  #Pos: 15,500
+  #Size: 764,70
+  #BkColor: clBtnFace
+  #TxtColor: 0,0,0
+  #Font: Arial,20,0001
+  #Label:     
+  #Align: 0
+  #Object: CheckBox
+    #ID: 0
+    #Pos: 35,8
+    #Size: 17,17
+    #BkColor: clBtnFace
+    #Font: Segoe UI,9,0000
+    #Cursor: 0
+    #Label: CheckBox
+    #NeedApply: 0
+    #OnMask: 35,0001,0001
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 75,38
+    #Size: 190,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 47
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 290,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 36,0,Acqua
+    #Item: 36,1,Base
+    #Item: 36,2,Acido
+    #Item: 36,3,Disinfettante
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 410,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 37
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: Edit
+    #ID: 0
+    #Pos: 530,38
+    #Size: 95,23
+    #BkColor: 255,255,255
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Gate: 38
+    #NeedApply: 0
+    #Style: 0
+    #Access: 0
+  #EndObj
+  #Object: ComboBox
+    #ID: 0
+    #Pos: 650,38
+    #Size: 95,23
+    #ListH: 120
+    #Cursor: 0
+    #Font: Segoe UI,9,0000
+    #NeedApply: 0
+    #Item: 39,0,Preriscaldo
+    #Item: 39,1,Recupero
+    #Item: 39,2,Drenaggio
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 410,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Temperatura [°C]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 530,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Durata [s]
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 290,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Sostanza
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 650,23
+    #Size: 95,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Destinazione
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 10,0
+    #Size: 16,33
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Arial,20,0001
+    #Label: 8
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+  #Object: Label
+    #ID: 0
+    #Pos: 75,23
+    #Size: 190,14
+    #BkColor: clBtnFace
+    #Cursor: 0
+    #TxtColor: 0,0,0
+    #Font: Segoe UI,9,0000
+    #Label: Nome
+    #Align: 32
+    #Frame: 1
+    #Access: 0
+  #EndObj
+#EndObj

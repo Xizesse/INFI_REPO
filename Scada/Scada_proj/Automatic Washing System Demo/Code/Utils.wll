@@ -1,0 +1,139 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        Utils
+//
+// General utility functions
+//-----------------------------------------------------------------------------
+
+//*****************************************************************************
+// formatTime_mmss2mmss
+//
+// Format minutes and seconds to "mm:ss" string
+//*****************************************************************************
+function string formatTime_mmss2mmss_vats(int mm, int ss)
+   string minutes;
+   string seconds;
+   string time;
+
+   minutes = "00" + IntToStr(mm);
+   minutes = StrSubString(minutes, StrLen(minutes) - 1, 2);
+
+   seconds = "00" + IntToStr(ss);
+   seconds = StrSubString(seconds, StrLen(seconds) - 1, 2);
+
+   time = minutes + ":" + seconds;
+   return time;
+end
+
+function string formatTime_mmss2mmss_process(int mm, int ss)
+   string minutes;
+   string seconds;
+   string time;
+
+   minutes = "00" + IntToStr(mm);
+   minutes = StrSubString(minutes, StrLen(minutes) - 1, 2);
+
+   seconds = "00" + IntToStr(ss);
+   seconds = StrSubString(seconds, StrLen(seconds) - 1, 2);
+
+   time = minutes + ":" + seconds;
+   return time;
+end
+
+
+//*****************************************************************************
+// formatTime_s2mmss
+//
+// Format seconds to "mm:ss" string
+//*****************************************************************************
+function string formatTime_s2mmss_vats(int s)
+
+   int mm;
+   int ss;
+
+   ss = Mod(s, 60);
+   mm = RealToInt(s / 60);
+
+   return formatTime_mmss2mmss_vats(mm, ss);
+end
+
+function string formatTime_s2mmss_process(int s)
+
+   int mm;
+   int ss;
+
+   ss = Mod(s, 60);
+   mm = RealToInt(s / 60);
+
+   return formatTime_mmss2mmss_process(mm, ss);
+end
+
+
+//*****************************************************************************
+// formatTime_hhmmss2hhmmss
+//
+// Format hour, minutes and seconds to "hh:mm:ss" string
+//*****************************************************************************
+function string formatTime_hhmmss2hhmmss(int hh, int mm, int ss)
+   string hours;
+   string minutes;
+   string seconds;
+   string time;
+
+   hours = "00" + IntToStr(hh);
+   hours = StrSubString(hours, StrLen(hours) - 1, 2);
+
+   minutes = "00" + IntToStr(mm);
+   minutes = StrSubString(minutes, StrLen(minutes) - 1, 2);
+
+   seconds = "00" + IntToStr(ss);
+   seconds = StrSubString(seconds, StrLen(seconds) - 1, 2);
+
+   time = hours + ":" + minutes + ":" + seconds;
+   return time;
+end
+
+
+//*****************************************************************************
+// formatDate_ddmmyy2ddmmyyyy
+//
+// Format day, month and year to "dd/mm/yyyy" string
+//*****************************************************************************
+function string formatDate_ddmmyy2ddmmyy(int dd, int mm, int yy)
+   string day;
+   string month;
+   string year;
+   string date;
+
+   day = "00" + IntToStr(dd);
+   day = StrSubString(day, StrLen(day) - 1, 2);
+
+   month = "00" + IntToStr(mm);
+   month = StrSubString(month, StrLen(month) - 1, 2);
+
+   year = "0000" + IntToStr(yy);
+   year = StrSubString(year, StrLen(year) - 1, 4);
+
+   date = day + "/" + month + "/" + year;
+   return date;
+end
+
+
+//*****************************************************************************
+// safeSetNumGateValue
+//
+// Write a new value to the specific numeric gate only if the new value is
+// different from the current value
+//*****************************************************************************
+function void safeSetNumGateValue_vats(string name, int id, real value)
+   if (GetNumGateValue(name, id) != value) then
+       SetNumGateValue(name, id, value);
+   end
+end
+
+function void safeSetNumGateValue_process(string name, int id, real value)
+   if (GetNumGateValue(name, id) != value) then
+       SetNumGateValue(name, id, value);
+   end
+end
+

@@ -1,0 +1,18 @@
+#Access: 0
+#Pos: 0,96
+#Size: 1014,581
+#BkColor: clBtnFace
+#Gates: 0
+#Style: Fixed
+#StayOnTop: 0
+#Object: ReportView
+  #ID: 0
+  #Pos: 0,10
+  #Size: 1015,590
+  #ShowRenameButton: 1
+  #ShowDeleteButton: 1
+  #ShowReportButton: 1
+  #ShowTemplateButton: 1
+  #ShowReportType: 1
+  #WndBkgndColor: clBtnFace
+#EndObj

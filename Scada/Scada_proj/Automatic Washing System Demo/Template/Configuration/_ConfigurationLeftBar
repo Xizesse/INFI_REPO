@@ -1,0 +1,67 @@
+#Access: 0
+#Pos: 0,96
+#Size: 221,580
+#BkColor: clBtnFace
+#Gates: 0
+#PBkBmp: 20,15,180,37,Configuration\LeftBarButtons\AlarmsConfigurationButton.png
+#PBkBmp: 20,60,180,37,Configuration\LeftBarButtons\ProcessParametersButton.png
+#PBkBmp: 20,105,180,37,Configuration\LeftBarButtons\ProcessesConfigurationButton.png
+#PBkBmp: 20,195,180,37,Configuration\LeftBarButtons\UsersConfigurationButton.png
+#PBkBmp: 20,150,180,37,Configuration\LeftBarButtons\VatsGeometryButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: Button
+  #ID: 0
+  #Pos: 61,23
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Allarmi
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,alarmsConfiguration
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,68
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Parametri di processo
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,processParameters
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,113
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Trattamenti
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,processesConfiguration
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,158
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Param. geometrici tini
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,vatsGeometry
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,203
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Utenti
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,usersConfiguration
+#EndObj

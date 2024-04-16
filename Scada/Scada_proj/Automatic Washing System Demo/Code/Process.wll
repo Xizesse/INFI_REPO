@@ -1,0 +1,468 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        Process
+//
+// Management of treatments
+//-----------------------------------------------------------------------------
+
+global int lastStep;
+
+//*****************************************************************************
+// process
+//
+// Process loop that:
+// - set on R2-50B CIP device the temperature set-point of the current step
+// - set informaton about the running treatment
+// - generating events of start treatment and end treatment
+//*****************************************************************************
+function void process()
+#startup
+
+   int step;
+   int subStep;
+
+   int stepTimer;
+   int processTimer;
+   int s;
+
+   int vat;
+   int substance;
+   string substanceString;
+
+   int stopRequest;
+   string stopRequestString;
+
+   int elapsedTime;
+
+   while (WindowIsOpen())
+
+       // Check if a treatment is running
+       if (GetBit(GetNumGateValue("Misc_status", 0), 1)) then
+
+           // Check and manage the start of a treatment
+           startProcessEvent();
+
+           // Get current step and substep
+           step = GetNumGateValue("Proc_currentStep", 0);
+           subStep = GetNumGateValue("Proc_currentSubStep", 0);
+
+           if ((step >= 1) && (step <= 8)) then
+               // Set temperature set-point on R2-50B CIP device
+               safeSetNumGateValue_process("117cSP1.Value", 0, GetNumGateValue("Rec_proc_temp", step));
+
+               // Set display gate for the name of the current step
+               SetStrGateValue("Proc_currentStpNo", 0, step + "/" + GetNumGateValue("Proc_steps", 0));
+               SetStrGateValue("Proc_currentStpTitle", 0, GetStrGateValue("Rec_proc_name", step));
+
+               // Claculate the remaining time at the end of step
+               // and set the display gate
+               stepTimer = GetNumGateValue("Proc_step_onTimer", 0);
+               stepTimer = stepTimer + GetNumGateValue("Proc_step_stepTimer", 0);
+               stepTimer = stepTimer + GetNumGateValue("Proc_step_offTimer", 0);
+               SetStrGateValue("Proc_currentStpTimer", 0, formatTime_s2mmss_process(stepTimer));
+
+               // Calculate the time remaining to the end of treatment
+               // and set the display gate
+               processTimer = stepTimer;
+               for s = step + 1 to 8 do
+                   processTimer = processTimer + GetNumGateValue("Proc_stepTime", s);
+               end
+               SetStrGateValue("Proc_currentTimer", 0, formatTime_s2mmss_process(processTimer));
+
+               // Set the substance present in vats involved in the treatment
+               substance = GetNumGateValue("Proc_step_substance", 0);
+               if (substance == 0) then substanceString = "water"; end
+               if (substance == 1) then substanceString = "base"; end
+               if (substance == 2) then substanceString = "acid"; end
+               if (substance == 3) then substanceString = "disinfectant"; end
+               for vat = 101 to 116 do
+                   if (GetNumGateValue(IntToStr(vat) + "VatStatus", 0) == 16) then
+                       SetStrGateValue(IntToStr(vat) + "VatInfo_2", 0, substanceString);
+                       SetStrGateValue(IntToStr(vat) + "VatInfo_Large_2", 0, substanceString);
+                       SetNumGateValue(IntToStr(vat) + "VatDensity", 0, 1000);
+                   end
+               end
+
+               // Check step change
+               if (lastStep != step) then
+                   lastStep = step;
+                   elapsedTime = GetHour() - GetNumGateValue("Rep_proc_startHH", 0) * 3600;
+                   elapsedTime = elapsedTime + GetMinute() - GetNumGateValue("Rep_proc_startMM", 0) * 60;
+                   elapsedTime = elapsedTime + GetSecond() - GetNumGateValue("Rep_proc_startSS", 0);
+                   SetNumGateValue("Rep_proc_start", step, elapsedTime);
+
+                   if (GetNumGateValue("Rep_proc_stepChange", 0) < 0) then
+                       SetNumGateValue("Rep_proc_stepChange", 0, 200);
+                   else
+                       SetNumGateValue("Rep_proc_stepChange", 0, -100);
+                   end
+               end
+           end
+       else
+           // Check end of treatment
+           endProcessEvent();
+       end
+
+          sleep(1000);
+   end
+end
+
+
+//*****************************************************************************
+// startProcess
+//
+// Handler of the OnClick event of the 'Start treatment' button
+// Before start treatment check that:
+// - plant is in automatic mode
+// - no treatment is already active
+// - a water loading procedure in the tanks is not running
+// - a treatment is selected
+// - vats involved in the processing are not in unloading
+// - vats involved in the processing are empty
+// - at least one vat is selected for treatment
+// - treatment is not required on more than three vats
+// - the user really wants to start a treatment
+//*****************************************************************************
+function void startProcess()
+
+   int vat = 101;
+   int selectedVats = 0;
+   int processCodedVats = 0;
+   int vatsMask = 1;
+   int unloadCodedVats;
+
+   string selectedVatsName = "";
+   string vatName;
+
+   bool error = false;
+
+   // Check that a treatment is not already active
+   if (GetBit(GetNumGateValue("Misc_status", 0), 1) == 1) then
+       IconMessageBox("Treatment already active", "Warning!", 2, 1, 1);
+       return;
+   end
+
+   // Check that the system is not in manual
+   if (GetBit(GetNumGateValue("Misc_status", 0), 0) == 1) then
+       IconMessageBox("Can't start the required treatment, plant is in manual mode", "Warning!", 2, 1, 1);
+       return;
+   end
+
+   // Check that a water loading procedure in the tanks is not active
+   if (BitMask(GetNumGateValue("Misc_commands", 0), 240) != 0) then
+       IconMessageBox("Can't start the required treatment, loading water in tank is active", "Warning!", 2, 1, 1);
+       return;
+   end
+
+   // Check that a treatment is selected
+   if (GetStrGateValue("Rec_proc_title", 0) == "") then
+       IconMessageBox("No treatment selected", "Warning!", 2, 1, 1);
+       return;
+   end
+
+   // Check that vats involved in the processing are not in unloading
+   // and are empty
+   unloadCodedVats = GetNumGateValue("Unload_vatsIR", 0) * 256 + GetNumGateValue("Unload_vatsAH", 0);
+   do
+       if (GetDigGateValue(IntToStr(vat) + "Process", 0) != 0) then
+
+           vatName = GetStrGateValue(IntToStr(vat) + "VatName", 0);
+
+           // The vat is involved in treatment
+           if (selectedVats != 0) then selectedVatsName = selectedVatsName + ", "; end
+           selectedVatsName = selectedVatsName + vatName;
+           selectedVats = selectedVats + 1;
+
+           processCodedVats = processCodedVats + vatsMask;
+
+           if ((GetDigGateValue(IntToStr(vat) + "Unload", 0) != 0) || (GetBit(unloadCodedVats, vat - 101) != 0)) then
+               IconMessageBox("Can't start the required treatment, vat " + vatName + " unloading", "Warning!", 2, 1, 1);
+               error = true;
+           else
+               if (GetCmpGateValue(IntToStr(vat) + "VatLevel", 0) > GetNumGateValue("Cfg_vatsEmptyLevel", 0)) then
+                   IconMessageBox("Can't start the required treatment, vat " + vatName + " nor empty", "Warning!", 2, 1, 1);
+                   error = true;
+               end
+           end
+       end
+
+       vat = vat + 1;
+       vatsMask = vatsMask * 2;
+
+   while ((vat <= 116) && (error == false))
+
+   if (error == false) then
+       // Check that at least one vat is selected for treatment
+       if (selectedVats < 1) then
+           IconMessageBox("No vat selected for treatment", "Warning!", 2, 1, 1);
+           return;
+       end
+
+       // Check that treatment is not required on more than three vats
+       if (selectedVats > 3) then
+           IconMessageBox("Can't start treatment on more that 3 vats", "Warning!", 2, 1, 1);
+           return;
+       end
+
+       // Request user confirm
+       if (selectedVats > 1) then
+           selectedVatsName = "sui tini " + selectedVatsName;
+       else
+           selectedVatsName = "sul tino " + selectedVatsName;
+       end
+
+       if (IconMessageBox("Are you sure to start treatmen '" + GetStrGateValue("Rec_proc_title", 0) + "' " + selectedVatsName + "?", "Treatment start", 5, 5, 2) == 7) then
+           // Start treatment
+           activateProcess(processCodedVats, selectedVatsName);
+       end
+   end
+end
+
+
+//*****************************************************************************
+// stopProcess
+//
+// Handler of the OnClick event of the 'Stop treatment' button
+// Before stop the running treatment check that:
+// - a treatment is running
+// - the user really wants to stop the treatment
+//*****************************************************************************
+function void stopProcess()
+   // Check that a treatment is active
+   if (GetBit(GetNumGateValue("Misc_status", 0), 1) == 0) then
+       IconMessageBox("No running treatment", "Warning!", 2, 1, 1);
+       return;
+   end
+
+   // Wait user confirm
+   if (IconMessageBox("Are you sure to stop the running treatment?", "Stop treatment", 5, 5, 2) == 7) then
+       // Stop treatment
+       SetNumGateValue("Misc_commands", 0, SetBit(GetNumGateValue("Misc_commands", 0), 2));
+   end
+end
+
+
+//*****************************************************************************
+// activateProcess
+//
+// Start the selected treatment on specified vats
+//*****************************************************************************
+function void activateProcess(int codedVats, string vatsName)
+
+   int codedVatsAH;
+   int codedVatsIR;
+   int step;
+
+   int stepTime;
+   int totalProcessTime = 0;
+   int steps = 0;
+
+   bool error;
+
+   string fileName;
+   string recipeName;
+
+   // Check if recipe file exists
+   recipeName = GetStrGateValue("Rec_proc_title", 0);
+   fileName = GetProjectPath() + "\Recipes\Treatments.rcf\" + recipeName + ".rcf";
+
+   if (FileExist(fileName) == false) then
+       // File not found: show error
+       error = true;
+   else
+       if (RecipeExecute("Treatments", recipeName, false) == false) then
+           // Problem loading: show error
+           error = true;
+       end
+   end
+
+   // Show error box if required
+   if (error == true) then
+       IconMessageBox("Can't open treatment '" + recipeName + "'", "Errore", 2, 6, 1);
+       return;
+   end
+
+   // Set the vats involved in the treatment
+   codedVatsAH = BitMask(codedVats, 255);
+   SetNumGateValue("Proc_vatsAH", 0, codedVatsAH);
+   codedVatsIR = BitMask(codedVats / 256, 255);
+   SetNumGateValue("Proc_vatsIR", 0, codedVatsIR);
+
+   // Set process data
+   for step = 1 to 8 do
+       SetNumGateValue("Proc_step" + IntToStr(step) + "_enabled", 0, GetNumGateValue("Rec_proc_enable", step));
+       SetNumGateValue("Proc_step" + IntToStr(step) + "_substance", 0, GetNumGateValue("Rec_proc_substance", step));
+       SetNumGateValue("Proc_step" + IntToStr(step) + "_time", 0, GetNumGateValue("Rec_proc_time", step));
+       SetNumGateValue("Proc_step" + IntToStr(step) + "_type", 0, GetNumGateValue("Rec_proc_type", step));
+       if (GetNumGateValue("Proc_step" + IntToStr(step) + "_enabled", 0) != 0) then
+           stepTime = GetNumGateValue("Cfg_pump_onDelay", 0);
+           stepTime = stepTime + GetNumGateValue("Proc_step" + IntToStr(step) + "_time", 0);
+           stepTime = stepTime + GetNumGateValue("Cfg_pump_offDelay", 0);
+           steps = step;
+       else
+           stepTime = 0;
+       end
+       SetNumGateValue("Proc_stepTime", step, stepTime);
+       totalProcessTime = totalProcessTime + stepTime;
+       SetNumGateValue("Rep_proc_start", step, 0);
+   end
+
+   // Save data of the treatment
+   SetNumGateValue("Proc_totalTime", 0, totalProcessTime);
+   SetNumGateValue("Proc_steps", 0, steps);
+   SetStrGateValue("Proc_currentTitle", 0, recipeName);
+   SetStrGateValue("Proc_relatedVats", 0, vatsName);
+   SetStrGateValue("Proc_operator", 0, GetUserName());
+   lastStep = 1;
+
+   // Start treatment
+   SetNumGateValue("Misc_commands", 0, SetBit(GetNumGateValue("Misc_commands", 0), 1));
+end
+
+
+//*****************************************************************************
+// startProcessEvent
+//
+// Check if the treatment has just been started and:
+// - generates start events (general event and and single for vats)
+// - set gates for the report creation
+// - set status of the vats involved in the treatment
+//*****************************************************************************
+function void startProcessEvent()
+   // Check if a treatment has just been started
+   if (GetDigGateValue("Proc_status_prev", 0) == 0) then
+       SetDigGateValue("Proc_status_prev", 0, 1);
+       // Generate start events
+       setProcessGateEvents(0);
+       // Set gates for the report creation
+       inizializeReport();
+       // Set vats status
+       setVatsStatus(1, 0);
+   else
+       // Reset event gates
+       setProcessGateEvents(99);
+   end
+end
+
+
+//*****************************************************************************
+// endProcessEvent
+//
+// Check if the treatment has just ended and:
+// - generates end events (general event and and single for vats)
+// - set status of the vats involved in the treatment
+//*****************************************************************************
+function void endProcessEvent()
+   int stopRequest;
+   string stopRequestString;
+
+   // Generate end events only if a treatment is just terminated
+   // and if the cause of the end is changed
+   stopRequest = GetNumGateValue("Proc_stopRequest", 0);
+   if ((GetDigGateValue("Proc_status_prev", 0) == 1) && (stopRequest != 0)) then
+       SetDigGateValue("Proc_status_prev", 0, 0);
+
+       // Check cause of the end of treatment
+       if (stopRequest == 1 || stopRequest == 2) then
+           // Terminated or stopped treatment, generates end events
+           setProcessGateEvents(stopRequest);
+
+           // Set vats status
+           setVatsStatus(1, stopRequest);
+
+           // Create report
+           if (stopRequest == 1) then
+               createReport("treatment ended", false);
+           else
+               createReport("treatment terminated", true);
+           end
+
+           return;
+       end
+
+       // Aborted treatment
+       if (stopRequest == 3) then stopRequestString = "program error"; end
+       if (stopRequest == 4) then stopRequestString = "CIP device alarm"; end
+       if (stopRequest == 5) then stopRequestString = "vat device alarm"; end
+       if (stopRequest == 6) then stopRequestString = "flow alarm"; end
+       if (stopRequest == 6) then stopRequestString = "temperature alarm"; end
+       if (stopRequest == 7) then stopRequestString = "Alarm Tanks level"; end
+       if (stopRequest == 8) then stopRequestString = "PH-meter alarm"; end
+       if (stopRequest > 8) then stopRequestString = "abnormal condition [" + stopRequest + "]"; end
+
+       // Set end cause and generate end events
+       SetStrGateValue("Proc_stopRequest", 0, stopRequestString);
+       setProcessGateEvents(3);
+
+       // Set vats status
+       setVatsStatus(1, 3);
+
+       // Create report
+       createReport(stopRequestString, false);
+   else
+       // Reset event gates
+       setProcessGateEvents(99);
+   end
+end
+
+
+//*****************************************************************************
+// setProcessGateEvents
+//
+// Set gates to generate process events
+//*****************************************************************************
+function void setProcessGateEvents(int eventValue)
+
+   int vat;
+   int codedVats;
+
+   // Generate general event or "reset" event gates
+   SetNumGateValue("Proc_events", 0, eventValue);
+
+   // Check if generate vats events or "reset" event gates
+   if (eventValue != 99) then
+       // Generate events on vats involved in the treatment
+       codedVats = GetNumGateValue("Proc_vatsIR", 0) * 256 + GetNumGateValue("Proc_vatsAH", 0);
+       for vat = 0 to 15 do
+           if (GetBit(codedVats, vat) == 1) then
+               SetNumGateValue(IntToStr(vat + 101) + "ProcEvents", 0, eventValue);
+           else
+               SetNumGateValue(IntToStr(vat + 101) + "ProcEvents", 0, 99);
+           end
+       end
+   else
+       // "Reset" event gates
+       for vat = 101 to 116 do
+           SetNumGateValue(IntToStr(vat) + "ProcEvents", 0, 99);
+       end
+   end
+end
+
+
+//*****************************************************************************
+// setVatsStatus
+//
+// Set status of vats involved in the treatment
+//*****************************************************************************
+function void setVatsStatus(int grandStatus, int detailedStatus)
+
+   int vat;
+   int codedVats;
+   int status;
+
+   status = grandStatus * 16 + detailedStatus;
+
+   codedVats = GetNumGateValue("Proc_vatsIR", 0) * 256 + GetNumGateValue("Proc_vatsAH", 0);
+   for vat = 0 to 15 do
+       if (GetBit(codedVats, vat) == 1) then
+           SetNumGateValue(IntToStr(vat + 101) + "VatStatus", 0, status);
+           SetStrGateValue(IntToStr(vat + 101) + "VatInfo_1", 0, GetStrGateValue("Proc_currentTitle", 0));
+           SetStrGateValue(IntToStr(vat + 101) + "VatInfo_Large_1", 0, GetStrGateValue("Proc_currentTitle", 0));
+
+           if (detailedStatus == 0) then
+               SetStrGateValue(IntToStr(vat + 101) + "VatInfo_2", 0, "");
+               SetStrGateValue(IntToStr(vat + 101) + "VatInfo_Large_2", 0, "");
+           end
+       end
+   end
+end

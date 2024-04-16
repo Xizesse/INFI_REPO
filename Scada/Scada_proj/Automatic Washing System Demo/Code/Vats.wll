@@ -1,0 +1,260 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        Vats
+//
+// Management of vats
+//-----------------------------------------------------------------------------
+
+global int communicationDelay = 15000;
+
+
+//*****************************************************************************
+// vats
+//
+// Process loop. For each vat:
+// - evaluate mixer alarms
+// - build mixer state
+// - manage the manual operation of the mixer
+// - calculate the weight of the substance in the vat
+//*****************************************************************************
+function void vats()
+#startup
+
+   int vat;
+   int animationTimer = 0;
+   string prefix;
+
+   // Wait for communication
+   sleep(communicationDelay);
+
+   while (WindowIsOpen())
+
+       for vat = 1 to 16 do
+           prefix = IntToStr(vat + 100);
+
+           // Evaluate mixer alarms
+           mixerAlarms(prefix);
+
+           // Detect status (digital) of the mixer (for chart)
+           // Format status information
+           // Build mixer animation
+           mixerStatus(prefix, animationTimer);
+
+           // Manage manual mode of the mixer
+           mixerManual(prefix);
+
+           // Calculate weight of the substance contained in the vat
+           vatWeight(prefix);
+       end
+
+       animationTimer = animationTimer + 1;
+       sleep(1000);
+   end
+end
+
+
+//*****************************************************************************
+// mixerAlarms
+//
+// Evaluate mixer alarms
+// 1. Generate mixer command alarm if:
+//    - alarm is enabled
+//    - command is different from state for a time longer than the filter
+// 2. Generate thermeal protection alarm if
+//    - alarm is enabled
+//    - alarm input is 1
+//*****************************************************************************
+function void mixerAlarms(string prefix)
+
+   int relayAlarmTimer;
+   int mixerCommand;
+   int relayAlarm;
+   int thermalAlarm;
+
+   if (GetDigGateValue(prefix + "MixerAlarmEnable", 0) == 0) then
+       // If mixer alarms are disabled, reset active alarm and restart timers
+       relayAlarmTimer = 0;
+       relayAlarm = 0;
+       thermalAlarm = 0;
+   else
+       // Detect mixer command (mixer command is active if cycle program
+       // output is active and min alarm is not active)
+       mixerCommand = 1;
+       if (
+           (GetBit(GetNumGateValue(prefix + "Device.Led", 0), 2) == 0) ||
+           (GetBit(GetNumGateValue(prefix + "Device.Led", 0), 3) == 1)
+       ) then
+           mixerCommand = 0;
+       end
+
+       // If the 'contactor' signal differs from the command, generate
+       // command alarm (with filter time)
+       if (GetBit(GetNumGateValue(prefix + "DI.Value", 0), 0) == mixerCommand) then
+           relayAlarmTimer = 0;
+           relayAlarm = 0;
+       else
+           relayAlarmTimer = GetNumGateValue(prefix + "MixerAlarmTimer", 0);
+           if (relayAlarmTimer >= GetNumGateValue("Cfg_vAHM_AlarmTime", 0)) then
+               relayAlarm = 1;
+           else
+               relayAlarmTimer = relayAlarmTimer + 1;
+           end
+       end
+
+       // Generate thermal protection alarm
+       if (GetBit(GetNumGateValue(prefix + "DI.Value", 0), 1) == 1) then
+           thermalAlarm = 1;
+       else
+           thermalAlarm = 0;
+       end
+   end
+
+   // Update gates
+   SetNumGateValue(prefix + "MixerAlarmTimer", 0, relayAlarmTimer);
+   SetDigGateValue(prefix + "MixerRelayAlarm", 0, relayAlarm);
+   SetDigGateValue(prefix + "MixerThermalAlarm", 0, thermalAlarm);
+
+end
+
+
+//*****************************************************************************
+// mixerStatus
+//
+// Evaluate mixer status
+// 1. Status (active/inactive) based on the input status
+// 2. Information based on the operating mode (auto/man) and operation time
+//    (only for automatic mode)
+// 3. Mixer animation
+//*****************************************************************************
+function void mixerStatus(string prefix, int animationTimer)
+
+   int status;
+   int time;
+   int timer_s;
+   int timer_ss;
+   int timer_mm;
+
+   string info;
+
+   // Get mixer status and update gate
+   status = GetBit(GetNumGateValue(prefix + "DI.Value", 0), 0);
+   SetDigGateValue(prefix + "MixerStatus", 0, status);
+
+   // Build strings of information about mixer status
+   if (GetBit(GetNumGateValue(prefix + "MixerManual", 0), 1) == 1) then
+       // In manual mode displays only 'manual'
+       info = "Manuale";
+   else
+       // Get duration of active cycle
+       if (status == 0) then
+           time = GetNumGateValue(prefix + "MixerOffTime", 0);
+       else
+           time = GetNumGateValue(prefix + "MixerOnTime", 0);
+       end
+
+       // Get timer of active cycle
+       timer_s = GetNumGateValue(prefix + "yCyc1.Timer", 0);
+       timer_mm = timer_s / 60;
+       timer_ss = Mod(timer_s, 60);
+
+       // Set information string
+       info = formatTime_mmss2mmss_vats(timer_mm, timer_ss) + "/" + formatTime_mmss2mmss_vats(time, 0);
+   end
+   SetStrGateValue(prefix + "MixerInfo", 0, info);
+   SetStrGateValue(prefix + "MixerInfo_Large", 0, info);
+
+   // Set gate to create animation
+   if (status == 0) then
+       SetDigGateValue(prefix + "MixerAnimation", 0, 0);
+   else
+       SetDigGateValue(prefix + "MixerAnimation", 0, GetBit(animationTimer, 0));
+   end
+
+end
+
+
+//*****************************************************************************
+// mixerManual
+//
+// Manage manual mode of the mixer
+//*****************************************************************************
+function void mixerManual(string prefix)
+
+   int manualCommand;
+
+   manualCommand = GetNumGateValue(prefix + "MixerManual", 0);
+
+   // Set the mixer management parameters on the R2-50B device, based on
+   // operative mode required
+   if (GetBit(manualCommand, 1) == 0) then
+       // In automatic mode, copy values specified by the operator
+       // (always set seconds to 0)
+       safeSetNumGateValue_vats(prefix + "yCyc1.Off_HHMM", 0, GetNumGateValue(prefix + "MixerOffTime", 0));
+       safeSetNumGateValue_vats(prefix + "yCyc1.Off_MMSS", 0, 0);
+       safeSetNumGateValue_vats(prefix + "yCyc1.On_HHMM", 0, GetNumGateValue(prefix + "MixerOnTime", 0));
+       safeSetNumGateValue_vats(prefix + "yCyc1.On_MMSS", 0, 0);
+   else
+       if (GetBit(manualCommand, 0) == 0) then
+           // Set values to maintain the mixer always off
+           safeSetNumGateValue_vats(prefix + "yCyc1.Off_HHMM", 0, 0);
+           safeSetNumGateValue_vats(prefix + "yCyc1.Off_MMSS", 0, 5);
+           safeSetNumGateValue_vats(prefix + "yCyc1.On_HHMM", 0, 0);
+           safeSetNumGateValue_vats(prefix + "yCyc1.On_MMSS", 0, 1);
+       else
+           // Set values to maintain the mixer always on
+           safeSetNumGateValue_vats(prefix + "yCyc1.Off_HHMM", 0, 0);
+           safeSetNumGateValue_vats(prefix + "yCyc1.Off_MMSS", 0, 1);
+           safeSetNumGateValue_vats(prefix + "yCyc1.On_HHMM", 0, 0);
+           safeSetNumGateValue_vats(prefix + "yCyc1.On_MMSS", 0, 5);
+       end
+   end
+end
+
+
+//*****************************************************************************
+// vatWeight
+//
+// Calculate weight of the substance present in the vat according to the level
+// of substance, its density and the geometrical dimensions of the vat
+//*****************************************************************************
+function void vatWeight(string prefix)
+
+   real coneHeight;
+   real maxDiameter;
+   real minDiameter;
+
+   real levelPercent;
+   real level;
+   real cylinderLevel;
+   real volume;
+
+   coneHeight = GetNumGateValue(prefix + "VatHeight_Co",0);
+   maxDiameter = GetNumGateValue(prefix + "VatDiameter_Cy", 0);
+   minDiameter = GetNumGateValue(prefix + "VatDiameter_Co", 0);
+
+   // Check percent level
+   levelPercent = GetCmpGateValue(prefix + "VatLevel",0) / 100;
+   if (levelPercent > 1) then levelPercent = 1;
+   else if (levelPercent < 0) then levelPercent = 0; end end
+
+   // Calcolate substance height (in m)
+   level = (GetNumGateValue(prefix + "VatHeight_Cy",0) + coneHeight) * levelPercent;
+
+   // Calculate the volume occupied by the substance
+   //  Vco = pi/12 * [(2R)² + (2r)² + (2R)(2r)] * h
+   //  Vcy = pi/4 * (2R)²
+   cylinderLevel = level - coneHeight;
+
+   if (cylinderLevel < 0) then
+       maxDiameter = maxDiameter - (maxDiameter - minDiameter) * (coneHeight - level) / coneHeight;
+       volume = 0.2618 * (Pow(maxDiameter, 2) + Pow(minDiameter, 2) + (maxDiameter * minDiameter)) * level;
+   else
+       volume = 0.2618 * (Pow(maxDiameter, 2) + Pow(minDiameter, 2) + (maxDiameter * minDiameter)) * coneHeight;
+       volume = volume + 0.7854 * Pow(maxDiameter, 2) * cylinderLevel;
+   end
+
+   // Calculate the weight of the substance
+   SetNumGateValue(prefix + "VatWeight",0, volume * GetNumGateValue(prefix + "VatDensity", 0));
+
+end
+

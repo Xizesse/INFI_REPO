@@ -1,0 +1,72 @@
+#Access: 0
+#Pos: 0,96
+#Size: 221,580
+#BkColor: clBtnFace
+#Gates: 1
+  #STR: Rec_proc_title,0
+#PBkBmp: 20,15,180,37,Configuration\LeftBarButtons\LoadProcessButton.png
+#PBkBmp: 20,60,180,37,Configuration\LeftBarButtons\SaveProcessButton.png
+#PBkBmp: 20,105,180,37,Configuration\LeftBarButtons\DeleteProcessButton.png
+#PBkBmp: 20,525,180,37,Configuration\LeftBarButtons\ProcessesConfigurationButton.png
+#Style: Fixed
+#StayOnTop: 0
+#Object: Button
+  #ID: 0
+  #Pos: 61,23
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Apri
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,loadProcess
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,68
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Salva
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,saveProcess
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,113
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Elimina
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,deleteProcess
+#EndObj
+#Object: FileListBox
+  #ID: 0
+  #Pos: 20,160
+  #Size: 180,345
+  #Font: Segoe UI,9,0000
+  #Gate: 0
+  #NeedApply: 0
+  #ShowFiles: 1
+  #ShowDirs: 0
+  #Sorted: 1
+  #ShowHidden: 0
+  #ShowExtension: 0
+  #GoDir: 0
+  #PathFileName: ..\Recipes\Treatments.rcf\*.rcf
+  #Access: 0
+#EndObj
+#Object: Button
+  #ID: 0
+  #Pos: 61,533
+  #Size: 132,23
+  #Cursor: 0
+  #Label: Indietro
+  #Font: Segoe UI,9,0000
+  #FunctionKey: -1
+  #Access: 0
+  #OnClick: StartF,configurationPage
+#EndObj

@@ -1,0 +1,77 @@
+//-----------------------------------------------------------------------------
+// Application:   Automatic Washing System Demo
+// Module:        Unload
+//
+// Management of vat unloading procedure
+//-----------------------------------------------------------------------------
+
+
+//*****************************************************************************
+// unload
+//
+// Process loop that:
+// - start the vat unloading procedure, checking that a treatment is not
+//   active on the vat
+// - generate the start/end unloading events
+//*****************************************************************************
+function void unload()
+#startup
+
+   int vat;
+   int processCodedVats;
+   int unloadCodedVats;
+   int unloadCodedVatsAH;
+   int unloadCodedVatsIR;
+
+   while (WindowIsOpen())
+
+       processCodedVats = GetNumGateValue("Proc_vatsIR", 0) * 256 + GetNumGateValue("Proc_vatsAH", 0);
+       unloadCodedVats = GetNumGateValue("Unload_vatsIR", 0) * 256 + GetNumGateValue("Unload_vatsAH", 0);
+
+       // Set operator
+       SetStrGateValue("Unload_operator", 0, GetUserName());
+
+       for vat = 0 to 15 do
+
+            // Check if an unloading start is requested
+            if ((GetDigGateValue(IntToStr(vat + 101) + "Unload", 0) != 0) && (GetBit(unloadCodedVats, vat) == 0)) then
+               if ((GetBit(processCodedVats, vat) != 0) && (GetBit(GetNumGateValue("Misc_status", 0), 1) != 0)) then
+                   IconMessageBox("Can't start unload procedure, treatment is active", "Warning!", 2, 1, 1);
+                   SetDigGateValue(IntToStr(vat + 101) + "Unload", 0, 0);
+               else
+                   if (IconMessageBox("Confirm start of unloading procedure on vat " + GetStrGateValue(IntToStr(101 + vat) + "VatName", 0) + "?", "Start unload", 5, 5, 2) == 7) then
+                       // Start unloading
+                       unloadCodedVats = SetBit(unloadCodedVats, vat);
+                       // Generate start event
+                       SetNumGateValue(IntToStr(vat + 101) + "UnloadEvents", 0, 0);
+                   else
+                       SetDigGateValue(IntToStr(vat + 101) + "Unload", 0, 0);
+                   end
+               end
+           else
+               // Check if an unloading stop is requested
+               if ((GetDigGateValue(IntToStr(vat + 101) + "Unload", 0) == 0) && (GetBit(unloadCodedVats, vat) == 1)) then
+                   if (IconMessageBox("Confirm stop of unload procedure of vat " + GetStrGateValue(IntToStr(101 + vat) + "VatName", 0) + "?", "Start unload", 5, 5, 2) == 7) then
+                       // Stop unloading
+                       unloadCodedVats = ResetBit(unloadCodedVats, vat);
+                       // Generate end event
+                       SetNumGateValue(IntToStr(vat + 101) + "UnloadEvents", 0, 1);
+                   else
+                       SetDigGateValue(IntToStr(vat + 101) + "Unload", 0, 1);
+                   end
+               else
+                   // Reset event gate
+                   SetNumGateValue(IntToStr(vat + 101) + "UnloadEvents", 0, 99);
+               end
+           end
+       end
+
+       // Set unload commands
+       unloadCodedVatsAH = BitMask(unloadCodedVats, 255);
+       SetNumGateValue("Unload_vatsAH", 0, unloadCodedVatsAH);
+       unloadCodedVatsIR = BitMask(unloadCodedVats / 256, 255);
+       SetNumGateValue("Unload_vatsIR", 0, unloadCodedVatsIR);
+
+       sleep(1000);
+   end
+end
