@@ -13,7 +13,7 @@ def upload_delivery_plan():
 
     # Create a new table to store the ordered data
     cur.execute("""
-        CREATE TABLE IF NOT EXISTS INFI.delivery_plan (
+        CREATE TABLE IF NOT EXISTS infi.delivery_plan (
             due_date INTEGER PRIMARY KEY,
             p5_quantity INTEGER,
             p6_quantity INTEGER,
@@ -31,7 +31,7 @@ def upload_delivery_plan():
             SUM(CASE WHEN workpiece = 'P6' THEN quantity ELSE 0 END) AS p6_quantity,
             SUM(CASE WHEN workpiece = 'P7' THEN quantity ELSE 0 END) AS p7_quantity,
             SUM(CASE WHEN workpiece = 'P9' THEN quantity ELSE 0 END) AS p9_quantity
-        FROM INFI.orders
+        FROM infi.orders
         GROUP BY due_date
         ORDER BY due_date;
     """
