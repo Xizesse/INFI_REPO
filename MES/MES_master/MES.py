@@ -10,7 +10,9 @@ import json
 import os
 from Line import Line
 
+#TODO compor as ferramentas
 #TODO Ver order de uma peça 4 e tirar peças 1 para a produzir
+
 
 connected = False
 
@@ -192,7 +194,7 @@ def MES_loop():
                 #order_queue.put(4)
                 #order_queue.put(4)
                 #upperWarehouse[3] += 1
-                order_queue.put(4)
+                order_queue.put(3)
                 last_day = app.day_count
             
             
