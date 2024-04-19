@@ -34,7 +34,7 @@ Array Global de Receitas
 
 """
 
-class MetaPeça:
+class MetaPessa:
         #criar a metapeça
     def _init_(self, client, id, type, final_type, order_id, machine_id, transform):
         #! Não é preciso estarem todos na struct
@@ -54,6 +54,7 @@ class MetaPeça:
 
     def change_tool():
         #TODO criar peça 
+        print("Changed tool.")
     
        
     
