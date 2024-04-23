@@ -9,18 +9,11 @@ import time
 import json
 import os
 from Line import Line
-from Piece import MetaPessa
+from Piece import Piece
+import DB
 
-
-#######################################################################################################
-"""
-TODO
-    - CRIAR Metapessas de acordo com as orders
-    - Forçar Criar Metapeças na PLC
-    - Analizar os warehouses, atualizar
-
-"""
-#######################################################################################################
+#TODO : meter a MES a fazer sair uma peça com metapeça
+    #TODO : com transformações
 
 
 connected = False
@@ -194,30 +187,42 @@ def MES_loop():
         #update_client()
         try:
 
-            if not order_queue.empty():
+            """if not order_queue.empty():
                 next_order = order_queue.queue[0]
                 print("Next process: ", next_order)
                 process_order(next_order)
             else :
                 print("No orders in queue.")
+            """
             if app.day_count == 1 and last_day != app.day_count:
-                #add order 3 pieces 3
                 print("Rise and shine, it's Day 1")
-                #order_queue.put_nowait(3)
                 
-                #add piece 3 to warehouse
-                
+
+                #TODO Create a Piece
+                id = 1
+                type = 1
+                final_type = 3
+                order_id = 1
+                machine_top = 1
+                machine_bot = 1
+
+                piece1 = Piece(client, id, type, final_type, order_id, machine_top, machine_bot)
+                #TODO Change the array on the PLC
+                piece1.load_piece(1)
+                #TODO Send the Piece to the warehouse
+
+                #TODO Send the MetaPiece index to the warehouse
+
+                  
+
                 last_day = app.day_count
 
                     
             if app.day_count == 2 and last_day != app.day_count:
                 print("Food moning, it's Day 2")
-                #add order 3 pieces 4
-                #order_queue.put(4)
-                #order_queue.put(4)
-                #order_queue.put(4)
-                #upperWarehouse[3] += 1
-                order_queue.put(3)
+                
+
+
                 last_day = app.day_count
             
             
@@ -239,7 +244,7 @@ if __name__ == "__main__":
     app = OPCUAClientGUI(root, lambda: connect_to_server(app), lambda: disconnect_server(app))
     app.set_queue(order_queue)
     nodes = load_nodes_from_file('nodes.json')
-    line1 = Line(client, nodes, "Line1")
+    line1 = Line(client, nodes, "Line1", 1)
     last_day = 0
     root.after(1, MES_loop)
     root.mainloop()

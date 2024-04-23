@@ -11,7 +11,8 @@ import os
 #TODO escalar para machine bot ...
 
 class Line:
-    def __init__(self, client, all_nodes, line_key):
+    def __init__(self, client, all_nodes, line_key, line_id):
+        self.id = line_id
         self.occupied = False
         self.client = client
         self.line_info = all_nodes[line_key]  

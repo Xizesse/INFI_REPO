@@ -1,5 +1,12 @@
 
 {
+    
+    "MetaPieces": {
+        
+        "id": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.MetaPieces",
+        "description": "Array of meta pieces"
+    },
+
     "Line1": {
         "description": "Production Line 1",
         "toolTop": "ToolTop0",
