@@ -14,13 +14,15 @@ def expand_values(data, item_prefix='p'):
     """
     expanded_data = []
     for row in data:
-        expanded_row = []
+        due_date = row['due_date']
         for column, value in row.items():
             if column.startswith(item_prefix) and value is not None:
                 item_number = int(column.lstrip(item_prefix).split('_')[0])
-                expanded_row.extend([item_number] * value)
-        expanded_data.append(tuple(expanded_row))
+                for _ in range(value):
+                    expanded_data.append((due_date, item_number))
     return expanded_data
+
+    
 
 def get_production_schedule(table_name, due_date_col, columns):
     """
