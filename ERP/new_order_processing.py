@@ -1,5 +1,6 @@
 import psycopg2
 import xml.etree.ElementTree as ET
+from db_config import DB_CONFIG 
 
 def process_new_order():
     
@@ -26,10 +27,10 @@ def process_new_order():
 
     # Establish connection to PostgreSQL database
     conn = psycopg2.connect(
-        host='db.fe.up.pt',
-        database='infind202410',
-        user='infind202410',
-        password='DWHyIHTiPP'
+        host= DB_CONFIG['host'],
+        database= DB_CONFIG['database'],
+        user= DB_CONFIG['user'],
+        password= DB_CONFIG['password']
     )
 
     cur = conn.cursor()

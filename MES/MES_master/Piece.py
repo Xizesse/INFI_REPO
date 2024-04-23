@@ -83,6 +83,7 @@ class Piece:
 
     #def change_tool():
         #TODO criar peça 
+        print("Changed tool.")
     
        
     

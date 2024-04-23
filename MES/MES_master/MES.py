@@ -18,6 +18,7 @@ import DB
 
 connected = False
 
+#TODO Passar para database de warehouse
 upperWarehouse = {
         1: 20,
         2: 0,
@@ -29,7 +30,7 @@ upperWarehouse = {
         8: 0,
         9: 0
     }
-
+#TODO Passar para database de warehouse
 bottomWarehouse = {
         1: 0,
         2: 0,
@@ -41,7 +42,7 @@ bottomWarehouse = {
         8: 0,
         9: 0
     }
-
+#TODO Passar para database de orders / encher esta queue com as orders
 orders = {
     3: 1,
     4: 0,
@@ -73,12 +74,18 @@ transformations = {
     (8, 5): {'result': 9},
 
 }
+
 machines = {
     1: {1, 2, 3},
     2: {1, 2, 3},
     3: {1, 4, 5},
     4: {1, 4, 6},
 }
+
+#TODO Expecificar que machines por linha como ? No constructor ? 
+
+
+#######################################################################################################
 
 def connect_to_server(gui):
     global connected
@@ -155,6 +162,13 @@ def process_order(piece):
         else:
             print(f"Could not find transformation for piece {piece}.")
             return
+
+def process_order_metapeça(piece):
+    #TODO criar a metapeça
+    piece = MetaPessa(client, id, type, final_type, order_id, machine_id, transform)
+    #TODO colocar no vetor de receitas a struct da peça, não esquecer confirmar o index
+    print(f"Created metapessa {piece_id}.")
+
 
 def find_transformation(final_piece):
     for (start_piece, tool), transformation in transformations.items():

@@ -5,14 +5,14 @@ def udp_receive():
         
     NEW_FILE_PATH = "new_order.xml"
 
-    UDP_IP = "127.0.0.1"  # Loopback address for same machine communication
+    UDP_IP = "127.0.0.1"  # Loopback address 
     UDP_PORT = 31337
     BUFFER_SIZE = 4096
     TIMEOUT = 5  # Timeout in seconds
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((UDP_IP, UDP_PORT))
-    sock.settimeout(TIMEOUT)  # Set timeout for recvfrom
+    #sock.settimeout(TIMEOUT)  # Set timeout for recvfrom
 
     try:
         received_data = b""
@@ -33,3 +33,5 @@ def udp_receive():
     finally:
         sock.close()
 
+if __name__ == "__main__":
+    udp_receive()
