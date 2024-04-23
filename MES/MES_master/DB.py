@@ -49,7 +49,6 @@ def get_production_queue():
     query = f"SELECT {columns_str} FROM {table_name} ORDER BY {due_date_col} ASC"
     
     try:
-        # Execute the query
         cursor.execute(query)
         # Fetch all rows as a list of dictionaries
         results = cursor.fetchall()
