@@ -11,15 +11,15 @@ import os
 """
     #? A MES faz sair as peças E as metapeças
     Para a PLC, a metapeça isto vai ser uma struct que vai circular entre os tapetes
-    Não é preciso circular diretamente a struct, basta um indice para um array de metapeças
-        O indicie -1 quando não há receita no tapete
-    Ao chegar ao tapete de uma máquina, se o ID de máquina não corresponder, segue
+    Circula diretamente a struct
+    Ao chegar ao tapete de uma máquina, vê tool top tool bot
         Se for fantasma, ou seja, pieceType = 0 , segue
     Se corresponder, a máquina faz a transformação 
     A peça é enviada para o WAREHOUSE de saída
-    A metapeça é ENVIADA PARA O armazem de baixo
-    A receita é marcada como feita
-    A MES tira essa receita 
+    A metapeça é enviada até ao útlimo tapete.
+    Quando um tapete passa, poe o valor em si.
+        tool
+    A MES tira receitas do ultimo tapete
     
 
     #? Penso que fazer sair as peças dos armazens, tanto o de cima como o de baixo é mais fácil ser a MES, em vez de 
@@ -63,7 +63,7 @@ class Piece:
         self.type = type # para ghost é 0 
         self.final_type = final_type 
         self.order_id = order_id 
-        self.delivery_day 
+        self.delivery_day = delivery_day 
         self.machinetop = machine_top 
         self.machinebot = machine_bot 
         self.tooltop = tool_top 
@@ -71,14 +71,15 @@ class Piece:
         self.done = False 
 
     def load_piece(self, line, Recipes ): 
-        print(f"Loaded piece {self.id} into line {line.id}.")    
+        
         #TODO colocar no vetor de receitas a struct da peça
         Recipes.add_piece(self)
         #TODO enviar a METApeça para o tapete de entrada da linha
-        Recipes.send_piece(self, line)
+        #Recipes.send_piece(self, line)
         #TODO enviar a peça para o tapete de entrada da linha
-        line.load_piece(self.type)
+        #line.load_piece(self.type)
         
+        print(f"Loaded piece {self.id} into line {line.id}.")    
 
 
     #def change_tool():
