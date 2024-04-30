@@ -14,6 +14,7 @@ from Piece import Piece
 
 #TODO Sofia e Barbara: Importar orders
 #TODO Xico: Fazer o loop por machines
+#TODO
 #TODO : DataBases para as warehouses (upper e lower)
 #TODO : Display das orders
 
