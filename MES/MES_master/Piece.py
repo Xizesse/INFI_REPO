@@ -73,7 +73,7 @@ class Piece:
     def load_piece(self, line, Recipes ): 
         
         #TODO colocar no vetor de receitas a struct da peça
-        Recipes.add_piece(self)
+        
         #TODO enviar a METApeça para o tapete de entrada da linha
         #Recipes.send_piece(self, line)
         #TODO enviar a peça para o tapete de entrada da linha

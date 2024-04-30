@@ -24,6 +24,9 @@ class Line:
         self.line_input_node_id = self.line_info['lineIn']
         self.line_output_node_id = self.line_info['lineOut']
 
+        self.top_busy = False
+        self.bot_busy = False
+
     def load_piece(self, piece):#Loads both the physical and the meta piece#
         try:
             print(f"Loading piece {piece.id} of type {piece.type} into line {self.id}.")
@@ -81,7 +84,10 @@ class Line:
         except Exception as e:
             messagebox.showerror("Error Loading Meta Piece", str(e))
 
-
+    def isTopBusy(self):
+        return self.top_busy
+    def isBotBusy(self):
+        return self.bot_busy
 
     ##Old functions
     """ def change_tool(self, new_tool):
