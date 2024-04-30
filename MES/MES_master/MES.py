@@ -11,13 +11,12 @@ import os
 from Line import Line
 from Piece import Piece
 
+#TODO Barbara: DataBases para as warehouses (upper e lower)
 
-#TODO Sofia e Barbara: Importar orders
 #TODO Xico: Fazer o loop por machines
-#TODO
-#TODO : DataBases para as warehouses (upper e lower)
-#TODO : Display das orders
+#TODO Xico: Par top bottom
 
+#TODO : Display das orders
 
 class MES:
     def __init__(self):
@@ -165,6 +164,7 @@ class MES:
 
 
     def find_machine(self, start_type, final_type):
+        #Returns the line, machine and tool needed for a transformation
         path = self.transformation_paths.get((start_type, final_type))
         if path and len(path) > 1:  
             current_type = start_type
@@ -184,57 +184,42 @@ class MES:
                                         return line, 'bot', tool
         return None, None, None
     
+
+    def check_warehouse_top(self):
+        # Check if there is a piece in the top warehouse that can be processed
+        return 
     
+    def check_warehouse_bottom(self):
+        # Check if there is a piece in the bottom warehouse that can be processed
 
-    def check_warehouse_top_for_piece(self):
-        for piece in self.upperWarehouse:
-            line, machine, tool =  self.find_machine(piece.type, piece.final_type)
+        #check if there is an order to release
+        return
 
-            if line is not None:
-                    if machine == 'top':
-                        piece.machine_top = True
-                        piece.tooltop = tool
-                    elif machine == 'bot':
-                        piece.machine_bot = True
-                        piece.toolbot = tool
-                        piece.load_piece(line)
-                    #remove the piece from the warehouse database
-                    
-                    print(f"Loaded piece {piece} to line {line}.")
+    def check_machine_can_process(line, position, warehouse):
+        # Check if the machine can process a piece
+        #returns the piece and the tool needed for the transformation if available
+        if position == 'top':
+            if line.isTopBusy():
+                print("Top machine is busy.")
+                return False
+            else : 
+                #check if there is a piece in the top warehouse that can be processed
+                for piece in self.upperWarehouse:
+                    #first I need to see what machines can turn this piece into a final piece
+                    for machine in self.machines:
+                        if piece in self.machines[machine]:
+                            #then I need to see it line of the machine is free
+                            #if so, I load the piece into the line and return
+                            pass
+                
+        if position == 'bot':
+            if line.isBotBusy():
+                print("Bottom machine is busy.")
+                return False
         
-    def check_warehouse_top_for_machine(self):
-    # Check the bot machines for all lines           
-        for line_id, machine_info in self.lines_machines.items():
-            line = machine_info['line']
-            # First, try to load pieces into bottom machines if they are not busy
-            if not line.isBotBusy():
-                for piece_type, quantity in self.upperWarehouse.items():
-                    if quantity > 0:  # Ensure there are pieces available of this type
-                        # Find a suitable transformation that can be done on the bot machine
-                        transformation = self.find_transformation_for_machine(piece_type, 'bot')
-                        if transformation:
-                            piece, tool = transformation
-                            # Load the piece into the bottom machine
-                            line.load_piece(piece, tool)
-                            # Update warehouse inventory
-                            self.upperWarehouse[piece_type] -= 1
-                            print(f"Loaded piece {piece} into bot of line {line_id} using tool {tool}.")
-                            break  # Break after loading one piece to allow checking other lines
 
-            # Then, check top machines if bottom machines are busy or no suitable piece was found
-            if not line.isTopBusy():
-                for piece_type, quantity in self.upperWarehouse.items():
-                    if quantity > 0:  # Ensure there are pieces available of this type
-                        # Find a suitable transformation that can be done on the top machine
-                        transformation = self.find_transformation_for_machine(piece_type, 'top')
-                        if transformation:
-                            piece, tool = transformation
-                            # Load the piece into the top machine
-                            line.load_piece(piece, tool)
-                            # Update warehouse inventory
-                            self.upperWarehouse[piece_type] -= 1
-                            print(f"Loaded piece {piece} into top of line {line_id} using tool {tool}.")
-                            break  # Break after loading one piece to allow checking other lines
+                
+                
 
     def find_transformation_for_machine(self, piece_type, machine_position):
         # Mockup logic to find a suitable transformation for a given piece type and machine position
