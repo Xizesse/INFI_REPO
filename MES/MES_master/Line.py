@@ -15,11 +15,13 @@ GHOST_PIECE = 0
 #TODO funções para a MES pegar nas peças produzidas
 
 class Line:
-    def __init__(self, client, all_nodes, line_key, line_id):
+    def __init__(self, client, all_nodes, line_key, line_id, top_tools, bot_tools):
         self.id = line_id
         self.client = client
-        self.line_info = all_nodes[line_key]  
-        
+        self.line_info = all_nodes[line_key]
+        self.top_tools = top_tools
+        self.bot_tools = bot_tools
+
         self.piece_out_node_id = self.line_info['pieceOut']
         self.line_input_node_id = self.line_info['lineIn']
         self.line_output_node_id = self.line_info['lineOut']
@@ -67,6 +69,8 @@ class Line:
         
         try:
             #Set the type
+            """"
+            print("Sending meta piece to line input.")
             type_node = self.client.get_node(self.line_input_node_id + ".pieceType")
             type_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
             #Set machine top
@@ -80,14 +84,27 @@ class Line:
             tool_top_node.set_value(ua.Variant(piece.tooltop, ua.VariantType.Int16))
             #Set tool bot
             tool_bot_node = self.client.get_node(self.line_input_node_id + ".toolBOT")
-            tool_bot_node.set_value(ua.Variant(piece.toolbot, ua.VariantType.Int16))
+            tool_bot_node.set_value(ua.Variant(piece.toolbot, ua.VariantType.Int16)) 
+            """
         except Exception as e:
             messagebox.showerror("Error Loading Meta Piece", str(e))
+
+    def has_tool(self, tool, position):
+        if position == 'top':
+            return tool in self.top_tools
+        elif position == 'bot':
+            return tool in self.bot_tools
 
     def isTopBusy(self):
         return self.top_busy
     def isBotBusy(self):
         return self.bot_busy
+
+    def setTopBusy(self, state):
+        self.top_busy = state
+
+    def setBotBusy(self, state):
+        self.bot_busy = state
 
     ##Old functions
     """ def change_tool(self, new_tool):

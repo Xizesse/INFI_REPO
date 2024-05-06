@@ -3,84 +3,66 @@ from opcua import Client
 from opcua import ua
 from tkinter import messagebox
 from GUI import OPCUAClientGUI 
-from queue import Queue
+#from queue import Queue
 import tkinter as tk
 import time
 import json
 import os
 from Line import Line
 from Piece import Piece
+from Warehouse import Warehouse
 
 #TODO Barbara: DataBases para as warehouses (upper e lower)
 
 #TODO Xico: Fazer o loop por machines
 #TODO Xico: Par top bottom
 
+#hmmm o loop vai ser tipo 
+"""
+    Check all machines
+    If the machine can take the piece
+    Process the piece
+    """
+
+
 #TODO : Display das orders
 
 class MES:
     def __init__(self):
+        #! CLIENTE OPC UA e GUI
         url = "opc.tcp://172.27.64.1:4840"
         self.client = Client(url)
         self.root = tk.Tk()
-        self.app = OPCUAClientGUI(self.root, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app))
+        self.app = OPCUAClientGUI(self, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app))
         nodes = self.load_nodes_from_file('nodes.json')
-
-        self.lines_machines = {
-            1: {'top': 1, 'bot': 2, 'line': Line(self.client, nodes, "Line1", 1)},
-            2: {'top': 1, 'bot': 2, 'line': Line(self.client, nodes, "Line2", 2)},
-            3: {'top': 1, 'bot': 2, 'line': Line(self.client, nodes, "Line3", 3)},
-            4: {'top': 3, 'bot': 4, 'line': Line(self.client, nodes, "Line4", 4)},
-            5: {'top': 3, 'bot': 4, 'line': Line(self.client, nodes, "Line5", 5)},
-            6: {'top': 3, 'bot': 4, 'line': Line(self.client, nodes, "Line6", 6)}
-        }
-
         self.connected = False
-        #TODO Passar para database de warehouse
-        self.upperWarehouse = {
-                1: 20,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0
-            }
-        #TODO Passar para database de warehouse
-        self.bottomWarehouse = {
-                1: 0,
-                2: 0,
-                3: 0,
-                4: 0,
-                5: 0,
-                6: 0,
-                7: 0,
-                8: 0,
-                9: 0
-            }
+
+        #!WAREHOUSES
+        self.TopWarehouse = Warehouse(self.client)
+        self.TopWarehouse.set_simulation_warehouse()
+        self.BotWarehouse = Warehouse(self.client)
+        self.BotWarehouse.set_simulation_warehouse()
+
+
+        #! ORDERS
         #TODO Passar para database de orders / encher esta queue com as orders
-        self.orders = {
-            3: 1,
-            4: 0,
-            5: 0,
-            6: 0,
-            7: 0,
-            9: 0
-        }
-
-
-        self.order_queue = Queue()
-        for piece, quantity in self.orders.items():
+        """ self.order_queue = Queue()
+        for piece, quantity in self.orders_queu.items():
             if quantity > 0:
                 for _ in range(quantity):
-                    self.order_queue.put(piece)
-        #Print this queue
-        #print(self.order_queue.queue)
+                    self.order_queue.put(piece) 
+        self.app.set_queue(self.order_queue)"""
 
-        self.app.set_queue(self.order_queue)
-
+        #! LINES AND MACHINES
+        self.lines_machines = {
+    1: Line(self.client, nodes, "Line1", 1, {1, 2, 3}, {1, 2, 3}),
+    2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
+    3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
+    4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
+    5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
+    6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
+}
+        #! TRANSFORMATIONS
         self.transformations = {
         #    (start_piece, tool): {'result': final_piece}
             (1, 1): {'result': 3},
@@ -124,6 +106,7 @@ class MES:
 
 
     #######################################################################################################
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
 
     def connect_to_server(self, gui):
         global connected
@@ -160,126 +143,95 @@ class MES:
             messagebox.showerror("Disconnection Error", str(e))
         
     #######################################################################################################
-
-
-
-    def find_machine(self, start_type, final_type):
-        #Returns the line, machine and tool needed for a transformation
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1MES Functions for logic 
+    def find_next_transformation(self, start_type, final_type): 
+        #Returns the next transformation to be done to get to the final type
+        if start_type == final_type:
+            print("Piece is already at the final type.")
+            return None
         path = self.transformation_paths.get((start_type, final_type))
-        if path and len(path) > 1:  
-            current_type = start_type
-            next_type = path[1]  
-            # Find the transformation
+        if not path:
+            print("Transformation is not possible.")
+            return None
+        current_type = start_type
+        for next_type in path[1:]:  
+            
             for (start_piece, tool), transformation in self.transformations.items():
                 if start_piece == current_type and transformation['result'] == next_type:
-                    for machine_id, machine_info in self.machines.items():
-                        if tool in machine_info:
-                            # Check if it is top or bottom machine
-                            for line_id, machine_info in self.lines_machines.items():
-                                line = machine_info['line']
-                                if True: #!not line.is_Occupied(): 
-                                    if machine_id == machine_info['top']:
-                                        return line, 'top', tool
-                                    elif machine_id == machine_info['bot']:
-                                        return line, 'bot', tool
-        return None, None, None
-    
+                    return tool  
+        print("Error. No tool found for the transformation.")
+        return None
 
-    def check_warehouse_top(self):
-        # Check if there is a piece in the top warehouse that can be processed
-        return 
-    
-    def check_warehouse_bottom(self):
-        # Check if there is a piece in the bottom warehouse that can be processed
+    def check_machine_can_process(self, line, position, piece):
+        current_type = piece.type
+        final_type = piece.final_type
+        if (position == 'top' and line.isTopBusy()) or (position == 'bot' and line.isBotBusy()):
+            print(f"{position} machine on line {line.id} is currently busy.")
+            return False
 
-        #check if there is an order to release
-        return
+        next_tool = self.find_next_transformation(current_type, final_type)
+        if next_tool is None:
+            print(f"No next tool found for transformation from {current_type} to {final_type}.")
+            return False
 
-    def check_machine_can_process(line, position, warehouse):
-        # Check if the machine can process a piece
-        #returns the piece and the tool needed for the transformation if available
-        if position == 'top':
-            if line.isTopBusy():
-                print("Top machine is busy.")
-                return False
-            else : 
-                #check if there is a piece in the top warehouse that can be processed
-                for piece in self.upperWarehouse:
-                    #first I need to see what machines can turn this piece into a final piece
-                    for machine in self.machines:
-                        if piece in self.machines[machine]:
-                            #then I need to see it line of the machine is free
-                            #if so, I load the piece into the line and return
-                            pass
-                
-        if position == 'bot':
-            if line.isBotBusy():
-                print("Bottom machine is busy.")
-                return False
+        if line.has_tool(next_tool, position):
+            print(f"{position} machine on line {line.id} can process the piece with tool {next_tool}.")
+            return True
+        else:
+            print(f"{position} machine on line {line.id} does not have the required tool {next_tool}.")
+            return False
+
+    def update_machine(self, line, position, piece):
+        if not self.check_machine_can_process(line, position, piece):
+            return
+        elif position == 'top':
+            #take the piece out of the warehouse
+            line.setTopBusy(True)
+            piece.machinetop = True
+            piece.tooltop = self.find_next_transformation(piece.type, piece.final_type)
+            line.load_piece(piece)
+        elif position == 'bot':
+            #take the piece out of the warehouse
+            line.setBotBusy(True)
+            piece.machinebot = True
+            piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
+            line.load_piece(piece)
+
+    def update_all_machines(self):
+        #first update all bottom machines
+        for _, line in self.lines_machines.items():
+            self.update_machine(line, 'bot', self.BotWarehouse.get_piece_queue())
+        #then update all top machines
+        for _, line in self.lines_machines.items():
+            self.update_machine(line, 'top', self.TopWarehouse.get_piece_queue())
         
 
-                
-                
-
-    def find_transformation_for_machine(self, piece_type, machine_position):
-        # Mockup logic to find a suitable transformation for a given piece type and machine position
-        # This function should return the piece and the tool needed for the transformation if available
-        for (start_piece, tool), transformation in self.transformations.items():
-            if start_piece == piece_type:  # Check if transformation starts with the piece type
-                # Here, you might also want to check if the tool is suitable for the machine_position
-                return start_piece, tool
-        return None
-                    
-
-    def check_warehouse_bottom(self):
-        for piece in self.bottomWarehouse:
-            #first I need to see what machines can turn this piece into a final piece
-            for machine in self.machines:
-                if piece in self.machines[machine]:
-                    #then I need to see it line of the machine is free
-                    #if so, I load the piece into the line and return
-                    pass
-
-            #then I need to see it line of the machine is free
-            #if so, I load the piece into the line and return
-
+#######################################################################################################
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MES Loop !!!!!!!!!!!!!!
     def MES_loop(self):
         global connected
         global last_day
-        while(True):
-            print(self.app.day_count)
-            if connected and self.app.day_count > 0:
-                #update_client()
-                try:
+        print("Starting day: ", self.app.day_count)
+        self.app.update_orders_display()
+        if self.connected and self.app.day_count > 0:
+            #update_client()
 
-                    """if not order_queue.empty():
-                        next_order = order_queue.queue[0]
-                        print("Next process: ", next_order)
-                        process_order(next_order)
-                    else :
-                        print("No orders in queue.")
-                    """
-                    if self.app.day_count == 1 and last_day != self.app.day_count:
-                        print("Rise and shine, it's Day 1")
+            try:
+                if self.app.day_count == 1 and last_day != self.app.day_count:
+                    print("Rise and shine, it's Day 1")
                     
-                        last_day = self.app.day_count
+                    last_day = self.app.day_count
 
-                            
-                    if self.app.day_count == 2 and last_day != self.app.day_count:
-                        print("Good moning, it's Day 2")
+                if self.app.day_count == 2 and last_day != self.app.day_count:
+                    print("Good moning, it's Day 2")
                         
-
-
-                        last_day = self.app.day_count
+                    last_day = self.app.day_count
                 
-                
-                except Exception as e:
+            except Exception as e:
                     messagebox.showerror("Set Value Error", str(e))
-                self.app.update_queue()
+            
 
-        #root.after(1000, self.MES_loop)
-
-
+        self.root.after(1000, self.MES_loop)
 
 
 #######################################################################################################

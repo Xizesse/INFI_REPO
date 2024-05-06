@@ -40,7 +40,7 @@ Array Global de Receitas
 
 class Piece:
         #criar a metapeça
-    def _init_(self, client, id, type, final_type, order_id, delivery_day, machine_top, machine_bot, tool_top, tool_bot):
+    def __init__(self, client, id, type, final_type, order_id, delivery_day, machine_top, machine_bot, tool_top, tool_bot):
         """
         Args:
         client (opcua.Client): The client object.
@@ -58,12 +58,13 @@ class Piece:
         #! Não é preciso estarem todos na struct
 
 
-        self.id = id  
         self.client = client 
+        self.id = id  
         self.type = type # para ghost é 0 
         self.final_type = final_type 
         self.order_id = order_id 
         self.delivery_day = delivery_day 
+        self.line_id = 0
         self.machinetop = machine_top 
         self.machinebot = machine_bot 
         self.tooltop = tool_top 
