@@ -11,7 +11,7 @@ class OPCUAClientGUI:
         self.order_queue = None
         self.master.title("MES Client Interface")
         self.master.configure(bg='lightgray')
-        self.master.geometry("900x600")
+        self.master.geometry("1300x600")
 
         # GUI elements
         self.connect_button = tk.Button(self.master, text="Connect", command=on_connect)
@@ -39,13 +39,13 @@ class OPCUAClientGUI:
         self.reset_button.pack()
 
         # Canvas for drawing orders
-        self.orders_canvas = Canvas(self.master, width=600, height=500)  # Adjust size as needed
+        self.orders_canvas = Canvas(self.master, width=900, height=500)  # Adjust size as needed
         self.orders_canvas.pack()
 
         # Window closing event
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
 
-    def update_orders_display(self):
+    """ def update_orders_display(self):
         self.orders_canvas.delete("all")  
         colors = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]  # Colors for 9 piece types
         header_height = 20  
@@ -68,7 +68,52 @@ class OPCUAClientGUI:
             for piece_type in range(9):
                 completed, total = self.mes.TopWarehouse.count_pieces_by_type_and_day(piece_type, day)
                 x_position = initial_offset + piece_width * piece_type  
-                self.orders_canvas.create_text(x_position + 20, y_position + 5, text=f"{completed}/{total}", anchor="nw")
+                self.orders_canvas.create_text(x_position + 20, y_position + 5, text=f"{completed}/{total}", anchor="nw") """
+    
+    def update_orders_display(self):
+        self.orders_canvas.delete("all")  # Clear previous contents
+        colors = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]  # Colors for 9 piece types
+        header_height = 20
+        day_height = 20
+        piece_width = 50
+        initial_offset = 50
+        param_offset = 120  # Adjusted for reduced spacing, was 150 previously
+        spacing_between_params = 60  # Reduce this to bring parameters closer
+
+        # Header for piece attributes
+        headers = ["ID", "Type", "Final Type", "Order ID", "Del Day", "Line ID", "M Top", "M Bot", "T Top", "T Bot", "Done"]
+        for i, header in enumerate(headers):
+            self.orders_canvas.create_text(initial_offset + param_offset + i * spacing_between_params, 0, text=header, anchor="nw")
+
+        # List all pieces in the queue
+        pieces_list = list(self.mes.TopWarehouse.pieces.queue)
+        for idx, piece in enumerate(pieces_list):
+            y_position = header_height + day_height * (idx + 1)  # Start positioning below the header
+            x_position = initial_offset
+
+            # Draw the piece type color square
+            color = colors[(piece.type-1) % len(colors)]
+            self.orders_canvas.create_rectangle(x_position, y_position, x_position + 15, y_position + 15, fill=color, outline=color)
+            self.orders_canvas.create_text(x_position + 7.5, y_position + 5, text=str(piece.type), anchor="center", fill="black" if color != "white" else "gray")
+
+            # Display all piece parameters
+            param_texts = [
+                str(piece.id),
+                str(piece.type),
+                str(piece.final_type),
+                str(piece.order_id),
+                str(piece.delivery_day),
+                str(piece.line_id),
+                str(piece.machinetop),
+                str(piece.machinebot),
+                str(piece.tooltop),
+                str(piece.toolbot),
+                str(piece.done)
+            ]
+            for i, param in enumerate(param_texts):
+                self.orders_canvas.create_text(x_position + param_offset + i * spacing_between_params, y_position + 5, text=param, anchor="nw")
+
+
 
 
     def on_closing(self):

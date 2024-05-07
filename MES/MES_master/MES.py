@@ -11,11 +11,9 @@ import os
 from Line import Line
 from Piece import Piece
 from Warehouse import Warehouse
+import DB
 
-#TODO Barbara: DataBases para as warehouses (upper e lower)
 
-#TODO Xico: Fazer o loop por machines
-#TODO Xico: Par top bottom
 
 #hmmm o loop vai ser tipo 
 """
@@ -39,19 +37,17 @@ class MES:
 
         #!WAREHOUSES
         self.TopWarehouse = Warehouse(self.client)
-        self.TopWarehouse.set_simulation_warehouse()
+        #O warehouse de cima começa com 20 peças 1
+        for _ in range(20):
+            piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
+            self.TopWarehouse.put_piece_queue(piece)
+        #self.TopWarehouse.set_simulation_warehouse()
         self.BotWarehouse = Warehouse(self.client)
-        self.BotWarehouse.set_simulation_warehouse()
+        #self.BotWarehouse.set_simulation_warehouse()
 
 
         #! ORDERS
-        #TODO Passar para database de orders / encher esta queue com as orders
-        """ self.order_queue = Queue()
-        for piece, quantity in self.orders_queu.items():
-            if quantity > 0:
-                for _ in range(quantity):
-                    self.order_queue.put(piece) 
-        self.app.set_queue(self.order_queue)"""
+        self.production_orders = []
 
         #! LINES AND MACHINES
         self.lines_machines = {
@@ -143,7 +139,7 @@ class MES:
             messagebox.showerror("Disconnection Error", str(e))
         
     #######################################################################################################
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1MES Functions for logic 
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MES Functions for logic 
     def find_next_transformation(self, start_type, final_type): 
         #Returns the next transformation to be done to get to the final type
         if start_type == final_type:
@@ -181,57 +177,88 @@ class MES:
             print(f"{position} machine on line {line.id} does not have the required tool {next_tool}.")
             return False
 
+    def get_raw_material(self, final):
+        #Get the raw material for the piece
+        if final in [1, 3, 4, 5, 6, 7]:
+            return 1
+        elif final in [9]:
+            return 2
+        else :
+            return None
+        
     def update_machine(self, line, position, piece):
         if not self.check_machine_can_process(line, position, piece):
             return
         elif position == 'top':
             #take the piece out of the warehouse
             line.setTopBusy(True)
+            piece.line_id = line.id
             piece.machinetop = True
             piece.tooltop = self.find_next_transformation(piece.type, piece.final_type)
-            line.load_piece(piece)
+            #hmmm line.load_piece(piece)
         elif position == 'bot':
             #take the piece out of the warehouse
             line.setBotBusy(True)
+            piece.line_id = line.id
             piece.machinebot = True
             piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
-            line.load_piece(piece)
+            #remove the piece from the warehouse
+
+            #piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
+            #hmmm line.load_piece(piece)
 
     def update_all_machines(self):
         #first update all bottom machines
         for _, line in self.lines_machines.items():
-            self.update_machine(line, 'bot', self.BotWarehouse.get_piece_queue())
+            for piece in list(self.TopWarehouse.pieces.queue):
+                if piece.machinebot == False and piece.machinetop == False:
+                    self.update_machine(line, 'bot', piece)
         #then update all top machines
         for _, line in self.lines_machines.items():
-            self.update_machine(line, 'top', self.TopWarehouse.get_piece_queue())
-        
+            for piece in list(self.TopWarehouse.pieces.queue):
+                if piece.machinetop == False and piece.machinebot == False:
+                    self.update_machine(line, 'top', piece)
 
 #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MES Loop !!!!!!!!!!!!!!
     def MES_loop(self):
         global connected
         global last_day
-        print("Starting day: ", self.app.day_count)
+        #print("Starting day: ", self.app.day_count)
         self.app.update_orders_display()
-        if self.connected and self.app.day_count > 0:
-            #update_client()
+        
+        if last_day != self.app.day_count:
+            #!Beggining of the day actions
+            #Get the prod sched for the day
+            daily_prod = DB.get_production_queue(self.app.day_count)
+            print("LOADED PRODUCTION ORDERS:")
+            print(DB.get_production_queue(self.app.day_count))
+            self.production_orders += daily_prod
+            last_day = self.app.day_count
 
-            try:
-                if self.app.day_count == 1 and last_day != self.app.day_count:
-                    print("Rise and shine, it's Day 1")
-                    
-                    last_day = self.app.day_count
-
-                if self.app.day_count == 2 and last_day != self.app.day_count:
-                    print("Good moning, it's Day 2")
-                        
-                    last_day = self.app.day_count
-                
-            except Exception as e:
-                    messagebox.showerror("Set Value Error", str(e))
+        #!                                       Permanent actions        
+        #!check if there are pieces with ID 0 in the top warehouse that could be transformed into one from self.production_orders
+        i = 0
+        while i < len(self.production_orders):
+            order = self.production_orders[i]
+            processed = False
+            for piece in list(self.TopWarehouse.pieces.queue):
+                if self.transformation_paths.get((piece.type, order)) and piece.id == 0:
+                    print("Transforming piece into order type.")
+                    piece.final_type = order
+                    piece.order_id = 27
+                    piece.id = 27
+                    piece.delivery_day = self.app.day_count + 5
+                    processed = True
+                    break
+            if processed:
+                self.production_orders.remove(order)
+            else :
+                i += 1
+        #!update all machines
+        self.update_all_machines()
             
-
-        self.root.after(1000, self.MES_loop)
+        self.root.after(2000, self.MES_loop)
 
 
 #######################################################################################################

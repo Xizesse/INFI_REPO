@@ -4,7 +4,7 @@ from Piece import Piece
 class Warehouse:
     def __init__(self, client):
         self.client = client
-        self.pieces = queue.Queue()  # Changed from PriorityQueue to Queue
+        self.pieces = queue.Queue() 
         print("Warehouse created")
 
     def count_pieces_by_type_and_day(self, piece_type, day):
@@ -27,6 +27,13 @@ class Warehouse:
             return self.pieces.get()
         else:
             print("No pieces left in the queue.")
+            return None
+        
+    def peek_piece_queue(self):
+        if not self.pieces.empty():
+            return self.pieces.queue[0]
+        else:
+            print("No pieces to peek at in the queue.")
             return None
 
     def is_empty(self):

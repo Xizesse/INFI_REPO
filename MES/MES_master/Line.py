@@ -19,6 +19,7 @@ class Line:
         self.id = line_id
         self.client = client
         self.line_info = all_nodes[line_key]
+        
         self.top_tools = top_tools
         self.bot_tools = bot_tools
 
