@@ -6,6 +6,7 @@ import tkinter as tk
 import time
 import json
 import os
+from Piece import Piece
 
 NO_PIECE = -1
 GHOST_PIECE = 0
@@ -31,39 +32,29 @@ class Line:
 
     def load_piece(self, piece):#Loads both the physical and the meta piece#
         try:
-            print(f"Loading piece {piece.id} of type {piece.type} into line {self.id}.")
-            #check if the line is occupied
             if self.is_Occupied():
                 print("Line is occupied. Cannot load piece.")
                 return
+            print(f"Loading piece {piece.id} of type {piece.type} into line {self.id}.")
             #load the meta piece into the line input
             self.load_meta_piece(piece)
-
             #load the physical piece 
+            self.load_physical_piece(piece)
+            
+
+        except Exception as e:
+            messagebox.showerror("Error Loading the Piece", str(e))
+
+    def load_physical_piece(self, piece): #Loads the physical piece into the line output
+        try:
             piece_out_node = self.client.get_node(self.piece_out_node_id)
             piece_out_node.set_value(ua.Variant(0, ua.VariantType.Int16))
             time.sleep(1)
             piece_out_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
             
             print(f"Loaded a physical piece of type {piece.type} into line {self.id}.")
-
         except Exception as e:
-            messagebox.showerror("Error Loading the Piece", str(e))
-
-    def get_input_piece_type(self): #Returns the type of the piece in the line input
-        try:
-            #node is the line_input_node + ".pieceType"
-            type_node = self.client.get_node(self.line_input_node_id + ".pieceType")
-            type_value = type_node.get_value()
-            return type_value
-        except Exception as e:
-            messagebox.showerror("Error Getting Input Piece Type", str(e))
-
-    def is_Occupied(self): #Returns True if the line is occupied
-        try:
-            return self.get_input_piece_type() != NO_PIECE
-        except Exception as e:
-            messagebox.showerror("Error Checking Line Occupancy", str(e))
+            messagebox.showerror("Error Loading Physical Piece", str(e))
 
     def load_meta_piece(self, piece): #Loads the meta piece into the line input
         
@@ -89,6 +80,21 @@ class Line:
         except Exception as e:
             messagebox.showerror("Error Loading Meta Piece", str(e))
 
+    def get_input_piece_type(self): #Returns the type of the piece in the line input
+        try:
+            #node is the line_input_node + ".pieceType"
+            type_node = self.client.get_node(self.line_input_node_id + ".pieceType")
+            type_value = type_node.get_value()
+            return type_value
+        except Exception as e:
+            messagebox.showerror("Error Getting Input Piece Type", str(e))
+
+    def is_Occupied(self): #Returns True if the line is occupied
+        try:
+            return self.get_input_piece_type() != NO_PIECE
+        except Exception as e:
+            messagebox.showerror("Error Checking Line Occupancy", str(e))
+
     def has_tool(self, tool, position):
         if position == 'top':
             return tool in self.top_tools
@@ -97,6 +103,7 @@ class Line:
 
     def isTopBusy(self):
         return self.top_busy
+    
     def isBotBusy(self):
         return self.bot_busy
 
@@ -106,19 +113,16 @@ class Line:
     def setBotBusy(self, state):
         self.bot_busy = state
 
-    ##Old functions
-    """ def change_tool(self, new_tool):
-        try:
-            tool_node = self.client.get_node(self.tool_node_id)
-            tool_node.set_value(ua.Variant(new_tool, ua.VariantType.Int16))
-            print(f"Changed tool to {new_tool}.")
-        except Exception as e:
-            messagebox.showerror("Tool Change Error", str(e)) """
+    def change_tool(self, new_tool, position):
+        #send a ghost piece with the transformation
+        if position == 'top':
+            if new_tool in self.top_tools:
+                ghost = Piece(0, GHOST_PIECE, 0, 0, 0, new_tool, 0, 0)
+                self.load_meta_piece(ghost)
+        elif position == 'bot':
+            if new_tool in self.bot_tools:
+                ghost = Piece(0, GHOST_PIECE, 0, 0, 0, 0, 0, new_tool)
+                self.load_meta_piece(ghost)
 
-    """ def change_machine_off(self, state):
-        try:
-            machine_node = self.client.get_node(self.machine_node_id)
-            machine_node.set_value(ua.Variant(state, ua.VariantType.Boolean))
-            print(f"Machine {'turned off' if state else 'turned back on'} successfully.")
-        except Exception as e:
-            messagebox.showerror("Machine Control Error", str(e)) """
+
+    ##Old functions

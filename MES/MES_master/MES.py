@@ -3,7 +3,7 @@ from opcua import Client
 from opcua import ua
 from tkinter import messagebox
 from PiecesGUI import PiecesGUI 
-from Statistics import ShopFloorStatisticsWindow
+from StatisticsGUI import ShopFloorStatisticsWindow
 #from queue import Queue
 import tkinter as tk
 import time
@@ -12,7 +12,6 @@ import os
 from Line import Line
 from Piece import Piece
 from Warehouse import Warehouse
-from Docks import LoadingDock, UnloadingDock
 import DB
 
 #!TODO
@@ -33,17 +32,18 @@ class MES:
         nodes = self.load_nodes_from_file('nodes.json')
         self.connected = False
     
-        #! PURCHASES
+        #! PURCHASES - Array of (type)
         self.purchases = []
 
-        #! PRODUCTION ORDERS - Class orders - Working :)
+        #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
 
-        #! DELIVERIES 
+        #! DELIVERIES - Array of (orders) 
         self.deliveries = []
         
         #!WAREHOUSES
         self.TopWarehouse = Warehouse(self.client)
+        self.BotWarehouse = Warehouse(self.client)
         #O warehouse de cima começa com 20 peças 1
         for _ in range(20):
             piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
@@ -51,7 +51,6 @@ class MES:
         piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
         self.TopWarehouse.put_piece_queue(piece)
         #self.TopWarehouse.set_simulation_warehouse()
-        self.BotWarehouse = Warehouse(self.client)
         self.BotWarehouse.set_simulation_warehouse()
         #self.SFS = Warehouse(self.client)
 
@@ -64,23 +63,22 @@ class MES:
             5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
             6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
         }
+        self.ReverseConveyor = Line(self.client, nodes, "ReverseConveyor", 0, {}, {})
 
         #! LOADING DOCKS
-
         self.loading_docks = {
-            1: LoadingDock(self.client, 1),
-            2: LoadingDock(self.client, 1),
-            3: LoadingDock(self.client, 2),
-            4: LoadingDock(self.client, 2)
+            1: Line(self.client, nodes, "LoadingDock1", 11, {0}, {0}),
+            2: Line(self.client, nodes, "LoadingDock2", 12, {0}, {0}),
+            3: Line(self.client, nodes, "LoadingDock3", 13, {0}, {0}),
+            4: Line(self.client, nodes, "LoadingDock4", 14, {0}, {0})
         }
 
         #! UNLOADING DOCKS
-
         self.unloading_docks = {
-            1: UnloadingDock(self.client),
-            2: UnloadingDock(self.client),
-            3: UnloadingDock(self.client),
-            4: UnloadingDock(self.client)
+            1: Line(self.client, nodes, "UnloadingDock1", 21, {0}, {0}),
+            2: Line(self.client, nodes, "UnloadingDock2", 22, {0}, {0}),
+            3: Line(self.client, nodes, "UnloadingDock3", 23, {0}, {0}),
+            4: Line(self.client, nodes, "UnloadingDock4", 24, {0}, {0})
         }
 
         #! TRANSFORMATIONS
@@ -152,7 +150,7 @@ class MES:
 
         #! Purchase actions
         #TODO
-        #loadings into the loading docks
+        self.update_loading_docks()
 
         #!check if there are pieces in the loading dock that can be put in the top warehouse
         #TODO 
@@ -169,9 +167,9 @@ class MES:
         #!Add to the bottom warehouse - Xico e Alex
         #TODO
 
-        #!Send back up the unfinished pieces - Xico e Alex
-        #TODO
-       
+        #!Send back up the unfinished pieces - Xico
+        self.send_unfinished_back_up()
+    
 
         #! Delivery actions - Barbara
         #TODO
@@ -308,7 +306,32 @@ class MES:
                 self.production_orders.remove(order)
             else :
                 i += 1
+    def send_unfinished_back_up(self):
+        #Send back up the unfinished pieces
+        for piece in list(self.BotWarehouse.pieces.queue):
+            if piece.type != piece.final_type:
+                print("Sending unfinished piece back up.")
 
+    def update_loading_docks(self):
+        for id, dock in self.loading_docks:
+            if not dock.is_Occupied():
+                #if dock is 1 or 2, check the purchases for a piece of type 1
+                #if dock is 3 or 4, check the purchases for a piece of type 2
+                #if there is a piece of the correct type, load it into the dock
+                if id in [1, 2]:
+                    for piece in self.purchases:
+                        if piece.type == 1:
+                            #dock.load_piece(piece)
+                            break
+                if id in [3, 4]:
+                    for piece in self.purchases:
+                        if piece.type == 2:
+                            #dock.load_piece(piece)
+                            break
+                
+
+               
+               
 #######################################################################################################
 if __name__ == "__main__":
     #url = "opc.tcp://localhost:4840"
