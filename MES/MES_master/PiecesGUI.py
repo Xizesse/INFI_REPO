@@ -69,61 +69,62 @@ class PiecesGUI:
                 completed, total = self.mes.TopWarehouse.count_pieces_by_type_and_day(piece_type, day)
                 x_position = initial_offset + piece_width * piece_type  
                 self.orders_canvas.create_text(x_position + 20, y_position + 5, text=f"{completed}/{total}", anchor="nw") """
+    
     def update_orders_display(self):
-        self.orders_canvas.delete("all")  # Clear previous contents
-        self.orders_canvas.config(width=1200, height=600)  # Adjusted to fit smaller screens
+        self.orders_canvas.delete("all")
+        self.orders_canvas.config(width=1200, height=600)
         colors = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]
         header_height = 50
         day_height = 20
-        initial_offset = 20  # Reduced offset for compactness
-        param_offset = 20    # Reduced distance to ID
-        column_width = 50    # Narrower columns to fit more content
-        middle_space = 00   # Less space between warehouses to save space
+        initial_offset = 20
+        column_width = 60  # Adjust width if needed
         canvas_width = self.orders_canvas.winfo_reqwidth()
 
+        # Create headers for both warehouses
         headers = ["ID", "Type", "Final Type", "Line ID", "M Top", "M Bot", "T Top", "T Bot"]
         for i, header in enumerate(headers):
-            # Left side headers (Top Warehouse)
-            self.orders_canvas.create_text(initial_offset + param_offset + i * column_width, header_height, text=header, anchor="nw", font=('Helvetica', 10), fill="black")
-            # Right side headers (Bot Warehouse)
-            self.orders_canvas.create_text(canvas_width//2 + middle_space + initial_offset + param_offset + i * column_width, header_height, text=header, anchor="nw", font=('Helvetica', 10), fill="black")
+            self.orders_canvas.create_text(initial_offset*2.5 + i * column_width, header_height, text=header, anchor="nw", font=('Helvetica', 10), fill="black")
 
-        # Titles for each warehouse shifted to the right
-        self.orders_canvas.create_text(initial_offset + 50, 20, text="Top Warehouse", font=('Helvetica', 14, 'bold'), fill="black")  # Pushed to the right
-        self.orders_canvas.create_text(canvas_width//2 + middle_space + initial_offset + 50, 20, text="Bot Warehouse", font=('Helvetica', 14, 'bold'), fill="black")  # Pushed to the right
-
-        # Draw pieces for TopWarehouse
+        # Draw rows for TopWarehouse and BotWarehouse
         top_pieces_list = list(self.mes.TopWarehouse.pieces.queue)
-        for idx, piece in enumerate(top_pieces_list):
-            y_position = header_height + day_height * (idx + 2)
-            self.draw_piece_row(piece, y_position, colors, initial_offset, param_offset, column_width, headers)
-
-        # Draw pieces for BotWarehouse
         bot_pieces_list = list(self.mes.BotWarehouse.pieces.queue)
-        for idx, piece in enumerate(bot_pieces_list):
-            y_position = header_height + day_height * (idx + 2)
-            self.draw_piece_row(piece, y_position, colors, canvas_width//2 + middle_space + initial_offset, param_offset, column_width, headers)
-                                
-    def draw_piece_row(self, piece, y_position, colors, initial_offset, param_offset, column_width, headers):
+        total_pieces = max(len(top_pieces_list), len(bot_pieces_list))
+        for idx in range(total_pieces):
+            if idx < len(top_pieces_list):
+                piece = top_pieces_list[idx]
+                y_position = header_height + day_height * (idx + 1)
+                self.draw_piece_row(piece, y_position, colors, initial_offset, column_width, headers)
+            if idx < len(bot_pieces_list):
+                piece = bot_pieces_list[idx]
+                y_position = header_height + day_height * (idx + 1)
+                self.draw_piece_row(piece, y_position, colors, canvas_width//2, column_width, headers)
+
+    def draw_piece_row(self, piece, y_position, colors, initial_offset, column_width, headers):
         color_index = (piece.type - 1) % len(colors)
         color = colors[color_index]
-        highlight_color = "light yellow" if piece.final_type != piece.type else "light green"
+        
+        if piece.id == 0:
+            highlight_color = None
+        elif piece.on_the_floor:
+            highlight_color = "orange"
+        elif piece.final_type == piece.type:
+            highlight_color = "light green"
+        else:
+            highlight_color = "light yellow"
 
-        adjusted_y_position = y_position + 0  
-        square_y_position = y_position + 0    
+        # Apply highlight if not None
+        if highlight_color:
+            self.orders_canvas.create_rectangle(initial_offset, y_position + 4 , initial_offset + len(headers) * column_width, y_position + 19, fill=highlight_color, outline="")
 
-        # Highlight background, adjusted down
-        if piece.id != 0:
-            self.orders_canvas.create_rectangle(initial_offset, adjusted_y_position - 5, initial_offset + param_offset + (len(headers) - 1) * column_width, adjusted_y_position + 15, fill=highlight_color, outline="")
+        # Adjust square position to align vertically
+        self.orders_canvas.create_rectangle(initial_offset + 20, y_position + 4, initial_offset + 35, y_position + 19, fill=color, outline=color)
+        self.orders_canvas.create_text(initial_offset + 27.5, y_position + 11.5, text=str(piece.type), anchor="center", fill="black" if color != "white" else "gray")
 
-        # Draw the piece type color square, adjusted down
-        self.orders_canvas.create_rectangle(initial_offset + 20, square_y_position, initial_offset + 35, square_y_position + 15, fill=color, outline=color)
-        self.orders_canvas.create_text(initial_offset + 27.5, square_y_position + 7.5, text=str(piece.type), anchor="center", fill="black" if color != "white" else "gray")
-
-        # Text parameters
-        for i, param in enumerate([str(piece.id), str(piece.type), str(piece.final_type), str(piece.line_id), str(piece.machinetop), str(piece.machinebot), str(piece.tooltop), str(piece.toolbot)]):
-            self.orders_canvas.create_text(initial_offset + 40 + i * column_width, adjusted_y_position + 5, text=param, anchor="nw", font=('Helvetica', 8), fill="black")
-
+        # Adjust text position for alignment
+        params = [piece.id, piece.type, piece.final_type, piece.line_id, piece.machinetop, piece.machinebot, piece.tooltop, piece.toolbot]
+        for i, param in enumerate(params):
+            self.orders_canvas.create_text(initial_offset + 40 + i * column_width, y_position + 5, text=str(param), anchor="nw", font=('Helvetica', 8), fill="black")
+   
     def on_closing(self):
         if messagebox.askokcancel("Quit", "Do you really want to quit?"):
             self.master.destroy()

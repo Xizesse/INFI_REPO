@@ -18,6 +18,7 @@ import DB
 
 #Small Things
 #TODO modo manual e automatico para a contagem de dias
+#TODO IDs 
 
 
 
@@ -49,6 +50,9 @@ class MES:
             piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
             self.TopWarehouse.put_piece_queue(piece)
         piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
+        self.TopWarehouse.put_piece_queue(piece)
+        piece = Piece(self.client, 998, 1, 1, 0, 0, False, False, 0, 0)
+        piece.on_the_floor = True
         self.TopWarehouse.put_piece_queue(piece)
         #self.TopWarehouse.set_simulation_warehouse()
         self.BotWarehouse.set_simulation_warehouse()
@@ -150,7 +154,7 @@ class MES:
 
         #! Purchase actions
         #TODO
-        self.update_loading_docks()
+        #self.update_loading_docks()
 
         #!check if there are pieces in the loading dock that can be put in the top warehouse
         #TODO 
