@@ -9,21 +9,93 @@
 
     "Line1": {
         "description": "Production Line 1",
-        "toolTop": "ToolTop0",
-        "machineOFF": "MachineOFF0",
-        "pieceOut": "PieceOut0"
+        "pieceOut": "Piece Out do tapete 1",
+        "lineIn" : "Elemento Struct da line 1",
+        "lineOut" : "Elemento Struct da line 1"
     },
-    "ToolTop0": {
-        "id": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.toolT",
-        "description": "Tool Top 0"
+    "Line2": {
+        "description": "Production Line 2",
+        "pieceOut": "Piece Out do tapete 2",
+        "lineIn" : "Elemento Struct da line 2",
+        "lineOut" : "Elemento Struct da line 2"
     },
-    "MachineOFF0": {
-        "id": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.machineOFF[0]",
-        "description": "Machine OFF 0"
+    "Line3": {
+        "description": "Production Line 3",
+        "pieceOut": "Piece Out do tapete 3",
+        "lineIn" : "Elemento Struct da line 3",
+        "lineOut" : "Elemento Struct da line 3"
     },
-    "PieceOut0": {
-        "id": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.pieceOUT",
-        "description": "Piece Out 1"
+    "Line4": {
+        "description": "Production Line 4",
+        "pieceOut": "Piece Out do tapete 4",
+        "lineIn" : "Elemento Struct da line 4",
+        "lineOut" : "Elemento Struct da line 4"
+    },
+    "Line5": {
+        "description": "Production Line 5",
+        "pieceOut": "Piece Out do tapete 5",
+        "lineIn" : "Elemento Struct da line 5",
+        "lineOut" : "Elemento Struct da line 5"
+    },
+    "Line6": {
+        "description": "Production Line 6",
+        "pieceOut": "Piece Out do tapete 6",
+        "lineIn" : "Elemento Struct da line 6",
+        "lineOut" : "Elemento Struct da line 6"
+    },
+    "ReverseConveyor": {
+        "description": "Reverse Conveyor",
+        "pieceOut": "Piece Out do Reverse Conveyor",
+        "lineIn" : "Elemento Struct da Reverse Conveyor",
+        "lineOut" : "Elemento Struct da Reverse Conveyor"
+    },
+    "LoadingDock1":{
+        "description": "Loading Dock 1",
+        "pieceOut": "Piece Out do Loading Dock 1",
+        "lineIn" : "Elemento Struct da Loading Dock 1",
+        "lineOut" : "Elemento Struct da Loading Dock 1"
+    },
+    "LoadingDock2":{
+        "description": "Loading Dock 2",
+        "pieceOut": "Piece Out do Loading Dock 2",
+        "lineIn" : "Elemento Struct da Loading Dock 2",
+        "lineOut" : "Elemento Struct da Loading Dock 2"
+    },
+    "LoadingDock3":{
+        "description": "Loading Dock 3",
+        "pieceOut": "Piece Out do Loading Dock 3",
+        "lineIn" : "Elemento Struct da Loading Dock 3",
+        "lineOut" : "Elemento Struct da Loading Dock 3"
+    },
+    "LoadingDock4":{
+        "description": "Loading Dock 4",
+        "pieceOut": "Piece Out do Loading Dock 4",
+        "lineIn" : "Elemento Struct da Loading Dock 4",
+        "lineOut" : "Elemento Struct da Loading Dock 4"
+    },
+    "UnloadingDock1":{
+        "description": "Unloading Dock 1",
+        "pieceOut": "Piece Out do Unloading Dock 1",
+        "lineIn" : "Elemento Struct da Unloading Dock 1",
+        "lineOut" : "Elemento Struct da Unloading Dock 1"
+    },
+    "UnloadingDock2":{
+        "description": "Unloading Dock 2",
+        "pieceOut": "Piece Out do Unloading Dock 2",
+        "lineIn" : "Elemento Struct da Unloading Dock 2",
+        "lineOut" : "Elemento Struct da Unloading Dock 2"
+    },
+    "UnloadingDock3":{
+        "description": "Unloading Dock 3",
+        "pieceOut": "Piece Out do Unloading Dock 3",
+        "lineIn" : "Elemento Struct da Unloading Dock 3",
+        "lineOut" : "Elemento Struct da Unloading Dock 3"
+    },
+    "UnloadingDock4":{
+        "description": "Unloading Dock 4",
+        "pieceOut": "Piece Out do Unloading Dock 4",
+        "lineIn" : "Elemento Struct da Unloading Dock 4",
+        "lineOut" : "Elemento Struct da Unloading Dock 4"
     }
 }
 

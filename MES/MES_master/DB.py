@@ -31,6 +31,7 @@ def get_production_queue(day):
 
     Returns:
     list of tuples: Each tuple contains the due date and expanded item numbers based on the quantities.
+    (p5, p6, p7, p9)
     """
     if isinstance(day, int):
         day = str(day)  # Convert integer to string
