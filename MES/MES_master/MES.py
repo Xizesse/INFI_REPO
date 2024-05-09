@@ -6,7 +6,7 @@ from PiecesGUI import PiecesGUI
 from StatisticsGUI import ShopFloorStatisticsWindow
 #from queue import Queue
 import tkinter as tk
-import time
+import time 
 import json
 import os
 from Line import Line
@@ -109,7 +109,7 @@ class MES:
             (3, 4): [3, 4],
             (3, 5): [3, 4, 5],
             (3, 6): [3, 4, 6],
-            (3, 7): [3, 4, 7],
+            (3, 7): [3, 4, 7], 
             (4, 5): [4, 5],
             (4, 6): [4, 6],
             (4, 7): [4, 7],
@@ -154,7 +154,7 @@ class MES:
 
         #! Purchase actions
         #TODO
-        #self.update_loading_docks()
+        self.update_loading_docks()
 
         #!check if there are pieces in the loading dock that can be put in the top warehouse
         #TODO 
@@ -276,7 +276,6 @@ class MES:
             piece.machinebot = True
             piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
             #remove the piece from the warehouse
-
             #piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
             #hmmm line.load_piece(piece)
 
@@ -310,28 +309,33 @@ class MES:
                 self.production_orders.remove(order)
             else :
                 i += 1
+
     def send_unfinished_back_up(self):
         #Send back up the unfinished pieces
-        for piece in list(self.BotWarehouse.pieces.queue):
-            if piece.type != piece.final_type:
-                print("Sending unfinished piece back up.")
+        #for piece in list(self.BotWarehouse.pieces.queue):
+            #if piece.type != piece.final_type:
+            #    print("Sending unfinished piece back up.")
+        return
+
+
 
     def update_loading_docks(self):
-        for id, dock in self.loading_docks:
+        # Iterate over each dock using items() to get both key (dock id) and value (dock object)
+        for dock_id, dock in self.loading_docks.items():
             if not dock.is_Occupied():
-                #if dock is 1 or 2, check the purchases for a piece of type 1
-                #if dock is 3 or 4, check the purchases for a piece of type 2
-                #if there is a piece of the correct type, load it into the dock
-                if id in [1, 2]:
+                # Check for which dock it is and load the appropriate piece type
+                if dock_id in [1, 2]:  # For docks 1 and 2, we look for a piece of type 1
                     for piece in self.purchases:
-                        if piece.type == 1:
-                            #dock.load_piece(piece)
-                            break
-                if id in [3, 4]:
+                        if piece == 1:
+                            #dock.load_piece(piece)  # Assuming this function sets the dock's status to occupied
+                            break  # Stop searching once a piece is loaded
+                elif dock_id in [3, 4]:  # For docks 3 and 4, we look for a piece of type 2
                     for piece in self.purchases:
-                        if piece.type == 2:
-                            #dock.load_piece(piece)
-                            break
+                        if piece == 2:
+                            #dock.load_piece(piece) 
+                            break  # Stop searching once a piece is loaded
+                
+
                 
 
                

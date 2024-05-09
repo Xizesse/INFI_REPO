@@ -1,19 +1,20 @@
 import tkinter as tk
 from tkinter import messagebox, Canvas
 import sys
+import time
 
 class PiecesGUI:
     def __init__(self, mes, on_connect, on_disconnect):
         self.mes = mes
         self.master = mes.root
-        self.really_count = 0
         self.day_count = 0
-        self.order_queue = None
-        self.master.title("MES Client Interface")
+        self.auto_mode_active = False
+        self.start_time = None
+
+        self.master.title("Pieces GUI")
         self.master.configure(bg='lightgray')
         self.master.geometry("1300x600")
 
-        # GUI elements
         self.connect_button = tk.Button(self.master, text="Connect", command=on_connect)
         self.connect_button.place(x=50, y=200)
 
@@ -25,51 +26,50 @@ class PiecesGUI:
 
         self.light_indicator = tk.Label(self.master, bg="grey", width=2, height=1)
         self.light_indicator.place(x=50, y=290)
-        self.blinking = False
 
-        # Day Count
         self.day_count_label = tk.Label(self.master, text=f"Day Count: {self.day_count}")
         self.day_count_label.pack()
 
-        # Increment/Reset buttons
+        self.day_timer_label = tk.Label(self.master, font=('Helvetica', 12), fg='black', bg='lightgray')
+        self.day_timer_label.pack()
+        self.update_day_timer()
+
         self.increment_button = tk.Button(self.master, text="Increment Day", command=self.increment_day_count)
         self.increment_button.pack()
 
         self.reset_button = tk.Button(self.master, text="Reset Day", command=self.reset_day_count)
         self.reset_button.pack()
 
-        # Canvas for drawing orders
-        self.orders_canvas = Canvas(self.master, width=900, height=500)  # Adjust size as needed
+        self.mode_button = tk.Button(self.master, text="Switch to Automatic Mode", command=self.toggle_mode)
+        self.mode_button.pack()
+
+        self.orders_canvas = Canvas(self.master, width=900, height=500)
         self.orders_canvas.pack()
 
-        # Window closing event
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
-
-    """ def update_orders_display(self):
-        self.orders_canvas.delete("all")  
-        colors = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]  # Colors for 9 piece types
-        header_height = 20  
-        day_height = 20 
-        piece_width = 50  
-        initial_offset = 50  
-
-        
-        for piece_type in range(9):  
-            x_position = initial_offset + piece_width * (piece_type + 0.5)  
-            color = colors[piece_type % len(colors)]
-            self.orders_canvas.create_rectangle(x_position, 0, x_position + 15, 15, fill=color, outline=color)
-            self.orders_canvas.create_text(x_position + 7.5, 0, text=str(piece_type), anchor="n", fill="black" if color != "white" else "gray")
-
-       
-        for i in range(12):  # Display data for 12 days
-            day = self.day_count + i  
-            y_position = header_height + day_height * i  
-            self.orders_canvas.create_text(10, y_position + 5, text=f"Day {day}:", anchor="nw")
-            for piece_type in range(9):
-                completed, total = self.mes.TopWarehouse.count_pieces_by_type_and_day(piece_type, day)
-                x_position = initial_offset + piece_width * piece_type  
-                self.orders_canvas.create_text(x_position + 20, y_position + 5, text=f"{completed}/{total}", anchor="nw") """
     
+    def update_clock(self):
+        current_time = time.strftime('%H:%M:%S')  # Get current time in hour:minute:second
+        self.time_label.config(text=current_time)  # Update the label
+        self.master.after(1000, self.update_clock)
+
+    def toggle_mode(self):
+        self.auto_mode_active = not self.auto_mode_active
+        if self.auto_mode_active:
+            self.mode_button.config(text="Switch to Manual Mode")
+            self.start_auto_increment()
+        else:
+            self.mode_button.config(text="Switch to Automatic Mode")
+            self.stop_auto_increment()
+
+    def start_auto_increment(self):
+        self.reset_day_timer()
+        self.auto_increment_job = self.master.after(60000, self.start_auto_increment)
+
+    def stop_auto_increment(self):
+        if hasattr(self, 'auto_increment_job'):
+            self.master.after_cancel(self.auto_increment_job)
+
     def update_orders_display(self):
         self.orders_canvas.delete("all")
         self.orders_canvas.config(width=1200, height=600)
@@ -125,18 +125,44 @@ class PiecesGUI:
         for i, param in enumerate(params):
             self.orders_canvas.create_text(initial_offset + 40 + i * column_width, y_position + 5, text=str(param), anchor="nw", font=('Helvetica', 8), fill="black")
    
-    def on_closing(self):
-        if messagebox.askokcancel("Quit", "Do you really want to quit?"):
-            self.master.destroy()
-            sys.exit()
 
     def increment_day_count(self):
         self.day_count += 1
         self.day_count_label.config(text=f"Day Count: {self.day_count}")
 
+    def update_day_timer(self):
+        if self.start_time is None:
+            self.start_time = time.time()
+            
+        elapsed_time = int(time.time() - self.start_time)
+        
+        # Update the timer display continuously
+        self.day_timer_label.config(text=f"Time Elapsed Today: {elapsed_time} seconds")
+        
+        # Proceed with the following only if in Automatic Mode
+        if self.auto_mode_active:
+            # Check if 60 seconds have passed
+            if elapsed_time >= 60:
+                # If yes, increment the day count and reset the timer
+                self.increment_day_count()
+                self.reset_day_timer()
+            else:
+                # Otherwise, schedule the next check in 1 second
+                self.timer_job = self.master.after(1000, self.update_day_timer)
+        else:
+            # In Manual mode, we stop the timer or do not continue the auto increment loop
+            if hasattr(self, 'timer_job'):
+                self.master.after_cancel(self.timer_job)
+
+    def reset_day_timer(self):
+        # Only reset the start time and update the display, timer scheduling is handled by update_day_timer
+        self.start_time = time.time()
+        self.update_day_timer() 
+
     def reset_day_count(self):
         self.day_count = 0
         self.day_count_label.config(text=f"Day Count: {self.day_count}")
+        self.reset_day_timer()
 
     def blink(self):
         if self.blinking:
@@ -145,5 +171,9 @@ class PiecesGUI:
             self.light_indicator.config(bg=new_color)
             self.master.after(300, self.blink)
 
+    def on_closing(self):
+        if messagebox.askokcancel("Quit", "Do you really want to quit?"):
+            self.master.destroy()
+            sys.exit()
 
 
