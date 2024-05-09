@@ -2,7 +2,6 @@ import sys
 from opcua import Client
 from opcua import ua
 from tkinter import messagebox
-from GUI import OPCUAClientGUI 
 import tkinter as tk
 import time
 import json

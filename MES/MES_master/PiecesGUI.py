@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox, Canvas
 import sys
 
-class OPCUAClientGUI:
+class PiecesGUI:
     def __init__(self, mes, on_connect, on_disconnect):
         self.mes = mes
         self.master = mes.root
@@ -69,52 +69,60 @@ class OPCUAClientGUI:
                 completed, total = self.mes.TopWarehouse.count_pieces_by_type_and_day(piece_type, day)
                 x_position = initial_offset + piece_width * piece_type  
                 self.orders_canvas.create_text(x_position + 20, y_position + 5, text=f"{completed}/{total}", anchor="nw") """
-    
     def update_orders_display(self):
         self.orders_canvas.delete("all")  # Clear previous contents
-        colors = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]  # Colors for 9 piece types
-        header_height = 20
+        self.orders_canvas.config(width=1200, height=600)  # Adjusted to fit smaller screens
+        colors = ["brown", "red", "orange", "yellow", "green", "blue", "violet", "gray", "white"]
+        header_height = 50
         day_height = 20
-        piece_width = 50
-        initial_offset = 50
-        param_offset = 120  # Adjusted for reduced spacing, was 150 previously
-        spacing_between_params = 60  # Reduce this to bring parameters closer
+        initial_offset = 20  # Reduced offset for compactness
+        param_offset = 20    # Reduced distance to ID
+        column_width = 50    # Narrower columns to fit more content
+        middle_space = 00   # Less space between warehouses to save space
+        canvas_width = self.orders_canvas.winfo_reqwidth()
 
-        # Header for piece attributes
-        headers = ["ID", "Type", "Final Type", "Order ID", "Del Day", "Line ID", "M Top", "M Bot", "T Top", "T Bot", "Done"]
+        headers = ["ID", "Type", "Final Type", "Line ID", "M Top", "M Bot", "T Top", "T Bot"]
         for i, header in enumerate(headers):
-            self.orders_canvas.create_text(initial_offset + param_offset + i * spacing_between_params, 0, text=header, anchor="nw")
+            # Left side headers (Top Warehouse)
+            self.orders_canvas.create_text(initial_offset + param_offset + i * column_width, header_height, text=header, anchor="nw", font=('Helvetica', 10), fill="black")
+            # Right side headers (Bot Warehouse)
+            self.orders_canvas.create_text(canvas_width//2 + middle_space + initial_offset + param_offset + i * column_width, header_height, text=header, anchor="nw", font=('Helvetica', 10), fill="black")
 
-        # List all pieces in the queue
-        pieces_list = list(self.mes.TopWarehouse.pieces.queue)
-        for idx, piece in enumerate(pieces_list):
-            y_position = header_height + day_height * (idx + 1)  # Start positioning below the header
-            x_position = initial_offset
+        # Titles for each warehouse shifted to the right
+        self.orders_canvas.create_text(initial_offset + 50, 20, text="Top Warehouse", font=('Helvetica', 14, 'bold'), fill="black")  # Pushed to the right
+        self.orders_canvas.create_text(canvas_width//2 + middle_space + initial_offset + 50, 20, text="Bot Warehouse", font=('Helvetica', 14, 'bold'), fill="black")  # Pushed to the right
 
-            # Draw the piece type color square
-            color = colors[(piece.type-1) % len(colors)]
-            self.orders_canvas.create_rectangle(x_position, y_position, x_position + 15, y_position + 15, fill=color, outline=color)
-            self.orders_canvas.create_text(x_position + 7.5, y_position + 5, text=str(piece.type), anchor="center", fill="black" if color != "white" else "gray")
+        # Draw pieces for TopWarehouse
+        top_pieces_list = list(self.mes.TopWarehouse.pieces.queue)
+        for idx, piece in enumerate(top_pieces_list):
+            y_position = header_height + day_height * (idx + 2)
+            self.draw_piece_row(piece, y_position, colors, initial_offset, param_offset, column_width, headers)
 
-            # Display all piece parameters
-            param_texts = [
-                str(piece.id),
-                str(piece.type),
-                str(piece.final_type),
-                str(piece.order_id),
-                str(piece.delivery_day),
-                str(piece.line_id),
-                str(piece.machinetop),
-                str(piece.machinebot),
-                str(piece.tooltop),
-                str(piece.toolbot),
-                str(piece.done)
-            ]
-            for i, param in enumerate(param_texts):
-                self.orders_canvas.create_text(x_position + param_offset + i * spacing_between_params, y_position + 5, text=param, anchor="nw")
+        # Draw pieces for BotWarehouse
+        bot_pieces_list = list(self.mes.BotWarehouse.pieces.queue)
+        for idx, piece in enumerate(bot_pieces_list):
+            y_position = header_height + day_height * (idx + 2)
+            self.draw_piece_row(piece, y_position, colors, canvas_width//2 + middle_space + initial_offset, param_offset, column_width, headers)
+                                
+    def draw_piece_row(self, piece, y_position, colors, initial_offset, param_offset, column_width, headers):
+        color_index = (piece.type - 1) % len(colors)
+        color = colors[color_index]
+        highlight_color = "light yellow" if piece.final_type != piece.type else "light green"
 
+        adjusted_y_position = y_position + 0  
+        square_y_position = y_position + 0    
 
+        # Highlight background, adjusted down
+        if piece.id != 0:
+            self.orders_canvas.create_rectangle(initial_offset, adjusted_y_position - 5, initial_offset + param_offset + (len(headers) - 1) * column_width, adjusted_y_position + 15, fill=highlight_color, outline="")
 
+        # Draw the piece type color square, adjusted down
+        self.orders_canvas.create_rectangle(initial_offset + 20, square_y_position, initial_offset + 35, square_y_position + 15, fill=color, outline=color)
+        self.orders_canvas.create_text(initial_offset + 27.5, square_y_position + 7.5, text=str(piece.type), anchor="center", fill="black" if color != "white" else "gray")
+
+        # Text parameters
+        for i, param in enumerate([str(piece.id), str(piece.type), str(piece.final_type), str(piece.line_id), str(piece.machinetop), str(piece.machinebot), str(piece.tooltop), str(piece.toolbot)]):
+            self.orders_canvas.create_text(initial_offset + 40 + i * column_width, adjusted_y_position + 5, text=param, anchor="nw", font=('Helvetica', 8), fill="black")
 
     def on_closing(self):
         if messagebox.askokcancel("Quit", "Do you really want to quit?"):
@@ -135,3 +143,6 @@ class OPCUAClientGUI:
             new_color = "green" if current_color == "grey" else "grey"
             self.light_indicator.config(bg=new_color)
             self.master.after(300, self.blink)
+
+
+

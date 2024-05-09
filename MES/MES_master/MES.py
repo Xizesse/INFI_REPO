@@ -2,7 +2,8 @@ import sys
 from opcua import Client
 from opcua import ua
 from tkinter import messagebox
-from GUI import OPCUAClientGUI 
+from PiecesGUI import PiecesGUI 
+from Statistics import ShopFloorStatisticsWindow
 #from queue import Queue
 import tkinter as tk
 import time
@@ -11,53 +12,77 @@ import os
 from Line import Line
 from Piece import Piece
 from Warehouse import Warehouse
+from Docks import LoadingDock, UnloadingDock
 import DB
 
+#!TODO
+
+#Small Things
+#TODO modo manual e automatico para a contagem de dias
 
 
-#hmmm o loop vai ser tipo 
-"""
-    Check all machines
-    If the machine can take the piece
-    Process the piece
-    """
-
-
-#TODO : Display das orders
 
 class MES:
     def __init__(self):
         #! CLIENTE OPC UA e GUI
         url = "opc.tcp://172.27.64.1:4840"
         self.client = Client(url)
-        self.root = tk.Tk()
-        self.app = OPCUAClientGUI(self, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app))
+        self.root = tk.Tk() 
+        self.app = PiecesGUI(self, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app)) 
+        self.stats = ShopFloorStatisticsWindow(self.root)
         nodes = self.load_nodes_from_file('nodes.json')
         self.connected = False
+    
+        #! PURCHASES
+        self.purchases = []
 
+        #! PRODUCTION ORDERS - Class orders - Working :)
+        self.production_orders = []
+
+        #! DELIVERIES 
+        self.deliveries = []
+        
         #!WAREHOUSES
         self.TopWarehouse = Warehouse(self.client)
         #O warehouse de cima começa com 20 peças 1
         for _ in range(20):
             piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
             self.TopWarehouse.put_piece_queue(piece)
+        piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
+        self.TopWarehouse.put_piece_queue(piece)
         #self.TopWarehouse.set_simulation_warehouse()
         self.BotWarehouse = Warehouse(self.client)
-        #self.BotWarehouse.set_simulation_warehouse()
-
-
-        #! ORDERS
-        self.production_orders = []
+        self.BotWarehouse.set_simulation_warehouse()
+        #self.SFS = Warehouse(self.client)
 
         #! LINES AND MACHINES
         self.lines_machines = {
-    1: Line(self.client, nodes, "Line1", 1, {1, 2, 3}, {1, 2, 3}),
-    2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
-    3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
-    4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
-    5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
-    6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
-}
+            1: Line(self.client, nodes, "Line1", 1, {1, 2, 3}, {1, 2, 3}),
+            2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
+            3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
+            4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
+            5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
+            6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
+        }
+
+        #! LOADING DOCKS
+
+        self.loading_docks = {
+            1: LoadingDock(self.client, 1),
+            2: LoadingDock(self.client, 1),
+            3: LoadingDock(self.client, 2),
+            4: LoadingDock(self.client, 2)
+        }
+
+        #! UNLOADING DOCKS
+
+        self.unloading_docks = {
+            1: UnloadingDock(self.client),
+            2: UnloadingDock(self.client),
+            3: UnloadingDock(self.client),
+            4: UnloadingDock(self.client)
+        }
+
         #! TRANSFORMATIONS
         self.transformations = {
         #    (start_piece, tool): {'result': final_piece}
@@ -100,6 +125,58 @@ class MES:
             4: {1, 4, 6},
         }
 
+#######################################################################################################
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MES Loop !!!!!!!!!!!!!!
+    def MES_loop(self):
+        global connected
+        global last_day
+        #print("Starting day: ", self.app.day_count)
+        self.app.update_orders_display()
+        
+
+        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+        if last_day != self.app.day_count:
+            #! Get the prod sched for the day
+            daily_prod = DB.get_production_queue(self.app.day_count)
+            self.production_orders += daily_prod
+            #! Get the purchases for the day
+            #self.purchases = DB.get_purchases(self.app.day_count)
+            #! Get the deliveries for the day
+            #self.deliveries = DB.get_deliveries(self.app.day_count)
+
+            print("LOADED PRODUCTION ORDERS:")
+            
+            last_day = self.app.day_count
+
+        #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+
+        #! Purchase actions
+        #TODO
+        #loadings into the loading docks
+
+        #!check if there are pieces in the loading dock that can be put in the top warehouse
+        #TODO 
+        #for dock in self.loading_docks: ...
+            #Piece = unload ...
+            #add to top warehouse
+        
+        #!Turn self.production_orders into pieces in the top warehouse
+        self.update_pieces()
+    
+        #!update all machines (Simpler algorith : Bottom machines then top machines)
+        self.update_all_machines()
+
+        #!Add to the bottom warehouse - Xico e Alex
+        #TODO
+
+        #!Send back up the unfinished pieces - Xico e Alex
+        #TODO
+       
+
+        #! Delivery actions - Barbara
+        #TODO
+            
+        self.root.after(1000, self.MES_loop)
 
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
@@ -143,11 +220,9 @@ class MES:
     def find_next_transformation(self, start_type, final_type): 
         #Returns the next transformation to be done to get to the final type
         if start_type == final_type:
-            print("Piece is already at the final type.")
             return None
         path = self.transformation_paths.get((start_type, final_type))
         if not path:
-            print("Transformation is not possible.")
             return None
         current_type = start_type
         for next_type in path[1:]:  
@@ -155,23 +230,19 @@ class MES:
             for (start_piece, tool), transformation in self.transformations.items():
                 if start_piece == current_type and transformation['result'] == next_type:
                     return tool  
-        print("Error. No tool found for the transformation.")
         return None
 
     def check_machine_can_process(self, line, position, piece):
         current_type = piece.type
         final_type = piece.final_type
         if (position == 'top' and line.isTopBusy()) or (position == 'bot' and line.isBotBusy()):
-            print(f"{position} machine on line {line.id} is currently busy.")
             return False
 
         next_tool = self.find_next_transformation(current_type, final_type)
         if next_tool is None:
-            print(f"No next tool found for transformation from {current_type} to {final_type}.")
             return False
 
         if line.has_tool(next_tool, position):
-            print(f"{position} machine on line {line.id} can process the piece with tool {next_tool}.")
             return True
         else:
             print(f"{position} machine on line {line.id} does not have the required tool {next_tool}.")
@@ -219,25 +290,7 @@ class MES:
                 if piece.machinetop == False and piece.machinebot == False:
                     self.update_machine(line, 'top', piece)
 
-#######################################################################################################
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MES Loop !!!!!!!!!!!!!!
-    def MES_loop(self):
-        global connected
-        global last_day
-        #print("Starting day: ", self.app.day_count)
-        self.app.update_orders_display()
-        
-        if last_day != self.app.day_count:
-            #!Beggining of the day actions
-            #Get the prod sched for the day
-            daily_prod = DB.get_production_queue(self.app.day_count)
-            print("LOADED PRODUCTION ORDERS:")
-            print(DB.get_production_queue(self.app.day_count))
-            self.production_orders += daily_prod
-            last_day = self.app.day_count
-
-        #!                                       Permanent actions        
-        #!check if there are pieces with ID 0 in the top warehouse that could be transformed into one from self.production_orders
+    def update_pieces(self):
         i = 0
         while i < len(self.production_orders):
             order = self.production_orders[i]
@@ -255,11 +308,6 @@ class MES:
                 self.production_orders.remove(order)
             else :
                 i += 1
-        #!update all machines
-        self.update_all_machines()
-            
-        self.root.after(2000, self.MES_loop)
-
 
 #######################################################################################################
 if __name__ == "__main__":
@@ -270,5 +318,3 @@ if __name__ == "__main__":
     last_day = 0
     mes.root.after(1, mes.MES_loop)
     mes.root.mainloop()
-
-
