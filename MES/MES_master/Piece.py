@@ -68,7 +68,7 @@ class Piece:
         self.machinebot = machine_bot 
         self.tooltop = tool_top 
         self.toolbot = tool_bot 
-        self.done = False 
+        self.on_the_floor = False 
 
     def load_piece(self, line, Recipes ): 
         

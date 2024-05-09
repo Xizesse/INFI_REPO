@@ -37,7 +37,7 @@ def process_new_order():
 
     # Create orders table
     cur.execute('''CREATE TABLE IF NOT EXISTS infi.orders
-                 (client TEXT, number TEXT, workpiece TEXT, quantity INTEGER, due_date INTEGER,
+                 (client TEXT, number INTEGER, workpiece TEXT, quantity INTEGER, due_date INTEGER,
                  late_pen INTEGER, early_pen INTEGER)''')
 
     # Insert orders into the database
@@ -56,3 +56,5 @@ def process_new_order():
     conn.close()
 
     print("Orders inserted into database.")
+
+    return order['number']

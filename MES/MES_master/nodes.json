@@ -42,8 +42,60 @@
         "pieceOut": "Piece Out do tapete 6",
         "lineIn" : "Elemento Struct da line 6",
         "lineOut" : "Elemento Struct da line 6"
+    },
+    "ReverseConveyor": {
+        "description": "Reverse Conveyor",
+        "pieceOut": "Piece Out do Reverse Conveyor",
+        "lineIn" : "Elemento Struct da Reverse Conveyor",
+        "lineOut" : "Elemento Struct da Reverse Conveyor"
+    },
+    "LoadingDock1":{
+        "description": "Loading Dock 1",
+        "pieceOut": "Piece Out do Loading Dock 1",
+        "lineIn" : "Elemento Struct da Loading Dock 1",
+        "lineOut" : "Elemento Struct da Loading Dock 1"
+    },
+    "LoadingDock2":{
+        "description": "Loading Dock 2",
+        "pieceOut": "Piece Out do Loading Dock 2",
+        "lineIn" : "Elemento Struct da Loading Dock 2",
+        "lineOut" : "Elemento Struct da Loading Dock 2"
+    },
+    "LoadingDock3":{
+        "description": "Loading Dock 3",
+        "pieceOut": "Piece Out do Loading Dock 3",
+        "lineIn" : "Elemento Struct da Loading Dock 3",
+        "lineOut" : "Elemento Struct da Loading Dock 3"
+    },
+    "LoadingDock4":{
+        "description": "Loading Dock 4",
+        "pieceOut": "Piece Out do Loading Dock 4",
+        "lineIn" : "Elemento Struct da Loading Dock 4",
+        "lineOut" : "Elemento Struct da Loading Dock 4"
+    },
+    "UnloadingDock1":{
+        "description": "Unloading Dock 1",
+        "pieceOut": "Piece Out do Unloading Dock 1",
+        "lineIn" : "Elemento Struct da Unloading Dock 1",
+        "lineOut" : "Elemento Struct da Unloading Dock 1"
+    },
+    "UnloadingDock2":{
+        "description": "Unloading Dock 2",
+        "pieceOut": "Piece Out do Unloading Dock 2",
+        "lineIn" : "Elemento Struct da Unloading Dock 2",
+        "lineOut" : "Elemento Struct da Unloading Dock 2"
+    },
+    "UnloadingDock3":{
+        "description": "Unloading Dock 3",
+        "pieceOut": "Piece Out do Unloading Dock 3",
+        "lineIn" : "Elemento Struct da Unloading Dock 3",
+        "lineOut" : "Elemento Struct da Unloading Dock 3"
+    },
+    "UnloadingDock4":{
+        "description": "Unloading Dock 4",
+        "pieceOut": "Piece Out do Unloading Dock 4",
+        "lineIn" : "Elemento Struct da Unloading Dock 4",
+        "lineOut" : "Elemento Struct da Unloading Dock 4"
     }
-    
-   
 }
 
