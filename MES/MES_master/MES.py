@@ -3,7 +3,7 @@ from opcua import Client
 from opcua import ua
 from tkinter import messagebox
 from PiecesGUI import PiecesGUI 
-from Statistics import ShopFloorStatisticsWindow
+from StatisticsGUI import ShopFloorStatisticsWindow
 #from queue import Queue
 import tkinter as tk
 import time
@@ -11,7 +11,7 @@ import json
 import os
 from Line import Line
 from Piece import Piece
-from Warehouse import Warehouse
+from warehouse import Warehouse
 from Docks import LoadingDock, UnloadingDock
 import DB
 
@@ -132,6 +132,7 @@ class MES:
         global last_day
         #print("Starting day: ", self.app.day_count)
         self.app.update_orders_display()
+       
         
 
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
@@ -142,7 +143,9 @@ class MES:
             #! Get the purchases for the day
             #self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
-            #self.deliveries = DB.get_deliveries(self.app.day_count)
+            delivery = DB.get_deliveries()
+            self.deliveries += delivery
+            self.stats.update_orders_data(self.deliveries)
 
             print("LOADED PRODUCTION ORDERS:")
             
@@ -175,6 +178,7 @@ class MES:
 
         #! Delivery actions - Barbara
         #TODO
+        
             
         self.root.after(1000, self.MES_loop)
 
