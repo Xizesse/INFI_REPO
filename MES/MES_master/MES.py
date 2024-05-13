@@ -38,6 +38,10 @@ class MES:
 
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        
 
         #! DELIVERIES - Array of (orders) 
         self.deliveries = []
@@ -55,26 +59,28 @@ class MES:
         piece.on_the_floor = True
         self.TopWarehouse.put_piece_queue(piece)
         #self.TopWarehouse.set_simulation_warehouse()
-        self.BotWarehouse.set_simulation_warehouse()
+        #self.BotWarehouse.set_simulation_warehouse()
         #self.SFS = Warehouse(self.client)
+
+        self.IDcount = 1
 
         #! LINES AND MACHINES
         self.lines_machines = {
             1: Line(self.client, nodes, "Line1", 1, {1, 2, 3}, {1, 2, 3}),
-            2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
-            3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
-            4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
-            5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
-            6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
+            #2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
+            #3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
+            #4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
+            #5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
+            #6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
         }
         self.ReverseConveyor = Line(self.client, nodes, "ReverseConveyor", 0, {}, {})
 
         #! LOADING DOCKS
         self.loading_docks = {
-            1: Line(self.client, nodes, "LoadingDock1", 11, {0}, {0}),
-            2: Line(self.client, nodes, "LoadingDock2", 12, {0}, {0}),
-            3: Line(self.client, nodes, "LoadingDock3", 13, {0}, {0}),
-            4: Line(self.client, nodes, "LoadingDock4", 14, {0}, {0})
+            1: Line(self.client, nodes, "LoadingDock1", 11, {}, {}),
+            2: Line(self.client, nodes, "LoadingDock2", 12, {}, {}),
+            3: Line(self.client, nodes, "LoadingDock3", 13, {}, {}),
+            4: Line(self.client, nodes, "LoadingDock4", 14, {}, {})
         }
 
         #! UNLOADING DOCKS
@@ -127,10 +133,11 @@ class MES:
             4: {1, 4, 6},
         }
 
+        print("\nMES initialized\n\n")
+
 #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MES Loop !!!!!!!!!!!!!!
     def MES_loop(self):
-        global connected
         global last_day
         #print("Starting day: ", self.app.day_count)
         self.app.update_orders_display()
@@ -138,6 +145,10 @@ class MES:
 
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
         if last_day != self.app.day_count:
+            print("New day, good morning")
+
+            
+
             #! Get the prod sched for the day
             daily_prod = DB.get_production_queue(self.app.day_count)
             self.production_orders += daily_prod
@@ -145,38 +156,39 @@ class MES:
             #self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
             #self.deliveries = DB.get_deliveries(self.app.day_count)
-
-            print("LOADED PRODUCTION ORDERS:")
+            #if self.connected:
+                #pieceTest = Piece(self.client, 999, 1, 2, 0, 0, False, True, 0, 1)
+                #self.lines_machines[1].load_piece(pieceTest)
             
             last_day = self.app.day_count
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-        #! Purchase actions
-        #TODO
-        self.update_loading_docks()
-
-        #!check if there are pieces in the loading dock that can be put in the top warehouse
-        #TODO 
-        #for dock in self.loading_docks: ...
-            #Piece = unload ...
-            #add to top warehouse
+        if self.connected:
         
-        #!Turn self.production_orders into pieces in the top warehouse
-        self.update_pieces()
-    
-        #!update all machines (Simpler algorith : Bottom machines then top machines)
-        self.update_all_machines()
+            #! Purchase actions
+            #TODO
+            #self.update_loading_docks()
 
-        #!Add to the bottom warehouse - Xico e Alex
-        #TODO
+            #!check if there are pieces in the loading dock that can be put in the top warehouse
+            #TODO 
+            #for dock in self.loading_docks: ...
+                #Piece = unload ...
+                #add to top warehouse
+            
+            #!Turn self.production_orders into pieces in the top warehouse
+            self.update_pieces()
+            #!update all machines (Simpler algorith : Bottom machines then top machines)
+            self.update_all_machines()
+            #!Get the piece in each line output
+            #TODO
+            self.remove_all_output_piece()
+            #!Send back up the unfinished pieces - Xico
+            #self.send_unfinished_back_up()
+        
 
-        #!Send back up the unfinished pieces - Xico
-        self.send_unfinished_back_up()
-    
-
-        #! Delivery actions - Barbara
-        #TODO
+            #! Delivery actions - Barbara
+            #TODO
             
         self.root.after(1000, self.MES_loop)
 
@@ -184,16 +196,16 @@ class MES:
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
 
     def connect_to_server(self, gui):
-        global connected
 
-        if connected:
+
+        if self.connected:
             return
         try:
             # OPC UA connect logic here
             self.client.connect()
             gui.status_label.config(text="Connected", fg="green")
             gui.start_blinking()
-            connected = True
+            self.connected = True
         except Exception as e:
             messagebox.showerror("Connection Error", str(e))
         
@@ -205,15 +217,14 @@ class MES:
         return data
 
     def disconnect_server(self, gui):
-        global connected
-        if not connected:
+        if not self.connected:
             return
         try:
             # OPC UA disconnect logic here
             self.client.disconnect()
             gui.status_label.config(text="Disconnected", fg="red")
             gui.stop_blinking()
-            connected = False
+            self.connected = False
         except Exception as e:
             messagebox.showerror("Disconnection Error", str(e))
         
@@ -251,7 +262,6 @@ class MES:
             return False
 
     def get_raw_material(self, final):
-        #Get the raw material for the piece
         if final in [1, 3, 4, 5, 6, 7]:
             return 1
         elif final in [9]:
@@ -268,7 +278,7 @@ class MES:
             piece.line_id = line.id
             piece.machinetop = True
             piece.tooltop = self.find_next_transformation(piece.type, piece.final_type)
-            #hmmm line.load_piece(piece)
+            line.load_piece(piece)
         elif position == 'bot':
             #take the piece out of the warehouse
             line.setBotBusy(True)
@@ -277,16 +287,25 @@ class MES:
             piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
             #remove the piece from the warehouse
             #piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
-            #hmmm line.load_piece(piece)
+            line.load_piece(piece)
 
     def update_all_machines(self):
         #first update all bottom machines
+        print("Updating all machines.")
         for _, line in self.lines_machines.items():
+            if line.is_Occupied():
+                print(f"Line {line.id} is occupied.")
+                continue
+            else:
+                print(f"Line {line.id} is not occupied.")
             for piece in list(self.TopWarehouse.pieces.queue):
-                if piece.machinebot == False and piece.machinetop == False:
+                if piece.machinetop == False and piece.machinebot == False:
                     self.update_machine(line, 'bot', piece)
+
         #then update all top machines
         for _, line in self.lines_machines.items():
+            if line.is_Occupied():
+                continue
             for piece in list(self.TopWarehouse.pieces.queue):
                 if piece.machinetop == False and piece.machinebot == False:
                     self.update_machine(line, 'top', piece)
@@ -298,10 +317,11 @@ class MES:
             processed = False
             for piece in list(self.TopWarehouse.pieces.queue):
                 if self.transformation_paths.get((piece.type, order)) and piece.id == 0:
-                    print("Transforming piece into order type.")
+                    print(f"Creating piece for {piece.type}->{piece.final_type}")
                     piece.final_type = order
                     piece.order_id = 27
-                    piece.id = 27
+                    piece.id = self.IDcount
+                    self.IDcount += 1
                     piece.delivery_day = self.app.day_count + 5
                     processed = True
                     break
@@ -309,6 +329,30 @@ class MES:
                 self.production_orders.remove(order)
             else :
                 i += 1
+
+    def remove_all_output_piece(self):
+        for _, line in self.lines_machines.items():
+            self.remove_output_piece(line)
+
+    def remove_output_piece(self, line):
+        removed_piece = line.remove_output_piece()
+        ##remove from the warehouse a piece with the same values
+        if removed_piece:
+            print("Removing piece from the line output.")
+            print(f"Piece type: {removed_piece.type}, machinetop: {removed_piece.machinetop}, machinebot: {removed_piece.machinebot}, tooltop: {removed_piece.tooltop}, toolbot: {removed_piece.toolbot}.")
+            for similar_piece in list(self.TopWarehouse.pieces.queue):
+                #hmm maneira horrivel de fazer isto
+                if similar_piece.line_id == line.id:
+                    if similar_piece.on_the_floor:
+                        if similar_piece.tooltop == removed_piece.tooltop and similar_piece.toolbot == removed_piece.toolbot:
+                            self.TopWarehouse.pieces.queue.remove(similar_piece)
+                            updated_type = self.find_next_transformation(removed_piece.type, removed_piece.final_type)
+                            new_piece = Piece(self.client, 27, updated_type, removed_piece.final_type, 0, 0, False, False, 0, 0)
+        
+                            self.BotWarehouse.put_piece_queue()
+                            break
+            #add the piece to the bot warehouse, with the type of the next transformation
+        
 
     def send_unfinished_back_up(self):
         #Send back up the unfinished pieces

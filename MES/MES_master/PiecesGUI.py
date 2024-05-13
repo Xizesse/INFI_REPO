@@ -15,37 +15,44 @@ class PiecesGUI:
         self.master.configure(bg='lightgray')
         self.master.geometry("1300x600")
 
-        self.connect_button = tk.Button(self.master, text="Connect", command=on_connect)
-        self.connect_button.place(x=50, y=200)
+        # Top Frame for Buttons
+        self.top_frame = tk.Frame(self.master, bg='lightgray')
+        self.top_frame.pack(side=tk.TOP, fill=tk.X)
 
-        self.disconnect_button = tk.Button(self.master, text="Disconnect", command=on_disconnect)
-        self.disconnect_button.place(x=50, y=230)
+        # Buttons
+        self.connect_button = tk.Button(self.top_frame, text="Connect", command=on_connect)
+        self.connect_button.pack(side=tk.LEFT, padx=10, pady=10)
 
-        self.status_label = tk.Label(self.master, text="Disconnected", fg="red")
-        self.status_label.place(x=50, y=260)
+        self.disconnect_button = tk.Button(self.top_frame, text="Disconnect", command=on_disconnect)
+        self.disconnect_button.pack(side=tk.LEFT, padx=10)
 
-        self.light_indicator = tk.Label(self.master, bg="grey", width=2, height=1)
-        self.light_indicator.place(x=50, y=290)
+        self.increment_button = tk.Button(self.top_frame, text="Increment Day", command=self.increment_day_count)
+        self.increment_button.pack(side=tk.LEFT, padx=10)
 
-        self.day_count_label = tk.Label(self.master, text=f"Day Count: {self.day_count}")
-        self.day_count_label.pack()
+        self.reset_button = tk.Button(self.top_frame, text="Reset Day", command=self.reset_day_count)
+        self.reset_button.pack(side=tk.LEFT, padx=10)
 
-        self.day_timer_label = tk.Label(self.master, font=('Helvetica', 12), fg='black', bg='lightgray')
-        self.day_timer_label.pack()
-        self.update_day_timer()
+        self.mode_button = tk.Button(self.top_frame, text="Switch to Automatic Mode", command=self.toggle_mode)
+        self.mode_button.pack(side=tk.LEFT, padx=10)
 
-        self.increment_button = tk.Button(self.master, text="Increment Day", command=self.increment_day_count)
-        self.increment_button.pack()
+        # Status Labels and Indicators
+        self.status_label = tk.Label(self.top_frame, text="Disconnected", fg="red")
+        self.status_label.pack(side=tk.LEFT, padx=10)
 
-        self.reset_button = tk.Button(self.master, text="Reset Day", command=self.reset_day_count)
-        self.reset_button.pack()
+        self.light_indicator = tk.Label(self.top_frame, bg="grey", width=2, height=1)
+        self.light_indicator.pack(side=tk.LEFT, padx=10)
 
-        self.mode_button = tk.Button(self.master, text="Switch to Automatic Mode", command=self.toggle_mode)
-        self.mode_button.pack()
+        self.day_count_label = tk.Label(self.top_frame, text=f"Day Count: {self.day_count}")
+        self.day_count_label.pack(side=tk.LEFT, padx=10)
 
-        self.orders_canvas = Canvas(self.master, width=900, height=500)
-        self.orders_canvas.pack()
+        # Bottom Frame for Canvas and other contents
+        self.bottom_frame = tk.Frame(self.master, bg='lightgray')
+        self.bottom_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
+        self.orders_canvas = Canvas(self.bottom_frame, width=900, height=500)
+        self.orders_canvas.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
+
+        # Handling window closing
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
     
     def update_clock(self):
@@ -136,7 +143,6 @@ class PiecesGUI:
             
         elapsed_time = int(time.time() - self.start_time)
         
-        # Update the timer display continuously
         self.day_timer_label.config(text=f"Time Elapsed Today: {elapsed_time} seconds")
         
         # Proceed with the following only if in Automatic Mode
@@ -163,6 +169,14 @@ class PiecesGUI:
         self.day_count = 0
         self.day_count_label.config(text=f"Day Count: {self.day_count}")
         self.reset_day_timer()
+
+    def start_blinking(self):
+        self.blinking = True
+        self.blink()
+
+    def stop_blinking(self):
+        self.blinking = False
+        self.light_indicator.config(bg="grey")  # Set to default non-blinking color
 
     def blink(self):
         if self.blinking:

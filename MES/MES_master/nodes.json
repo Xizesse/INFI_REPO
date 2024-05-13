@@ -1,46 +1,39 @@
 
 {
-    
-    "MetaPieces": {
-        
-        "id": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.MetaPieces",
-        "description": "Array of meta pieces"
-    },
-
     "Line1": {
         "description": "Production Line 1",
-        "pieceOut": "Piece Out do tapete 1",
-        "lineIn" : "Elemento Struct da line 1",
-        "lineOut" : "Elemento Struct da line 1"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceOUT[0]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceIN[0]",
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line1.ConvIN.pieceOUT"
     },
     "Line2": {
         "description": "Production Line 2",
-        "pieceOut": "Piece Out do tapete 2",
-        "lineIn" : "Elemento Struct da line 2",
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceOUT[1]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceIN[1]",
         "lineOut" : "Elemento Struct da line 2"
     },
     "Line3": {
         "description": "Production Line 3",
-        "pieceOut": "Piece Out do tapete 3",
-        "lineIn" : "Elemento Struct da line 3",
-        "lineOut" : "Elemento Struct da line 3"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceOUT[2]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceIN[2]",
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line1.ConvIN.pieceIN"
     },
     "Line4": {
         "description": "Production Line 4",
-        "pieceOut": "Piece Out do tapete 4",
-        "lineIn" : "Elemento Struct da line 4",
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceOUT[3]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceIN[3]",
         "lineOut" : "Elemento Struct da line 4"
     },
     "Line5": {
         "description": "Production Line 5",
-        "pieceOut": "Piece Out do tapete 5",
-        "lineIn" : "Elemento Struct da line 5",
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceOUT[4]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceIN[4]",
         "lineOut" : "Elemento Struct da line 5"
     },
     "Line6": {
         "description": "Production Line 6",
-        "pieceOut": "Piece Out do tapete 6",
-        "lineIn" : "Elemento Struct da line 6",
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceOUT[5]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.pieceIN[5]",
         "lineOut" : "Elemento Struct da line 6"
     },
     "ReverseConveyor": {
