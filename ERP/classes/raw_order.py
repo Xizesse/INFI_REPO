@@ -43,7 +43,7 @@ orderB2 = Raw_order(supplier="B",piece="P2", min_quantity=8, price_pp=15, delive
 orderC1 = Raw_order(supplier="C",piece="P1", min_quantity=4, price_pp=55, delivery_days=1)
 orderC2 = Raw_order(supplier="C",piece="P2", min_quantity=4, price_pp=18, delivery_days=1)
 
-orders = [orderA1, orderA2, orderB1, orderB2, orderC1, orderC2]
+raw_orders = [orderA1, orderA2, orderB1, orderB2, orderC1, orderC2]
 
 final_to_raw = {
     "P5":"P1",

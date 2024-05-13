@@ -1,8 +1,9 @@
 import math
 import psycopg2 
 from db_config import DB_CONFIG
+from classes.order import Order
 
-def calculate_production_start(order_number):
+def calculate_production_start(new_order):
     # Establish connection to PostgreSQL database
     conn = psycopg2.connect(
         host=DB_CONFIG['host'],
@@ -20,11 +21,11 @@ def calculate_production_start(order_number):
     """
 
     # Execute the query with the specified order number
-    cur.execute(query, (order_number,))
+    cur.execute(query, (new_order.number,))
 
     order = cur.fetchone()  # fetch row (order)
 
-    print(f"Order: {order}")
+    print(f"\nOrder: {order}")
 
     avg_prod_time = {   # average production time for each piece type
     "P5": 1.58,
@@ -38,26 +39,22 @@ def calculate_production_start(order_number):
     time_to_produce = quantity * avg_prod_time[workpiece]
     start_date = due_date - math.ceil(time_to_produce)
 
-    if start_date <= 0: 
-        start_date = 1      
+    if start_date <= 0:    # if start date is invalid
+        start_date = 1          #-------IN THE FUTURE SHOULD BE CURRENT DATE      
 
     # Close connection
     conn.close()
 
-    return (start_date, workpiece, quantity)
+    prod_plan = (start_date, workpiece, quantity)
+    print(f"Production plan: {prod_plan}")
+
+    return prod_plan
 
 
-def insert_production_plan(order_prod_plan):
+def insert_production_plan(conn, order_prod_plan):
 
     start_date, workpiece, quantity = order_prod_plan
 
-    # Establish connection to PostgreSQL database
-    conn = psycopg2.connect(
-        host=DB_CONFIG['host'],
-        database=DB_CONFIG['database'],
-        user=DB_CONFIG['user'],
-        password=DB_CONFIG['password']
-    )
     cur = conn.cursor()
 
     # Create the production_plan table if it doesn't exist
@@ -93,11 +90,10 @@ def insert_production_plan(order_prod_plan):
             p9_quantity = production_plan.p9_quantity + excluded.p9_quantity;
         """, (start_date, quantities['P5'], quantities['P6'], quantities['P7'], quantities['P9']))
 
-    # Commit changes and close connection
+    # Commit changes 
     conn.commit()
-    conn.close()
 
-    print("Production schedule inserted into production_plan table.")
+    #print("Production schedule inserted into production_plan table.")
 
 if __name__ == '__main__':
 

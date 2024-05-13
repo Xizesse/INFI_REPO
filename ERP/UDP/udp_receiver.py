@@ -3,7 +3,7 @@ import time
 
 def udp_receive():
         
-    NEW_FILE_PATH = "new_order.xml"
+    NEW_FILE_PATH = "UDP/new_orders.xml"
 
     UDP_IP = "127.0.0.1"  # Loopback address 
     UDP_PORT = 31337
@@ -28,10 +28,12 @@ def udp_receive():
     else:
         with open(NEW_FILE_PATH, "wb") as f:
             f.write(received_data[:-len(b"<END_OF_FILE>")])
-        print("File received and saved as new_order.xml")
+        print(f"File received and saved at {NEW_FILE_PATH}")
 
     finally:
         sock.close()
+
+    return NEW_FILE_PATH
 
 if __name__ == "__main__":
     udp_receive()

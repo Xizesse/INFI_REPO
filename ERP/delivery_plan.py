@@ -1,15 +1,8 @@
 import psycopg2
 from db_config import DB_CONFIG
 
-def upload_delivery_plan():
+def upload_delivery_plan(conn):
         
-    # Establish connection to PostgreSQL database
-    conn = psycopg2.connect(
-        host = DB_CONFIG['host'],
-        database = DB_CONFIG['database'],
-        user = DB_CONFIG['user'],
-        password = DB_CONFIG['password']
-    )
     cur = conn.cursor()
 
     # Create a new table to store the ordered data if it doesn't exist
@@ -53,6 +46,5 @@ def upload_delivery_plan():
 
     # Commit changes and close connection
     conn.commit()
-    conn.close()
 
     print("Data inserted into delivery_plan table.")
