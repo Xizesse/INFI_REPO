@@ -6,7 +6,7 @@ def udp_receive():
     NEW_FILE_PATH = "UDP/new_orders.xml"
 
     UDP_IP = "127.0.0.1"  # Loopback address 
-    UDP_PORT = 31337
+    UDP_PORT = 24680
     BUFFER_SIZE = 4096
     TIMEOUT = 5  # Timeout in seconds
 

@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
+
 <!DOCTYPE PRODUCTION_ORDERS [
+
 <!ELEMENT DOCUMENT (Client, Order*)>
 <!ATTLIST Client
           NameId    (CDATA) #REQUIRED
