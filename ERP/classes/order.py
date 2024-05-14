@@ -15,13 +15,13 @@ class Order:
     @classmethod
     def parse_order(cls, order_elem, client_name):
         order_number = int(order_elem.attrib.get("Number", 0))
-        work_piece = order_elem.attrib.get("WorkPiece", "")
+        workpiece = order_elem.attrib.get("WorkPiece", "")
         quantity = int(order_elem.attrib.get("Quantity", 0))
         due_date = int(order_elem.attrib.get("DueDate", 0))
         late_pen = int(order_elem.attrib.get("LatePen", 0))
         early_pen = int(order_elem.attrib.get("EarlyPen", 0))
 
-        order = Order(client=client_name, number=order_number, piece=work_piece,
+        order = Order(client=client_name, number=order_number, piece=workpiece,
                   quantity=quantity, due_date=due_date, late_pen=late_pen,
                   early_pen=early_pen)
 

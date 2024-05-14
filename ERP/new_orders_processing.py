@@ -1,7 +1,6 @@
 import psycopg2
 import xml.etree.ElementTree as ET
 from classes.order import Order
-from db_config import DB_CONFIG 
 
 def parse_new_orders(new_orders_file):
     
@@ -29,10 +28,10 @@ def insert_new_orders(conn, new_orders):
     # Create orders table
     cur.execute('''CREATE TABLE IF NOT EXISTS infi.orders
                  (client TEXT,
-                 number INTEGER, 
-                 workpiece TEXT,
-                 quantity INTEGER,
-                 due_date INTEGER,
+                 number INTEGER NOT NULL PRIMARY KEY, 
+                 workpiece TEXT NOT NULL,
+                 quantity INTEGER NOT NULL,
+                 due_date INTEGER NOT NULL,
                  late_pen INTEGER,
                  early_pen INTEGER)
                 ''')
