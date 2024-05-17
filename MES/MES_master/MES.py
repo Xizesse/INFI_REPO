@@ -11,7 +11,7 @@ import json
 import os
 from Line import Line
 from Piece import Piece
-from Warehouse import Warehouse
+from warehouse import Warehouse
 import DB
 
 #!TODO
@@ -63,6 +63,11 @@ class MES:
         #self.SFS = Warehouse(self.client)
 
         self.IDcount = 1
+
+        #EXEMPLO: O warehouse de baixo começa com 4 peças 5
+        for _ in range(20):
+            piece = Piece(self.client, 0, 1, 5, 5, 8, False, False, 0, 0)
+            self.BotWarehouse.put_piece_queue(piece)
 
         #! LINES AND MACHINES
         self.lines_machines = {
@@ -141,6 +146,13 @@ class MES:
         global last_day
         #print("Starting day: ", self.app.day_count)
         self.app.update_orders_display()
+
+        #! Get the deliveries for the day
+        self.deliveries = DB.get_deliveries()
+        #if self.connected:
+            #pieceTest = Piece(self.client, 999, 1, 2, 0, 0, False, True, 0, 1)
+            #self.lines_machines[1].load_piece(pieceTest)
+       
         
 
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
@@ -155,11 +167,11 @@ class MES:
             #! Get the purchases for the day
             #self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
-            #self.deliveries = DB.get_deliveries(self.app.day_count)
             #if self.connected:
                 #pieceTest = Piece(self.client, 999, 1, 2, 0, 0, False, True, 0, 1)
                 #self.lines_machines[1].load_piece(pieceTest)
-            
+            self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
+            self.stats.update_dispatch_conveyor(self.deliveries, self.unloading_docks)
             last_day = self.app.day_count
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
@@ -379,7 +391,9 @@ class MES:
                             #dock.load_piece(piece) 
                             break  # Stop searching once a piece is loaded
                 
+    
 
+                
                 
 
                

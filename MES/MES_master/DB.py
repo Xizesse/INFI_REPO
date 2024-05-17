@@ -110,9 +110,11 @@ def get_deliveries():
         for row in results:
             # Extracting data from the row
             order_id = row['number']
-            final_type = row['workpiece']
+            final_type_str = row['workpiece']
             quantity_str = row['quantity']
             due_date_col = row['due_date']
+
+            final_type_number = int(final_type_str[1:])
 
             # Convert quantity to integer if possible
             try:
@@ -122,7 +124,7 @@ def get_deliveries():
                 continue
             
             if quantity > 0:  # Ignore orders with quantity <= 0
-                order = Order(quantity, final_type, order_id, due_date_col)
+                order = Order(quantity, final_type_number, order_id, due_date_col)
                 orders.append(order)
         return orders
     

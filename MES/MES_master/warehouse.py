@@ -1,5 +1,6 @@
 import queue
 from Piece import Piece
+import copy
 
 class Warehouse:
     def __init__(self, client):
@@ -15,7 +16,7 @@ class Warehouse:
                 total += 1
                 if piece.type == piece.final_type:
                     completed += 1
-        return completed, total
+        return total
 
     def put_piece_queue(self, piece):
         # Puts a piece in the queue
@@ -60,4 +61,12 @@ class Warehouse:
             quantities[piece.final_type] += 1
         return quantities
     
+    def __deepcopy__(self, memo):
+        # Create a new instance of Warehouse
+        new_warehouse = Warehouse(self.client)
+        # Deepcopy each piece and add it to the new queue
+        for piece in list(self.pieces.queue):
+            new_piece = copy.deepcopy(piece, memo)
+            new_warehouse.put_piece_queue(new_piece)
+        return new_warehouse
     
