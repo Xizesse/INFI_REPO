@@ -18,6 +18,7 @@ import DB
 
 #Small Things
 #TODO modo manual e automatico para a contagem de dias
+
 #TODO IDs 
 
 
@@ -39,8 +40,8 @@ class MES:
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
         self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
+        #self.production_orders.append(5)
+        ##self.production_orders.append(5)
         
 
         #! DELIVERIES - Array of (orders) 
@@ -53,11 +54,20 @@ class MES:
         for _ in range(20):
             piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
             self.TopWarehouse.put_piece_queue(piece)
+
+
+        #for _ in range(8):
+         #   piece = Piece(self.client, 0, 9, 0, 0, 0, False, False, 0, 0)
+          #  self.BotWarehouse.put_piece_queue(piece)
+
         piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
         self.TopWarehouse.put_piece_queue(piece)
         piece = Piece(self.client, 998, 1, 1, 0, 0, False, False, 0, 0)
         piece.on_the_floor = True
         self.TopWarehouse.put_piece_queue(piece)
+        
+
+
         #self.TopWarehouse.set_simulation_warehouse()
         #self.BotWarehouse.set_simulation_warehouse()
         #self.SFS = Warehouse(self.client)
@@ -72,29 +82,30 @@ class MES:
         #! LINES AND MACHINES
         self.lines_machines = {
             1: Line(self.client, nodes, "Line1", 1, {1, 2, 3}, {1, 2, 3}),
-            #2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
-            #3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
-            #4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
-            #5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
-            #6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
+            2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
+            3: Line(self.client, nodes, "Line3", 3, {1, 2, 3}, {1, 2, 3}),
+            4: Line(self.client, nodes, "Line4", 4, {1, 4, 5}, {1, 4, 6}),
+            5: Line(self.client, nodes, "Line5", 5, {1, 4, 5}, {1, 4, 6}),
+            6: Line(self.client, nodes, "Line6", 6, {1, 4, 5}, {1, 4, 6})
         }
-        self.ReverseConveyor = Line(self.client, nodes, "ReverseConveyor", 0, {}, {})
 
         #! LOADING DOCKS
         self.loading_docks = {
-            1: Line(self.client, nodes, "LoadingDock1", 11, {}, {}),
-            2: Line(self.client, nodes, "LoadingDock2", 12, {}, {}),
-            3: Line(self.client, nodes, "LoadingDock3", 13, {}, {}),
-            4: Line(self.client, nodes, "LoadingDock4", 14, {}, {})
+            1: Line(self.client, nodes, "LoadingDock1", 7, {}, {}),
+            2: Line(self.client, nodes, "LoadingDock2", 8, {}, {}),
+            3: Line(self.client, nodes, "LoadingDock3", 9, {}, {}),
+            4: Line(self.client, nodes, "LoadingDock4", 10, {}, {})
         }
 
         #! UNLOADING DOCKS
         self.unloading_docks = {
-            1: Line(self.client, nodes, "UnloadingDock1", 21, {0}, {0}),
-            2: Line(self.client, nodes, "UnloadingDock2", 22, {0}, {0}),
-            3: Line(self.client, nodes, "UnloadingDock3", 23, {0}, {0}),
-            4: Line(self.client, nodes, "UnloadingDock4", 24, {0}, {0})
+            1: Line(self.client, nodes, "UnloadingDock1", 11, {}, {}),
+            2: Line(self.client, nodes, "UnloadingDock2", 12, {}, {}),
+            3: Line(self.client, nodes, "UnloadingDock3", 13, {}, {}),
+            4: Line(self.client, nodes, "UnloadingDock4", 14, {}, {})
         }
+
+        self.ReverseConveyor = Line(self.client, nodes, "ReverseConveyor", 15, {}, {})
 
         #! TRANSFORMATIONS
         self.transformations = {
@@ -154,6 +165,10 @@ class MES:
             #self.lines_machines[1].load_piece(pieceTest)
        
         
+        if self.app.day_count == 0:
+            self.root.after(1000, self.MES_loop)
+            return
+
 
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
         if last_day != self.app.day_count:
@@ -196,7 +211,7 @@ class MES:
             #TODO
             self.remove_all_output_piece()
             #!Send back up the unfinished pieces - Xico
-            #self.send_unfinished_back_up()
+            self.send_unfinished_back_up()
         
 
             #! Delivery actions - Barbara
@@ -304,6 +319,7 @@ class MES:
     def update_all_machines(self):
         #first update all bottom machines
         print("Updating all machines.")
+        
         for _, line in self.lines_machines.items():
             if line.is_Occupied():
                 print(f"Line {line.id} is occupied.")
@@ -348,34 +364,52 @@ class MES:
 
     def remove_output_piece(self, line):
         removed_piece = line.remove_output_piece()
-        ##remove from the warehouse a piece with the same values
+        ##remove from the warehouse a piece with the same values (this is cringe)
         if removed_piece:
             print("Removing piece from the line output.")
             print(f"Piece type: {removed_piece.type}, machinetop: {removed_piece.machinetop}, machinebot: {removed_piece.machinebot}, tooltop: {removed_piece.tooltop}, toolbot: {removed_piece.toolbot}.")
             for similar_piece in list(self.TopWarehouse.pieces.queue):
                 #hmm maneira horrivel de fazer isto
-                if similar_piece.line_id == line.id:
-                    if similar_piece.on_the_floor:
-                        if similar_piece.tooltop == removed_piece.tooltop and similar_piece.toolbot == removed_piece.toolbot:
-                            self.TopWarehouse.pieces.queue.remove(similar_piece)
-                            updated_type = self.find_next_transformation(removed_piece.type, removed_piece.final_type)
-                            new_piece = Piece(self.client, 27, updated_type, removed_piece.final_type, 0, 0, False, False, 0, 0)
-        
-                            self.BotWarehouse.put_piece_queue()
-                            break
-            #add the piece to the bot warehouse, with the type of the next transformation
+                #TODO Mudar para IDs
+                if similar_piece.id == removed_piece.id:
+
+                    if removed_piece.machinetop:
+                        tool_transformation = self.transformations.get((similar_piece.type, similar_piece.tooltop))
+                        if tool_transformation:
+                            removed_piece.type = tool_transformation['result']
+                    if removed_piece.machinebot:
+                        tool_transformation = self.transformations.get((similar_piece.type, similar_piece.toolbot))
+                        if tool_transformation:
+                            similar_piece.type = tool_transformation['result']
+
+                    similar_piece.type = 3 #hmmm
+                    similar_piece.on_the_floor = False
+                    similar_piece.machinetop = False
+                    similar_piece.machinebot = False
+                    similar_piece.tooltop = 0
+                    similar_piece.toolbot = 0
+
+                    self.TopWarehouse.pieces.queue.remove(similar_piece)
+                    self.BotWarehouse.put_piece_queue(similar_piece)
+                    #print the piece, all parameters
+                    print(f"Piece type: {similar_piece.type}, machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")
+                    
         
 
     def send_unfinished_back_up(self):
-        #Send back up the unfinished pieces
-        #for piece in list(self.BotWarehouse.pieces.queue):
-            #if piece.type != piece.final_type:
-            #    print("Sending unfinished piece back up.")
+        #TODO
+        # if a piece in the bottom warehouse is not finished, load into the reverse conveyor
+        for piece in list(self.BotWarehouse.pieces.queue):
+            if piece.final_type != piece.type:
+                if not self.ReverseConveyor.is_Occupied():
+                    self.ReverseConveyor.load_piece(piece)
+                
         return
 
 
 
     def update_loading_docks(self):
+        #TODO
         # Iterate over each dock using items() to get both key (dock id) and value (dock object)
         for dock_id, dock in self.loading_docks.items():
             if not dock.is_Occupied():

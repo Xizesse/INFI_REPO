@@ -107,6 +107,11 @@ class PiecesGUI:
                 self.draw_piece_row(piece, y_position, colors, canvas_width//2, column_width, headers)
 
     def draw_piece_row(self, piece, y_position, colors, initial_offset, column_width, headers):
+        
+        if piece is None:
+            return
+        if piece.type is None:
+            return
         color_index = (piece.type - 1) % len(colors)
         color = colors[color_index]
         

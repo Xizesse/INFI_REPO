@@ -4,10 +4,10 @@ import socket
 HOST = "127.0.0.1"
 
 # Port number (ensure it matches the receiver's port)
-PORT = 31337
+PORT = 24680
 
 # Set path to your file (replace with the actual location)
-FILE_PATH = "order_files\command3.xml"
+FILE_PATH = "order_files\command4.xml"
 
 # Open the file in binary mode
 try:
