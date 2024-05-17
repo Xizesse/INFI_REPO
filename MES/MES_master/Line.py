@@ -35,28 +35,23 @@ class Line:
             #if self.is_Occupied():
             #    print("Line is occupied. Cannot load piece.")
             #    return
-            print(f"Loading piece {piece.id} of type {piece.type} into line {self.id}.")
             #print what machine is True
-            print(f"Machine top: {piece.machinetop}, Machine bot: {piece.machinebot}")
             #load the meta piece into the line input
             self.load_meta_piece(piece)
             #load the physical piece 
             self.load_physical_piece(piece)
             piece.on_the_floor = True
-            
-
+        
         except Exception as e:
             messagebox.showerror("Error Loading the Piece", str(e))
 
     def load_physical_piece(self, piece): 
         try:
             piece_out_node = self.client.get_node(self.piece_out_node_id)
-            print(piece_out_node)
             #print what is on that node
-            print(piece_out_node.get_value())
             piece_out_node.set_value(ua.Variant(0, ua.VariantType.Int16))
             time.sleep(1)
-            piece_out_node.set_value(ua.Variant(1, ua.VariantType.Int16))
+            piece_out_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
             
             print(f"Loaded a physical piece of type {piece.type} into line {self.id}.")
         except Exception as e:
@@ -66,7 +61,6 @@ class Line:
         
         try:
             #Set the type
-            print("Sending meta piece to line input.")
             type_node = self.client.get_node(self.line_input_node_id + ".pieceTYPE")
             type_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
             #Set machine top
@@ -81,6 +75,9 @@ class Line:
             #Set tool bot
             tool_bot_node = self.client.get_node(self.line_input_node_id + ".toolBOT")
             tool_bot_node.set_value(ua.Variant(piece.toolbot, ua.VariantType.Int16)) 
+            #Set ID
+            id_node = self.client.get_node(self.line_input_node_id + ".ID")
+            id_node.set_value(ua.Variant(piece.id, ua.VariantType.Int16))
             print("Loaded meta piece into line input.")
 
         except Exception as e:
@@ -112,14 +109,17 @@ class Line:
             tooltop_value = tooltop_node.get_value()
             toolbot_node = self.client.get_node(self.line_output_node_id + ".toolBOT")
             toolbot_value = toolbot_node.get_value()
+            id_node = self.client.get_node(self.line_output_node_id + ".ID")
+            id_value = id_node.get_value()
+
             #set type to NO_PIECE
             type_node.set_value(ua.Variant(NO_PIECE, ua.VariantType.Int16))
             if machinebot_value == True:
                 self.bot_busy = False
             if machinetop_value == True:
                 self.top_busy = False
-            
-            return Piece(self.client, 0, type_value, 0, 0, 0, machinetop_value, machinebot_value, tooltop_value, toolbot_value)
+    
+            return Piece(self.client, id_value, type_value, 0, 0, 0, machinetop_value, machinebot_value, tooltop_value, toolbot_value)
         except Exception as e:
             messagebox.showerror("Error Removing Output Piece", str(e))
 
@@ -128,7 +128,6 @@ class Line:
     def is_Occupied(self): #Returns True if the line is occupied
         try:
             ocupied = self.get_input_piece_type() != NO_PIECE
-            print(f"get_input_piece_type: {self.get_input_piece_type()}")
             print(f"Line {self.id} is occupied: {ocupied}")
             return ocupied
         except Exception as e:

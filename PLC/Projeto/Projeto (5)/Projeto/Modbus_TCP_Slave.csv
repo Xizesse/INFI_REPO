@@ -1,0 +1,565 @@
+//CoDeSys Mapping Export V1.2
+//Mapped variable,//Parameter name @ counter in device,//Unit,//Description,//IEC address,//Device name
+//Important: change only first, third or fourth column in Excel or add variable name before first
+,Channel 0,,Read Discrete Inputs,%IB0,Modbus_TCP_Slave
+,Channel 0[0],,Read Discrete Inputs,%IB0,Modbus_TCP_Slave
+Application.GVL.inputs[0],Bit0,,0x0000,%IX0.0,Modbus_TCP_Slave
+Application.GVL.inputs[1],Bit1,,0x0001,%IX0.1,Modbus_TCP_Slave
+Application.GVL.inputs[2],Bit2,,0x0002,%IX0.2,Modbus_TCP_Slave
+Application.GVL.inputs[3],Bit3,,0x0003,%IX0.3,Modbus_TCP_Slave
+Application.GVL.inputs[4],Bit4,,0x0004,%IX0.4,Modbus_TCP_Slave
+Application.GVL.inputs[5],Bit5,,0x0005,%IX0.5,Modbus_TCP_Slave
+Application.GVL.inputs[6],Bit6,,0x0006,%IX0.6,Modbus_TCP_Slave
+Application.GVL.inputs[7],Bit7,,0x0007,%IX0.7,Modbus_TCP_Slave
+,Channel 0[1],,Read Discrete Inputs,%IB1,Modbus_TCP_Slave
+Application.GVL.inputs[8],Bit0@1,,0x0008,%IX1.0,Modbus_TCP_Slave
+Application.GVL.inputs[9],Bit1@1,,0x0009,%IX1.1,Modbus_TCP_Slave
+Application.GVL.inputs[10],Bit2@1,,0x000A,%IX1.2,Modbus_TCP_Slave
+Application.GVL.inputs[11],Bit3@1,,0x000B,%IX1.3,Modbus_TCP_Slave
+Application.GVL.inputs[12],Bit4@1,,0x000C,%IX1.4,Modbus_TCP_Slave
+Application.GVL.inputs[13],Bit5@1,,0x000D,%IX1.5,Modbus_TCP_Slave
+Application.GVL.inputs[14],Bit6@1,,0x000E,%IX1.6,Modbus_TCP_Slave
+Application.GVL.inputs[15],Bit7@1,,0x000F,%IX1.7,Modbus_TCP_Slave
+,Channel 0[2],,Read Discrete Inputs,%IB2,Modbus_TCP_Slave
+Application.GVL.inputs[16],Bit0@2,,0x0010,%IX2.0,Modbus_TCP_Slave
+Application.GVL.inputs[17],Bit1@2,,0x0011,%IX2.1,Modbus_TCP_Slave
+Application.GVL.inputs[18],Bit2@2,,0x0012,%IX2.2,Modbus_TCP_Slave
+Application.GVL.inputs[19],Bit3@2,,0x0013,%IX2.3,Modbus_TCP_Slave
+Application.GVL.inputs[20],Bit4@2,,0x0014,%IX2.4,Modbus_TCP_Slave
+Application.GVL.inputs[21],Bit5@2,,0x0015,%IX2.5,Modbus_TCP_Slave
+Application.GVL.inputs[22],Bit6@2,,0x0016,%IX2.6,Modbus_TCP_Slave
+Application.GVL.inputs[23],Bit7@2,,0x0017,%IX2.7,Modbus_TCP_Slave
+,Channel 0[3],,Read Discrete Inputs,%IB3,Modbus_TCP_Slave
+Application.GVL.inputs[24],Bit0@3,,0x0018,%IX3.0,Modbus_TCP_Slave
+Application.GVL.inputs[25],Bit1@3,,0x0019,%IX3.1,Modbus_TCP_Slave
+Application.GVL.inputs[26],Bit2@3,,0x001A,%IX3.2,Modbus_TCP_Slave
+Application.GVL.inputs[27],Bit3@3,,0x001B,%IX3.3,Modbus_TCP_Slave
+Application.GVL.inputs[28],Bit4@3,,0x001C,%IX3.4,Modbus_TCP_Slave
+Application.GVL.inputs[29],Bit5@3,,0x001D,%IX3.5,Modbus_TCP_Slave
+Application.GVL.inputs[30],Bit6@3,,0x001E,%IX3.6,Modbus_TCP_Slave
+Application.GVL.inputs[31],Bit7@3,,0x001F,%IX3.7,Modbus_TCP_Slave
+,Channel 0[4],,Read Discrete Inputs,%IB4,Modbus_TCP_Slave
+Application.GVL.inputs[32],Bit0@4,,0x0020,%IX4.0,Modbus_TCP_Slave
+Application.GVL.inputs[33],Bit1@4,,0x0021,%IX4.1,Modbus_TCP_Slave
+Application.GVL.inputs[34],Bit2@4,,0x0022,%IX4.2,Modbus_TCP_Slave
+Application.GVL.inputs[35],Bit3@4,,0x0023,%IX4.3,Modbus_TCP_Slave
+Application.GVL.inputs[36],Bit4@4,,0x0024,%IX4.4,Modbus_TCP_Slave
+Application.GVL.inputs[37],Bit5@4,,0x0025,%IX4.5,Modbus_TCP_Slave
+Application.GVL.inputs[38],Bit6@4,,0x0026,%IX4.6,Modbus_TCP_Slave
+Application.GVL.inputs[39],Bit7@4,,0x0027,%IX4.7,Modbus_TCP_Slave
+,Channel 0[5],,Read Discrete Inputs,%IB5,Modbus_TCP_Slave
+Application.GVL.inputs[40],Bit0@5,,0x0028,%IX5.0,Modbus_TCP_Slave
+Application.GVL.inputs[41],Bit1@5,,0x0029,%IX5.1,Modbus_TCP_Slave
+Application.GVL.inputs[42],Bit2@5,,0x002A,%IX5.2,Modbus_TCP_Slave
+Application.GVL.inputs[43],Bit3@5,,0x002B,%IX5.3,Modbus_TCP_Slave
+Application.GVL.inputs[44],Bit4@5,,0x002C,%IX5.4,Modbus_TCP_Slave
+Application.GVL.inputs[45],Bit5@5,,0x002D,%IX5.5,Modbus_TCP_Slave
+Application.GVL.inputs[46],Bit6@5,,0x002E,%IX5.6,Modbus_TCP_Slave
+Application.GVL.inputs[47],Bit7@5,,0x002F,%IX5.7,Modbus_TCP_Slave
+,Channel 0[6],,Read Discrete Inputs,%IB6,Modbus_TCP_Slave
+Application.GVL.inputs[48],Bit0@6,,0x0030,%IX6.0,Modbus_TCP_Slave
+Application.GVL.inputs[49],Bit1@6,,0x0031,%IX6.1,Modbus_TCP_Slave
+Application.GVL.inputs[50],Bit2@6,,0x0032,%IX6.2,Modbus_TCP_Slave
+Application.GVL.inputs[51],Bit3@6,,0x0033,%IX6.3,Modbus_TCP_Slave
+Application.GVL.inputs[52],Bit4@6,,0x0034,%IX6.4,Modbus_TCP_Slave
+Application.GVL.inputs[53],Bit5@6,,0x0035,%IX6.5,Modbus_TCP_Slave
+Application.GVL.inputs[54],Bit6@6,,0x0036,%IX6.6,Modbus_TCP_Slave
+Application.GVL.inputs[55],Bit7@6,,0x0037,%IX6.7,Modbus_TCP_Slave
+,Channel 0[7],,Read Discrete Inputs,%IB7,Modbus_TCP_Slave
+Application.GVL.inputs[56],Bit0@7,,0x0038,%IX7.0,Modbus_TCP_Slave
+Application.GVL.inputs[57],Bit1@7,,0x0039,%IX7.1,Modbus_TCP_Slave
+Application.GVL.inputs[58],Bit2@7,,0x003A,%IX7.2,Modbus_TCP_Slave
+Application.GVL.inputs[59],Bit3@7,,0x003B,%IX7.3,Modbus_TCP_Slave
+Application.GVL.inputs[60],Bit4@7,,0x003C,%IX7.4,Modbus_TCP_Slave
+Application.GVL.inputs[61],Bit5@7,,0x003D,%IX7.5,Modbus_TCP_Slave
+Application.GVL.inputs[62],Bit6@7,,0x003E,%IX7.6,Modbus_TCP_Slave
+Application.GVL.inputs[63],Bit7@7,,0x003F,%IX7.7,Modbus_TCP_Slave
+,Channel 0[8],,Read Discrete Inputs,%IB8,Modbus_TCP_Slave
+Application.GVL.inputs[64],Bit0@8,,0x0040,%IX8.0,Modbus_TCP_Slave
+Application.GVL.inputs[65],Bit1@8,,0x0041,%IX8.1,Modbus_TCP_Slave
+Application.GVL.inputs[66],Bit2@8,,0x0042,%IX8.2,Modbus_TCP_Slave
+Application.GVL.inputs[67],Bit3@8,,0x0043,%IX8.3,Modbus_TCP_Slave
+Application.GVL.inputs[68],Bit4@8,,0x0044,%IX8.4,Modbus_TCP_Slave
+Application.GVL.inputs[69],Bit5@8,,0x0045,%IX8.5,Modbus_TCP_Slave
+Application.GVL.inputs[70],Bit6@8,,0x0046,%IX8.6,Modbus_TCP_Slave
+Application.GVL.inputs[71],Bit7@8,,0x0047,%IX8.7,Modbus_TCP_Slave
+,Channel 0[9],,Read Discrete Inputs,%IB9,Modbus_TCP_Slave
+Application.GVL.inputs[72],Bit0@9,,0x0048,%IX9.0,Modbus_TCP_Slave
+Application.GVL.inputs[73],Bit1@9,,0x0049,%IX9.1,Modbus_TCP_Slave
+Application.GVL.inputs[74],Bit2@9,,0x004A,%IX9.2,Modbus_TCP_Slave
+Application.GVL.inputs[75],Bit3@9,,0x004B,%IX9.3,Modbus_TCP_Slave
+Application.GVL.inputs[76],Bit4@9,,0x004C,%IX9.4,Modbus_TCP_Slave
+Application.GVL.inputs[77],Bit5@9,,0x004D,%IX9.5,Modbus_TCP_Slave
+Application.GVL.inputs[78],Bit6@9,,0x004E,%IX9.6,Modbus_TCP_Slave
+Application.GVL.inputs[79],Bit7@9,,0x004F,%IX9.7,Modbus_TCP_Slave
+,Channel 0[10],,Read Discrete Inputs,%IB10,Modbus_TCP_Slave
+Application.GVL.inputs[80],Bit0@10,,0x0050,%IX10.0,Modbus_TCP_Slave
+Application.GVL.inputs[81],Bit1@10,,0x0051,%IX10.1,Modbus_TCP_Slave
+Application.GVL.inputs[82],Bit2@10,,0x0052,%IX10.2,Modbus_TCP_Slave
+Application.GVL.inputs[83],Bit3@10,,0x0053,%IX10.3,Modbus_TCP_Slave
+Application.GVL.inputs[84],Bit4@10,,0x0054,%IX10.4,Modbus_TCP_Slave
+Application.GVL.inputs[85],Bit5@10,,0x0055,%IX10.5,Modbus_TCP_Slave
+Application.GVL.inputs[86],Bit6@10,,0x0056,%IX10.6,Modbus_TCP_Slave
+Application.GVL.inputs[87],Bit7@10,,0x0057,%IX10.7,Modbus_TCP_Slave
+,Channel 0[11],,Read Discrete Inputs,%IB11,Modbus_TCP_Slave
+Application.GVL.inputs[88],Bit0@11,,0x0058,%IX11.0,Modbus_TCP_Slave
+Application.GVL.inputs[89],Bit1@11,,0x0059,%IX11.1,Modbus_TCP_Slave
+Application.GVL.inputs[90],Bit2@11,,0x005A,%IX11.2,Modbus_TCP_Slave
+Application.GVL.inputs[91],Bit3@11,,0x005B,%IX11.3,Modbus_TCP_Slave
+Application.GVL.inputs[92],Bit4@11,,0x005C,%IX11.4,Modbus_TCP_Slave
+Application.GVL.inputs[93],Bit5@11,,0x005D,%IX11.5,Modbus_TCP_Slave
+Application.GVL.inputs[94],Bit6@11,,0x005E,%IX11.6,Modbus_TCP_Slave
+Application.GVL.inputs[95],Bit7@11,,0x005F,%IX11.7,Modbus_TCP_Slave
+,Channel 0[12],,Read Discrete Inputs,%IB12,Modbus_TCP_Slave
+Application.GVL.inputs[96],Bit0@12,,0x0060,%IX12.0,Modbus_TCP_Slave
+Application.GVL.inputs[97],Bit1@12,,0x0061,%IX12.1,Modbus_TCP_Slave
+Application.GVL.inputs[98],Bit2@12,,0x0062,%IX12.2,Modbus_TCP_Slave
+Application.GVL.inputs[99],Bit3@12,,0x0063,%IX12.3,Modbus_TCP_Slave
+,Bit4@12,,Read Discrete Inputs,%IX12.4,Modbus_TCP_Slave
+,Bit5@12,,Read Discrete Inputs,%IX12.5,Modbus_TCP_Slave
+,Bit6@12,,Read Discrete Inputs,%IX12.6,Modbus_TCP_Slave
+,Bit7@12,,Read Discrete Inputs,%IX12.7,Modbus_TCP_Slave
+,Channel 1,,Read Discrete Inputs,%IB13,Modbus_TCP_Slave
+,Channel 1[0],,Read Discrete Inputs,%IB13,Modbus_TCP_Slave
+Application.GVL.inputs[100],Bit0@13,,0x0064,%IX13.0,Modbus_TCP_Slave
+Application.GVL.inputs[101],Bit1@13,,0x0065,%IX13.1,Modbus_TCP_Slave
+Application.GVL.inputs[102],Bit2@13,,0x0066,%IX13.2,Modbus_TCP_Slave
+Application.GVL.inputs[103],Bit3@13,,0x0067,%IX13.3,Modbus_TCP_Slave
+Application.GVL.inputs[104],Bit4@13,,0x0068,%IX13.4,Modbus_TCP_Slave
+Application.GVL.inputs[105],Bit5@13,,0x0069,%IX13.5,Modbus_TCP_Slave
+Application.GVL.inputs[106],Bit6@13,,0x006A,%IX13.6,Modbus_TCP_Slave
+Application.GVL.inputs[107],Bit7@13,,0x006B,%IX13.7,Modbus_TCP_Slave
+,Channel 1[1],,Read Discrete Inputs,%IB14,Modbus_TCP_Slave
+Application.GVL.inputs[108],Bit0@14,,0x006C,%IX14.0,Modbus_TCP_Slave
+Application.GVL.inputs[109],Bit1@14,,0x006D,%IX14.1,Modbus_TCP_Slave
+Application.GVL.inputs[110],Bit2@14,,0x006E,%IX14.2,Modbus_TCP_Slave
+Application.GVL.inputs[111],Bit3@14,,0x006F,%IX14.3,Modbus_TCP_Slave
+Application.GVL.inputs[112],Bit4@14,,0x0070,%IX14.4,Modbus_TCP_Slave
+Application.GVL.inputs[113],Bit5@14,,0x0071,%IX14.5,Modbus_TCP_Slave
+Application.GVL.inputs[114],Bit6@14,,0x0072,%IX14.6,Modbus_TCP_Slave
+Application.GVL.inputs[115],Bit7@14,,0x0073,%IX14.7,Modbus_TCP_Slave
+,Channel 1[2],,Read Discrete Inputs,%IB15,Modbus_TCP_Slave
+Application.GVL.inputs[116],Bit0@15,,0x0074,%IX15.0,Modbus_TCP_Slave
+Application.GVL.inputs[117],Bit1@15,,0x0075,%IX15.1,Modbus_TCP_Slave
+Application.GVL.inputs[118],Bit2@15,,0x0076,%IX15.2,Modbus_TCP_Slave
+Application.GVL.inputs[119],Bit3@15,,0x0077,%IX15.3,Modbus_TCP_Slave
+Application.GVL.inputs[120],Bit4@15,,0x0078,%IX15.4,Modbus_TCP_Slave
+Application.GVL.inputs[121],Bit5@15,,0x0079,%IX15.5,Modbus_TCP_Slave
+Application.GVL.inputs[122],Bit6@15,,0x007A,%IX15.6,Modbus_TCP_Slave
+Application.GVL.inputs[123],Bit7@15,,0x007B,%IX15.7,Modbus_TCP_Slave
+,Channel 1[3],,Read Discrete Inputs,%IB16,Modbus_TCP_Slave
+Application.GVL.inputs[124],Bit0@16,,0x007C,%IX16.0,Modbus_TCP_Slave
+Application.GVL.inputs[125],Bit1@16,,0x007D,%IX16.1,Modbus_TCP_Slave
+Application.GVL.inputs[126],Bit2@16,,0x007E,%IX16.2,Modbus_TCP_Slave
+Application.GVL.inputs[127],Bit3@16,,0x007F,%IX16.3,Modbus_TCP_Slave
+Application.GVL.inputs[128],Bit4@16,,0x0080,%IX16.4,Modbus_TCP_Slave
+Application.GVL.inputs[129],Bit5@16,,0x0081,%IX16.5,Modbus_TCP_Slave
+Application.GVL.inputs[130],Bit6@16,,0x0082,%IX16.6,Modbus_TCP_Slave
+Application.GVL.inputs[131],Bit7@16,,Read Discrete Inputs,%IX16.7,Modbus_TCP_Slave
+,Channel 2,,Write Multiple Coils,%QB0,Modbus_TCP_Slave
+,Channel 2[0],,Write Multiple Coils,%QB0,Modbus_TCP_Slave
+Application.GVL.outputs[0],Bit0@17,,0x0000,%QX0.0,Modbus_TCP_Slave
+Application.GVL.outputs[1],Bit1@17,,0x0001,%QX0.1,Modbus_TCP_Slave
+Application.GVL.outputs[2],Bit2@17,,0x0002,%QX0.2,Modbus_TCP_Slave
+Application.GVL.outputs[3],Bit3@17,,0x0003,%QX0.3,Modbus_TCP_Slave
+Application.GVL.outputs[4],Bit4@17,,0x0004,%QX0.4,Modbus_TCP_Slave
+Application.GVL.outputs[5],Bit5@17,,0x0005,%QX0.5,Modbus_TCP_Slave
+Application.GVL.outputs[6],Bit6@17,,0x0006,%QX0.6,Modbus_TCP_Slave
+Application.GVL.outputs[7],Bit7@17,,0x0007,%QX0.7,Modbus_TCP_Slave
+,Channel 2[1],,Write Multiple Coils,%QB1,Modbus_TCP_Slave
+Application.GVL.outputs[8],Bit0@18,,0x0008,%QX1.0,Modbus_TCP_Slave
+Application.GVL.outputs[9],Bit1@18,,0x0009,%QX1.1,Modbus_TCP_Slave
+Application.GVL.outputs[10],Bit2@18,,0x000A,%QX1.2,Modbus_TCP_Slave
+Application.GVL.outputs[11],Bit3@18,,0x000B,%QX1.3,Modbus_TCP_Slave
+Application.GVL.outputs[12],Bit4@18,,0x000C,%QX1.4,Modbus_TCP_Slave
+Application.GVL.outputs[13],Bit5@18,,0x000D,%QX1.5,Modbus_TCP_Slave
+Application.GVL.outputs[14],Bit6@18,,0x000E,%QX1.6,Modbus_TCP_Slave
+Application.GVL.outputs[15],Bit7@18,,0x000F,%QX1.7,Modbus_TCP_Slave
+,Channel 2[2],,Write Multiple Coils,%QB2,Modbus_TCP_Slave
+Application.GVL.outputs[16],Bit0@19,,0x0010,%QX2.0,Modbus_TCP_Slave
+Application.GVL.outputs[17],Bit1@19,,0x0011,%QX2.1,Modbus_TCP_Slave
+Application.GVL.outputs[18],Bit2@19,,0x0012,%QX2.2,Modbus_TCP_Slave
+Application.GVL.outputs[19],Bit3@19,,0x0013,%QX2.3,Modbus_TCP_Slave
+Application.GVL.outputs[20],Bit4@19,,0x0014,%QX2.4,Modbus_TCP_Slave
+Application.GVL.outputs[21],Bit5@19,,0x0015,%QX2.5,Modbus_TCP_Slave
+Application.GVL.outputs[22],Bit6@19,,0x0016,%QX2.6,Modbus_TCP_Slave
+Application.GVL.outputs[23],Bit7@19,,0x0017,%QX2.7,Modbus_TCP_Slave
+,Channel 2[3],,Write Multiple Coils,%QB3,Modbus_TCP_Slave
+Application.GVL.outputs[24],Bit0@20,,0x0018,%QX3.0,Modbus_TCP_Slave
+Application.GVL.outputs[25],Bit1@20,,0x0019,%QX3.1,Modbus_TCP_Slave
+Application.GVL.outputs[26],Bit2@20,,0x001A,%QX3.2,Modbus_TCP_Slave
+Application.GVL.outputs[27],Bit3@20,,0x001B,%QX3.3,Modbus_TCP_Slave
+Application.GVL.outputs[28],Bit4@20,,0x001C,%QX3.4,Modbus_TCP_Slave
+Application.GVL.outputs[29],Bit5@20,,0x001D,%QX3.5,Modbus_TCP_Slave
+Application.GVL.outputs[30],Bit6@20,,0x001E,%QX3.6,Modbus_TCP_Slave
+Application.GVL.outputs[31],Bit7@20,,0x001F,%QX3.7,Modbus_TCP_Slave
+,Channel 2[4],,Write Multiple Coils,%QB4,Modbus_TCP_Slave
+Application.GVL.outputs[32],Bit0@21,,0x0020,%QX4.0,Modbus_TCP_Slave
+Application.GVL.outputs[33],Bit1@21,,0x0021,%QX4.1,Modbus_TCP_Slave
+Application.GVL.outputs[34],Bit2@21,,0x0022,%QX4.2,Modbus_TCP_Slave
+Application.GVL.outputs[35],Bit3@21,,0x0023,%QX4.3,Modbus_TCP_Slave
+Application.GVL.outputs[36],Bit4@21,,0x0024,%QX4.4,Modbus_TCP_Slave
+Application.GVL.outputs[37],Bit5@21,,0x0025,%QX4.5,Modbus_TCP_Slave
+Application.GVL.outputs[38],Bit6@21,,0x0026,%QX4.6,Modbus_TCP_Slave
+Application.GVL.outputs[39],Bit7@21,,0x0027,%QX4.7,Modbus_TCP_Slave
+,Channel 2[5],,Write Multiple Coils,%QB5,Modbus_TCP_Slave
+Application.GVL.outputs[40],Bit0@22,,0x0028,%QX5.0,Modbus_TCP_Slave
+Application.GVL.outputs[41],Bit1@22,,0x0029,%QX5.1,Modbus_TCP_Slave
+Application.GVL.outputs[42],Bit2@22,,0x002A,%QX5.2,Modbus_TCP_Slave
+Application.GVL.outputs[43],Bit3@22,,0x002B,%QX5.3,Modbus_TCP_Slave
+Application.GVL.outputs[44],Bit4@22,,0x002C,%QX5.4,Modbus_TCP_Slave
+Application.GVL.outputs[45],Bit5@22,,0x002D,%QX5.5,Modbus_TCP_Slave
+Application.GVL.outputs[46],Bit6@22,,0x002E,%QX5.6,Modbus_TCP_Slave
+Application.GVL.outputs[47],Bit7@22,,0x002F,%QX5.7,Modbus_TCP_Slave
+,Channel 2[6],,Write Multiple Coils,%QB6,Modbus_TCP_Slave
+Application.GVL.outputs[48],Bit0@23,,0x0030,%QX6.0,Modbus_TCP_Slave
+Application.GVL.outputs[49],Bit1@23,,0x0031,%QX6.1,Modbus_TCP_Slave
+Application.GVL.outputs[50],Bit2@23,,0x0032,%QX6.2,Modbus_TCP_Slave
+Application.GVL.outputs[51],Bit3@23,,0x0033,%QX6.3,Modbus_TCP_Slave
+Application.GVL.outputs[52],Bit4@23,,0x0034,%QX6.4,Modbus_TCP_Slave
+Application.GVL.outputs[53],Bit5@23,,0x0035,%QX6.5,Modbus_TCP_Slave
+Application.GVL.outputs[54],Bit6@23,,0x0036,%QX6.6,Modbus_TCP_Slave
+Application.GVL.outputs[55],Bit7@23,,0x0037,%QX6.7,Modbus_TCP_Slave
+,Channel 2[7],,Write Multiple Coils,%QB7,Modbus_TCP_Slave
+Application.GVL.outputs[56],Bit0@24,,0x0038,%QX7.0,Modbus_TCP_Slave
+Application.GVL.outputs[57],Bit1@24,,0x0039,%QX7.1,Modbus_TCP_Slave
+Application.GVL.outputs[58],Bit2@24,,0x003A,%QX7.2,Modbus_TCP_Slave
+Application.GVL.outputs[59],Bit3@24,,0x003B,%QX7.3,Modbus_TCP_Slave
+Application.GVL.outputs[60],Bit4@24,,0x003C,%QX7.4,Modbus_TCP_Slave
+Application.GVL.outputs[61],Bit5@24,,0x003D,%QX7.5,Modbus_TCP_Slave
+Application.GVL.outputs[62],Bit6@24,,0x003E,%QX7.6,Modbus_TCP_Slave
+Application.GVL.outputs[63],Bit7@24,,0x003F,%QX7.7,Modbus_TCP_Slave
+,Channel 2[8],,Write Multiple Coils,%QB8,Modbus_TCP_Slave
+Application.GVL.outputs[64],Bit0@25,,0x0040,%QX8.0,Modbus_TCP_Slave
+Application.GVL.outputs[65],Bit1@25,,0x0041,%QX8.1,Modbus_TCP_Slave
+Application.GVL.outputs[66],Bit2@25,,0x0042,%QX8.2,Modbus_TCP_Slave
+Application.GVL.outputs[67],Bit3@25,,0x0043,%QX8.3,Modbus_TCP_Slave
+Application.GVL.outputs[68],Bit4@25,,0x0044,%QX8.4,Modbus_TCP_Slave
+Application.GVL.outputs[69],Bit5@25,,0x0045,%QX8.5,Modbus_TCP_Slave
+Application.GVL.outputs[70],Bit6@25,,0x0046,%QX8.6,Modbus_TCP_Slave
+Application.GVL.outputs[71],Bit7@25,,0x0047,%QX8.7,Modbus_TCP_Slave
+,Channel 2[9],,Write Multiple Coils,%QB9,Modbus_TCP_Slave
+Application.GVL.outputs[72],Bit0@26,,0x0048,%QX9.0,Modbus_TCP_Slave
+Application.GVL.outputs[73],Bit1@26,,0x0049,%QX9.1,Modbus_TCP_Slave
+Application.GVL.outputs[74],Bit2@26,,0x004A,%QX9.2,Modbus_TCP_Slave
+Application.GVL.outputs[75],Bit3@26,,0x004B,%QX9.3,Modbus_TCP_Slave
+Application.GVL.outputs[76],Bit4@26,,0x004C,%QX9.4,Modbus_TCP_Slave
+Application.GVL.outputs[77],Bit5@26,,0x004D,%QX9.5,Modbus_TCP_Slave
+Application.GVL.outputs[78],Bit6@26,,0x004E,%QX9.6,Modbus_TCP_Slave
+Application.GVL.outputs[79],Bit7@26,,0x004F,%QX9.7,Modbus_TCP_Slave
+,Channel 2[10],,Write Multiple Coils,%QB10,Modbus_TCP_Slave
+Application.GVL.outputs[80],Bit0@27,,0x0050,%QX10.0,Modbus_TCP_Slave
+Application.GVL.outputs[81],Bit1@27,,0x0051,%QX10.1,Modbus_TCP_Slave
+Application.GVL.outputs[82],Bit2@27,,0x0052,%QX10.2,Modbus_TCP_Slave
+Application.GVL.outputs[83],Bit3@27,,0x0053,%QX10.3,Modbus_TCP_Slave
+Application.GVL.outputs[84],Bit4@27,,0x0054,%QX10.4,Modbus_TCP_Slave
+Application.GVL.outputs[85],Bit5@27,,0x0055,%QX10.5,Modbus_TCP_Slave
+Application.GVL.outputs[86],Bit6@27,,0x0056,%QX10.6,Modbus_TCP_Slave
+Application.GVL.outputs[87],Bit7@27,,0x0057,%QX10.7,Modbus_TCP_Slave
+,Channel 2[11],,Write Multiple Coils,%QB11,Modbus_TCP_Slave
+Application.GVL.outputs[88],Bit0@28,,0x0058,%QX11.0,Modbus_TCP_Slave
+Application.GVL.outputs[89],Bit1@28,,0x0059,%QX11.1,Modbus_TCP_Slave
+Application.GVL.outputs[90],Bit2@28,,0x005A,%QX11.2,Modbus_TCP_Slave
+Application.GVL.outputs[91],Bit3@28,,0x005B,%QX11.3,Modbus_TCP_Slave
+Application.GVL.outputs[92],Bit4@28,,0x005C,%QX11.4,Modbus_TCP_Slave
+Application.GVL.outputs[93],Bit5@28,,0x005D,%QX11.5,Modbus_TCP_Slave
+Application.GVL.outputs[94],Bit6@28,,0x005E,%QX11.6,Modbus_TCP_Slave
+Application.GVL.outputs[95],Bit7@28,,0x005F,%QX11.7,Modbus_TCP_Slave
+,Channel 2[12],,Write Multiple Coils,%QB12,Modbus_TCP_Slave
+Application.GVL.outputs[96],Bit0@29,,0x0060,%QX12.0,Modbus_TCP_Slave
+Application.GVL.outputs[97],Bit1@29,,0x0061,%QX12.1,Modbus_TCP_Slave
+Application.GVL.outputs[98],Bit2@29,,0x0062,%QX12.2,Modbus_TCP_Slave
+Application.GVL.outputs[99],Bit3@29,,0x0063,%QX12.3,Modbus_TCP_Slave
+,Bit4@29,,Write Multiple Coils,%QX12.4,Modbus_TCP_Slave
+,Bit5@29,,Write Multiple Coils,%QX12.5,Modbus_TCP_Slave
+,Bit6@29,,Write Multiple Coils,%QX12.6,Modbus_TCP_Slave
+,Bit7@29,,Write Multiple Coils,%QX12.7,Modbus_TCP_Slave
+,Channel 3,,Write Multiple Coils,%QB13,Modbus_TCP_Slave
+,Channel 3[0],,Write Multiple Coils,%QB13,Modbus_TCP_Slave
+Application.GVL.outputs[100],Bit0@30,,0x0064,%QX13.0,Modbus_TCP_Slave
+Application.GVL.outputs[101],Bit1@30,,0x0065,%QX13.1,Modbus_TCP_Slave
+Application.GVL.outputs[102],Bit2@30,,0x0066,%QX13.2,Modbus_TCP_Slave
+Application.GVL.outputs[103],Bit3@30,,0x0067,%QX13.3,Modbus_TCP_Slave
+Application.GVL.outputs[104],Bit4@30,,0x0068,%QX13.4,Modbus_TCP_Slave
+Application.GVL.outputs[105],Bit5@30,,0x0069,%QX13.5,Modbus_TCP_Slave
+Application.GVL.outputs[106],Bit6@30,,0x006A,%QX13.6,Modbus_TCP_Slave
+Application.GVL.outputs[107],Bit7@30,,0x006B,%QX13.7,Modbus_TCP_Slave
+,Channel 3[1],,Write Multiple Coils,%QB14,Modbus_TCP_Slave
+Application.GVL.outputs[108],Bit0@31,,0x006C,%QX14.0,Modbus_TCP_Slave
+Application.GVL.outputs[109],Bit1@31,,0x006D,%QX14.1,Modbus_TCP_Slave
+Application.GVL.outputs[110],Bit2@31,,0x006E,%QX14.2,Modbus_TCP_Slave
+Application.GVL.outputs[111],Bit3@31,,0x006F,%QX14.3,Modbus_TCP_Slave
+Application.GVL.outputs[112],Bit4@31,,0x0070,%QX14.4,Modbus_TCP_Slave
+Application.GVL.outputs[113],Bit5@31,,0x0071,%QX14.5,Modbus_TCP_Slave
+Application.GVL.outputs[114],Bit6@31,,0x0072,%QX14.6,Modbus_TCP_Slave
+Application.GVL.outputs[115],Bit7@31,,0x0073,%QX14.7,Modbus_TCP_Slave
+,Channel 3[2],,Write Multiple Coils,%QB15,Modbus_TCP_Slave
+Application.GVL.outputs[116],Bit0@32,,0x0074,%QX15.0,Modbus_TCP_Slave
+Application.GVL.outputs[117],Bit1@32,,0x0075,%QX15.1,Modbus_TCP_Slave
+Application.GVL.outputs[118],Bit2@32,,0x0076,%QX15.2,Modbus_TCP_Slave
+Application.GVL.outputs[119],Bit3@32,,0x0077,%QX15.3,Modbus_TCP_Slave
+Application.GVL.outputs[120],Bit4@32,,0x0078,%QX15.4,Modbus_TCP_Slave
+Application.GVL.outputs[121],Bit5@32,,0x0079,%QX15.5,Modbus_TCP_Slave
+Application.GVL.outputs[122],Bit6@32,,0x007A,%QX15.6,Modbus_TCP_Slave
+Application.GVL.outputs[123],Bit7@32,,0x007B,%QX15.7,Modbus_TCP_Slave
+,Channel 3[3],,Write Multiple Coils,%QB16,Modbus_TCP_Slave
+Application.GVL.outputs[124],Bit0@33,,0x007C,%QX16.0,Modbus_TCP_Slave
+Application.GVL.outputs[125],Bit1@33,,0x007D,%QX16.1,Modbus_TCP_Slave
+Application.GVL.outputs[126],Bit2@33,,0x007E,%QX16.2,Modbus_TCP_Slave
+Application.GVL.outputs[127],Bit3@33,,0x007F,%QX16.3,Modbus_TCP_Slave
+Application.GVL.outputs[128],Bit4@33,,0x0080,%QX16.4,Modbus_TCP_Slave
+Application.GVL.outputs[129],Bit5@33,,0x0081,%QX16.5,Modbus_TCP_Slave
+Application.GVL.outputs[130],Bit6@33,,0x0082,%QX16.6,Modbus_TCP_Slave
+Application.GVL.outputs[131],Bit7@33,,0x0083,%QX16.7,Modbus_TCP_Slave
+,Channel 3[4],,Write Multiple Coils,%QB17,Modbus_TCP_Slave
+Application.GVL.outputs[132],Bit0@34,,0x0084,%QX17.0,Modbus_TCP_Slave
+Application.GVL.outputs[133],Bit1@34,,0x0085,%QX17.1,Modbus_TCP_Slave
+Application.GVL.outputs[134],Bit2@34,,0x0086,%QX17.2,Modbus_TCP_Slave
+Application.GVL.outputs[135],Bit3@34,,0x0087,%QX17.3,Modbus_TCP_Slave
+Application.GVL.outputs[136],Bit4@34,,0x0088,%QX17.4,Modbus_TCP_Slave
+Application.GVL.outputs[137],Bit5@34,,0x0089,%QX17.5,Modbus_TCP_Slave
+Application.GVL.outputs[138],Bit6@34,,0x008A,%QX17.6,Modbus_TCP_Slave
+Application.GVL.outputs[139],Bit7@34,,0x008B,%QX17.7,Modbus_TCP_Slave
+,Channel 3[5],,Write Multiple Coils,%QB18,Modbus_TCP_Slave
+Application.GVL.outputs[140],Bit0@35,,0x008C,%QX18.0,Modbus_TCP_Slave
+Application.GVL.outputs[141],Bit1@35,,0x008D,%QX18.1,Modbus_TCP_Slave
+Application.GVL.outputs[142],Bit2@35,,0x008E,%QX18.2,Modbus_TCP_Slave
+Application.GVL.outputs[143],Bit3@35,,0x008F,%QX18.3,Modbus_TCP_Slave
+Application.GVL.outputs[144],Bit4@35,,0x0090,%QX18.4,Modbus_TCP_Slave
+Application.GVL.outputs[145],Bit5@35,,0x0091,%QX18.5,Modbus_TCP_Slave
+Application.GVL.outputs[146],Bit6@35,,0x0092,%QX18.6,Modbus_TCP_Slave
+Application.GVL.outputs[147],Bit7@35,,0x0093,%QX18.7,Modbus_TCP_Slave
+,Channel 3[6],,Write Multiple Coils,%QB19,Modbus_TCP_Slave
+Application.GVL.outputs[148],Bit0@36,,0x0094,%QX19.0,Modbus_TCP_Slave
+Application.GVL.outputs[149],Bit1@36,,0x0095,%QX19.1,Modbus_TCP_Slave
+Application.GVL.outputs[150],Bit2@36,,0x0096,%QX19.2,Modbus_TCP_Slave
+Application.GVL.outputs[151],Bit3@36,,0x0097,%QX19.3,Modbus_TCP_Slave
+Application.GVL.outputs[152],Bit4@36,,0x0098,%QX19.4,Modbus_TCP_Slave
+Application.GVL.outputs[153],Bit5@36,,0x0099,%QX19.5,Modbus_TCP_Slave
+Application.GVL.outputs[154],Bit6@36,,0x009A,%QX19.6,Modbus_TCP_Slave
+Application.GVL.outputs[155],Bit7@36,,0x009B,%QX19.7,Modbus_TCP_Slave
+,Channel 3[7],,Write Multiple Coils,%QB20,Modbus_TCP_Slave
+Application.GVL.outputs[156],Bit0@37,,0x009C,%QX20.0,Modbus_TCP_Slave
+Application.GVL.outputs[157],Bit1@37,,0x009D,%QX20.1,Modbus_TCP_Slave
+Application.GVL.outputs[158],Bit2@37,,0x009E,%QX20.2,Modbus_TCP_Slave
+Application.GVL.outputs[159],Bit3@37,,0x009F,%QX20.3,Modbus_TCP_Slave
+Application.GVL.outputs[160],Bit4@37,,0x00A0,%QX20.4,Modbus_TCP_Slave
+Application.GVL.outputs[161],Bit5@37,,0x00A1,%QX20.5,Modbus_TCP_Slave
+Application.GVL.outputs[162],Bit6@37,,0x00A2,%QX20.6,Modbus_TCP_Slave
+Application.GVL.outputs[163],Bit7@37,,0x00A3,%QX20.7,Modbus_TCP_Slave
+,Channel 3[8],,Write Multiple Coils,%QB21,Modbus_TCP_Slave
+Application.GVL.outputs[164],Bit0@38,,0x00A4,%QX21.0,Modbus_TCP_Slave
+Application.GVL.outputs[165],Bit1@38,,0x00A5,%QX21.1,Modbus_TCP_Slave
+Application.GVL.outputs[166],Bit2@38,,0x00A6,%QX21.2,Modbus_TCP_Slave
+Application.GVL.outputs[167],Bit3@38,,0x00A7,%QX21.3,Modbus_TCP_Slave
+Application.GVL.outputs[168],Bit4@38,,0x00A8,%QX21.4,Modbus_TCP_Slave
+Application.GVL.outputs[169],Bit5@38,,0x00A9,%QX21.5,Modbus_TCP_Slave
+Application.GVL.outputs[170],Bit6@38,,0x00AA,%QX21.6,Modbus_TCP_Slave
+Application.GVL.outputs[171],Bit7@38,,0x00AB,%QX21.7,Modbus_TCP_Slave
+,Channel 3[9],,Write Multiple Coils,%QB22,Modbus_TCP_Slave
+Application.GVL.outputs[172],Bit0@39,,0x00AC,%QX22.0,Modbus_TCP_Slave
+Application.GVL.outputs[173],Bit1@39,,0x00AD,%QX22.1,Modbus_TCP_Slave
+Application.GVL.outputs[174],Bit2@39,,0x00AE,%QX22.2,Modbus_TCP_Slave
+Application.GVL.outputs[175],Bit3@39,,0x00AF,%QX22.3,Modbus_TCP_Slave
+Application.GVL.outputs[176],Bit4@39,,0x00B0,%QX22.4,Modbus_TCP_Slave
+Application.GVL.outputs[177],Bit5@39,,0x00B1,%QX22.5,Modbus_TCP_Slave
+Application.GVL.outputs[178],Bit6@39,,0x00B2,%QX22.6,Modbus_TCP_Slave
+Application.GVL.outputs[179],Bit7@39,,0x00B3,%QX22.7,Modbus_TCP_Slave
+,Channel 3[10],,Write Multiple Coils,%QB23,Modbus_TCP_Slave
+Application.GVL.outputs[180],Bit0@40,,0x00B4,%QX23.0,Modbus_TCP_Slave
+Application.GVL.outputs[181],Bit1@40,,0x00B5,%QX23.1,Modbus_TCP_Slave
+Application.GVL.outputs[182],Bit2@40,,0x00B6,%QX23.2,Modbus_TCP_Slave
+Application.GVL.outputs[183],Bit3@40,,0x00B7,%QX23.3,Modbus_TCP_Slave
+Application.GVL.outputs[184],Bit4@40,,0x00B8,%QX23.4,Modbus_TCP_Slave
+Application.GVL.outputs[185],Bit5@40,,0x00B9,%QX23.5,Modbus_TCP_Slave
+Application.GVL.outputs[186],Bit6@40,,0x00BA,%QX23.6,Modbus_TCP_Slave
+Application.GVL.outputs[187],Bit7@40,,0x00BB,%QX23.7,Modbus_TCP_Slave
+,Channel 3[11],,Write Multiple Coils,%QB24,Modbus_TCP_Slave
+Application.GVL.outputs[188],Bit0@41,,0x00BC,%QX24.0,Modbus_TCP_Slave
+Application.GVL.outputs[189],Bit1@41,,0x00BD,%QX24.1,Modbus_TCP_Slave
+Application.GVL.outputs[190],Bit2@41,,0x00BE,%QX24.2,Modbus_TCP_Slave
+Application.GVL.outputs[191],Bit3@41,,0x00BF,%QX24.3,Modbus_TCP_Slave
+Application.GVL.outputs[192],Bit4@41,,0x00C0,%QX24.4,Modbus_TCP_Slave
+Application.GVL.outputs[193],Bit5@41,,0x00C1,%QX24.5,Modbus_TCP_Slave
+Application.GVL.outputs[194],Bit6@41,,0x00C2,%QX24.6,Modbus_TCP_Slave
+Application.GVL.outputs[195],Bit7@41,,0x00C3,%QX24.7,Modbus_TCP_Slave
+,Channel 3[12],,Write Multiple Coils,%QB25,Modbus_TCP_Slave
+Application.GVL.outputs[196],Bit0@42,,0x00C4,%QX25.0,Modbus_TCP_Slave
+,Bit1@42,,Write Multiple Coils,%QX25.1,Modbus_TCP_Slave
+,Bit2@42,,Write Multiple Coils,%QX25.2,Modbus_TCP_Slave
+,Bit3@42,,Write Multiple Coils,%QX25.3,Modbus_TCP_Slave
+,Bit4@42,,Write Multiple Coils,%QX25.4,Modbus_TCP_Slave
+,Bit5@42,,Write Multiple Coils,%QX25.5,Modbus_TCP_Slave
+,Bit6@42,,Write Multiple Coils,%QX25.6,Modbus_TCP_Slave
+,Bit7@42,,Write Multiple Coils,%QX25.7,Modbus_TCP_Slave
+,Channel 4,,Write Multiple Registers,%QW13,Modbus_TCP_Slave
+,Channel 4[0],,0x0000,%QW13,Modbus_TCP_Slave
+,Bit0@43,,,%QX26.0,Modbus_TCP_Slave
+,Bit1@43,,,%QX26.1,Modbus_TCP_Slave
+,Bit2@43,,,%QX26.2,Modbus_TCP_Slave
+,Bit3@43,,,%QX26.3,Modbus_TCP_Slave
+,Bit4@43,,,%QX26.4,Modbus_TCP_Slave
+,Bit5@43,,,%QX26.5,Modbus_TCP_Slave
+,Bit6@43,,,%QX26.6,Modbus_TCP_Slave
+,Bit7@43,,,%QX26.7,Modbus_TCP_Slave
+,Bit8,,,%QX27.0,Modbus_TCP_Slave
+,Bit9,,,%QX27.1,Modbus_TCP_Slave
+,Bit10,,,%QX27.2,Modbus_TCP_Slave
+,Bit11,,,%QX27.3,Modbus_TCP_Slave
+,Bit12,,,%QX27.4,Modbus_TCP_Slave
+,Bit13,,,%QX27.5,Modbus_TCP_Slave
+,Bit14,,,%QX27.6,Modbus_TCP_Slave
+,Bit15,,,%QX27.7,Modbus_TCP_Slave
+,Channel 4[1],,0x0001,%QW14,Modbus_TCP_Slave
+,Bit0@44,,,%QX28.0,Modbus_TCP_Slave
+,Bit1@44,,,%QX28.1,Modbus_TCP_Slave
+,Bit2@44,,,%QX28.2,Modbus_TCP_Slave
+,Bit3@44,,,%QX28.3,Modbus_TCP_Slave
+,Bit4@44,,,%QX28.4,Modbus_TCP_Slave
+,Bit5@44,,,%QX28.5,Modbus_TCP_Slave
+,Bit6@44,,,%QX28.6,Modbus_TCP_Slave
+,Bit7@44,,,%QX28.7,Modbus_TCP_Slave
+,Bit8@1,,,%QX29.0,Modbus_TCP_Slave
+,Bit9@1,,,%QX29.1,Modbus_TCP_Slave
+,Bit10@1,,,%QX29.2,Modbus_TCP_Slave
+,Bit11@1,,,%QX29.3,Modbus_TCP_Slave
+,Bit12@1,,,%QX29.4,Modbus_TCP_Slave
+,Bit13@1,,,%QX29.5,Modbus_TCP_Slave
+,Bit14@1,,,%QX29.6,Modbus_TCP_Slave
+,Bit15@1,,,%QX29.7,Modbus_TCP_Slave
+,Channel 4[2],,0x0002,%QW15,Modbus_TCP_Slave
+,Bit0@45,,,%QX30.0,Modbus_TCP_Slave
+,Bit1@45,,,%QX30.1,Modbus_TCP_Slave
+,Bit2@45,,,%QX30.2,Modbus_TCP_Slave
+,Bit3@45,,,%QX30.3,Modbus_TCP_Slave
+,Bit4@45,,,%QX30.4,Modbus_TCP_Slave
+,Bit5@45,,,%QX30.5,Modbus_TCP_Slave
+,Bit6@45,,,%QX30.6,Modbus_TCP_Slave
+,Bit7@45,,,%QX30.7,Modbus_TCP_Slave
+,Bit8@2,,,%QX31.0,Modbus_TCP_Slave
+,Bit9@2,,,%QX31.1,Modbus_TCP_Slave
+,Bit10@2,,,%QX31.2,Modbus_TCP_Slave
+,Bit11@2,,,%QX31.3,Modbus_TCP_Slave
+,Bit12@2,,,%QX31.4,Modbus_TCP_Slave
+,Bit13@2,,,%QX31.5,Modbus_TCP_Slave
+,Bit14@2,,,%QX31.6,Modbus_TCP_Slave
+,Bit15@2,,,%QX31.7,Modbus_TCP_Slave
+,Channel 4[3],,0x0003,%QW16,Modbus_TCP_Slave
+,Bit0@46,,,%QX32.0,Modbus_TCP_Slave
+,Bit1@46,,,%QX32.1,Modbus_TCP_Slave
+,Bit2@46,,,%QX32.2,Modbus_TCP_Slave
+,Bit3@46,,,%QX32.3,Modbus_TCP_Slave
+,Bit4@46,,,%QX32.4,Modbus_TCP_Slave
+,Bit5@46,,,%QX32.5,Modbus_TCP_Slave
+,Bit6@46,,,%QX32.6,Modbus_TCP_Slave
+,Bit7@46,,,%QX32.7,Modbus_TCP_Slave
+,Bit8@3,,,%QX33.0,Modbus_TCP_Slave
+,Bit9@3,,,%QX33.1,Modbus_TCP_Slave
+,Bit10@3,,,%QX33.2,Modbus_TCP_Slave
+,Bit11@3,,,%QX33.3,Modbus_TCP_Slave
+,Bit12@3,,,%QX33.4,Modbus_TCP_Slave
+,Bit13@3,,,%QX33.5,Modbus_TCP_Slave
+,Bit14@3,,,%QX33.6,Modbus_TCP_Slave
+,Bit15@3,,,%QX33.7,Modbus_TCP_Slave
+,Channel 4[4],,0x0004,%QW17,Modbus_TCP_Slave
+,Bit0@47,,,%QX34.0,Modbus_TCP_Slave
+,Bit1@47,,,%QX34.1,Modbus_TCP_Slave
+,Bit2@47,,,%QX34.2,Modbus_TCP_Slave
+,Bit3@47,,,%QX34.3,Modbus_TCP_Slave
+,Bit4@47,,,%QX34.4,Modbus_TCP_Slave
+,Bit5@47,,,%QX34.5,Modbus_TCP_Slave
+,Bit6@47,,,%QX34.6,Modbus_TCP_Slave
+,Bit7@47,,,%QX34.7,Modbus_TCP_Slave
+,Bit8@4,,,%QX35.0,Modbus_TCP_Slave
+,Bit9@4,,,%QX35.1,Modbus_TCP_Slave
+,Bit10@4,,,%QX35.2,Modbus_TCP_Slave
+,Bit11@4,,,%QX35.3,Modbus_TCP_Slave
+,Bit12@4,,,%QX35.4,Modbus_TCP_Slave
+,Bit13@4,,,%QX35.5,Modbus_TCP_Slave
+,Bit14@4,,,%QX35.6,Modbus_TCP_Slave
+,Bit15@4,,,%QX35.7,Modbus_TCP_Slave
+,Channel 4[5],,0x0005,%QW18,Modbus_TCP_Slave
+,Bit0@48,,,%QX36.0,Modbus_TCP_Slave
+,Bit1@48,,,%QX36.1,Modbus_TCP_Slave
+,Bit2@48,,,%QX36.2,Modbus_TCP_Slave
+,Bit3@48,,,%QX36.3,Modbus_TCP_Slave
+,Bit4@48,,,%QX36.4,Modbus_TCP_Slave
+,Bit5@48,,,%QX36.5,Modbus_TCP_Slave
+,Bit6@48,,,%QX36.6,Modbus_TCP_Slave
+,Bit7@48,,,%QX36.7,Modbus_TCP_Slave
+,Bit8@5,,,%QX37.0,Modbus_TCP_Slave
+,Bit9@5,,,%QX37.1,Modbus_TCP_Slave
+,Bit10@5,,,%QX37.2,Modbus_TCP_Slave
+,Bit11@5,,,%QX37.3,Modbus_TCP_Slave
+,Bit12@5,,,%QX37.4,Modbus_TCP_Slave
+,Bit13@5,,,%QX37.5,Modbus_TCP_Slave
+,Bit14@5,,,%QX37.6,Modbus_TCP_Slave
+,Bit15@5,,,%QX37.7,Modbus_TCP_Slave
+,Channel 4[6],,0x0006,%QW19,Modbus_TCP_Slave
+,Bit0@49,,,%QX38.0,Modbus_TCP_Slave
+,Bit1@49,,,%QX38.1,Modbus_TCP_Slave
+,Bit2@49,,,%QX38.2,Modbus_TCP_Slave
+,Bit3@49,,,%QX38.3,Modbus_TCP_Slave
+,Bit4@49,,,%QX38.4,Modbus_TCP_Slave
+,Bit5@49,,,%QX38.5,Modbus_TCP_Slave
+,Bit6@49,,,%QX38.6,Modbus_TCP_Slave
+,Bit7@49,,,%QX38.7,Modbus_TCP_Slave
+,Bit8@6,,,%QX39.0,Modbus_TCP_Slave
+,Bit9@6,,,%QX39.1,Modbus_TCP_Slave
+,Bit10@6,,,%QX39.2,Modbus_TCP_Slave
+,Bit11@6,,,%QX39.3,Modbus_TCP_Slave
+,Bit12@6,,,%QX39.4,Modbus_TCP_Slave
+,Bit13@6,,,%QX39.5,Modbus_TCP_Slave
+,Bit14@6,,,%QX39.6,Modbus_TCP_Slave
+,Bit15@6,,,%QX39.7,Modbus_TCP_Slave
+,Channel 4[7],,0x0007,%QW20,Modbus_TCP_Slave
+,Bit0@50,,,%QX40.0,Modbus_TCP_Slave
+,Bit1@50,,,%QX40.1,Modbus_TCP_Slave
+,Bit2@50,,,%QX40.2,Modbus_TCP_Slave
+,Bit3@50,,,%QX40.3,Modbus_TCP_Slave
+,Bit4@50,,,%QX40.4,Modbus_TCP_Slave
+,Bit5@50,,,%QX40.5,Modbus_TCP_Slave
+,Bit6@50,,,%QX40.6,Modbus_TCP_Slave
+,Bit7@50,,,%QX40.7,Modbus_TCP_Slave
+,Bit8@7,,,%QX41.0,Modbus_TCP_Slave
+,Bit9@7,,,%QX41.1,Modbus_TCP_Slave
+,Bit10@7,,,%QX41.2,Modbus_TCP_Slave
+,Bit11@7,,,%QX41.3,Modbus_TCP_Slave
+,Bit12@7,,,%QX41.4,Modbus_TCP_Slave
+,Bit13@7,,,%QX41.5,Modbus_TCP_Slave
+,Bit14@7,,,%QX41.6,Modbus_TCP_Slave
+,Bit15@7,,,%QX41.7,Modbus_TCP_Slave
+,Channel 4[8],,0x0008,%QW21,Modbus_TCP_Slave
+,Bit0@51,,,%QX42.0,Modbus_TCP_Slave
+,Bit1@51,,,%QX42.1,Modbus_TCP_Slave
+,Bit2@51,,,%QX42.2,Modbus_TCP_Slave
+,Bit3@51,,,%QX42.3,Modbus_TCP_Slave
+,Bit4@51,,,%QX42.4,Modbus_TCP_Slave
+,Bit5@51,,,%QX42.5,Modbus_TCP_Slave
+,Bit6@51,,,%QX42.6,Modbus_TCP_Slave
+,Bit7@51,,,%QX42.7,Modbus_TCP_Slave
+,Bit8@8,,,%QX43.0,Modbus_TCP_Slave
+,Bit9@8,,,%QX43.1,Modbus_TCP_Slave
+,Bit10@8,,,%QX43.2,Modbus_TCP_Slave
+,Bit11@8,,,%QX43.3,Modbus_TCP_Slave
+,Bit12@8,,,%QX43.4,Modbus_TCP_Slave
+,Bit13@8,,,%QX43.5,Modbus_TCP_Slave
+,Bit14@8,,,%QX43.6,Modbus_TCP_Slave
+,Bit15@8,,,%QX43.7,Modbus_TCP_Slave
+,Channel 4[9],,0x0009,%QW22,Modbus_TCP_Slave
+,Bit0@52,,,%QX44.0,Modbus_TCP_Slave
+,Bit1@52,,,%QX44.1,Modbus_TCP_Slave
+,Bit2@52,,,%QX44.2,Modbus_TCP_Slave
+,Bit3@52,,,%QX44.3,Modbus_TCP_Slave
+,Bit4@52,,,%QX44.4,Modbus_TCP_Slave
+,Bit5@52,,,%QX44.5,Modbus_TCP_Slave
+,Bit6@52,,,%QX44.6,Modbus_TCP_Slave
+,Bit7@52,,,%QX44.7,Modbus_TCP_Slave
+,Bit8@9,,,%QX45.0,Modbus_TCP_Slave
+,Bit9@9,,,%QX45.1,Modbus_TCP_Slave
+,Bit10@9,,,%QX45.2,Modbus_TCP_Slave
+,Bit11@9,,,%QX45.3,Modbus_TCP_Slave
+,Bit12@9,,,%QX45.4,Modbus_TCP_Slave
+,Bit13@9,,,%QX45.5,Modbus_TCP_Slave
+,Bit14@9,,,%QX45.6,Modbus_TCP_Slave
+,Bit15@9,,,%QX45.7,Modbus_TCP_Slave

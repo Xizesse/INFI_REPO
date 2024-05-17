@@ -72,6 +72,8 @@ class ShopFloorStatisticsWindow:
         # Update the display with initial order data
         self.update_orders_data(initial_orders_data)
 
+    
+
     def update_orders_data(self, orders_data):
         # Clear existing items in the Treeview
         self.orders_tree.delete(*self.orders_tree.get_children())
