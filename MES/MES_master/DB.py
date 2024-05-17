@@ -74,7 +74,7 @@ def get_production_queue(day):
         cursor.close()
         conn.close()
 
-schedule = get_production_queue(8)
+schedule = get_production_queue(11)
 print(schedule)
 
 def get_deliveries():
