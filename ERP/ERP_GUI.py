@@ -21,12 +21,12 @@ class ShopFloorStatisticsWindow:
         self.update_current_date()
 
         # Create first Treeview widget to display "orders information"
-        self.orders_tree = ttk.Treeview(self.window, columns=("number","Quantity", "Final Type", "Delivery Day", "late_pen", "early_pen"))
+        self.orders_tree = ttk.Treeview(self.window, columns=("number","Quantity", "piece", "due_date", "late_pen", "early_pen"))
         self.orders_tree.heading("#0", text="Client")
-        self.orders_tree.heading("number", text="Order ID")
+        self.orders_tree.heading("number", text="Number")
         self.orders_tree.heading("Quantity", text="Quantity")
-        self.orders_tree.heading("Final Type", text="Final Type")
-        self.orders_tree.heading("Delivery Day", text="Delivery Day")
+        self.orders_tree.heading("piece", text="Piece")
+        self.orders_tree.heading("due_date", text="Due_date")
         self.orders_tree.heading("late_pen", text="Late Penalty")
         self.orders_tree.heading("early_pen", text="Early Penalty")
 
@@ -34,8 +34,8 @@ class ShopFloorStatisticsWindow:
         self.orders_tree.column("#0", minwidth=10, width=80)
         self.orders_tree.column("number", minwidth=10, width=75)
         self.orders_tree.column("Quantity", minwidth=10, width=75 )
-        self.orders_tree.column("Final Type", minwidth=10, width=75)
-        self.orders_tree.column("Delivery Day", minwidth=10, width=75)
+        self.orders_tree.column("piece", minwidth=10, width=75)
+        self.orders_tree.column("due_date", minwidth=10, width=75)
         self.orders_tree.column("late_pen", minwidth=10, width=75)
         self.orders_tree.column("early_pen", minwidth=10, width=75)
 
@@ -110,7 +110,7 @@ class ShopFloorStatisticsWindow:
         
         # Insert new order data into the Treeview
         for i, order in enumerate(orders_data, start=1):
-            self.orders_tree.insert("", "end", text=order.client, values=(order.order_id, order.quantity, order.final_type, order.delivery_day, order.late_pen, order.early_pen))
+            self.orders_tree.insert("", "end", text=order.client, values=(order.number, order.quantity, order.piece, order.due_date, order.late_pen, order.early_pen))
 
     def update_production_plan_data(self, initial_production_plan_data):
         production_plan = db_config.get_production_plan()
