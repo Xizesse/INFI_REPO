@@ -40,9 +40,17 @@ class MES:
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
         self.production_orders.append(5)
-        #self.production_orders.append(5)
-        ##self.production_orders.append(5)
-        
+        self.production_orders.append(9)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
 
         #! DELIVERIES - Array of (orders) 
         self.deliveries = []
@@ -54,7 +62,8 @@ class MES:
         for _ in range(20):
             piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
             self.TopWarehouse.put_piece_queue(piece)
-
+        piece = Piece(self.client, 0, 2, 0, 0, 0, False, False, 0, 0)
+        self.TopWarehouse.put_piece_queue(piece)
 
         #for _ in range(8):
          #   piece = Piece(self.client, 0, 9, 0, 0, 0, False, False, 0, 0)
@@ -202,19 +211,19 @@ class MES:
                 #add to top warehouse
             
             #!Turn self.production_orders into pieces in the top warehouse
-            self.update_pieces()
+            self.update_pieces_w_orders()
             #!update all machines (Simpler algorith : Bottom machines then top machines)
             self.update_all_machines()
             #!Get the piece in each line output
             #TODO
             self.remove_all_output_piece()
+            self.unload_ReverseConveyor()
             #!Send back up the unfinished pieces - Xico
             self.send_unfinished_back_up()
         
 
             #! Delivery actions - Barbara
             #TODO
-
             
         self.root.after(1000, self.MES_loop)
 
@@ -283,6 +292,7 @@ class MES:
 
         if line.has_tool(next_tool, position):
             return True
+        
         else:
             print(f"{position} machine on line {line.id} does not have the required tool {next_tool}.")
             return False
@@ -295,6 +305,30 @@ class MES:
         else :
             return None
         
+    def next_piece(self, piece):
+        path = self.transformation_paths.get((piece.type, piece.final_type))
+        if not path:
+            print(f"No transformation path for piece from type {piece.type} to {piece.final_type}.")
+            return
+        try:
+            current_index = path.index(piece.type)
+            if piece.tooltop and piece.toolbot:
+                next_index = current_index + 2
+            elif piece.tooltop or piece.toolbot:
+                next_index = current_index + 1
+            else:
+                next_index = current_index
+            if next_index < len(path):
+                print(f"Updated piece type to {path[next_index]}.")
+            else:
+                print("Reached the end of the transformation path.")
+        except ValueError:
+            print(f"Current type {piece.type} is not in the transformation path.")
+        return path[next_index]
+
+
+
+        
     def update_machine(self, line, position, piece):
         if not self.check_machine_can_process(line, position, piece):
             return
@@ -305,26 +339,23 @@ class MES:
             piece.machinetop = True
             piece.tooltop = self.find_next_transformation(piece.type, piece.final_type)
             line.load_piece(piece)
+            print(f"Loaded Piece of type {piece.type} into line {line.id} for top machine.")
         elif position == 'bot':
             #take the piece out of the warehouse
             line.setBotBusy(True)
             piece.line_id = line.id
             piece.machinebot = True
             piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
-            #remove the piece from the warehouse
-            #piece.toolbot = self.find_next_transformation(piece.type, piece.final_type)
             line.load_piece(piece)
+            print(f"Loaded Piece of type {piece.type} into line {line.id} for bottom machine.")
 
     def update_all_machines(self):
         #first update all bottom machines
-        print("Updating all machines.")
         
         for _, line in self.lines_machines.items():
             if line.is_Occupied():
-                print(f"Line {line.id} is occupied.")
                 continue
-            else:
-                print(f"Line {line.id} is not occupied.")
+            
             for piece in list(self.TopWarehouse.pieces.queue):
                 if piece.machinetop == False and piece.machinebot == False:
                     self.update_machine(line, 'bot', piece)
@@ -337,20 +368,20 @@ class MES:
                 if piece.machinetop == False and piece.machinebot == False:
                     self.update_machine(line, 'top', piece)
 
-    def update_pieces(self):
+    def update_pieces_w_orders(self):
         i = 0
         while i < len(self.production_orders):
             order = self.production_orders[i]
             processed = False
             for piece in list(self.TopWarehouse.pieces.queue):
                 if self.transformation_paths.get((piece.type, order)) and piece.id == 0:
-                    print(f"Creating piece for {piece.type}->{piece.final_type}")
                     piece.final_type = order
                     piece.order_id = 27
                     piece.id = self.IDcount
                     self.IDcount += 1
                     piece.delivery_day = self.app.day_count + 5
                     processed = True
+                    print(f"Creating piece for {piece.type}->{piece.final_type}")
                     break
             if processed:
                 self.production_orders.remove(order)
@@ -361,17 +392,28 @@ class MES:
         for _, line in self.lines_machines.items():
             self.remove_output_piece(line)
 
+    def unload_ReverseConveyor(self):
+        removed_piece = self.ReverseConveyor.remove_output_piece()
+        if removed_piece:
+            print("\nRemoving piece from the Reverse Conveyor output .")
+            print(f"Piece type: {removed_piece.type}, machinetop: {removed_piece.machinetop}, machinebot: {removed_piece.machinebot}, tooltop: {removed_piece.tooltop}, toolbot: {removed_piece.toolbot}.")
+            for similar_piece in list(self.BotWarehouse.pieces.queue):
+                if similar_piece.id == removed_piece.id:
+
+                    self.BotWarehouse.pieces.queue.remove(similar_piece)
+                    similar_piece.on_the_floor = False
+                    self.TopWarehouse.put_piece_queue(similar_piece)
+
+                    print(f"Piece type: {similar_piece.type}, machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")
+                    
+
     def remove_output_piece(self, line):
         removed_piece = line.remove_output_piece()
-        ##remove from the warehouse a piece with the same values (this is cringe)
         if removed_piece:
             print("Removing piece from the line output.")
             print(f"Piece type: {removed_piece.type}, machinetop: {removed_piece.machinetop}, machinebot: {removed_piece.machinebot}, tooltop: {removed_piece.tooltop}, toolbot: {removed_piece.toolbot}.")
             for similar_piece in list(self.TopWarehouse.pieces.queue):
-                #hmm maneira horrivel de fazer isto
-                #TODO Mudar para IDs
                 if similar_piece.id == removed_piece.id:
-
                     if removed_piece.machinetop:
                         tool_transformation = self.transformations.get((similar_piece.type, similar_piece.tooltop))
                         if tool_transformation:
@@ -381,28 +423,45 @@ class MES:
                         if tool_transformation:
                             similar_piece.type = tool_transformation['result']
 
-                    similar_piece.type = 3 #hmmm
+                    similar_piece.type = self.next_piece(similar_piece)
+                    similar_piece.final_type = similar_piece.final_type
                     similar_piece.on_the_floor = False
                     similar_piece.machinetop = False
                     similar_piece.machinebot = False
                     similar_piece.tooltop = 0
                     similar_piece.toolbot = 0
+                    similar_piece.line_id = 0
+
 
                     self.TopWarehouse.pieces.queue.remove(similar_piece)
                     self.BotWarehouse.put_piece_queue(similar_piece)
                     #print the piece, all parameters
-                    print(f"Piece type: {similar_piece.type}, machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")
+                    print(f"Piece type: {similar_piece.type}, final type: {similar_piece.final_type} machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")
                     
         
 
     def send_unfinished_back_up(self):
-        #TODO
+
         # if a piece in the bottom warehouse is not finished, load into the reverse conveyor
+        #leave when loads a Piece
+        leave = False
         for piece in list(self.BotWarehouse.pieces.queue):
-            if piece.final_type != piece.type:
+            print(f"Checking if piece needs to be sent back up: {piece.id}")
+            if piece.final_type != piece.type and not piece.on_the_floor:
+                print(f"Piece {piece.id} is not finished.")
                 if not self.ReverseConveyor.is_Occupied():
+                    
+                    print("Sending unfinished piece back up.")
+                    print(f"Piece type: {piece.type}, final type: {piece.final_type}, machinetop: {piece.machinetop}, machinebot: {piece.machinebot}, tooltop: {piece.tooltop}, toolbot: {piece.toolbot}.")
                     self.ReverseConveyor.load_piece(piece)
-                
+                    piece.on_the_floor = True
+                    leave = True
+                    break
+            if leave:
+                break
+
+
+
         return
 
 
