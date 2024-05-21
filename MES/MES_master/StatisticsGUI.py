@@ -75,15 +75,8 @@ class ShopFloorStatisticsWindow:
         # Update the display with initial order data
         self.update_orders_data(initial_orders_data, Warehouse(None))
 
-<<<<<<< HEAD
-
     # Function to update the status of each order
     def update_orders_data(self, orders_data, warehouse):
-=======
-    
-
-    def update_orders_data(self, orders_data):
->>>>>>> b7170c89fb2d4e4751c01c9957bce1b1d6bedd5b
         # Clear existing items in the Treeview
         self.orders_tree.delete(*self.orders_tree.get_children())
 
@@ -98,7 +91,7 @@ class ShopFloorStatisticsWindow:
             total_available = 0
             # Get the number of pieces available in the copied warehouse for the order's final type
             for piece in list(warehouse_copy.pieces.queue):
-                if piece.final_type == order.final_type:
+                if piece.type == order.final_type:
                     total_available += 1
 
             # Determine the status based on the availability of the required pieces
@@ -119,69 +112,7 @@ class ShopFloorStatisticsWindow:
             self.orders_tree.insert("", "end", text=order.order_id, values=(
                 order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
             
-            
-    #function to update the unloading docks
-    def update_dispatch_conveyor(self, orders_data, unloading_docks):
-        # Initialize variables to keep track of available docks and pieces
-        available_docks = list(unloading_docks.keys())
-        remaining_pieces = {dock_id: 6 for dock_id in available_docks}
 
-        # Iterate through orders marked as "Ready"
-        for order in orders_data:
-            if order.status == "Ready":
-                pieces_to_unload = order.quantity
-                dispatch_conveyor = []  # List to store dock IDs used for this order
-                # Iterate until all pieces of the order are unloaded
-                while pieces_to_unload > 0:
-                    # Check available docks
-                    if not available_docks:
-                        print("No available docks for unloading.")
-                        return  # Exit if no available docks
-
-                    # Select the next available dock
-                    dock_id = available_docks.pop(0)
-                    pieces_to_allocate = min(remaining_pieces[dock_id], pieces_to_unload)
-
-                    # Update remaining pieces for the dock
-                    remaining_pieces[dock_id] -= pieces_to_allocate
-
-                    # Update pieces to unload
-                    pieces_to_unload -= pieces_to_allocate
-
-                    # Add dock ID to the list of dock IDs used for this order
-                    dispatch_conveyor.append(str(dock_id))
-
-                    # Print information or perform unloading operation
-                    print(f"Unloading {pieces_to_allocate} pieces of order {order.order_id} at Dock {dock_id}")
-
-                    # Perform unloading operation here
-                    # dock_id can be used to access the respective unloading dock object
-
-                    # If the dock is full, remove it from available docks
-                    if remaining_pieces[dock_id] == 0:
-                        print(f"Dock {dock_id} is full.")
-                        remaining_pieces.pop(dock_id)
-
-                # Update dispatch_conveyor for this order
-                order.dispatch_conveyor = ','.join(dispatch_conveyor)
-
-                # Update orders_tree with dispatch_conveyor information for this order
-                for item in self.orders_tree.get_children():
-                    if self.orders_tree.item(item, "text") == order.order_id:
-                        self.orders_tree.item(item, values=(
-                            order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
-                        break  # Stop searching once the order is found
-
-
-        # Handle cases where there are remaining pieces but no orders
-        if remaining_pieces:
-            print("There are remaining pieces in some docks after unloading all orders.")
-
-
-
-
-
-    
 
 # Example usage:
 if __name__ == "__main__":
