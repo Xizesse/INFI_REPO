@@ -23,6 +23,59 @@ def expand_values(data, item_prefix='p'):
         expanded_data.append(tuple(expanded_row))
     return expanded_data
 
+def get_purchasing_queue(day):
+    """
+    Fetches and expands production numbers sorted by a due date from a PostgreSQL database.
+
+    Args:
+    day (int or str): Day to get delivery data for.
+
+    Returns:
+    list of tuples: Each tuple contains the due date and expanded item numbers based on the quantities.
+    """
+    if isinstance(day, int):
+        day = str(day)  # Convert integer to string
+
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(
+        host='db.fe.up.pt',
+        database='infind202410',
+        user='infind202410',
+        password='DWHyIHTiPP'
+    )
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    
+    table_name = 'infi.purchasing_plan'
+    arrival_date_col = 'arrival_date'
+    columns = ['p1_quantity', 'p2_quantity']
+
+    # Prepare the SQL query with a WHERE clause to filter by the desired day
+    columns_str = ", ".join([extras.quote_ident(col, cursor) for col in [arrival_date_col] + columns])  # Safely quote identifiers
+    query = f"SELECT {columns_str} FROM {table_name} WHERE {arrival_date_col} = %s ORDER BY {arrival_date_col} ASC"
+
+    try:
+        cursor.execute(query, (day,))
+        # Fetch all rows as a list of dictionaries
+        results = cursor.fetchall()
+
+        # Expand the data
+        expanded_results = expand_values(results)
+
+        piece_queue = [item for sublist in expanded_results for item in sublist]
+        return piece_queue
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return []
+    finally:
+        # Close the connection to the database
+        cursor.close()
+        conn.close()
+
+print(f"PURCHASING PLAN:")
+schedule = get_purchasing_queue(4)
+print(schedule)
+
 def get_production_queue(day):
     """
     Fetches and expands production numbers sorted by a due date from a PostgreSQL database.

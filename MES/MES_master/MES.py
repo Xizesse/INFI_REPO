@@ -85,7 +85,7 @@ class MES:
 
         #EXEMPLO: O warehouse de baixo começa com 4 peças 5
         for _ in range(20):
-            piece = Piece(self.client, 0, 1, 5, 5, 8, False, False, 0, 0)
+            piece = Piece(self.client, 0, 5, 5, 5, 8, False, False, 0, 0)
             self.BotWarehouse.put_piece_queue(piece)
 
         #! LINES AND MACHINES
@@ -189,13 +189,10 @@ class MES:
             daily_prod = DB.get_production_queue(self.app.day_count)
             self.production_orders += daily_prod
             #! Get the purchases for the day
-            #self.purchases = DB.get_purchases(self.app.day_count)
+            self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
-            #if self.connected:
-                #pieceTest = Piece(self.client, 999, 1, 2, 0, 0, False, True, 0, 1)
-                #self.lines_machines[1].load_piece(pieceTest)
             self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
-            self.stats.update_dispatch_conveyor(self.deliveries, self.unloading_docks)
+            self.update_dispatch_conveyor(self.deliveries, self.unloading_docks)
             last_day = self.app.day_count
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
@@ -205,6 +202,7 @@ class MES:
             #! Purchase actions
             #TODO
             #self.update_loading_docks()
+
 
             #!check if there are pieces in the loading dock that can be put in the top warehouse
             #TODO 
@@ -227,7 +225,7 @@ class MES:
             #! Delivery actions - Barbara
             #TODO
             
-        self.root.after(500, self.MES_loop)
+        self.root.after(1000, self.MES_loop)
 
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
@@ -474,18 +472,76 @@ class MES:
         for dock_id, dock in self.loading_docks.items():
             if not dock.is_Occupied():
                 # Check for which dock it is and load the appropriate piece type
-                if dock_id in [1, 2]:  # For docks 1 and 2, we look for a piece of type 1
+                if dock_id in [7, 8]:  # For docks 1 and 2, we look for a piece of type 1
                     for piece in self.purchases:
                         if piece == 1:
                             #dock.load_piece(piece)  # Assuming this function sets the dock's status to occupied
                             break  # Stop searching once a piece is loaded
-                elif dock_id in [3, 4]:  # For docks 3 and 4, we look for a piece of type 2
+                elif dock_id in [9, 10]:  # For docks 3 and 4, we look for a piece of type 2
                     for piece in self.purchases:
                         if piece == 2:
                             #dock.load_piece(piece) 
                             break  # Stop searching once a piece is loaded
                 
+    
+    #function to update the unloading docks
+    def update_dispatch_conveyor(self, orders_data, unloading_docks):
+        # Initialize variables to keep track of available docks and pieces
+        available_docks = list(unloading_docks.keys())
+        remaining_pieces = {dock_id: 6 for dock_id in available_docks}
 
+        # Iterate through orders marked as "Ready"
+        for order in orders_data:
+            if order.status == "Ready":
+                pieces_to_unload = order.quantity
+                dispatch_conveyor = []  # List to store dock IDs used for this order
+                # Iterate until all pieces of the order are unloaded
+                while pieces_to_unload > 0:
+                    # Check available docks
+                    if not available_docks:
+                        print("No available docks for unloading.")
+                        return  # Exit if no available docks
+
+                    # Select the next available dock
+                    dock_id = available_docks.pop(0)
+                    pieces_to_allocate = min(remaining_pieces[dock_id], pieces_to_unload)
+
+                    # Update remaining pieces for the dock
+                    remaining_pieces[dock_id] -= pieces_to_allocate
+
+                    # Update pieces to unload
+                    pieces_to_unload -= pieces_to_allocate
+
+                    # Add dock ID to the list of dock IDs used for this order
+                    dispatch_conveyor.append(str(dock_id))
+
+                    # Print information or perform unloading operation
+                    print(f"Unloading {pieces_to_allocate} pieces of order {order.order_id} at Dock {dock_id}")
+
+                    # Perform unloading operation here
+                    # dock_id can be used to access the respective unloading dock object
+
+                    # If the dock is full, remove it from available docks
+                    if remaining_pieces[dock_id] == 0:
+                        print(f"Dock {dock_id} is full.")
+                        remaining_pieces.pop(dock_id)
+
+                # Update dispatch_conveyor for this order
+                order.dispatch_conveyor = ','.join(dispatch_conveyor)
+
+                # Update orders_tree with dispatch_conveyor information for this order
+                for item in self.stats.orders_tree.get_children():
+                    if self.stats.orders_tree.item(item, "text") == order.order_id:
+                        self.stats.orders_tree.item(item, values=(
+                            order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
+                        break  # Stop searching once the order is found
+
+
+        # Handle cases where there are remaining pieces but no orders
+        if remaining_pieces:
+            print("There are remaining pieces in some docks after unloading all orders.")
+
+                
                 
 
                
