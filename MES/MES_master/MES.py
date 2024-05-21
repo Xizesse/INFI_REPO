@@ -189,7 +189,7 @@ class MES:
             daily_prod = DB.get_production_queue(self.app.day_count)
             self.production_orders += daily_prod
             #! Get the purchases for the day
-            self.purchases = DB.get_purchases(self.app.day_count)
+            #self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
             self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
             self.update_dispatch_conveyor(self.deliveries, self.unloading_docks)
@@ -339,7 +339,7 @@ class MES:
             piece.machinetop = True
             piece.tooltop = self.find_next_transformation(piece.type, piece.final_type)
             line.load_piece(piece)
-            print(f"Loaded Piece of type {piece.type} into line {line.id} for top machine.")
+            print(f"Loaded Piece o\ type {piece.type} into line {line.id} for top machine.")
         elif position == 'bot':
             #take the piece out of the warehouse
             line.setBotBusy(True)

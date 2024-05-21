@@ -3,6 +3,7 @@ from tkinter import ttk
 import DB
 from warehouse import Warehouse
 from Line import Line
+from Piece import Piece
 import copy
 
 class ShopFloorStatisticsWindow:
@@ -11,9 +12,8 @@ class ShopFloorStatisticsWindow:
         
         self.window = tk.Toplevel(master)
         self.window.title("Shop Floor Statistics")
-        self.window.geometry("1600x600")  # Increased window size for more space
+        self.window.geometry("1600x600") 
 
-        # Create frames for each dock with a boxed look
         self.dock_frames = []
         for i in range(4):  # Assuming 4 docks
             frame = tk.LabelFrame(self.window, text=f"Dock {i+1}", padx=5, pady=5)
@@ -22,27 +22,24 @@ class ShopFloorStatisticsWindow:
             label.pack()
             self.dock_frames.append(label)
 
-        # Add a separator between docks and lines for better visual separation
+        
         separator = tk.Frame(self.window, height=2, bd=1, relief="sunken")
         separator.grid(row=1, columnspan=6, sticky="ew", padx=20, pady=10)
 
-        # Create frames for each line with two separate machines (top and bottom)
+       
         self.line_frames = []
-        for i in range(6):  # Assuming 6 lines
-            # Line indicator
+        for i in range(6):  
             line_label = tk.Label(self.window, text=f"Line {i+1}", font=('Helvetica', 10, 'bold'))
             line_label.grid(row=2, column=i, sticky="ew", padx=20)
 
             line_frame = tk.Frame(self.window)
             line_frame.grid(row=3, column=i, padx=20, pady=30)
 
-            # Machine Top
             top_frame = tk.LabelFrame(line_frame, text=f"Machine Top", padx=10, pady=10)
             top_frame.pack(side="top", fill="x", expand=True, pady=10)  # Increased padding for separation
             top_time_label = tk.Label(top_frame, text="Total Time: 0", font=('Helvetica', 8))
             top_time_label.pack(pady=10)
 
-            # Machine Bottom
             bottom_frame = tk.LabelFrame(line_frame, text=f"Machine Bottom", padx=10, pady=10)
             bottom_frame.pack(side="top", fill="x", expand=True, pady=10)  # Increased padding for separation
             bot_time_label = tk.Label(bottom_frame, text="Total Time: 0", font=('Helvetica', 8))
@@ -69,49 +66,37 @@ class ShopFloorStatisticsWindow:
 
         self.orders_tree.grid(row=0, column=6, rowspan=4, padx=20)
 
-        # Fetch initial order data
         initial_orders_data = DB.get_deliveries()
 
         # Update the display with initial order data
         self.update_orders_data(initial_orders_data, Warehouse(None))
 
-    # Function to update the status of each order
     def update_orders_data(self, orders_data, warehouse):
-        # Clear existing items in the Treeview
+    # Clear existing items in the Treeview
         self.orders_tree.delete(*self.orders_tree.get_children())
 
-        # Create a deep copy of the warehouse
-        warehouse_copy = copy.deepcopy(warehouse)
+        # Initialize quantities dictionary to count pieces by type
+        quantities = {i: 0 for i in range(1, 10)}
 
-        # Fetch quantities of all piece types currently in the copied warehouse
-        warehouse_quantities = warehouse_copy.get_quantities()
+        # Count the quantities of each piece type in the warehouse
+        for piece in list(warehouse.pieces.queue):
+            quantities[piece.final_type] += 1
 
         # Insert new order data into the Treeview with updated statuses
         for order in orders_data:
-            total_available = 0
-            # Get the number of pieces available in the copied warehouse for the order's final type
-            for piece in list(warehouse_copy.pieces.queue):
-                if piece.type == order.final_type:
-                    total_available += 1
+            total_available = quantities[order.final_type]
 
             # Determine the status based on the availability of the required pieces
             if total_available >= order.quantity:
                 order.status = "Ready"
-                # Remove the required pieces from the copied warehouse
-                pieces_removed = 0
-                for piece in list(warehouse_copy.pieces.queue):
-                    if piece.final_type == order.final_type:
-                        warehouse_copy.pieces.queue.remove(piece)
-                        pieces_removed += 1
-                        if pieces_removed == order.quantity:
-                            break
+                # Update quantities by removing the required pieces from the warehouse
+                quantities[order.final_type] -= order.quantity
             else:
                 order.status = "Not Ready"
 
             # Insert the order into the Treeview with the updated status
             self.orders_tree.insert("", "end", text=order.order_id, values=(
                 order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
-            
 
 
 # Example usage:

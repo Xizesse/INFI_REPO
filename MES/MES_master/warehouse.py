@@ -52,14 +52,7 @@ class Warehouse:
         piece4 = Piece(self.client, 3, 1, 6, 9, 11, False, False, 0, 0)
         self.put_piece_queue(piece4)
     
-    def get_quantities(self):
-        # (1,2,3,4,5,6,7,8,9)
-        quantities = {}
-        for i in range(1, 10):
-            quantities[i] = 0
-        for piece in list(self.pieces.queue):
-            quantities[piece.final_type] += 1
-        return quantities
+    
     
     def __deepcopy__(self, memo):
         # Create a new instance of Warehouse
