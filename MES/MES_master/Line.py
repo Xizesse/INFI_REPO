@@ -49,11 +49,10 @@ class Line:
         try:
             piece_out_node = self.client.get_node(self.piece_out_node_id)
             #print what is on that node
-            piece_out_node.set_value(ua.Variant(0, ua.VariantType.Int16))
-            time.sleep(1)
             piece_out_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
+            time.sleep(1)
+            piece_out_node.set_value(ua.Variant(0, ua.VariantType.Int16))
             
-            print(f"Loaded a physical piece of type {piece.type} into line {self.id}.")
         except Exception as e:
             messagebox.showerror("Error Loading Physical Piece", str(e))
 
@@ -78,7 +77,6 @@ class Line:
             #Set ID
             id_node = self.client.get_node(self.line_input_node_id + ".ID")
             id_node.set_value(ua.Variant(piece.id, ua.VariantType.Int16))
-            print("Loaded meta piece into line input.")
 
         except Exception as e:
             messagebox.showerror("Error Loading Meta Piece", str(e))
@@ -100,7 +98,6 @@ class Line:
             type_value = type_node.get_value()
             if type_value == NO_PIECE:
                 return None
-            print("Removing output piece.")
             machinetop_node = self.client.get_node(self.line_output_node_id + ".machineTOP")
             machinetop_value = machinetop_node.get_value()
             machinebot_node = self.client.get_node(self.line_output_node_id + ".machineBOT")
@@ -121,14 +118,14 @@ class Line:
     
             return Piece(self.client, id_value, type_value, 0, 0, 0, machinetop_value, machinebot_value, tooltop_value, toolbot_value)
         except Exception as e:
-            messagebox.showerror("Error Removing Output Piece", str(e))
+            messagebox.showerror(f"Error Removing Output Piece from Line {self.id}", str(e))
 
         
 
     def is_Occupied(self): #Returns True if the line is occupied
         try:
             ocupied = self.get_input_piece_type() != NO_PIECE
-            print(f"Line {self.id} is occupied: {ocupied}")
+            #print(f"Line {self.id} is occupied: {ocupied}")
             return ocupied
         except Exception as e:
             messagebox.showerror("Error Checking Line Occupancy", str(e))

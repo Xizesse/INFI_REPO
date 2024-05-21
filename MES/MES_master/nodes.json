@@ -89,7 +89,7 @@
         "description": "Reverse Conveyor",
         "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[14]",
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[14]",
-        "lineOut" : "Elemento Struct da Reverse Conveyor"
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Warehouse_Exchange.IN.pieceOUT"
     }
 }
 
