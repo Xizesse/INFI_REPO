@@ -1,6 +1,8 @@
 import psycopg2
 from psycopg2 import extras
-from Orders import Order
+from classes.order import Order
+from classes.plan_production import production_plan
+from classes.plan_purchasing import purchasing_plan
 
 DB_CONFIG = {
     "host": "db.fe.up.pt",
@@ -189,8 +191,8 @@ def get_orders():
         for row in results:
             # Extracting data from the row
             client = row['client']
-            order_id = row['number']
-            final_type = row['workpiece']
+            number = row['number']
+            piece = row['workpiece']
             quantity_str = row['quantity']
             due_date_col = row['due_date']
             late_pen = row['late_pen']
@@ -200,11 +202,11 @@ def get_orders():
             try:
                 quantity = int(quantity_str)
             except ValueError:
-                print(f"Invalid quantity value: {quantity_str} for order ID: {order_id}")
+                print(f"Invalid quantity value: {quantity_str} for order ID: {number}")
                 continue
             
             if quantity > 0:  # Ignore orders with quantity <= 0
-                order = Order(client, quantity, final_type, order_id, due_date_col, late_pen, early_pen)
+                order = Order(client, quantity, piece, number, due_date_col, late_pen, early_pen)
                 orders.append(order)
         return orders
     
@@ -220,7 +222,7 @@ def get_orders():
 # Example usage:
 orders = get_orders()
 for order in orders:
-    print(f" Client: {order.client}, Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}, Late Penalty: {order.late_pen}, Early Penalty: {order.early_pen}")
+    print(f" Client: {order.client}, Order ID: {order.number}, Quantity: {order.quantity}, Type: {order.piece}, Delivery Date: {order.due_date}, Late Penalty: {order.late_pen}, Early Penalty: {order.early_pen}")
 
 production_plan = get_production_plan()
 for entry in production_plan:
