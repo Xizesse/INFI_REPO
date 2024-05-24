@@ -5,7 +5,7 @@ from classes.raw_order import *
 
 def calculate_purchasing_plan(order_prod_plan):
 
-    start_date, workpiece, quantity = order_prod_plan
+    order_id, start_date, workpiece, quantity = order_prod_plan
 
     current_date = get_current_date()
     available_time = start_date - current_date  
