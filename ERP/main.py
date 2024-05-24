@@ -17,12 +17,16 @@ if __name__ == "__main__":
 
         db_connection = connect_to_db()
 
-        insert_new_orders(db_connection, new_orders)    #inserts orders into the database
+        inserted_orders = insert_new_orders(db_connection, new_orders)    #inserts orders into the database
     
-        for new_order in new_orders:    #for each order in the list of orders that was just received
+        for new_order in inserted_orders:    #for each order in the list of orders that was just received
 
             order_prod_plan = calculate_production_start(new_order) #calculates production start date for order
-            insert_production_plan(db_connection, order_prod_plan)
+            try :
+                insert_production_plan(db_connection, order_prod_plan)
+            except Exception as e:
+                print("Error:", e)
+                continue
 
             order_purchase_plan = calculate_purchasing_plan(order_prod_plan) #calculates purchasing plan based on production plan    
             insert_purchasing_plan(db_connection, order_purchase_plan)

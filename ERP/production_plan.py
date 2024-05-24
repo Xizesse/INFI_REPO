@@ -4,8 +4,6 @@ from db_config import *
 from classes.order import Order
 
 def calculate_production_start(new_order):
-  
-    print(f"\nOrder: {new_order}")
 
     avg_prod_time = {   # average production time for each piece type
     "P5": 1.58,
