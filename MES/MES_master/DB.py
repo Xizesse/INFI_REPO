@@ -98,14 +98,18 @@ def get_production_queue(day):
         password='DWHyIHTiPP'
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    
-    table_name = 'infi.production_plan'
-    start_date_col = 'start_date'
-    columns = ['p5_quantity', 'p6_quantity', 'p7_quantity', 'p9_quantity']
 
-    # Prepare the SQL query with a WHERE clause to filter by the desired day
-    columns_str = ", ".join([extras.quote_ident(col, cursor) for col in [start_date_col] + columns])  # Safely quote identifiers
-    query = f"SELECT {columns_str} FROM {table_name} WHERE {start_date_col} = %s ORDER BY {start_date_col} ASC"
+    query = f"SELECT 
+                start_date,
+                SUM(CASE WHEN workpiece = 'P5' THEN quantity ELSE 0 END) AS p5_quantity,
+                SUM(CASE WHEN workpiece = 'P6' THEN quantity ELSE 0 END) AS p6_quantity,
+                SUM(CASE WHEN workpiece = 'P7' THEN quantity ELSE 0 END) AS p7_quantity,
+                SUM(CASE WHEN workpiece = 'P9' THEN quantity ELSE 0 END) AS p9_quantity
+            FROM infi.orders
+            JOIN infi.new_production_plan ON order_id = number
+            WHERE start_date = %s
+            GROUP BY start_date
+            ORDER BY start_date;"
 
     try:
         cursor.execute(query, (day,))
