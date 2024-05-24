@@ -52,9 +52,7 @@ def insert_new_orders(conn, new_orders):
         else: 
             print(f"Order inserted: {order}")
             inserted_orders.append(order)
-
-    # Commit changes 
-    conn.commit()
+            conn.commit()
 
     return inserted_orders
 
