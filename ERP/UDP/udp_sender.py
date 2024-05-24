@@ -23,7 +23,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Send the file data and termination message
 try:
-    sent = sock.sendto(file_data + b"<END_OF_FILE>", (HOST, PORT))
+    sent = sock.sendto(file_data, (HOST, PORT))
     print(f"Sent {sent} bytes of data from {FILE_PATH} to {HOST}:{PORT}")
 except Exception as e:
     print(f"Error sending data: {e}")

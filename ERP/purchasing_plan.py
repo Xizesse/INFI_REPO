@@ -1,13 +1,9 @@
-import math
-import psycopg2 
-from db_config import *
 from classes.raw_order import *
 
-def calculate_purchasing_plan(order_prod_plan):
+def calculate_purchasing_plan(order_prod_plan, current_date):
 
     order_id, start_date, workpiece, quantity = order_prod_plan
 
-    current_date = get_current_date()
     available_time = start_date - current_date  
 
     # Calculate the best supplier for the order

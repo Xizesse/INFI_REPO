@@ -1,9 +1,7 @@
 import math
-import psycopg2 
-from db_config import *
 from classes.order import Order
 
-def calculate_production_start(new_order):
+def calculate_production_start(new_order, current_date):
 
     avg_prod_time = {   # average production time for each piece type
     "P5": 1.58,
@@ -23,7 +21,6 @@ def calculate_production_start(new_order):
     time_to_produce = time_to_produce / available_lines[new_order.piece]
     start_date = new_order.due_date - math.ceil(time_to_produce)
 
-    current_date = get_current_date()
     if start_date < current_date:    # if start date is invalid
         start_date = current_date   
 

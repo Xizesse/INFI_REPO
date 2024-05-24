@@ -12,6 +12,8 @@ DB_CONFIG = {
 
 def connect_to_db():
 
+    print("Connecting to the database...")
+    
     while True:
         try:
             conn = psycopg2.connect(
@@ -20,19 +22,18 @@ def connect_to_db():
                 user=DB_CONFIG['user'],
                 password=DB_CONFIG['password']
             )
-            print("Connected to the database.")
-            return conn
+            break
         except psycopg2.Error as e:
             print(f"Error connecting to the database: {e}")
             continue
+    return conn
 
 def close_db_connection(conn):
     conn.close()
 
-def get_current_date():
+def get_current_date(conn):
 
-    date_conn = connect_to_db()
-    cur = date_conn.cursor()
+    cur = conn.cursor()
 
     query = """
         SELECT date
@@ -44,7 +45,6 @@ def get_current_date():
     #Fetch current date
     current_date = cur.fetchone()
     current_date = int(current_date[0])
-    close_db_connection(date_conn)
 
     return current_date
 
