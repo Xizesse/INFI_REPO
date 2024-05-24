@@ -1,5 +1,4 @@
 import psycopg2
-from psycopg2 import extras
 from classes.order import Order
 from classes.plan_production import production_plan
 from classes.plan_purchasing import purchasing_plan
@@ -12,13 +11,20 @@ DB_CONFIG = {
 }
 
 def connect_to_db():
-    conn = psycopg2.connect(
-        host=DB_CONFIG['host'],
-        database=DB_CONFIG['database'],
-        user=DB_CONFIG['user'],
-        password=DB_CONFIG['password']
-    )
-    return conn
+
+    while True:
+        try:
+            conn = psycopg2.connect(
+                host=DB_CONFIG['host'],
+                database=DB_CONFIG['database'],
+                user=DB_CONFIG['user'],
+                password=DB_CONFIG['password']
+            )
+            print("Connected to the database.")
+            return conn
+        except psycopg2.Error as e:
+            print(f"Error connecting to the database: {e}")
+            continue
 
 def close_db_connection(conn):
     conn.close()

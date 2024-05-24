@@ -9,14 +9,15 @@ from classes.order import Order
 if __name__ == "__main__":   
     
     while True: 
+        
+        print("Connecting to the database...")
+        db_connection = connect_to_db() #connects to the database
+
         print("Waiting for new orders...")
 
         new_orders_file = udp_receive()
 
         new_orders = parse_new_orders(new_orders_file) #parses xml file and returns a list of orders 
-
-        db_connection = connect_to_db()
-
         inserted_orders = insert_new_orders(db_connection, new_orders)    #inserts orders into the database
     
         for new_order in inserted_orders:    #for each order in the list of orders that was just received
@@ -28,9 +29,14 @@ if __name__ == "__main__":
                 print("Error:", e)
                 continue
 
-            order_purchase_plan = calculate_purchasing_plan(order_prod_plan) #calculates purchasing plan based on production plan    
-            insert_purchasing_plan(db_connection, order_purchase_plan)
+            order_purchase_plan = calculate_purchasing_plan(order_prod_plan) #calculates purchasing plan based on production plan  
 
+            try:
+                insert_purchasing_plan(db_connection, order_purchase_plan)
+            except Exception as e:
+                print("Error:", e)
+                continue
+            
         print("-------------------------------\n")
         close_db_connection(db_connection)
         
