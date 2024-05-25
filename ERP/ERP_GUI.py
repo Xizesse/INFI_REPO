@@ -131,9 +131,9 @@ class ShopFloorStatisticsWindow:
         # Fetch initial order data
         orders_data = db_config.get_orders()
 
-        # Insert new order data into the Treeview
-        for i, order in enumerate(orders_data, start=1):
-            self.orders_tree.insert("", "end", text=order.client, values=(order.number, order.quantity, order.piece, order.due_date, order.late_pen, order.early_pen))
+        if orders_data:
+            for i, order in enumerate(orders_data, start=1):
+                self.orders_tree.insert("", "end", text=order.client, values=(order.number, order.quantity, order.piece, order.due_date, order.late_pen, order.early_pen))
 
     def update_production_plan_data(self):
         # Clear existing items in the Treeview
@@ -141,8 +141,9 @@ class ShopFloorStatisticsWindow:
 
         production_plan = db_config.get_production_plan()
 
-        for plan_entry in production_plan:
-            self.prod_plan_tree.insert("", "end", text=plan_entry.start_date, values=(plan_entry.order_id))
+        if production_plan:
+            for plan_entry in production_plan:
+                self.prod_plan_tree.insert("", "end", text=plan_entry.start_date, values=(plan_entry.order_id))
 
     def update_prod_quantities_data(self):
         # Clear existing items in the Treeview
@@ -150,16 +151,18 @@ class ShopFloorStatisticsWindow:
 
         prod_quantities = db_config.get_prod_quantities()
 
-        for plan_entry in prod_quantities:
-            self.prod_quantities_tree.insert("", "end", text=plan_entry.start_date, values=(plan_entry.p5_quantity, plan_entry.p6_quantity, plan_entry.p7_quantity, plan_entry.p9_quantity))
+        if prod_quantities:
+            for plan_entry in prod_quantities:
+                self.prod_quantities_tree.insert("", "end", text=plan_entry.start_date, values=(plan_entry.p5_quantity, plan_entry.p6_quantity, plan_entry.p7_quantity, plan_entry.p9_quantity))
 
     def update_purchasing_plan_data(self):
         # Clear existing items in the Treeview
         self.purchase_plan_tree.delete(*self.purchase_plan_tree.get_children())
         purchasing_plan = db_config.get_purchasing_plan()  
 
-        for plan_entry in purchasing_plan:
-            self.purchase_plan_tree.insert("", "end", text=plan_entry.arrival_date, values=(plan_entry.p1_quantity, plan_entry.p2_quantity))
+        if purchasing_plan:
+            for plan_entry in purchasing_plan:
+                self.purchase_plan_tree.insert("", "end", text=plan_entry.arrival_date, values=(plan_entry.p1_quantity, plan_entry.p2_quantity))
 
     def update_current_date(self):
         # This function can be used later if your implementation involves retrieving the date dynamically

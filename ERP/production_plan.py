@@ -38,7 +38,7 @@ def insert_production_plan(conn, order_prod_plan):
     try: 
         # Create the production_plan table if it doesn't exist
         cur.execute("""
-            CREATE TABLE IF NOT EXISTS infi.new_production_plan (
+            CREATE TABLE IF NOT EXISTS infi.production_plan (
                 order_id INTEGER REFERENCES infi.orders(number) PRIMARY KEY,
                 start_date INTEGER NOT NULL
             );
@@ -50,7 +50,7 @@ def insert_production_plan(conn, order_prod_plan):
 
     
     # Insert the ordered data into the new table
-    cur.execute("INSERT INTO infi.new_production_plan VALUES (%s, %s)", (order_id, start_date))
+    cur.execute("INSERT INTO infi.production_plan VALUES (%s, %s)", (order_id, start_date))
 
     # Commit changes 
     conn.commit()
