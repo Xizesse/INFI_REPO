@@ -99,17 +99,17 @@ def get_production_queue(day):
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-    query = f"SELECT 
+    query = """SELECT 
                 start_date,
                 SUM(CASE WHEN workpiece = 'P5' THEN quantity ELSE 0 END) AS p5_quantity,
                 SUM(CASE WHEN workpiece = 'P6' THEN quantity ELSE 0 END) AS p6_quantity,
                 SUM(CASE WHEN workpiece = 'P7' THEN quantity ELSE 0 END) AS p7_quantity,
                 SUM(CASE WHEN workpiece = 'P9' THEN quantity ELSE 0 END) AS p9_quantity
-            FROM infi.orders
-            JOIN infi.new_production_plan ON order_id = number
+            FROM infi.new_production_plan
+            JOIN infi.orders ON order_id = number
             WHERE start_date = %s
             GROUP BY start_date
-            ORDER BY start_date;"
+            ORDER BY start_date;"""
 
     try:
         cursor.execute(query, (day,))
@@ -130,9 +130,6 @@ def get_production_queue(day):
         # Close the connection to the database
         cursor.close()
         conn.close()
-
-schedule = get_production_queue(11)
-print(schedule)
 
 def get_deliveries():
     """
