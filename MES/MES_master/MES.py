@@ -14,6 +14,7 @@ from Piece import Piece
 from warehouse import Warehouse
 import DB
 from Orders import Order
+from Piece_to_produce import Piece_to_produce
 
 #!TODO
 #Small Things
@@ -32,6 +33,58 @@ class MES:
         self.app = PiecesGUI(self, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app)) 
         nodes = self.load_nodes_from_file('nodes.json')
         self.connected = False
+    
+        #! PURCHASES - Array of (type)
+        self.purchases = []
+
+        #! PRODUCTION ORDERS - Array of (final_type) - Working :)
+        self.production_orders = []
+
+        test_piece5 = Piece_to_produce(500, 5, 10) 
+        test_piece9 = Piece_to_produce(501, 9, 10)
+
+        #add 5 pieces of type 5 to the production orders and 3 pieces of type 9
+        for _ in range(5):
+            self.production_orders.append(test_piece5)
+        for _ in range(3):
+            self.production_orders.append(test_piece9)
+
+
+        #! DELIVERIES - Array of (orders) 
+        self.deliveries = []
+        
+        #!WAREHOUSES
+        self.TopWarehouse = Warehouse(self.client)
+        self.BotWarehouse = Warehouse(self.client)
+        #O warehouse de cima começa com 20 peças 1
+        for _ in range(20):
+            piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
+            self.TopWarehouse.put_piece_queue(piece)
+        piece = Piece(self.client, 0, 2, 0, 0, 0, False, False, 0, 0)
+        self.TopWarehouse.put_piece_queue(piece)
+
+        #for _ in range(8):
+         #   piece = Piece(self.client, 0, 9, 0, 0, 0, False, False, 0, 0)
+          #  self.BotWarehouse.put_piece_queue(piece)
+
+        piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
+        self.TopWarehouse.put_piece_queue(piece)
+        piece = Piece(self.client, 998, 1, 1, 0, 0, False, False, 0, 0)
+        piece.on_the_floor = True
+        self.TopWarehouse.put_piece_queue(piece)
+        
+
+
+        #self.TopWarehouse.set_simulation_warehouse()
+        #self.BotWarehouse.set_simulation_warehouse()
+        #self.SFS = Warehouse(self.client)
+
+        self.IDcount = 1
+
+        #EXEMPLO: O warehouse de baixo começa com 4 peças 5
+        for _ in range(20):
+            piece = Piece(self.client, 0, 5, 5, 5, 8, False, False, 0, 0)
+            self.BotWarehouse.put_piece_queue(piece)
 
          #! LINES AND MACHINES
         self.lines_machines = {
@@ -189,14 +242,20 @@ class MES:
             self.update_loading_docks()
             #to test load somrhing into the loading dock 1
             #self.loading_docks[1].load_piece(Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0))
-
+#!Set current date in the DB
+            DB.set_current_date(self.app.day_count)
             #! Get the purchases for the day
             self.purchases = DB.get_purchasing_queue(self.app.day_count)
-            print("Purchases: ", self.purchases)
+            print("Purchases: ", self.purchases)            
             #! Get the prod sched for the day
             daily_prod = DB.get_production_queue(self.app.day_count)
-            self.production_orders += daily_prod
-            print("Production: ", self.production_orders)
+            print("Production orders for the day: ")
+            for piece in daily_prod:
+                self.production_orders.append(piece)
+                print(f"Order ID: {piece.order_id}, Final Type: {piece.final_type}, Delivery Day: {piece.delivery_day}")
+            
+            #! Get the purchases for the day
+            #self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
             self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
             
@@ -204,7 +263,7 @@ class MES:
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-        if self.connected:
+        #if self.connected:
         
             #! Purchase actions
             #TODO
@@ -392,24 +451,28 @@ class MES:
                     self.update_machine(line, 'top', piece)
 
     def update_pieces_w_orders(self):
-        i = 0
-        while i < len(self.production_orders):
-            order = self.production_orders[i]
-            processed = False
+
+        orders_to_remove = []
+
+        for piece_to_produce in self.production_orders:
             for piece in list(self.TopWarehouse.pieces.queue):
-                if piece.id == 0 and self.transformation_paths.get((piece.type, order)) :
-                    piece.final_type = order
-                    piece.order_id = 27
+
+                if self.transformation_paths.get((piece.type, piece_to_produce.final_type)) and piece.id == 0:
+  
+                    piece.final_type = piece_to_produce.final_type
+                    piece.order_id = piece_to_produce.order_id
                     piece.id = self.IDcount
                     self.IDcount += 1
-                    piece.delivery_day = self.app.day_count + 5
-                    processed = True
+                    piece.delivery_day = piece_to_produce.delivery_day
                     print(f"Creating piece for {piece.type}->{piece.final_type}")
+                    
+                    orders_to_remove.append(piece_to_produce)
                     break
-            if processed:
-                self.production_orders.remove(order)
-            else :
-                i += 1
+
+        # Remove the processed orders from the production orders list
+        for order_to_remove in orders_to_remove:
+            self.production_orders.remove(order_to_remove)
+
 
     def remove_all_output_piece(self):
         for _, line in self.lines_machines.items():

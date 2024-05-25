@@ -1,20 +1,37 @@
-import math
-import psycopg2 
-from db_config import *
-from classes.raw_order import *
+from classes.Raw_order import *
 
-def calculate_purchasing_plan(order_prod_plan):
+leftover_P1 = 0
+leftover_P2 = 0
 
-    start_date, workpiece, quantity = order_prod_plan
+def calculate_purchasing_plan(order_prod_plan, current_date):
 
-    current_date = get_current_date()
+    order_id, start_date, workpiece, quantity = order_prod_plan
+
     available_time = start_date - current_date  
 
     # Calculate the best supplier for the order
     workpiece = final_to_raw[workpiece]
+
+    global leftover_P1
+    global leftover_P2
+
+    if workpiece == 'P1':
+        quantity = quantity - leftover_P1
+    elif workpiece == 'P2':
+        quantity = quantity - leftover_P2
+
+    leftover_P1 = 0
+    leftover_P2 = 0
+
     best_raw_order = Raw_order.choose_raw_order(raw_orders, workpiece, quantity, available_time)
 
     if quantity < best_raw_order.min_quantity:
+        
+        if workpiece == 'P1':
+            leftover_P1 += best_raw_order.min_quantity - quantity
+        elif workpiece == 'P2':
+            leftover_P2 += best_raw_order.min_quantity - quantity
+
         quantity = best_raw_order.min_quantity
 
     if best_raw_order is None:
@@ -52,10 +69,8 @@ def insert_purchasing_plan(conn, purchase_plan):
         'P2': 0
     }
 
-    # Set the quantity for the corresponding piece type
     quantities[workpiece] = quantity
 
-    # Insert the production schedule into the production_plan table
     cur.execute("""
         INSERT INTO infi.purchasing_plan (arrival_date, p1_quantity, p2_quantity) 
         VALUES (%s, %s, %s)

@@ -1,6 +1,7 @@
 import psycopg2
 from psycopg2 import extras
 from Orders import Order
+from Piece_to_produce import Piece_to_produce
 
 def expand_values(data, item_prefix='p'):
     """
@@ -72,10 +73,6 @@ def get_purchasing_queue(day):
         cursor.close()
         conn.close()
 
-print(f"PURCHASING PLAN:")
-schedule = get_purchasing_queue(4)
-print(schedule)
-
 def get_production_queue(day):
     """
     Fetches and expands production numbers sorted by a due date from a PostgreSQL database.
@@ -98,25 +95,26 @@ def get_production_queue(day):
         password='DWHyIHTiPP'
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    
-    table_name = 'infi.production_plan'
-    start_date_col = 'start_date'
-    columns = ['p5_quantity', 'p6_quantity', 'p7_quantity', 'p9_quantity']
 
-    # Prepare the SQL query with a WHERE clause to filter by the desired day
-    columns_str = ", ".join([extras.quote_ident(col, cursor) for col in [start_date_col] + columns])  # Safely quote identifiers
-    query = f"SELECT {columns_str} FROM {table_name} WHERE {start_date_col} = %s ORDER BY {start_date_col} ASC"
+    query = """SELECT start_date, order_id, workpiece,quantity,due_date
+                FROM infi.new_production_plan
+                JOIN infi.orders ON order_id = number
+                WHERE start_date = %s;"""
 
     try:
         cursor.execute(query, (day,))
-        # Fetch all rows as a list of dictionaries
         results = cursor.fetchall()
 
-        # Expand the data
-        expanded_results = expand_values(results)
+        piece_queue = []
+        for row in results:
+            start_date, order_id, workpiece, quantity, due_date = row
 
-        # Flatten the list of tuples into a single list
-        piece_queue = [item for sublist in expanded_results for item in sublist]
+            workpiece = int(workpiece[1:])
+
+            for i in range(quantity):
+                print(f"Order ID: {order_id}, Workpiece: {workpiece}, Due Date: {due_date}")
+                piece_queue.append(Piece_to_produce(order_id, workpiece, due_date))
+
         return piece_queue
     
     except Exception as e:
@@ -126,9 +124,6 @@ def get_production_queue(day):
         # Close the connection to the database
         cursor.close()
         conn.close()
-
-schedule = get_production_queue(11)
-print(schedule)
 
 def get_deliveries():
     """
@@ -189,7 +184,69 @@ def get_deliveries():
         cursor.close()
         conn.close()
 
-# Example usage:
-orders = get_deliveries()
-for order in orders:
-    print(f"Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}")
+def set_current_date(current_date):
+    """
+    Set the current date in the database.
+    """
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(
+        host='db.fe.up.pt',
+        database='infind202410',
+        user='infind202410',
+        password='DWHyIHTiPP'
+    )
+    cursor = conn.cursor()
+
+    query = "UPDATE infi.todays_date SET date = %s;"
+
+    try:
+        cursor.execute(query, (current_date,))
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        # Close the connection to the database
+        cursor.close()
+        conn.close()
+
+def set_dispatch_date(order_id, dispatch_date):
+    """
+    Set the dispatch date in the database.
+    """
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(
+        host='db.fe.up.pt',
+        database='infind202410',
+        user='infind202410',
+        password='DWHyIHTiPP'
+    )
+    cursor = conn.cursor()
+
+    #Tries to create table if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS infi.dispatches (order_id INTEGER PRIMARY KEY, dispatch_date INTEGER);"
+    try:
+        cursor.execute(query)
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        cursor.rollback()
+
+    #Inserts dispatch date for new dispatched order
+    query = "INSERT INTO infi.dispatches (order_id, dispatch_date) VALUES (%s, %s);"
+    try:
+        cursor.execute(query, (order_id, dispatch_date))
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        cursor.rollback()
+    finally:
+        cursor.close()
+        conn.close()
+
+
+if __name__ == '__main__':
+    # Example usage:
+    orders = get_deliveries()
+    print("Orders:")
+    for order in orders:
+        print(f"Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}")
