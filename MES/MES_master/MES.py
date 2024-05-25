@@ -13,6 +13,7 @@ from Line import Line
 from Piece import Piece
 from warehouse import Warehouse
 import DB
+from Piece_to_produce import Piece_to_produce
 
 #!TODO
 
@@ -39,18 +40,16 @@ class MES:
 
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
-        self.production_orders.append(5)
-        self.production_orders.append(9)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
+
+        test_piece5 = Piece_to_produce(500, 5, 10) 
+        test_piece9 = Piece_to_produce(501, 9, 10)
+
+        #add 5 pieces of type 5 to the production orders and 3 pieces of type 9
+        for _ in range(5):
+            self.production_orders.append(test_piece5)
+        for _ in range(3):
+            self.production_orders.append(test_piece9)
+
 
         #! DELIVERIES - Array of (orders) 
         self.deliveries = []
@@ -183,12 +182,16 @@ class MES:
         if last_day != self.app.day_count:
             print("New day, good morning")
 
+            #!Set current date in the DB
+            DB.set_current_date(self.app.day_count)
             
-
             #! Get the prod sched for the day
             daily_prod = DB.get_production_queue(self.app.day_count)
-            print("Production orders for the day: ", daily_prod)
-            self.production_orders += daily_prod
+            print("Production orders for the day: ")
+            for piece in daily_prod:
+                self.production_orders.append(piece)
+                print(f"Order ID: {piece.order_id}, Final Type: {piece.final_type}, Delivery Day: {piece.delivery_day}")
+            
             #! Get the purchases for the day
             #self.purchases = DB.get_purchases(self.app.day_count)
             #! Get the deliveries for the day
@@ -198,7 +201,7 @@ class MES:
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-        if self.connected:
+        #if self.connected:
         
             #! Purchase actions
             #TODO
@@ -370,24 +373,28 @@ class MES:
                     self.update_machine(line, 'top', piece)
 
     def update_pieces_w_orders(self):
-        i = 0
-        while i < len(self.production_orders):
-            order = self.production_orders[i]
-            processed = False
+
+        orders_to_remove = []
+
+        for piece_to_produce in self.production_orders:
             for piece in list(self.TopWarehouse.pieces.queue):
-                if self.transformation_paths.get((piece.type, order)) and piece.id == 0:
-                    piece.final_type = order
-                    piece.order_id = 27
+
+                if self.transformation_paths.get((piece.type, piece_to_produce.final_type)) and piece.id == 0:
+  
+                    piece.final_type = piece_to_produce.final_type
+                    piece.order_id = piece_to_produce.order_id
                     piece.id = self.IDcount
                     self.IDcount += 1
-                    piece.delivery_day = self.app.day_count + 5
-                    processed = True
+                    piece.delivery_day = piece_to_produce.delivery_day
                     print(f"Creating piece for {piece.type}->{piece.final_type}")
+                    
+                    orders_to_remove.append(piece_to_produce)
                     break
-            if processed:
-                self.production_orders.remove(order)
-            else :
-                i += 1
+
+        # Remove the processed orders from the production orders list
+        for order_to_remove in orders_to_remove:
+            self.production_orders.remove(order_to_remove)
+
 
     def remove_all_output_piece(self):
         for _, line in self.lines_machines.items():

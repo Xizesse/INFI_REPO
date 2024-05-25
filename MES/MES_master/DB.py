@@ -1,6 +1,7 @@
 import psycopg2
 from psycopg2 import extras
 from Orders import Order
+from Piece_to_produce import Piece_to_produce
 
 def expand_values(data, item_prefix='p'):
     """
@@ -72,10 +73,6 @@ def get_purchasing_queue(day):
         cursor.close()
         conn.close()
 
-print(f"PURCHASING PLAN:")
-schedule = get_purchasing_queue(4)
-print(schedule)
-
 def get_production_queue(day):
     """
     Fetches and expands production numbers sorted by a due date from a PostgreSQL database.
@@ -99,28 +96,25 @@ def get_production_queue(day):
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-    query = """SELECT 
-                start_date,
-                SUM(CASE WHEN workpiece = 'P5' THEN quantity ELSE 0 END) AS p5_quantity,
-                SUM(CASE WHEN workpiece = 'P6' THEN quantity ELSE 0 END) AS p6_quantity,
-                SUM(CASE WHEN workpiece = 'P7' THEN quantity ELSE 0 END) AS p7_quantity,
-                SUM(CASE WHEN workpiece = 'P9' THEN quantity ELSE 0 END) AS p9_quantity
-            FROM infi.new_production_plan
-            JOIN infi.orders ON order_id = number
-            WHERE start_date = %s
-            GROUP BY start_date
-            ORDER BY start_date;"""
+    query = """SELECT start_date, order_id, workpiece,quantity,due_date
+                FROM infi.new_production_plan
+                JOIN infi.orders ON order_id = number
+                WHERE start_date = %s;"""
 
     try:
         cursor.execute(query, (day,))
-        # Fetch all rows as a list of dictionaries
         results = cursor.fetchall()
 
-        # Expand the data
-        expanded_results = expand_values(results)
+        piece_queue = []
+        for row in results:
+            start_date, order_id, workpiece, quantity, due_date = row
 
-        # Flatten the list of tuples into a single list
-        piece_queue = [item for sublist in expanded_results for item in sublist]
+            workpiece = int(workpiece[1:])
+
+            for i in range(quantity):
+                print(f"Order ID: {order_id}, Workpiece: {workpiece}, Due Date: {due_date}")
+                piece_queue.append(Piece_to_produce(order_id, workpiece, due_date))
+
         return piece_queue
     
     except Exception as e:
@@ -190,7 +184,34 @@ def get_deliveries():
         cursor.close()
         conn.close()
 
-# Example usage:
-orders = get_deliveries()
-for order in orders:
-    print(f"Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}")
+def set_current_date(current_date):
+    """
+    Set the current date in the database.
+    """
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(
+        host='db.fe.up.pt',
+        database='infind202410',
+        user='infind202410',
+        password='DWHyIHTiPP'
+    )
+    cursor = conn.cursor()
+
+    query = "UPDATE infi.todays_date SET date = %s;"
+
+    try:
+        cursor.execute(query, (current_date,))
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        # Close the connection to the database
+        cursor.close()
+        conn.close()
+
+if __name__ == '__main__':
+    # Example usage:
+    orders = get_deliveries()
+    print("Orders:")
+    for order in orders:
+        print(f"Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}")
