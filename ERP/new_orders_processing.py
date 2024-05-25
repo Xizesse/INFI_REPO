@@ -1,6 +1,6 @@
 import psycopg2
 import xml.etree.ElementTree as ET
-from classes.order import Order
+from classes.Order import Order
 
 def parse_new_orders(new_orders_file):
     
@@ -18,7 +18,6 @@ def parse_new_orders(new_orders_file):
         new_orders.append(new_order)
 
     return new_orders
-
 
 
 def insert_new_orders(conn, new_orders):

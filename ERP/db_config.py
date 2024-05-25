@@ -31,6 +31,7 @@ def connect_to_db():
         else :
             print("Connected to the database.")
             break
+    return conn
 
 def close_db_connection():
     global conn
@@ -94,7 +95,6 @@ def get_orders():
     else:
         cursor.close()
         return orders
-
 
 def get_production_plan():
 

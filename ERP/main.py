@@ -3,7 +3,6 @@ from new_orders_processing import parse_new_orders, insert_new_orders
 from production_plan import calculate_production_start, insert_production_plan
 from purchasing_plan import calculate_purchasing_plan, insert_purchasing_plan
 from db_config import connect_to_db, close_db_connection, get_current_date
-from classes.order import Order
 
 
 if __name__ == "__main__":   
@@ -19,7 +18,7 @@ if __name__ == "__main__":
         new_orders = parse_new_orders(new_orders_file) #parses xml file and returns a list of orders 
         inserted_orders = insert_new_orders(db_connection, new_orders)    #inserts orders into the database
 
-        current_date = get_current_date(db_connection) #gets the current date from the database
+        current_date = get_current_date() #gets the current date from the database
     
         for new_order in inserted_orders:    #for each order in the list of orders that was just received
 
@@ -39,7 +38,7 @@ if __name__ == "__main__":
                 continue
             
         print("-------------------------------\n")
-        close_db_connection(db_connection)
+        close_db_connection()
         
 
 

@@ -94,7 +94,7 @@ class ShopFloorStatisticsWindow:
 
         db_config.close_db_connection() 
         
-        self.window.after(30*1000, self.update_values)  # Update every 30 seconds    
+        self.window.after(20*1000, self.update_values)  # Update every 30 seconds    
 
     def update_orders_data(self):
         # Clear existing items in the Treeview
