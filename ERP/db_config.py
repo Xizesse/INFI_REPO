@@ -1,5 +1,6 @@
 import psycopg2
 import psycopg2.extras
+import sys
 from classes.Order import Order
 from classes.ProductionPlan import ProductionPlan, Prod_Quantities
 from classes.PurchasingPlan import PurchasingPlan
@@ -200,6 +201,30 @@ def get_purchasing_plan():
 
 # Example usage:
 if __name__ == "__main__":
+
+    if sys.argv[1] == "delete":
+        conn = connect_to_db()
+        cur = conn.cursor()
+        try:
+            cur.execute("DELETE FROM infi.purchasing_plan")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
+        try:
+            cur.execute("DELETE FROM infi.production_plan")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
+        try:
+            cur.execute("DELETE FROM infi.orders")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
+        conn.commit()
+        cur.close()
+        close_db_connection()
+        print("All tables cleared.")
+        exit()
 
     connect_to_db()
 
