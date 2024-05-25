@@ -1,4 +1,4 @@
-from classes.raw_order import *
+from classes.Raw_order import *
 
 leftover_P1 = 0
 leftover_P2 = 0
@@ -14,7 +14,7 @@ def calculate_purchasing_plan(order_prod_plan, current_date):
 
     global leftover_P1
     global leftover_P2
-    
+
     if workpiece == 'P1':
         quantity = quantity - leftover_P1
     elif workpiece == 'P2':
