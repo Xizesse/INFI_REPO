@@ -1,7 +1,7 @@
 import psycopg2
 import psycopg2.extras
 from classes.Order import Order
-from classes.ProductionPlan import ProductionPlan
+from classes.ProductionPlan import ProductionPlan, Prod_Quantities
 from classes.PurchasingPlan import PurchasingPlan
 
 DB_CONFIG = {
@@ -65,7 +65,9 @@ def get_orders():
   
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     
-    query = "SELECT * FROM infi.orders ORDER BY number ASC"
+    query = """SELECT client, number, workpiece, quantity, due_date, late_pen, early_pen
+            FROM infi.orders 
+            ORDER BY due_date ASC;"""
 
     try:
         cursor.execute(query)
@@ -116,7 +118,7 @@ def get_production_plan():
             order_id = row['order_id']
             start_date = row['start_date']
             
-            order_prod_plan = ProductionPlan(order_id, start_date, workpiece=None,  quantity=None)
+            order_prod_plan = ProductionPlan(order_id, start_date)
             production_plan.append(order_prod_plan)
 
     except Exception as e:
@@ -126,6 +128,42 @@ def get_production_plan():
     cursor.close()
 
     return production_plan
+
+def get_prod_quantities():
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT 
+                start_date,
+                SUM(CASE WHEN workpiece = 'P5' THEN quantity ELSE 0 END) AS p5_quantity,
+                SUM(CASE WHEN workpiece = 'P6' THEN quantity ELSE 0 END) AS p6_quantity,
+                SUM(CASE WHEN workpiece = 'P7' THEN quantity ELSE 0 END) AS p7_quantity,
+                SUM(CASE WHEN workpiece = 'P9' THEN quantity ELSE 0 END) AS p9_quantity
+            FROM infi.new_production_plan
+            JOIN infi.orders ON order_id = number
+            GROUP BY start_date
+            ORDER BY start_date;"""
+
+        cursor.execute(query)
+        results = cursor.fetchall() # Fetch all production plan entries
+
+        prod_quantities = []
+        for row in results:
+            
+            start_date = row['start_date']
+            p5_quantity = row['p5_quantity']
+            p6_quantity = row['p6_quantity']
+            p7_quantity = row['p7_quantity']
+            p9_quantity = row['p9_quantity']
+
+            prod_quantities_day = Prod_Quantities(start_date, p5_quantity, p6_quantity, p7_quantity, p9_quantity)
+            prod_quantities.append(prod_quantities_day)
+            
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        connect_to_db()
+    
+    return prod_quantities
 
 def get_purchasing_plan():
 
