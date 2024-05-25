@@ -209,6 +209,41 @@ def set_current_date(current_date):
         cursor.close()
         conn.close()
 
+def set_dispatch_date(order_id, dispatch_date):
+    """
+    Set the dispatch date in the database.
+    """
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(
+        host='db.fe.up.pt',
+        database='infind202410',
+        user='infind202410',
+        password='DWHyIHTiPP'
+    )
+    cursor = conn.cursor()
+
+    #Tries to create table if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS infi.dispatches (order_id INTEGER PRIMARY KEY, dispatch_date INTEGER);"
+    try:
+        cursor.execute(query)
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        cursor.rollback()
+
+    #Inserts dispatch date for new dispatched order
+    query = "INSERT INTO infi.dispatches (order_id, dispatch_date) VALUES (%s, %s);"
+    try:
+        cursor.execute(query, (order_id, dispatch_date))
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        cursor.rollback()
+    finally:
+        cursor.close()
+        conn.close()
+
+
 if __name__ == '__main__':
     # Example usage:
     orders = get_deliveries()
