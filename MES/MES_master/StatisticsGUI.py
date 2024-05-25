@@ -12,7 +12,7 @@ class ShopFloorStatisticsWindow:
         
         self.window = tk.Toplevel(master)
         self.window.title("Shop Floor Statistics")
-        self.window.geometry("1600x600") 
+        self.window.geometry("1600x800")  # Increased height to accommodate new sections
 
         self.dock_frames = []
         for i in range(4):  
@@ -64,6 +64,17 @@ class ShopFloorStatisticsWindow:
 
         self.orders_tree.grid(row=0, column=6, rowspan=4, padx=20)
 
+        # Add new sections for purchasing and production queues
+        self.purchasing_label = tk.LabelFrame(self.window, text="Purchasing Queue", padx=10, pady=10)
+        self.purchasing_label.grid(row=5, column=0, columnspan=3, sticky="ew", padx=10, pady=10)
+        self.purchasing_text = tk.Text(self.purchasing_label, height=10, width=50)
+        self.purchasing_text.pack()
+
+        self.production_label = tk.LabelFrame(self.window, text="Production Queue", padx=10, pady=10)
+        self.production_label.grid(row=5, column=3, columnspan=3, sticky="ew", padx=10, pady=10)
+        self.production_text = tk.Text(self.production_label, height=10, width=50)
+        self.production_text.pack()
+
         self.update_machine_statuses()
 
     def update_orders_data(self, orders_data, warehouse):
@@ -96,6 +107,14 @@ class ShopFloorStatisticsWindow:
             else:
                 bottom_frame.config(bg="SystemButtonFace")
         self.window.after(1000, self.update_machine_statuses)
+
+    def update_purchasing_queue(self, purchases):
+        self.purchasing_text.delete(1.0, tk.END)
+        self.purchasing_text.insert(tk.END, "\n".join(str(p) for p in purchases))
+
+    def update_production_queue(self, production_orders):
+        self.production_text.delete(1.0, tk.END)
+        self.production_text.insert(tk.END, "\n".join(str(p.final_type) for p in production_orders))
 
 if __name__ == "__main__":
     root = tk.Tk()
