@@ -21,8 +21,8 @@ def calculate_production_start(new_order, current_date):
     time_to_produce = time_to_produce / available_lines[new_order.piece]
     start_date = new_order.due_date - math.ceil(time_to_produce)
 
-    if start_date < current_date:    # if start date is invalid
-        start_date = current_date   
+    if start_date <= current_date:    # if start date is invalid
+        start_date = current_date + 1  
 
     prod_plan = (new_order.number, start_date, new_order.piece, new_order.quantity)
     print(f"Production plan: {prod_plan}")
