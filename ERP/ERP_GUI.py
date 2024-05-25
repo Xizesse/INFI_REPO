@@ -129,8 +129,14 @@ class ShopFloorStatisticsWindow:
         current_date = db_config.get_current_date()
         self.current_date_label.config(text=f"Current Date: {current_date}")
 
-# Example usage:
-if __name__ == "__main__":
+
+def erp_gui():
     root = tk.Tk()
     stats_window = ShopFloorStatisticsWindow(root)
     root.mainloop()
+
+if __name__ == "__main__":
+    erp_gui()
+
+
+
