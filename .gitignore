@@ -1,5 +1,4 @@
 desktop.ini
-ERP/UDP/new_orders.xml
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -162,3 +161,4 @@ cython_debug/
 #.idea/
 .vscode/settings.json
 
+ERP/new_orders.xml

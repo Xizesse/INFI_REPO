@@ -197,8 +197,17 @@ def set_current_date(current_date):
     )
     cursor = conn.cursor()
 
+    #Tries to create table if it doesn't exist
+    query = "CREATE TABLE IF NOT EXISTS infi.todays_date (date INTEGER PRIMARY KEY);"
+    try:
+        cursor.execute(query)
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        cursor.rollback()
+    
+    #Updates current date
     query = "UPDATE infi.todays_date SET date = %s;"
-
     try:
         cursor.execute(query, (current_date,))
         conn.commit()
