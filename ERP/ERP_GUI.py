@@ -94,7 +94,7 @@ class ShopFloorStatisticsWindow:
 
         db_config.close_db_connection() 
         
-        self.window.after(20*1000, self.update_values)  # Update every 30 seconds    
+        self.window.after(5*1000, self.update_values)  # Update every 5 seconds    
 
     def update_orders_data(self):
         # Clear existing items in the Treeview
@@ -108,13 +108,18 @@ class ShopFloorStatisticsWindow:
             self.orders_tree.insert("", "end", text=order.client, values=(order.number, order.quantity, order.piece, order.due_date, order.late_pen, order.early_pen))
 
     def update_production_plan_data(self):
+        # Clear existing items in the Treeview
+        self.second_table_tree.delete(*self.second_table_tree.get_children())
+
         production_plan = db_config.get_production_plan()
 
         for plan_entry in production_plan:
             self.second_table_tree.insert("", "end", text=plan_entry.start_date, values=(plan_entry.order_id, plan_entry.workpiece, plan_entry.quantity))
 
     def update_purchasing_plan_data(self):
-        purchasing_plan = db_config.get_purchasing_plan()  # Assuming this returns a list of dictionaries
+        # Clear existing items in the Treeview
+        self.third_table_tree.delete(*self.third_table_tree.get_children())
+        purchasing_plan = db_config.get_purchasing_plan()  
 
         for plan_entry in purchasing_plan:
             self.third_table_tree.insert("", "end", text=plan_entry.arrival_date, values=(plan_entry.p1_quantity, plan_entry.p2_quantity))
