@@ -125,9 +125,9 @@ class Line:
 
     def is_Occupied(self): #Returns True if the line is occupied
         try:
-            print("Checking if line is occupied")
+            #print("Checking if line is occupied")
             ocupied = self.get_input_piece_type() != NO_PIECE
-            print(f"Line {self.id} is occupied: {ocupied}")
+            #print(f"Line {self.id} is occupied: {ocupied}")
             return ocupied
         except Exception as e:
             messagebox.showerror("Error Checking Line Occupancy", str(e))
