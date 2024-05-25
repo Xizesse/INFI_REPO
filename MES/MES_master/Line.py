@@ -34,9 +34,7 @@ class Line:
         try:
             print(f"Loading piece {piece.id} into line {self.id}")
             #if self.is_Occupied():
-            #    print("Line is occupied. Cannot load piece.")
             #    return
-            #print what machine is True
             #load the meta piece into the line input
             self.load_meta_piece(piece)
             #load the physical piece 
@@ -49,7 +47,6 @@ class Line:
     def load_physical_piece(self, piece): 
         try:
             piece_out_node = self.client.get_node(self.piece_out_node_id)
-            #print what is on that node
             piece_out_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
             time.sleep(0.1)
             piece_out_node.set_value(ua.Variant(0, ua.VariantType.Int16))
@@ -100,9 +97,9 @@ class Line:
             if type_value == NO_PIECE:
                 return None
             machinetop_node = self.client.get_node(self.line_output_node_id + ".machineTOP")
-            machinetop_value = machinetop_node.get_value()
+            machinetop_value = not machinetop_node.get_value()
             machinebot_node = self.client.get_node(self.line_output_node_id + ".machineBOT")
-            machinebot_value = machinebot_node.get_value()
+            machinebot_value = not machinebot_node.get_value()
             tooltop_node = self.client.get_node(self.line_output_node_id + ".toolTOP")
             tooltop_value = tooltop_node.get_value()
             toolbot_node = self.client.get_node(self.line_output_node_id + ".toolBOT")
@@ -112,12 +109,10 @@ class Line:
 
             #set type to NO_PIECE
             type_node.set_value(ua.Variant(NO_PIECE, ua.VariantType.Int16))
-            if machinebot_value == True:
-                self.bot_busy = False
-            if machinetop_value == True:
-                self.top_busy = False
-    
-            return Piece(self.client, id_value, type_value, 0, 0, 0, machinetop_value, machinebot_value, tooltop_value, toolbot_value)
+           
+            piece_to_return = Piece(self.client, id_value, type_value, 0, 0, 0, machinetop_value, machinebot_value, tooltop_value, toolbot_value)
+            print(piece_to_return)
+            return piece_to_return
         except Exception as e:
             messagebox.showerror(f"Error Removing Output Piece from Line {self.id}", str(e))
 
@@ -125,9 +120,7 @@ class Line:
 
     def is_Occupied(self): #Returns True if the line is occupied
         try:
-            #print("Checking if line is occupied")
             ocupied = self.get_input_piece_type() != NO_PIECE
-            #print(f"Line {self.id} is occupied: {ocupied}")
             return ocupied
         except Exception as e:
             messagebox.showerror("Error Checking Line Occupancy", str(e))
