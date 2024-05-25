@@ -41,7 +41,7 @@ def calculate_purchasing_plan(order_prod_plan, current_date):
     arrival_date = current_date + best_raw_order.delivery_days
     purchase_plan = (arrival_date, best_raw_order.supplier, workpiece, quantity)  
 
-    print(f"Purchasing plan: {purchase_plan}")
+    print(f"Purchasing plan: {purchase_plan} + P1: {leftover_P1} + P2: {leftover_P2}")
     return purchase_plan
 
 

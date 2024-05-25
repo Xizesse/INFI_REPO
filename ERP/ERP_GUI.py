@@ -14,12 +14,10 @@ class ShopFloorStatisticsWindow:
         self.window.geometry("900x650")  # Increased window size for more space
 
         self.initialize_tables()
-
-        #!UPDATES
-        # Update the data in the Treeview widgets
         self.update_values()
 
     def initialize_tables(self):
+
         #!ORDERS TABLE
         # Orders Table Title
         self.orders_title_label = tk.Label(self.window, text="Orders Table", font=("Arial", 12, "bold"))
@@ -107,7 +105,6 @@ class ShopFloorStatisticsWindow:
         current_date = 0    # Placeholder value
         self.current_date_label = tk.Label(self.window, text=f"Current Date: {current_date}", font=("Arial", 15, "bold"))
         self.current_date_label.grid(row=0, column=1, padx=5, columnspan=2, sticky='n')
-
     
     def update_values(self):
 
@@ -120,12 +117,12 @@ class ShopFloorStatisticsWindow:
         
         # Update the current date label
         current_date = db_config.get_current_date()  
-        self.current_date_label = tk.Label(self.window, text=f"Current Date: {current_date}", font=("Arial", 12, "bold"))
+        print(f"Current Date: {current_date}")
         self.current_date_label.config(text=f"Current Date: {current_date}")
 
         db_config.close_db_connection() 
         
-        self.window.after(5*1000, self.update_values)  # Update every 5 seconds    
+        self.window.after(2*1000, self.update_values)  # Update every 5 seconds    
 
     def update_orders_data(self):
         # Clear existing items in the Treeview
