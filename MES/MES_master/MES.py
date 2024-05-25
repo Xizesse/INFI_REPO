@@ -13,12 +13,12 @@ from Line import Line
 from Piece import Piece
 from warehouse import Warehouse
 import DB
+from Orders import Order
 
 #!TODO
-
 #Small Things
-#TODO modo manual e automatico para a contagem de dias
 
+#TODO modo manual e automatico para a contagem de dias
 #TODO IDs 
 
 
@@ -30,65 +30,10 @@ class MES:
         self.client = Client(url)
         self.root = tk.Tk() 
         self.app = PiecesGUI(self, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app)) 
-        self.stats = ShopFloorStatisticsWindow(self.root)
         nodes = self.load_nodes_from_file('nodes.json')
         self.connected = False
-    
-        #! PURCHASES - Array of (type)
-        self.purchases = []
 
-        #! PRODUCTION ORDERS - Array of (final_type) - Working :)
-        self.production_orders = []
-        self.production_orders.append(5)
-        self.production_orders.append(9)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-        self.production_orders.append(5)
-
-        #! DELIVERIES - Array of (orders) 
-        self.deliveries = []
-        
-        #!WAREHOUSES
-        self.TopWarehouse = Warehouse(self.client)
-        self.BotWarehouse = Warehouse(self.client)
-        #O warehouse de cima começa com 20 peças 1
-        for _ in range(20):
-            piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
-            self.TopWarehouse.put_piece_queue(piece)
-        piece = Piece(self.client, 0, 2, 0, 0, 0, False, False, 0, 0)
-        self.TopWarehouse.put_piece_queue(piece)
-
-        #for _ in range(8):
-         #   piece = Piece(self.client, 0, 9, 0, 0, 0, False, False, 0, 0)
-          #  self.BotWarehouse.put_piece_queue(piece)
-
-        piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
-        self.TopWarehouse.put_piece_queue(piece)
-        piece = Piece(self.client, 998, 1, 1, 0, 0, False, False, 0, 0)
-        piece.on_the_floor = True
-        self.TopWarehouse.put_piece_queue(piece)
-        
-
-
-        #self.TopWarehouse.set_simulation_warehouse()
-        #self.BotWarehouse.set_simulation_warehouse()
-        #self.SFS = Warehouse(self.client)
-
-        self.IDcount = 1
-
-        #EXEMPLO: O warehouse de baixo começa com 4 peças 5
-        for _ in range(20):
-            piece = Piece(self.client, 0, 5, 5, 5, 8, False, False, 0, 0)
-            self.BotWarehouse.put_piece_queue(piece)
-
-        #! LINES AND MACHINES
+         #! LINES AND MACHINES
         self.lines_machines = {
             1: Line(self.client, nodes, "Line1", 1, {1, 2, 3}, {1, 2, 3}),
             2: Line(self.client, nodes, "Line2", 2, {1, 2, 3}, {1, 2, 3}),
@@ -115,6 +60,65 @@ class MES:
         }
 
         self.ReverseConveyor = Line(self.client, nodes, "ReverseConveyor", 15, {}, {})
+
+        self.stats = ShopFloorStatisticsWindow(self.root, self)
+
+
+        #! PURCHASES - Array of (type)
+        self.purchases = []
+        self.purchases.append(1)
+        self.purchases.append(1)
+        self.purchases.append(1)
+        self.purchases.append(2)
+        self.purchases.append(2)
+        self.purchases.append(2)
+
+        #! PRODUCTION ORDERS - Array of (final_type) - Working :)
+        self.production_orders = []
+        self.production_orders.append(5)
+        self.production_orders.append(9)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+        self.production_orders.append(5)
+
+        #! DELIVERIES - Array of (orders) 
+        self.deliveries = []
+        self.deliveries.append(Order(quantity=8, final_type=9, order_id=27, delivery_day=1, status="Ready", dispatch_conveyor=""))
+        
+        #!WAREHOUSES
+        self.TopWarehouse = Warehouse(self.client)
+        self.BotWarehouse = Warehouse(self.client)
+        #O warehouse de cima começa com 20 peças 1
+        for _ in range(20):
+            piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
+            self.TopWarehouse.put_piece_queue(piece)
+
+        for _ in range(8):
+            piece = Piece(self.client, 0, 9, 9, 0, 0, False, False, 0, 0)
+            self.BotWarehouse.put_piece_queue(piece)
+
+        #piece = Piece(self.client, 999, 1, 1, 0, 0, False, False, 0, 0)
+        #self.TopWarehouse.put_piece_queue(piece)
+        #piece = Piece(self.client, 998, 1, 1, 0, 0, False, False, 0, 0)
+        #piece.on_the_floor = True
+        #self.TopWarehouse.put_piece_queue(piece)
+        
+
+
+        
+
+        self.IDcount = 1
+
+       
+
+       
 
         #! TRANSFORMATIONS
         self.transformations = {
@@ -168,11 +172,9 @@ class MES:
         self.app.update_orders_display()
 
         #! Get the deliveries for the day
-        self.deliveries = DB.get_deliveries()
-        #if self.connected:
-            #pieceTest = Piece(self.client, 999, 1, 2, 0, 0, False, True, 0, 1)
-            #self.lines_machines[1].load_piece(pieceTest)
-       
+        #self.deliveries = DB.get_deliveries()
+        #TODO 
+        self.update_deliveries()
         
         if self.app.day_count == 0:
             self.root.after(1000, self.MES_loop)
@@ -183,16 +185,21 @@ class MES:
         if last_day != self.app.day_count:
             print("New day, good morning")
 
-            
+            #updates the first loading dock I hope
+            self.update_loading_docks()
+            #to test load somrhing into the loading dock 1
+            #self.loading_docks[1].load_piece(Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0))
 
+            #! Get the purchases for the day
+            self.purchases = DB.get_purchasing_queue(self.app.day_count)
+            print("Purchases: ", self.purchases)
             #! Get the prod sched for the day
             daily_prod = DB.get_production_queue(self.app.day_count)
             self.production_orders += daily_prod
-            #! Get the purchases for the day
-            #self.purchases = DB.get_purchases(self.app.day_count)
+            print("Production: ", self.production_orders)
             #! Get the deliveries for the day
             self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
-            self.update_dispatch_conveyor(self.deliveries, self.unloading_docks)
+            
             last_day = self.app.day_count
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
@@ -201,31 +208,22 @@ class MES:
         
             #! Purchase actions
             #TODO
-            #self.update_loading_docks()
-
-
-            #!check if there are pieces in the loading dock that can be put in the top warehouse
-            #TODO 
-            #for dock in self.loading_docks: ...
-                #Piece = unload ...
-                #add to top warehouse
-            
+            self.update_loading_docks()
             #!Turn self.production_orders into pieces in the top warehouse
             self.update_pieces_w_orders()
             #!update all machines (Simpler algorith : Bottom machines then top machines)
             self.update_all_machines()
-            #!Get the piece in each line output
-            #TODO
+            ##!Get the piece in each line output
             self.remove_all_output_piece()
             self.unload_ReverseConveyor()
-            #!Send back up the unfinished pieces - Xico
+            #!Send back up the unfinished pieces 
             self.send_unfinished_back_up()
-        
-
             #! Delivery actions - Barbara
-            #TODO
+            self.process_ready_orders()
+
             
-        self.root.after(1000, self.MES_loop)
+            
+        self.root.after(200, self.MES_loop)
 
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
@@ -265,6 +263,35 @@ class MES:
         
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MES Functions for logic 
+
+    def update_loading_docks(self):
+        for dock_id, dock in self.loading_docks.items():
+            self.update_loading_dock(dock_id, dock)
+    
+    def update_loading_dock(self, dock_id, dock):
+        print(f"Checking Loading Dock {dock_id}")
+        if not dock.is_Occupied():
+            if dock_id in [1, 2]:
+                for piece in self.purchases[:]:  # Iterate over a copy of the list
+                    if piece == 1:
+                        print(f"Loading piece {piece} into Loading Dock {dock_id}")
+                        piece_obj = Piece(self.client, 0, piece, 0, 0, 0, False, False, 0, 0)
+                        dock.load_piece(piece_obj)
+                        self.purchases.remove(piece)  # Remove the piece from the original list
+                        break
+            elif dock_id in [3, 4]:
+                for piece in self.purchases[:]:  # Iterate over a copy of the list
+                    if piece == 2:
+                        print(f"Loading piece {piece} into Loading Dock {dock_id}")
+                        piece_obj = Piece(self.client, 0, piece, 0, 0, 0, False, False, 0, 0)
+                        dock.load_piece(piece_obj)
+                        self.purchases.remove(piece)  # Remove the piece from the original list
+                        break
+        else:
+            print(f"Loading Dock {dock_id} is occupied.")
+
+
+            
     def find_next_transformation(self, start_type, final_type): 
         #Returns the next transformation to be done to get to the final type
         if start_type == final_type:
@@ -325,9 +352,6 @@ class MES:
         except ValueError:
             print(f"Current type {piece.type} is not in the transformation path.")
         return path[next_index]
-
-
-
         
     def update_machine(self, line, position, piece):
         if not self.check_machine_can_process(line, position, piece):
@@ -351,7 +375,6 @@ class MES:
 
     def update_all_machines(self):
         #first update all bottom machines
-        
         for _, line in self.lines_machines.items():
             if line.is_Occupied():
                 continue
@@ -374,7 +397,7 @@ class MES:
             order = self.production_orders[i]
             processed = False
             for piece in list(self.TopWarehouse.pieces.queue):
-                if self.transformation_paths.get((piece.type, order)) and piece.id == 0:
+                if piece.id == 0 and self.transformation_paths.get((piece.type, order)) :
                     piece.final_type = order
                     piece.order_id = 27
                     piece.id = self.IDcount
@@ -392,6 +415,9 @@ class MES:
         for _, line in self.lines_machines.items():
             self.remove_output_piece(line)
 
+        for _, dock in self.loading_docks.items():
+            self.remove_from_loading_dock(dock)        
+
     def unload_ReverseConveyor(self):
         removed_piece = self.ReverseConveyor.remove_output_piece()
         if removed_piece:
@@ -404,8 +430,7 @@ class MES:
                     similar_piece.on_the_floor = False
                     self.TopWarehouse.put_piece_queue(similar_piece)
 
-                    print(f"Piece type: {similar_piece.type}, machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")
-                    
+                    print(f"Piece type: {similar_piece.type}, machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")               
 
     def remove_output_piece(self, line):
         removed_piece = line.remove_output_piece()
@@ -438,7 +463,14 @@ class MES:
                     #print the piece, all parameters
                     print(f"Piece type: {similar_piece.type}, final type: {similar_piece.final_type} machinetop: {similar_piece.machinetop}, machinebot: {similar_piece.machinebot}, tooltop: {similar_piece.tooltop}, toolbot: {similar_piece.toolbot}.")
                     
-        
+    def remove_from_loading_dock(self, dock):
+        removed_piece = dock.remove_output_piece()
+        if removed_piece:
+            print("Removing piece from the dock output.")
+            print(f"Piece type: {removed_piece.type}, machinetop: {removed_piece.machinetop}, machinebot: {removed_piece.machinebot}, tooltop: {removed_piece.tooltop}, toolbot: {removed_piece.toolbot}.")
+            #add the piece to the top warehouse
+            new_piece = Piece(self.client, 0, removed_piece.type, 0, 0, 0, False, False, 0, 0)
+            self.TopWarehouse.put_piece_queue(new_piece)                    
 
     def send_unfinished_back_up(self):
 
@@ -464,88 +496,81 @@ class MES:
 
         return
 
-
-
-    def update_loading_docks(self):
-        #TODO
-        # Iterate over each dock using items() to get both key (dock id) and value (dock object)
-        for dock_id, dock in self.loading_docks.items():
-            if not dock.is_Occupied():
-                # Check for which dock it is and load the appropriate piece type
-                if dock_id in [7, 8]:  # For docks 1 and 2, we look for a piece of type 1
-                    for piece in self.purchases:
-                        if piece == 1:
-                            #dock.load_piece(piece)  # Assuming this function sets the dock's status to occupied
-                            break  # Stop searching once a piece is loaded
-                elif dock_id in [9, 10]:  # For docks 3 and 4, we look for a piece of type 2
-                    for piece in self.purchases:
-                        if piece == 2:
-                            #dock.load_piece(piece) 
-                            break  # Stop searching once a piece is loaded
-                
-    
-    #function to update the unloading docks
-    def update_dispatch_conveyor(self, orders_data, unloading_docks):
-        # Initialize variables to keep track of available docks and pieces
-        available_docks = list(unloading_docks.keys())
+    def update_deliveries(self):
+        available_docks = list(self.unloading_docks.keys())
         remaining_pieces = {dock_id: 6 for dock_id in available_docks}
 
-        # Iterate through orders marked as "Ready"
-        for order in orders_data:
-            if order.status == "Ready":
+        dock_piece_counts = {dock_id: 0 for dock_id in available_docks}
+
+        for order in self.deliveries:
+            if order.status in ["Ready", "Dispatching"]:
                 pieces_to_unload = order.quantity
-                dispatch_conveyor = []  # List to store dock IDs used for this order
-                # Iterate until all pieces of the order are unloaded
+                dispatch_conveyor = []
+
                 while pieces_to_unload > 0:
-                    # Check available docks
                     if not available_docks:
                         print("No available docks for unloading.")
-                        return  # Exit if no available docks
+                        return
 
-                    # Select the next available dock
-                    dock_id = available_docks.pop(0)
+                    dock_id = available_docks[0]
                     pieces_to_allocate = min(remaining_pieces[dock_id], pieces_to_unload)
 
-                    # Update remaining pieces for the dock
                     remaining_pieces[dock_id] -= pieces_to_allocate
-
-                    # Update pieces to unload
                     pieces_to_unload -= pieces_to_allocate
 
-                    # Add dock ID to the list of dock IDs used for this order
+                    dock_piece_counts[dock_id] += pieces_to_allocate
                     dispatch_conveyor.append(str(dock_id))
+                    print(f"Assigning {pieces_to_allocate} pieces of order {order.order_id} to Dock {dock_id}")
 
-                    # Print information or perform unloading operation
-                    print(f"Unloading {pieces_to_allocate} pieces of order {order.order_id} at Dock {dock_id}")
-
-                    # Perform unloading operation here
-                    # dock_id can be used to access the respective unloading dock object
-
-                    # If the dock is full, remove it from available docks
                     if remaining_pieces[dock_id] == 0:
-                        print(f"Dock {dock_id} is full.")
-                        remaining_pieces.pop(dock_id)
+                        available_docks.pop(0)
 
-                # Update dispatch_conveyor for this order
                 order.dispatch_conveyor = ','.join(dispatch_conveyor)
 
-                # Update orders_tree with dispatch_conveyor information for this order
                 for item in self.stats.orders_tree.get_children():
                     if self.stats.orders_tree.item(item, "text") == order.order_id:
                         self.stats.orders_tree.item(item, values=(
                             order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
-                        break  # Stop searching once the order is found
+                        break
 
+        for dock_id, count in dock_piece_counts.items():
+            self.stats.dock_frames[dock_id - 1].config(text=f"Pieces: {count}")
+        
+        print("Updated deliveries.")
+        print(self.deliveries)
+        self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
 
-        # Handle cases where there are remaining pieces but no orders
-        if remaining_pieces:
-            print("There are remaining pieces in some docks after unloading all orders.")
+    def process_ready_orders(self):
+        for order in self.deliveries:
+            if order.status in ["Ready", "Dispatching"] and order.dispatch_conveyor:
+                if order.status == "Ready":
+                    order.status = "Dispatching"
 
+                conveyors = order.dispatch_conveyor.split(',')
+                for conveyor_id in conveyors:
+                    conveyor_id = int(conveyor_id)
+                    dock = self.unloading_docks[conveyor_id]
+
+                    if not dock.is_Occupied():
+                        piece = self.find_piece_in_warehouse(order.final_type, self.BotWarehouse)
+                        if piece:
+                            dock.load_piece(piece)
+                            order.pieces_loaded += 1
+                            self.BotWarehouse.pieces.queue.remove(piece)
+                            print(f"Loaded piece {piece.id} onto Dock {conveyor_id} for order {order.order_id}")
+
+                    if order.pieces_loaded >= order.quantity:
+                        order.status = "Ready for Shipment"
+                        break
+
+                self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
+
+    def find_piece_in_warehouse(self, piece_type, warehouse):
+        for piece in list(warehouse.pieces.queue):
+            if piece.type == piece_type and piece.final_type == piece_type:
+                return piece
+        return None
                 
-                
-
-               
-               
 #######################################################################################################
 if __name__ == "__main__":
     #url = "opc.tcp://localhost:4840"

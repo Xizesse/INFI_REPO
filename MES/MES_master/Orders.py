@@ -6,5 +6,6 @@ class Order:
         self.delivery_day = delivery_day
         self.status= status
         self.dispatch_conveyor= dispatch_conveyor
+        self.pieces_loaded = 0
     
     

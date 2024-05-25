@@ -32,6 +32,7 @@ class Line:
 
     def load_piece(self, piece):
         try:
+            print(f"Loading piece {piece.id} into line {self.id}")
             #if self.is_Occupied():
             #    print("Line is occupied. Cannot load piece.")
             #    return
@@ -50,7 +51,7 @@ class Line:
             piece_out_node = self.client.get_node(self.piece_out_node_id)
             #print what is on that node
             piece_out_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
-            time.sleep(1)
+            time.sleep(0.1)
             piece_out_node.set_value(ua.Variant(0, ua.VariantType.Int16))
             
         except Exception as e:
@@ -124,8 +125,9 @@ class Line:
 
     def is_Occupied(self): #Returns True if the line is occupied
         try:
+            print("Checking if line is occupied")
             ocupied = self.get_input_piece_type() != NO_PIECE
-            #print(f"Line {self.id} is occupied: {ocupied}")
+            print(f"Line {self.id} is occupied: {ocupied}")
             return ocupied
         except Exception as e:
             messagebox.showerror("Error Checking Line Occupancy", str(e))

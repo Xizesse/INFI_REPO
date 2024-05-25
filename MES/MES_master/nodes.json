@@ -39,51 +39,51 @@
 
     "LoadingDock1":{
         "description": "Loading Dock 1",
-        "pieceOut": "Piece Out do Loading Dock 1",
-        "lineIn" : "Elemento Struct da Loading Dock 1",
-        "lineOut" : "Elemento Struct da Loading Dock 1"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[6]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[6]",
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Entrance.C1_W.pieceOUT"
     },
     "LoadingDock2":{
         "description": "Loading Dock 2",
-        "pieceOut": "Piece Out do Loading Dock 2",
-        "lineIn" : "Elemento Struct da Loading Dock 2",
-        "lineOut" : "Elemento Struct da Loading Dock 2"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[7]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[7]",
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Entrance.C2_W.pieceOUT"
     },
     "LoadingDock3":{
         "description": "Loading Dock 3",
-        "pieceOut": "Piece Out do Loading Dock 3",
-        "lineIn" : "Elemento Struct da Loading Dock 3",
-        "lineOut" : "Elemento Struct da Loading Dock 3"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[8]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[8]",
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Entrance.C3_W.pieceOUT"
     },
     "LoadingDock4":{
         "description": "Loading Dock 4",
-        "pieceOut": "Piece Out do Loading Dock 4",
-        "lineIn" : "Elemento Struct da Loading Dock 4",
-        "lineOut" : "Elemento Struct da Loading Dock 4"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[9]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[9]",
+        "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Entrance.C4_W.pieceOUT"
     },
     "UnloadingDock1":{
         "description": "Unloading Dock 1",
-        "pieceOut": "Piece Out do Unloading Dock 1",
-        "lineIn" : "Elemento Struct da Unloading Dock 1",
-        "lineOut" : "Elemento Struct da Unloading Dock 1"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[10]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[10]",
+        "lineOut" : "AAAAAAAAAAAAAAAAAA"
     },
     "UnloadingDock2":{
         "description": "Unloading Dock 2",
-        "pieceOut": "Piece Out do Unloading Dock 2",
-        "lineIn" : "Elemento Struct da Unloading Dock 2",
-        "lineOut" : "Elemento Struct da Unloading Dock 2"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[11]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[11]",
+        "lineOut" : "AAAAAAAAAAAAAAAAAA"
     },
     "UnloadingDock3":{
         "description": "Unloading Dock 3",
-        "pieceOut": "Piece Out do Unloading Dock 3",
-        "lineIn" : "Elemento Struct da Unloading Dock 3",
-        "lineOut" : "Elemento Struct da Unloading Dock 3"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[12]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[12]",
+        "lineOut" : "AAAAAAAAAAAAAAAAAA"
     },
     "UnloadingDock4":{
         "description": "Unloading Dock 4",
-        "pieceOut": "Piece Out do Unloading Dock 4",
-        "lineIn" : "Elemento Struct da Unloading Dock 4",
-        "lineOut" : "Elemento Struct da Unloading Dock 4"
+        "pieceOut": "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineOUT[13]",
+        "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[13]",
+        "lineOut" : "AAAAAAAAAAAAAAAAAA"
     },
     "ReverseConveyor": {
         "description": "Reverse Conveyor",

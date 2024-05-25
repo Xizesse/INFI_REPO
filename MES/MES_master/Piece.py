@@ -70,21 +70,6 @@ class Piece:
         self.toolbot = tool_bot 
         self.on_the_floor = False 
 
-    def load_piece(self, line, Recipes ): 
-        
-        #TODO colocar no vetor de receitas a struct da peça
-        
-        #TODO enviar a METApeça para o tapete de entrada da linha
-        #Recipes.send_piece(self, line)
-        #TODO enviar a peça para o tapete de entrada da linha
-        #line.load_piece(self.type)
-        
-        print(f"Loaded piece {self.id} into line {line.id}.")    
-
-
-    #def change_tool():
-        #TODO criar peça 
-        print("Changed tool.")
     
        
     
