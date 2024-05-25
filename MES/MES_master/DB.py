@@ -97,7 +97,7 @@ def get_production_queue(day):
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     query = """SELECT start_date, order_id, workpiece,quantity,due_date
-                FROM infi.new_production_plan
+                FROM infi.production_plan
                 JOIN infi.orders ON order_id = number
                 WHERE start_date = %s;"""
 

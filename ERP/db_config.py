@@ -1,5 +1,6 @@
 import psycopg2
 import psycopg2.extras
+import sys
 from classes.Order import Order
 from classes.ProductionPlan import ProductionPlan, Prod_Quantities
 from classes.PurchasingPlan import PurchasingPlan
@@ -108,7 +109,7 @@ def get_production_plan():
 
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-        query = "SELECT * FROM infi.new_production_plan ORDER BY start_date ASC"
+        query = "SELECT * FROM infi.production_plan ORDER BY start_date ASC"
 
         cursor.execute(query)
         results = cursor.fetchall() # Fetch all production plan entries
@@ -139,7 +140,7 @@ def get_prod_quantities():
                 SUM(CASE WHEN workpiece = 'P6' THEN quantity ELSE 0 END) AS p6_quantity,
                 SUM(CASE WHEN workpiece = 'P7' THEN quantity ELSE 0 END) AS p7_quantity,
                 SUM(CASE WHEN workpiece = 'P9' THEN quantity ELSE 0 END) AS p9_quantity
-            FROM infi.new_production_plan
+            FROM infi.production_plan
             JOIN infi.orders ON order_id = number
             GROUP BY start_date
             ORDER BY start_date;"""
@@ -162,6 +163,7 @@ def get_prod_quantities():
     except Exception as e:
         print(f"An error occurred: {e}")
         connect_to_db()
+        return None
     
     return prod_quantities
 
@@ -199,6 +201,30 @@ def get_purchasing_plan():
 
 # Example usage:
 if __name__ == "__main__":
+
+    if sys.argv[1] == "delete":
+        conn = connect_to_db()
+        cur = conn.cursor()
+        try:
+            cur.execute("DELETE FROM infi.purchasing_plan")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
+        try:
+            cur.execute("DELETE FROM infi.production_plan")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
+        try:
+            cur.execute("DELETE FROM infi.orders")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
+        conn.commit()
+        cur.close()
+        close_db_connection()
+        print("All tables cleared.")
+        exit()
 
     connect_to_db()
 

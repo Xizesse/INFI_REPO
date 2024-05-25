@@ -21,7 +21,7 @@ def calculate_production_start(new_order, current_date):
     time_to_produce = time_to_produce / available_lines[new_order.piece]
     start_date = new_order.due_date - math.ceil(time_to_produce)
 
-    if start_date <= current_date:    # if start date is invalid
+    if start_date <= current_date:    # if start date is in the past or today
         start_date = current_date + 1  
 
     prod_plan = (new_order.number, start_date, new_order.piece, new_order.quantity)
@@ -38,7 +38,7 @@ def insert_production_plan(conn, order_prod_plan):
     try: 
         # Create the production_plan table if it doesn't exist
         cur.execute("""
-            CREATE TABLE IF NOT EXISTS infi.new_production_plan (
+            CREATE TABLE IF NOT EXISTS infi.production_plan (
                 order_id INTEGER REFERENCES infi.orders(number) PRIMARY KEY,
                 start_date INTEGER NOT NULL
             );
@@ -50,7 +50,7 @@ def insert_production_plan(conn, order_prod_plan):
 
     
     # Insert the ordered data into the new table
-    cur.execute("INSERT INTO infi.new_production_plan VALUES (%s, %s)", (order_id, start_date))
+    cur.execute("INSERT INTO infi.production_plan VALUES (%s, %s)", (order_id, start_date))
 
     # Commit changes 
     conn.commit()
