@@ -14,21 +14,29 @@ def calculate_production_start(new_order):
     "P9": 1.5
     }
 
+    available_lines = { # assuming u can make 3 of each type at the same time
+        "P5": 3,
+        "P6": 3,
+        "P7": 3,
+        "P9": 3
+    }
+
     due_date = new_order.due_date
     workpiece = new_order.piece
     quantity = new_order.quantity
            
     time_to_produce = quantity * avg_prod_time[workpiece]
+    time_to_produce = time_to_produce / available_lines[workpiece]
     start_date = due_date - math.ceil(time_to_produce)
 
-    if start_date <= 0:    # if start date is invalid
-        start_date = get_current_date()     
+    current_date = get_current_date()
+    if start_date < current_date:    # if start date is invalid
+        start_date = current_date   
 
     prod_plan = (start_date, workpiece, quantity)
     print(f"Production plan: {prod_plan}")
 
     return prod_plan
-
 
 def insert_production_plan(conn, order_prod_plan):
 
@@ -36,16 +44,21 @@ def insert_production_plan(conn, order_prod_plan):
 
     cur = conn.cursor()
 
-    # Create the production_plan table if it doesn't exist
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS infi.production_plan (
-            start_date INTEGER PRIMARY KEY,
-            p5_quantity INTEGER,
-            p6_quantity INTEGER,
-            p7_quantity INTEGER,
-            p9_quantity INTEGER
-        );
-    """)
+    try: 
+        # Create the production_plan table if it doesn't exist
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS infi.production_plan (
+                start_date INTEGER PRIMARY KEY,
+                p5_quantity INTEGER,
+                p6_quantity INTEGER,
+                p7_quantity INTEGER,
+                p9_quantity INTEGER
+            );
+        """)
+    except Exception as e:
+        print("Error:", e)
+        conn.rollback()
+        return
 
     # Initialize quantities for each piece type
     quantities = {

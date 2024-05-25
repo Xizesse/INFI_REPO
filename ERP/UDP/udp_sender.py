@@ -1,4 +1,5 @@
 import socket
+import sys
     
 # Specify host IP (loopback address for same machine communication)
 HOST = "127.0.0.1"
@@ -7,7 +8,7 @@ HOST = "127.0.0.1"
 PORT = 24680
 
 # Set path to your file (replace with the actual location)
-FILE_PATH = "order_files\command4.xml"
+FILE_PATH = "order_files/" + sys.argv[1] + ".xml"
 
 # Open the file in binary mode
 try:
@@ -23,10 +24,9 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Send the file data and termination message
 try:
     sent = sock.sendto(file_data + b"<END_OF_FILE>", (HOST, PORT))
-    print(f"Sent {sent} bytes of data to {HOST}:{PORT}")
+    print(f"Sent {sent} bytes of data from {FILE_PATH} to {HOST}:{PORT}")
 except Exception as e:
     print(f"Error sending data: {e}")
 finally:
     sock.close()
 
-print("Program terminated.")

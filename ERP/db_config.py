@@ -220,17 +220,19 @@ def get_orders():
 
 
 # Example usage:
-orders = get_orders()
-for order in orders:
-    print(f" Client: {order.client}, Order ID: {order.number}, Quantity: {order.quantity}, Type: {order.piece}, Delivery Date: {order.due_date}, Late Penalty: {order.late_pen}, Early Penalty: {order.early_pen}")
 
-production_plan = get_production_plan()
-for entry in production_plan:
-    print(f" Start Date: {entry['start_date']}, P5 Quantity: {entry['p5_quantity']}, P6 Quantity: {entry['p6_quantity']}, P7 Quantity: {entry['p7_quantity']}, P9 Quantity: {entry['p9_quantity']}")
+if __name__ == "__main__":
+    orders = get_orders()
+    for order in orders:
+        print(f" Client: {order.client}, Order ID: {order.number}, Quantity: {order.quantity}, Type: {order.piece}, Delivery Date: {order.due_date}, Late Penalty: {order.late_pen}, Early Penalty: {order.early_pen}")
 
-purchasing_plan = get_purchasing_plan()
-for entry in purchasing_plan:
-    print(f" Arrival Date: {entry['arrival_date']}, P1 Quantity: {entry['p1_quantity']}, P2 Quantity: {entry['p2_quantity']}")
+    production_plan = get_production_plan()
+    for entry in production_plan:
+        print(f" Start Date: {entry['start_date']}, P5 Quantity: {entry['p5_quantity']}, P6 Quantity: {entry['p6_quantity']}, P7 Quantity: {entry['p7_quantity']}, P9 Quantity: {entry['p9_quantity']}")
 
-current_date = get_current_date()
-print(f"Current Date: {current_date}")
+    purchasing_plan = get_purchasing_plan()
+    for entry in purchasing_plan:
+        print(f" Arrival Date: {entry['arrival_date']}, P1 Quantity: {entry['p1_quantity']}, P2 Quantity: {entry['p2_quantity']}")
+
+    current_date = get_current_date()
+    print(f"Current Date: {current_date}")
