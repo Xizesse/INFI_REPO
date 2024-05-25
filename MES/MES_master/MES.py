@@ -187,6 +187,7 @@ class MES:
 
             #! Get the prod sched for the day
             daily_prod = DB.get_production_queue(self.app.day_count)
+            print("Production orders for the day: ", daily_prod)
             self.production_orders += daily_prod
             #! Get the purchases for the day
             #self.purchases = DB.get_purchases(self.app.day_count)
