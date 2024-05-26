@@ -26,14 +26,19 @@ class PiecesGUI:
         self.disconnect_button = tk.Button(self.top_frame, text="Disconnect", command=on_disconnect)
         self.disconnect_button.pack(side=tk.LEFT, padx=10)
 
-        self.increment_button = tk.Button(self.top_frame, text="Increment Day", command=self.increment_day_count)
-        self.increment_button.pack(side=tk.LEFT, padx=10)
+        # Time of the day display
+        self.time_label = tk.Label(self.master, text=f"Time of the Day: {self.mes.time_of_the_day}")
+        self.time_label.pack()
+
+        # Increment day button
+        self.increment_day_button = tk.Button(self.master, text="Increment Day", command=self.increment_day)
+        self.increment_day_button.pack()
 
         self.reset_button = tk.Button(self.top_frame, text="Reset Day", command=self.reset_day_count)
         self.reset_button.pack(side=tk.LEFT, padx=10)
 
-        self.mode_button = tk.Button(self.top_frame, text="Switch to Automatic Mode", command=self.toggle_mode)
-        self.mode_button.pack(side=tk.LEFT, padx=10)
+        #self.mode_button = tk.Button(self.top_frame, text="Switch to Automatic Mode", command=self.toggle_mode)
+        #self.mode_button.pack(side=tk.LEFT, padx=10)
 
         # Status Labels and Indicators
         self.status_label = tk.Label(self.top_frame, text="Disconnected", fg="red")
@@ -52,30 +57,27 @@ class PiecesGUI:
         self.orders_canvas = Canvas(self.bottom_frame, width=900, height=500)
         self.orders_canvas.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
 
+        #self.update_time_display()
+        
         # Handling window closing
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+    def update_time_display(self):
+        # Update the time display every second
+        self.time_label.config(text=f"Time of the Day: {self.mes.time_of_the_day}")
+        self.day_count_label.config(text=f"Day Count: {self.day_count}")
+        #self.master.after(1000, self.update_time_display)   
+        #update the day display
+        
     
-    def update_clock(self):
-        current_time = time.strftime('%H:%M:%S')  # Get current time in hour:minute:second
-        self.time_label.config(text=current_time)  # Update the label
-        self.master.after(1000, self.update_clock)
 
-    def toggle_mode(self):
-        self.auto_mode_active = not self.auto_mode_active
-        if self.auto_mode_active:
-            self.mode_button.config(text="Switch to Manual Mode")
-            self.start_auto_increment()
-        else:
-            self.mode_button.config(text="Switch to Automatic Mode")
-            self.stop_auto_increment()
+    def increment_day(self):
+        self.mes.time_of_the_day = 0
+        self.mes.app.day_count += 1
+        self.mes.app.update_time_display()
 
-    def start_auto_increment(self):
-        self.reset_day_timer()
-        self.auto_increment_job = self.master.after(60000, self.start_auto_increment)
+    
 
-    def stop_auto_increment(self):
-        if hasattr(self, 'auto_increment_job'):
-            self.master.after_cancel(self.auto_increment_job)
 
     def update_orders_display(self):
         self.orders_canvas.delete("all")
@@ -138,9 +140,6 @@ class PiecesGUI:
             self.orders_canvas.create_text(initial_offset + 40 + i * column_width, y_position + 5, text=str(param), anchor="nw", font=('Helvetica', 8), fill="black")
    
 
-    def increment_day_count(self):
-        self.day_count += 1
-        self.day_count_label.config(text=f"Day Count: {self.day_count}")
 
     def update_day_timer(self):
         if self.start_time is None:
@@ -149,6 +148,7 @@ class PiecesGUI:
         elapsed_time = int(time.time() - self.start_time)
         
         self.day_timer_label.config(text=f"Time Elapsed Today: {elapsed_time} seconds")
+        self.day_count_label.config(text=f"Day Count: {self.day_count}")
         
         # Proceed with the following only if in Automatic Mode
         if self.auto_mode_active:

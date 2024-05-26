@@ -16,6 +16,8 @@ import DB
 from Orders import Order
 from Piece_to_produce import Piece_to_produce
 
+DBisWorking = False
+
 #!TODO
 #Small Things
 
@@ -26,6 +28,11 @@ from Piece_to_produce import Piece_to_produce
 
 class MES:
     def __init__(self):
+
+        self.start_time = time.time()
+        self.automatic_mode = True
+        self.time_of_the_day = 0
+
         #! CLIENTE OPC UA e GUI
         url = "opc.tcp://172.27.64.1:4840"
         self.client = Client(url)
@@ -34,34 +41,33 @@ class MES:
         nodes = self.load_nodes_from_file('nodes.json')
         self.connected = False
     
+
+    
         #! PURCHASES - Array of (type)
         self.purchases = []
-        self.purchases.append(2)
-        self.purchases.append(2)
-        self.purchases.append(2)
-        self.purchases.append(2)
-        self.purchases.append(2)
+        #self.purchases.append(2)
+        #self.purchases.append(2)
+        #self.purchases.append(2)
+        #self.purchases.append(1)
+        #self.purchases.append(1)
+        #self.purchases.append(1)
+        #self.purchases.append(2)
+        #self.purchases.append(2)
         #self.purchases.append(2)
 
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
-        self.production_orders.append(Piece_to_produce(3, 9, 10))
-        self.production_orders.append(Piece_to_produce(3, 9, 10))
-        self.production_orders.append(Piece_to_produce(3, 9, 10))
-        self.production_orders.append(Piece_to_produce(3, 9, 10))
-        self.production_orders.append(Piece_to_produce(3, 9, 10))
-
-    
-
-
-
+        self.production_orders.append(Piece_to_produce(1, 5, 10))
+        self.production_orders.append(Piece_to_produce(2, 6, 10))
+        self.production_orders.append(Piece_to_produce(3, 7, 10))
+        self.production_orders.append(Piece_to_produce(4, 9, 10))
 
         #! DELIVERIES - Array of (orders) 
         self.deliveries = []
-        self.deliveries.append(Order(5, 9, 3, 11))
-       # self.deliveries.append(Order(2, 6, 2, 10))
-        #self.deliveries.append(Order(3, 8, 3, 10))
-        #self.deliveries.append(Order(4, 9, 4, 10))
+        self.deliveries.append(Order(1, 5, 1, 10))
+        self.deliveries.append(Order(1, 6, 2, 10))
+        self.deliveries.append(Order(1, 7, 3, 10))
+        self.deliveries.append(Order(1, 9, 4, 10))
         
         #!WAREHOUSES
         self.TopWarehouse = Warehouse(self.client)
@@ -77,8 +83,6 @@ class MES:
         #self.SFS = Warehouse(self.client)
 
         self.IDcount = 1
-
-       
 
          #! LINES AND MACHINES
         self.lines_machines = {
@@ -158,31 +162,42 @@ class MES:
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MES Loop !!!!!!!!!!!!!!
     def MES_loop(self):
         global last_day
+
         self.app.update_orders_display()
+        self.app.update_time_display()
+
+        if self.automatic_mode:
+            elapsed_time = time.time() - self.start_time
+            self.time_of_the_day = int(elapsed_time)
+            if self.time_of_the_day >= 60:
+                self.start_time = time.time()
+                self.increment_day()
 
         if self.app.day_count == 0:
             self.root.after(1000, self.MES_loop)
             return
 
-
+                
+        
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
         if last_day != self.app.day_count:
             print("New day, good morning")
 
             #!Set current date in the DB
-            DB.set_current_date(self.app.day_count)
+            if DBisWorking:
+                DB.set_current_date(self.app.day_count)
 
             #! Get the purchases for the day
-            newpurchases = DB.get_purchasing_queue(self.app.day_count) 
-            #add the new purchases to the purchases list
-            self.purchases.extend(newpurchases)
+                newpurchases = DB.get_purchasing_queue(self.app.day_count) 
+                #add the new purchases to the purchases list
+                self.purchases.extend(newpurchases)
             #! Get the prod sched for the day
-            daily_prod = DB.get_production_queue(self.app.day_count)
-            for piece in daily_prod:
-                self.production_orders.append(piece)
-            
+                daily_prod = DB.get_production_queue(self.app.day_count)
+                for piece in daily_prod:
+                    self.production_orders.append(piece)
+                
             #! Get the deliveries for the day
-            #self.deliveries = DB.get_deliveries() 
+                self.deliveries = DB.get_deliveries() 
             self.update_deliveries()
 
             #! Update the statistics
@@ -212,6 +227,17 @@ class MES:
             self.stats.update_production_queue(self.production_orders)
 
         self.root.after(200, self.MES_loop)
+
+    #######################################################################################################
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Time Functions
+    def toggle_mode(self):
+        self.automatic_mode = not self.automatic_mode
+
+    def increment_day(self):
+        self.app.day_count += 1
+        print("Incrementing day")
+    
+    
 
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
