@@ -13,13 +13,6 @@ class ProductionPlan:
     @classmethod
     def calculate_production_start(cls, new_order, current_date):
 
-        avg_prod_time = {   # average production time for each piece type
-        "P5": 1.58,
-        "P6": 1.58,
-        "P7": 1,
-        "P9": 1.5
-        }
-
         available_lines = { # assuming u can make 3 of each type at the same time
             "P5": 3,
             "P6": 3,
@@ -27,7 +20,7 @@ class ProductionPlan:
             "P9": 3
         }
             
-        time_to_produce = new_order.quantity * avg_prod_time[new_order.piece]
+        time_to_produce = new_order.quantity * avg_prod_times[new_order.piece]
         time_to_produce = time_to_produce / available_lines[new_order.piece]
         start_date = new_order.due_date - math.ceil(time_to_produce)
 
@@ -48,4 +41,11 @@ class Prod_Quantities:
         self.p6_quantity = p6_quantity
         self.p7_quantity = p7_quantity
         self.p9_quantity = p9_quantity
+
+avg_prod_times = {   # average production time for each piece type
+        "P5": 2.2,
+        "P6": 2.2,
+        "P7": 2,
+        "P9": 2.1
+        }
         

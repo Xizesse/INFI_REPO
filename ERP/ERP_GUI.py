@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import db
-import classes.Order
+import classes.order
 import classes.ProductionPlan
 import classes.PurchasingPlan
 

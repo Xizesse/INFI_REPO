@@ -458,57 +458,21 @@ def get_order(order_id):
 
     return order
 
-def get_raw_orders(order_id):
+def get_dispatch_date(order_id):
 
     global conn
 
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-        query = """SELECT supplier, workpiece, min_quantity, price_pp, delivery_days
-                    FROM infi.raw_order_plan AS rop
-                    JOIN infi.new_purchasing_plan AS npp ON rop.raw_order_id = npp.raw_order_id
-                    WHERE order_id = %s"""
+        query = """SELECT dispatch_date FROM infi.dispatches WHERE order_id = %s"""
 
         cursor.execute(query, (order_id,))
 
-        results = cursor.fetchall()
+        dispatch_date = cursor.fetchone()
 
-        raw_orders = []
-        for row in results:
-            
-            supplier = row['supplier']
-            workpiece = row['workpiece']
-            min_quantity = row['min_quantity']
-            price_pp = row['price_pp']
-            delivery_days = row['delivery_days']
-
-            raw_order = Raw_order(supplier, workpiece, min_quantity, price_pp, delivery_days)
-            raw_orders.append(raw_order)
-
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        connect_to_db()
-        return []
-    
-    cursor.close()
-    return raw_orders
-
-def get_last_arrival_date(order_id):
-
-    global conn
-
-    try:
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-        query = """SELECT MAX(arrival_date)
-                    FROM infi.raw_order_plan AS rop
-                    JOIN infi.new_purchasing_plan AS npp ON rop.raw_order_id = npp.raw_order_id
-                    WHERE order_id = %s"""
-
-        cursor.execute(query, (order_id,))
-
-        last_arrival_date = cursor.fetchone()
+        if dispatch_date:
+            dispatch_date = int(dispatch_date[0])
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
@@ -517,7 +481,58 @@ def get_last_arrival_date(order_id):
 
     cursor.close()
 
-    return last_arrival_date
+    return dispatch_date
+
+def check_dispatched_orders(current_date):
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT order_id FROM infi.dispatches
+                WHERE dispatch_date = %s"""
+
+        cursor.execute(query, (current_date,))
+
+        dispatched_orders = cursor.fetchall()
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return []
+
+    cursor.close()
+
+    return dispatched_orders
+
+def insert_costs(order_id, total_cost, unit_cost):
+
+    global conn
+
+    cur = conn.cursor()
+    
+    try:
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS infi.order_costs (
+                order_id INTEGER REFERENCES infi.orders(number) PRIMARY KEY,
+                total_cost FLOAT NOT NULL,
+                unit_cost FLOAT NOT NULL
+            );
+        """)
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+
+    try:   
+        cur.execute("INSERT INTO infi.order_costs VALUES (%s, %s, %s)", (order_id, total_cost, unit_cost))
+        conn.commit()
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+
+    cur.close()
+
+
 
 if __name__ == "__main__":
     
@@ -532,7 +547,7 @@ if __name__ == "__main__":
                 print(f"Database error: {e}")
                 conn.rollback()
             try:
-                cur.execute("DELETE FROM infi.purchasing_plan")
+                cur.execute("DELETE FROM infi.new_purchasing_plan")
             except psycopg2.Error as e:
                 print(f"Database error: {e}")
                 conn.rollback()
@@ -551,6 +566,19 @@ if __name__ == "__main__":
             except psycopg2.Error as e:
                 print(f"Database error: {e}")
                 conn.rollback()
+
+            try:
+                cur.execute("DELETE FROM infi.order_costs")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+            
+            try: 
+                cur.execute("DELETE FROM infi.dispatches")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+
             conn.commit()
             cur.close()
             close_db_connection()

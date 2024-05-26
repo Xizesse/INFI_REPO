@@ -35,7 +35,20 @@ class Order:
             print(order)
 
 
-    def calculate_costs(self, purchasing_plan, prod_time, dispatch_date):
+    def calculate_costs(self):
+
+        from classes.ProductionPlan import avg_prod_times
+        from db import get_order, get_purchasing_plan, get_dispatch_date
+
+        order_id = self.number
+
+        order = get_order(order_id)
+
+        purchasing_plan = get_purchasing_plan(order_id)
+        prod_time = avg_prod_times[order.piece]
+        dispatch_date = get_dispatch_date(order_id) 
+        cost = order.calculate_costs(purchasing_plan, prod_time, dispatch_date)
+
         prod_cost = prod_time * 1       # 1€ per hour
 
         for plan in purchasing_plan:    #For each raw order used for this order

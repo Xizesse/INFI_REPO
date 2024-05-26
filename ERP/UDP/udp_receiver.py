@@ -6,15 +6,19 @@ def udp_receive():
     # Host and port to listen on
     HOST = '127.0.0.1'  # Loopback address for same machine communication
     PORT = 24680
+    TIMEOUT = 2
 
     # Buffer size for receiving data (max payload size for IPv4 UDP packets)
     BUFFER_SIZE = 65507
 
     # Create a UDP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
+    
     # Bind the socket to the host and port
     sock.bind((HOST, PORT))
+
+    # Set timeout
+    sock.settimeout(TIMEOUT)
 
     try:
         # Receive data until the buffer size is filled
