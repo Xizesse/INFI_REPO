@@ -244,6 +244,82 @@ def get_raw_material_arrivals():
 
     return raw_material_arrivals
 
+def get_raw_order_leftovers(workpiece):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        #Leftover per raw_order_id
+        query = """SELECT raw_order_id, SUM(quantity) - SUM(used_quantity) AS leftover  
+           FROM infi.raw_order_plan
+           JOIN infi.new_purchasing_plan USING(raw_order_id)
+           WHERE workpiece = %s
+           GROUP BY raw_order_id"""
+
+        cursor.execute(query, (workpiece,))
+
+        raw_order_leftovers = cursor.fetchall() # Fetch all raw order plan entries
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return []
+
+    cursor.close()
+
+    return raw_order_leftovers
+
+def get_order(order_id):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT * FROM infi.orders WHERE number = %s"""
+
+        cursor.execute(query, (order_id,))
+
+        order = cursor.fetchone()
+
+        order = Order(order['client'], order['number'], order['workpiece'], order['quantity'], order['due_date'], order['late_pen'], order['early_pen'])
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return None
+
+    cursor.close()
+
+    return order
+
+def get_dispatch_date(order_id):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT dispatch_date FROM infi.dispatches WHERE order_id = %s"""
+
+        cursor.execute(query, (order_id,))
+
+        dispatch_date = cursor.fetchone()
+
+        if dispatch_date:
+            dispatch_date = int(dispatch_date[0])
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return None
+
+    cursor.close()
+
+    return dispatch_date
+
 def insert_new_orders(new_orders):
 
     global conn
@@ -406,82 +482,6 @@ def update_raw_order_plan(plan_id, new_used_quantity):
         conn.rollback()
 
     cur.close()
-
-def get_raw_order_leftovers(workpiece):
-
-    global conn
-
-    try:
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-        #Leftover per raw_order_id
-        query = """SELECT raw_order_id, SUM(quantity) - SUM(used_quantity) AS leftover  
-           FROM infi.raw_order_plan
-           JOIN infi.new_purchasing_plan USING(raw_order_id)
-           WHERE workpiece = %s
-           GROUP BY raw_order_id"""
-
-        cursor.execute(query, (workpiece,))
-
-        raw_order_leftovers = cursor.fetchall() # Fetch all raw order plan entries
-
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        connect_to_db()
-        return []
-
-    cursor.close()
-
-    return raw_order_leftovers
-
-def get_order(order_id):
-
-    global conn
-
-    try:
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-        query = """SELECT * FROM infi.orders WHERE number = %s"""
-
-        cursor.execute(query, (order_id,))
-
-        order = cursor.fetchone()
-
-        order = Order(order['client'], order['number'], order['workpiece'], order['quantity'], order['due_date'], order['late_pen'], order['early_pen'])
-
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        connect_to_db()
-        return None
-
-    cursor.close()
-
-    return order
-
-def get_dispatch_date(order_id):
-
-    global conn
-
-    try:
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-        query = """SELECT dispatch_date FROM infi.dispatches WHERE order_id = %s"""
-
-        cursor.execute(query, (order_id,))
-
-        dispatch_date = cursor.fetchone()
-
-        if dispatch_date:
-            dispatch_date = int(dispatch_date[0])
-
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        connect_to_db()
-        return None
-
-    cursor.close()
-
-    return dispatch_date
 
 def check_dispatched_orders(current_date):
     global conn
