@@ -26,87 +26,88 @@ class Raw_order_plan:
     def __str__(self):
         return f"Order ID: {self.order_id}, Raw Order ID: {self.raw_order_id}, Used Quantity: {self.used_quantity}"
 
-leftover_P1 = 0
-leftover_P2 = 0
-
 def calculate_purchasing_plan(order_prod_plan, current_date):
 
-    from db import get_raw_order_leftovers
-    #leftover_P1, leftover_P2 = get_raw_order_leftovers()
-    
-    global leftover_P1
-    global leftover_P2
+    from db import get_raw_order_leftovers, insert_raw_order_plan
 
     order_id = order_prod_plan.order_id
     start_date = order_prod_plan.start_date
     workpiece = order_prod_plan.workpiece
-    quantity = order_prod_plan.quantity
+    needed_quantity = order_prod_plan.quantity
 
     available_time = start_date - current_date  
 
     # Calculate the best supplier for the order
     workpiece = final_to_raw[workpiece]
 
+
     #!HANDLE LEFTOVERS
-    if workpiece == 'P1' and leftover_P1 > 0:   # If there is leftover P1 
 
-        if leftover_P1 >= quantity: # If there is more leftover than needed
-            leftover_P1 = leftover_P1 - quantity
-            quantity = 0
-        else:   # If there is less leftover than needed
-            quantity = quantity - leftover_P1
-            leftover_P1 = 0
+    raw_order_leftovers = get_raw_order_leftovers(workpiece)
     
-    elif workpiece == 'P2' and leftover_P2 > 0:   # If there is leftover P2
-        
-        if leftover_P2 >= quantity: # If there is more leftover than needed
-            leftover_P2 = leftover_P2 - quantity
-            quantity = 0
-        else:   # If there is less leftover than needed
-            quantity = quantity - leftover_P2
-            leftover_P2 = 0
+    if len(raw_order_leftovers) > 0:    # If we have leftovers
+        for row in raw_order_leftovers:
+                
+            raw_order_id = int(row['raw_order_id'])
+            leftover = int(row['leftover'])
+            
+            print(f"Raw Order ID: {raw_order_id} Leftover: {leftover}")
+            used_raw_orders = []    # (raw_order_id, used_quantity)
 
-    if quantity > 0:
-        best_raw_order = Raw_order.choose_raw_order(workpiece, quantity, available_time)
+            if leftover <= 0:
+                continue
+            if leftover >= needed_quantity:
+                used_raw_orders.append((raw_order_id, needed_quantity))
+                needed_quantity = 0
+                break 
+            else:
+                used_raw_orders.append((raw_order_id, leftover))
+                needed_quantity = needed_quantity - leftover
+                continue
+            
+        print(f"Needed Quantity: {needed_quantity} Used Raw Orders: {used_raw_orders} Number of used raw orders: {len(used_raw_orders)}")
+
+        # Update the used raw order plan in the database
+        if len(used_raw_orders) > 0:    # If we used leftovers
+            for raw_order_id, used_quantity in used_raw_orders:
+                new_raw_order_plan = Raw_order_plan(order_id, raw_order_id, used_quantity)
+                insert_raw_order_plan(new_raw_order_plan)
+
+    #If we need extra orders pick the best raw order
+    if needed_quantity > 0:
+        best_raw_order = Raw_order.choose_raw_order(workpiece, needed_quantity, available_time)
     else:
-        best_raw_order = None
-
-    if best_raw_order is None:
         print("No purchase plan set.")
         return None
     
-    if quantity < best_raw_order.min_quantity:
-        
-        if workpiece == 'P1':
-            leftover_P1 += best_raw_order.min_quantity - quantity
-        elif workpiece == 'P2':
-            leftover_P2 += best_raw_order.min_quantity - quantity
-
-        order_quantity = best_raw_order.min_quantity
+    if needed_quantity < best_raw_order.min_quantity:   #If we need less than the minimum
+        order_quantity = best_raw_order.min_quantity    #Order the min
     else:
-        order_quantity = quantity
+        order_quantity = needed_quantity    
         
-    arrival_date = current_date + best_raw_order.delivery_days
+    arrival_date = current_date + best_raw_order.delivery_days  # Calculate the arrival date of the order
     
     purchase_plan = PurchasingPlan(best_raw_order, arrival_date, order_quantity)
     
     print(f"Purchase Plan: {purchase_plan}")
 
-    return purchase_plan, order_id, quantity    # Quantity is the used
+    return purchase_plan, order_id, needed_quantity    # Needed quantity is not including what we have in leftovers
 
 def make_purchasing_plan(order_prod_plan, current_date):
 
     from db import insert_purchasing_plan, insert_raw_order_plan
 
-    order_purchase_plan, order_id, used_quantity = calculate_purchasing_plan(order_prod_plan, current_date)
-    print(f"Order Purchase Plan: {order_purchase_plan} Order ID: {order_id} Used Quantity: {used_quantity}")
+    purch_plan_result = calculate_purchasing_plan(order_prod_plan, current_date)
+    if purch_plan_result is not None:
+        order_purchase_plan, order_id, used_quantity = purch_plan_result
+    else:
+        return
 
     raw_order_id = insert_purchasing_plan(order_purchase_plan)
-    print(f"Raw Order ID: {raw_order_id}")
-
+    print(f"Purchase plan inserted")
+    
     raw_order_plan = Raw_order_plan(order_id, raw_order_id, used_quantity)
     print(f"Raw Order Plan: {raw_order_plan}")
     insert_raw_order_plan(raw_order_plan)
-    print("Purchasing plan inserted.")
 
     

@@ -316,7 +316,7 @@ def insert_purchasing_plan(purchase_plan):
     global conn
     
     if purchase_plan is None:
-        return
+        return None
         
     cur = conn.cursor()
 
@@ -368,80 +368,194 @@ def insert_raw_order_plan(raw_order_plan):
     # Create the production_plan table if it doesn't exist
     cur.execute("""
         CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
-            raw_order_id INTEGER REFERENCES infi.new_purchasing_plan(raw_order_id) PRIMARY KEY,
+            plan_id SERIAL PRIMARY KEY,
             order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
+            raw_order_id INTEGER REFERENCES infi.new_purchasing_plan(raw_order_id) NOT NULL,
             used_quantity INTEGER NOT NULL
         );
     """)
 
     # Insert the ordered data into the new table
-    cur.execute("INSERT INTO infi.raw_order_plan VALUES (%s, %s, %s)", (raw_order_plan.raw_order_id, raw_order_plan.order_id, raw_order_plan.used_quantity))
+    cur.execute("INSERT INTO infi.raw_order_plan (order_id, raw_order_id, used_quantity) VALUES (%s, %s, %s)", 
+                (raw_order_plan.order_id, raw_order_plan.raw_order_id, raw_order_plan.used_quantity))
 
     # Commit changes 
     conn.commit()
 
-def get_raw_order_leftovers():
+def update_raw_order_plan(plan_id, new_used_quantity):
 
     global conn
 
-    raw_order_plan = []
+    cur = conn.cursor()
+
+    # Create the production_plan table if it doesn't exist
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
+            plan_id SERIAL PRIMARY KEY,
+            order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
+            raw_order_id INTEGER REFERENCES infi.new_purchasing_plan(raw_order_id) NOT NULL,
+            used_quantity INTEGER NOT NULL
+        );
+    """)
+
+    try:
+        cur.execute("UPDATE infi.raw_order_plan SET used_quantity = %s WHERE plan_id = %s", (new_used_quantity, plan_id))
+        conn.commit()
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+
+    cur.close()
+
+def get_raw_order_leftovers(workpiece):
+
+    global conn
 
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-        query = """
-            SELECT 
-                workpiece,
-                quantity - COALESCE(SUM(used_quantity), 0) AS leftover_quantity
-            FROM 
-                infi.new_purchasing_plan 
-            LEFT JOIN 
-                infi.raw_order_plan USING(raw_order_id)
-            GROUP BY 
-                workpiece, quantity;""" 
+        #Leftover per raw_order_id
+        query = """SELECT raw_order_id, SUM(quantity) - SUM(used_quantity) AS leftover  
+           FROM infi.raw_order_plan
+           JOIN infi.new_purchasing_plan USING(raw_order_id)
+           WHERE workpiece = %s
+           GROUP BY raw_order_id"""
 
-        cursor.execute(query)
-        result = cursor.fetchone() # Fetch all raw order plan entries
+        cursor.execute(query, (workpiece,))
 
-        
-        p1_leftover = result["p1_leftover"]
-        p2_leftover = result["p2_leftover"]
+        raw_order_leftovers = cursor.fetchall() # Fetch all raw order plan entries
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
         connect_to_db()
+        return []
 
     cursor.close()
 
-    return p1_leftover, p2_leftover
+    return raw_order_leftovers
+
+def get_order(order_id):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT * FROM infi.orders WHERE number = %s"""
+
+        cursor.execute(query, (order_id,))
+
+        order = cursor.fetchone()
+
+        order = Order(order['client'], order['number'], order['workpiece'], order['quantity'], order['due_date'], order['late_pen'], order['early_pen'])
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return None
+
+    cursor.close()
+
+    return order
+
+def get_raw_orders(order_id):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT supplier, workpiece, min_quantity, price_pp, delivery_days
+                    FROM infi.raw_order_plan AS rop
+                    JOIN infi.new_purchasing_plan AS npp ON rop.raw_order_id = npp.raw_order_id
+                    WHERE order_id = %s"""
+
+        cursor.execute(query, (order_id,))
+
+        results = cursor.fetchall()
+
+        raw_orders = []
+        for row in results:
+            
+            supplier = row['supplier']
+            workpiece = row['workpiece']
+            min_quantity = row['min_quantity']
+            price_pp = row['price_pp']
+            delivery_days = row['delivery_days']
+
+            raw_order = Raw_order(supplier, workpiece, min_quantity, price_pp, delivery_days)
+            raw_orders.append(raw_order)
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return []
+    
+    cursor.close()
+    return raw_orders
+
+def get_last_arrival_date(order_id):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT MAX(arrival_date)
+                    FROM infi.raw_order_plan AS rop
+                    JOIN infi.new_purchasing_plan AS npp ON rop.raw_order_id = npp.raw_order_id
+                    WHERE order_id = %s"""
+
+        cursor.execute(query, (order_id,))
+
+        last_arrival_date = cursor.fetchone()
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return None
+
+    cursor.close()
+
+    return last_arrival_date
 
 if __name__ == "__main__":
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "delete":
+            conn = connect_to_db()
+            cur = conn.cursor()
 
-    if sys.argv[1] == "delete":
-        conn = connect_to_db()
-        cur = conn.cursor()
-        try:
-            cur.execute("DELETE FROM infi.purchasing_plan")
-        except psycopg2.Error as e:
-            print(f"Database error: {e}")
-            conn.rollback()
-        try:
-            cur.execute("DELETE FROM infi.production_plan")
-        except psycopg2.Error as e:
-            print(f"Database error: {e}")
-            conn.rollback()
-        try:
-            cur.execute("DELETE FROM infi.orders")
-        except psycopg2.Error as e:
-            print(f"Database error: {e}")
-            conn.rollback()
-        try: 
-            cur.execute("DELETE FROM infi.todays_date")
-        except psycopg2.Error as e:
-            print(f"Database error: {e}")
-            conn.rollback()
-        conn.commit()
-        cur.close()
-        close_db_connection()
-        print("All tables cleared.")
-        exit()
+            try: 
+                cur.execute("DELETE FROM infi.raw_order_plan")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+            try:
+                cur.execute("DELETE FROM infi.purchasing_plan")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+            try:
+                cur.execute("DELETE FROM infi.production_plan")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+            try:
+                cur.execute("DELETE FROM infi.orders")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+            try: 
+                cur.execute("DELETE FROM infi.todays_date")
+            except psycopg2.Error as e:
+                print(f"Database error: {e}")
+                conn.rollback()
+            conn.commit()
+            cur.close()
+            close_db_connection()
+            print("All tables cleared.")
+            exit()
+        
+    connect_to_db()
+    close_db_connection()
