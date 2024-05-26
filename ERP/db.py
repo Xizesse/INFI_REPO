@@ -532,58 +532,50 @@ def insert_costs(order_id, total_cost, unit_cost):
 
     cur.close()
 
-
-
-if __name__ == "__main__":
+def clear_all_tables():
     
-    if len(sys.argv) > 1:
-        if sys.argv[1] == "delete":
-            conn = connect_to_db()
-            cur = conn.cursor()
+    connection = connect_to_db()
 
-            try: 
-                cur.execute("DELETE FROM infi.raw_order_plan")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
-            try:
-                cur.execute("DELETE FROM infi.new_purchasing_plan")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
-            try:
-                cur.execute("DELETE FROM infi.production_plan")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
-            try:
-                cur.execute("DELETE FROM infi.orders")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
-            try: 
-                cur.execute("DELETE FROM infi.todays_date")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
+    cur = connection.cursor()
 
-            try:
-                cur.execute("DELETE FROM infi.order_costs")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
-            
-            try: 
-                cur.execute("DELETE FROM infi.dispatches")
-            except psycopg2.Error as e:
-                print(f"Database error: {e}")
-                conn.rollback()
+    try: 
+        cur.execute("DELETE FROM infi.raw_order_plan")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+    try:
+        cur.execute("DELETE FROM infi.new_purchasing_plan")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+    try:
+        cur.execute("DELETE FROM infi.production_plan")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+    try:
+        cur.execute("DELETE FROM infi.orders")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+    try: 
+        cur.execute("DELETE FROM infi.todays_date")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
 
-            conn.commit()
-            cur.close()
-            close_db_connection()
-            print("All tables cleared.")
-            exit()
-        
-    connect_to_db()
-    close_db_connection()
+    try:
+        cur.execute("DELETE FROM infi.order_costs")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+    
+    try: 
+        cur.execute("DELETE FROM infi.dispatches")
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        conn.rollback()
+
+    connection.commit()
+    cur.close()
+    connection.close()

@@ -3,9 +3,12 @@ from classes.order import parse_new_orders
 from classes.ProductionPlan import ProductionPlan
 from classes.PurchasingPlan import make_purchasing_plan
 from db import connect_to_db, close_db_connection, insert_new_orders, insert_production_plan, get_current_date, check_dispatched_orders, get_order, insert_costs
-
+from db import clear_all_tables
 
 if __name__ == "__main__":   
+
+    clear_all_tables() # Clear all tables in the database
+
     while True:
         try:         
             print("-------------------------------\n")
@@ -28,7 +31,7 @@ if __name__ == "__main__":
                 insert_costs(order_id, order_total_cost, order_unit_cost) # Insert the costs into the database
 
             close_db_connection() # Close the database connection
-            
+
             connect_to_db() # Connect to the database
 
             print("Waiting for new orders...")
@@ -37,7 +40,8 @@ if __name__ == "__main__":
             if new_orders_file is None:
                 print("No new orders received.")
                 continue
-
+            
+            #!PROCESS NEW ORDERS
             new_orders = parse_new_orders(new_orders_file)  # Parse the new orders
 
             inserted_orders = insert_new_orders(new_orders)
