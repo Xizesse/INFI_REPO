@@ -171,6 +171,12 @@ class MES:
             4: {1, 4, 6},
         }
 
+        #"Dispatch":{
+        #"dispatch" :"ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.dispatch"
+  
+        self.dispatch_node = nodes["Dispatch"]["dispatch"]
+        print(self.dispatch_node)
+
         print("\nMES initialized\n\n")
 
 #######################################################################################################
@@ -267,6 +273,13 @@ class MES:
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
     def delivery(self):
         if self.time_of_the_day > 45:
+            #set all dispatches to true
+            for i in range(4):
+                node = self.client.get_node(self.dispatch_node + f"[{i}]")
+                print(node)
+                node.set_value(ua.Variant(True, ua.VariantType.Boolean))
+
+
             for order in self.deliveries:
                 if order.status == "Ready for Shipment":
                     print("Order", order.order_id, "is ready for shipment")
@@ -277,7 +290,11 @@ class MES:
 
                     #update the interface
                     self.stats.update_orders_data(self.deliveries)
-
+        else :
+            for i in range(4):
+                node = self.client.get_node(self.dispatch_node + f"[{i}]")
+                print(node)
+                node.set_value(ua.Variant(False, ua.VariantType.Boolean))
                 
 
     def connect_to_server(self, gui):

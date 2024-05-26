@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.14.0</Version>
+    <SymbolConfigObject version="4.4.0.0" runtimeid="3.5.19.60" libversion="4.4.0.0" compiler="3.5.19.60" lmm="3.5.19.60" profile="CODESYS V3.5 SP19 Patch 6+" settings="SupportOPCUA, LayoutCalculator=OptimizedClientSideLayoutCalculator" />
+    <ProjectInfo name="Sketch_Projeto" devicename="Device" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_INT" size="2" swapsize="2" typeclass="Int" iecname="INT" />
+    <TypeSimple name="T_STRING" size="81" swapsize="0" typeclass="String" iecname="STRING" />
+    <TypeSimple name="T_TIME" size="4" swapsize="4" typeclass="Time" iecname="TIME" />
+    <TypeSimple name="T_UINT" size="2" swapsize="2" typeclass="UInt" iecname="UINT" />
+    <TypeArray name="T_ARRAY__0__11__OF_INT" size="24" nativesize="24" typeclass="Array" iecname="ARRAY [0..11] OF INT" basetype="T_INT">
+      <ArrayDim minrange="0" maxrange="11" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__11__OF_TIME" size="48" nativesize="48" typeclass="Array" iecname="ARRAY [0..11] OF TIME" basetype="T_TIME">
+      <ArrayDim minrange="0" maxrange="11" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__14__OF_INT" size="30" nativesize="30" typeclass="Array" iecname="ARRAY [0..14] OF INT" basetype="T_INT">
+      <ArrayDim minrange="0" maxrange="14" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__1__OF_INT" size="4" nativesize="4" typeclass="Array" iecname="ARRAY [0..1] OF INT" basetype="T_INT">
+      <ArrayDim minrange="0" maxrange="1" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__200__OF_BOOL" size="201" nativesize="201" typeclass="Array" iecname="ARRAY [0..200] OF BOOL" basetype="T_BOOL">
+      <ArrayDim minrange="0" maxrange="200" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__2__OF_INT" size="6" nativesize="6" typeclass="Array" iecname="ARRAY [0..2] OF INT" basetype="T_INT">
+      <ArrayDim minrange="0" maxrange="2" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__3__OF_BOOL" size="4" nativesize="4" typeclass="Array" iecname="ARRAY [0..3] OF BOOL" basetype="T_BOOL">
+      <ArrayDim minrange="0" maxrange="3" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__4__OF_INT" size="10" nativesize="10" typeclass="Array" iecname="ARRAY [0..4] OF INT" basetype="T_INT">
+      <ArrayDim minrange="0" maxrange="4" />
+    </TypeArray>
+    <TypeArray name="T_ARRAY__0__5__OF_TIME" size="24" nativesize="24" typeclass="Array" iecname="ARRAY [0..5] OF TIME" basetype="T_TIME">
+      <ArrayDim minrange="0" maxrange="5" />
+    </TypeArray>
+    <TypeUserDef name="T_MetaPiece" size="10" nativesize="10" typeclass="Userdef" pouclass="STRUCTURE" iecname="MetaPiece">
+      <UserDefElement iecname="pieceTYPE" type="T_INT" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="machineTOP" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="machineBOT" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="toolTOP" type="T_INT" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="toolBOT" type="T_INT" byteoffset="6" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ID" type="T_INT" byteoffset="8" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_RS" size="3" nativesize="16" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="RS">
+      <UserDefElement iecname="SET" type="T_BOOL" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="RESET1" type="T_BOOL" byteoffset="1" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="Q1" type="T_BOOL" byteoffset="2" vartype="VAR_OUTPUT" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_R_TRIG" size="2" nativesize="16" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="R_TRIG">
+      <UserDefElement iecname="CLK" type="T_BOOL" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="Q" type="T_BOOL" byteoffset="1" vartype="VAR_OUTPUT" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_SFCStepType" size="16" nativesize="16" typeclass="Userdef" pouclass="STRUCTURE" iecname="SFCStepType">
+      <UserDefElement iecname="x" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="t" type="T_TIME" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_x" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_t" type="T_TIME" byteoffset="12" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_TON" size="16" nativesize="32" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="TON">
+      <UserDefElement iecname="IN" type="T_BOOL" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="PT" type="T_TIME" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="Q" type="T_BOOL" byteoffset="8" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="ET" type="T_TIME" byteoffset="12" vartype="VAR_OUTPUT" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_VERSION" size="8" nativesize="8" typeclass="Userdef" pouclass="STRUCTURE" iecname="VERSION">
+      <UserDefElement iecname="uiMajor" type="T_UINT" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="uiMinor" type="T_UINT" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="uiServicePack" type="T_UINT" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="uiPatch" type="T_UINT" byteoffset="6" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeArray name="T_ARRAY__0__14__OF_MetaPiece" size="150" nativesize="150" typeclass="Array" iecname="ARRAY [0..14] OF MetaPiece" basetype="T_MetaPiece">
+      <ArrayDim minrange="0" maxrange="14" />
+    </TypeArray>
+    <TypeUserDef name="T_SFCActionControl" size="116" nativesize="272" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="SFCActionControl">
+      <UserDefElement iecname="N" type="T_BOOL" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="R0" type="T_BOOL" byteoffset="1" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="S0" type="T_BOOL" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="L" type="T_BOOL" byteoffset="3" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="D" type="T_BOOL" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="P" type="T_BOOL" byteoffset="5" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="SD" type="T_BOOL" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="DS" type="T_BOOL" byteoffset="7" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="SL" type="T_BOOL" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="T" type="T_TIME" byteoffset="12" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="Q" type="T_BOOL" byteoffset="16" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="S_FF" type="T_RS" byteoffset="17" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="L_TMR" type="T_TON" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="D_TMR" type="T_TON" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="P_TRIG" type="T_R_TRIG" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SD_TMR" type="T_TON" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SD_FF" type="T_RS" byteoffset="72" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="DS_FF" type="T_RS" byteoffset="75" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="DS_TMR" type="T_TON" byteoffset="80" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SL_FF" type="T_RS" byteoffset="96" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SL_TMR" type="T_TON" byteoffset="100" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_SFCActionType" size="128" nativesize="288" typeclass="Userdef" pouclass="STRUCTURE" iecname="SFCActionType">
+      <UserDefElement iecname="x" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_x" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="t" type="T_TIME" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_t" type="T_TIME" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="AC" type="T_SFCActionControl" byteoffset="12" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Conveyor" size="804" nativesize="1624" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Conveyor">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="next" type="T_BOOL" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="5" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="start" type="T_BOOL" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="change_direction" type="T_BOOL" byteoffset="18" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="conveyorFree" type="T_BOOL" byteoffset="19" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="middle" type="T_BOOL" byteoffset="20" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="sending" type="T_BOOL" byteoffset="21" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceOUT" type="T_MetaPiece" byteoffset="22" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="32" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_conveyorFree" type="T_SFCActionType" byteoffset="44" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_" type="T_SFCActionType" byteoffset="172" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_middle" type="T_SFCActionType" byteoffset="300" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_sending" type="T_SFCActionType" byteoffset="428" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_1_" type="T_SFCActionType" byteoffset="556" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting" type="T_SFCStepType" byteoffset="684" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivingBlock_UP" type="T_SFCStepType" byteoffset="700" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting2Send_UP" type="T_SFCStepType" byteoffset="716" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Block_UP" type="T_SFCStepType" byteoffset="732" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivingBlock" type="T_SFCStepType" byteoffset="748" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting2Send" type="T_SFCStepType" byteoffset="764" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Block" type="T_SFCStepType" byteoffset="780" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0__Waiting__to__ReceivingBlock" type="T_BOOL" byteoffset="796" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1__Waiting__to__ReceivingBlock_UP" type="T_BOOL" byteoffset="797" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivingBlock_UP__to__Waiting2Send_UP" type="T_BOOL" byteoffset="798" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting2Send_UP__to__Sending_Block_UP" type="T_BOOL" byteoffset="799" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Block_UP__to__Waiting" type="T_BOOL" byteoffset="800" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivingBlock__to__Waiting2Send" type="T_BOOL" byteoffset="801" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting2Send__to__Sending_Block" type="T_BOOL" byteoffset="802" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Block__to__Waiting" type="T_BOOL" byteoffset="803" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Conveyor_Machine" size="628" nativesize="1280" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Conveyor_Machine">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="leave" type="T_BOOL" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="5" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="start" type="T_BOOL" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="nextConveyor" type="T_BOOL" byteoffset="7" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="ManualMode" type="T_BOOL" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_Ready" type="T_BOOL" byteoffset="9" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="10" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machine_number" type="T_INT" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="conveyorFree" type="T_BOOL" byteoffset="22" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="machine" type="T_BOOL" byteoffset="23" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceOUT" type="T_MetaPiece" byteoffset="24" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="sending" type="T_BOOL" byteoffset="34" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="machineOFF" type="T_BOOL" byteoffset="35" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_conveyorFree" type="T_SFCActionType" byteoffset="48" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_1_" type="T_SFCActionType" byteoffset="176" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_machine" type="T_SFCActionType" byteoffset="304" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_sending" type="T_SFCActionType" byteoffset="432" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting" type="T_SFCStepType" byteoffset="560" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivingBlock" type="T_SFCStepType" byteoffset="576" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Inside_Machine" type="T_SFCStepType" byteoffset="592" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Block" type="T_SFCStepType" byteoffset="608" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting__to__ReceivingBlock" type="T_BOOL" byteoffset="624" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivingBlock__to__Inside_Machine" type="T_BOOL" byteoffset="625" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Inside_Machine__to__Sending_Block" type="T_BOOL" byteoffset="626" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Block__to__Waiting" type="T_BOOL" byteoffset="627" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Conveyor_WarehouseIN" size="800" nativesize="1616" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Conveyor_WarehouseIN">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="receiving" type="T_BOOL" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="change_direction" type="T_BOOL" byteoffset="16" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="conveyorFree" type="T_BOOL" byteoffset="17" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="18" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="pieceOUT" type="T_MetaPiece" byteoffset="30" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_conveyorFree" type="T_SFCActionType" byteoffset="40" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_" type="T_SFCActionType" byteoffset="168" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_finish" type="T_SFCActionType" byteoffset="296" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_2_" type="T_SFCActionType" byteoffset="424" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_1_" type="T_SFCActionType" byteoffset="552" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting" type="T_SFCStepType" byteoffset="680" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Step0_UP" type="T_SFCStepType" byteoffset="696" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Warehouse_IN_UP" type="T_SFCStepType" byteoffset="712" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Data_Removal_UP" type="T_SFCStepType" byteoffset="728" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Step0" type="T_SFCStepType" byteoffset="744" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Warehouse_IN" type="T_SFCStepType" byteoffset="760" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Data_Removal" type="T_SFCStepType" byteoffset="776" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0__Waiting__to__Step0" type="T_BOOL" byteoffset="792" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1__Waiting__to__Step0_UP" type="T_BOOL" byteoffset="793" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Step0_UP__to__Warehouse_IN_UP" type="T_BOOL" byteoffset="794" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Warehouse_IN_UP__to__Data_Removal_UP" type="T_BOOL" byteoffset="795" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Data_Removal_UP__to__Waiting" type="T_BOOL" byteoffset="796" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Step0__to__Warehouse_IN" type="T_BOOL" byteoffset="797" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Warehouse_IN__to__Data_Removal" type="T_BOOL" byteoffset="798" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Data_Removal__to__Waiting" type="T_BOOL" byteoffset="799" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Conveyor_WarehouseOUT_MP" size="629" nativesize="1280" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Conveyor_WarehouseOUT_MP">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="conveyorOUT" type="T_INT" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceTYPE" type="T_INT" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="18" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="nextConveyorFREE" type="T_BOOL" byteoffset="19" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="change_direction" type="T_BOOL" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="line" type="T_INT" byteoffset="22" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="startConv" type="T_BOOL" byteoffset="24" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceOUT" type="T_MetaPiece" byteoffset="26" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_warehouseOUT" type="T_SFCActionType" byteoffset="48" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_startConv" type="T_SFCActionType" byteoffset="176" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_" type="T_SFCActionType" byteoffset="304" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_1_" type="T_SFCActionType" byteoffset="432" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init" type="T_SFCStepType" byteoffset="560" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="waiting" type="T_SFCStepType" byteoffset="576" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Up" type="T_SFCStepType" byteoffset="592" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Down" type="T_SFCStepType" byteoffset="608" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init__to__waiting" type="T_BOOL" byteoffset="624" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0__waiting__to__Sending_Down" type="T_BOOL" byteoffset="625" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1__waiting__to__Sending_Up" type="T_BOOL" byteoffset="626" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Up__to__Init" type="T_BOOL" byteoffset="627" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Sending_Down__to__Init" type="T_BOOL" byteoffset="628" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_DispatchOrder" size="166" nativesize="344" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="DispatchOrder">
+      <UserDefElement iecname="dispatch_order" type="T_BOOL" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_1_" type="T_SFCActionType" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting2Dispatch" type="T_SFCStepType" byteoffset="132" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Dispatch" type="T_SFCStepType" byteoffset="148" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Waiting2Dispatch__to__Dispatch" type="T_BOOL" byteoffset="164" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Dispatch__to__Waiting2Dispatch" type="T_BOOL" byteoffset="165" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Machine1" size="1215" nativesize="2352" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Machine1">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machine" type="T_INT" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="line" type="T_INT" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="start" type="T_BOOL" byteoffset="18" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="19" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="ManualMode" type="T_BOOL" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_operate" type="T_BOOL" byteoffset="21" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_toolUP" type="T_BOOL" byteoffset="22" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_toolDOWN" type="T_BOOL" byteoffset="23" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="free" type="T_BOOL" byteoffset="24" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_operating" type="T_BOOL" byteoffset="25" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_changingTOOL" type="T_BOOL" byteoffset="26" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool_Front" type="T_INT" byteoffset="28" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool_Back" type="T_INT" byteoffset="30" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool" type="T_INT" byteoffset="32" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="back" type="T_BOOL" byteoffset="34" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="front" type="T_BOOL" byteoffset="35" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ListTools" type="T_ARRAY__0__2__OF_INT" byteoffset="46" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="tool" type="T_INT" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MachineOff" type="T_BOOL" byteoffset="54" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="machineOFF_debug" type="T_BOOL" byteoffset="55" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="addTime" type="T_TIME" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="start_change" type="T_BOOL" byteoffset="60" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SFCCurrentStep" type="T_STRING" byteoffset="61" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_IsMachineOFF" type="T_SFCActionType" byteoffset="144" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_SCADA_operating" type="T_SFCActionType" byteoffset="272" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_4_" type="T_SFCActionType" byteoffset="400" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_free" type="T_SFCActionType" byteoffset="528" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_SCADA_changingTOOL" type="T_SFCActionType" byteoffset="656" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_3_" type="T_SFCActionType" byteoffset="784" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_2_" type="T_SFCActionType" byteoffset="912" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init" type="T_SFCStepType" byteoffset="1040" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivedORDER" type="T_SFCStepType" byteoffset="1056" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startTOOL" type="T_SFCStepType" byteoffset="1072" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="finished" type="T_SFCStepType" byteoffset="1088" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="flag" type="T_SFCStepType" byteoffset="1104" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Deciding" type="T_SFCStepType" byteoffset="1120" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_B" type="T_SFCStepType" byteoffset="1136" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="changeTOOL_B" type="T_SFCStepType" byteoffset="1152" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_F" type="T_SFCStepType" byteoffset="1168" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="changeTOOL_F" type="T_SFCStepType" byteoffset="1184" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init__to__ReceivedORDER" type="T_BOOL" byteoffset="1200" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0__ReceivedORDER__to__startTOOL" type="T_BOOL" byteoffset="1201" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startTOOL__to__finished" type="T_BOOL" byteoffset="1202" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0_0__finished__to__Init" type="T_BOOL" byteoffset="1203" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0_1__finished__to__flag" type="T_BOOL" byteoffset="1204" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="flag__to__Init" type="T_BOOL" byteoffset="1205" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1__ReceivedORDER__to__Deciding" type="T_BOOL" byteoffset="1206" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0__Deciding__to__startCHANGE_B" type="T_BOOL" byteoffset="1207" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_B__to__changeTOOL_B" type="T_BOOL" byteoffset="1208" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0_0__changeTOOL_B__to__Init" type="T_BOOL" byteoffset="1209" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0_1__changeTOOL_B__to__ReceivedOrder" type="T_BOOL" byteoffset="1210" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1__Deciding__to__startCHANGE_F" type="T_BOOL" byteoffset="1211" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_F__to__changeTOOL_F" type="T_BOOL" byteoffset="1212" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1_0__changeTOOL_F__to__Init" type="T_BOOL" byteoffset="1213" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1_1__changeTOOL_F__to__ReceivedOrder" type="T_BOOL" byteoffset="1214" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Machine2" size="1211" nativesize="2352" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Machine2">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machine" type="T_INT" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="line" type="T_INT" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="start" type="T_BOOL" byteoffset="18" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="19" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="ManualMode" type="T_BOOL" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_operate" type="T_BOOL" byteoffset="21" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_toolUP" type="T_BOOL" byteoffset="22" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_toolDOWN" type="T_BOOL" byteoffset="23" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="free" type="T_BOOL" byteoffset="24" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_operating" type="T_BOOL" byteoffset="25" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_changingTOOL" type="T_BOOL" byteoffset="26" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool_Front" type="T_INT" byteoffset="28" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool_Back" type="T_INT" byteoffset="30" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool" type="T_INT" byteoffset="32" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="back" type="T_BOOL" byteoffset="34" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="front" type="T_BOOL" byteoffset="35" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ListTools" type="T_ARRAY__0__2__OF_INT" byteoffset="46" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="tool" type="T_INT" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MachineOff" type="T_BOOL" byteoffset="54" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="machineOFF_debug" type="T_BOOL" byteoffset="55" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="start_change" type="T_BOOL" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SFCCurrentStep" type="T_STRING" byteoffset="57" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_IsMachineOFF" type="T_SFCActionType" byteoffset="140" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_SCADA_operating" type="T_SFCActionType" byteoffset="268" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_4_" type="T_SFCActionType" byteoffset="396" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_free" type="T_SFCActionType" byteoffset="524" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_SCADA_changingTOOL" type="T_SFCActionType" byteoffset="652" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_3_" type="T_SFCActionType" byteoffset="780" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_2_" type="T_SFCActionType" byteoffset="908" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init" type="T_SFCStepType" byteoffset="1036" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivedORDER" type="T_SFCStepType" byteoffset="1052" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startTOOL" type="T_SFCStepType" byteoffset="1068" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="finished" type="T_SFCStepType" byteoffset="1084" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="flag" type="T_SFCStepType" byteoffset="1100" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Deciding" type="T_SFCStepType" byteoffset="1116" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_B" type="T_SFCStepType" byteoffset="1132" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="changeTOOL_B" type="T_SFCStepType" byteoffset="1148" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_F" type="T_SFCStepType" byteoffset="1164" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="changeTOOL_F" type="T_SFCStepType" byteoffset="1180" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init__to__ReceivedORDER" type="T_BOOL" byteoffset="1196" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0__ReceivedORDER__to__startTOOL" type="T_BOOL" byteoffset="1197" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startTOOL__to__finished" type="T_BOOL" byteoffset="1198" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0_0__finished__to__Init" type="T_BOOL" byteoffset="1199" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0_1__finished__to__flag" type="T_BOOL" byteoffset="1200" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="flag__to__Init" type="T_BOOL" byteoffset="1201" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1__ReceivedORDER__to__Deciding" type="T_BOOL" byteoffset="1202" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0__Deciding__to__startCHANGE_B" type="T_BOOL" byteoffset="1203" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_B__to__changeTOOL_B" type="T_BOOL" byteoffset="1204" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0_0__changeTOOL_B__to__Init" type="T_BOOL" byteoffset="1205" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0_1__changeTOOL_B__to__ReceivedOrder" type="T_BOOL" byteoffset="1206" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1__Deciding__to__startCHANGE_F" type="T_BOOL" byteoffset="1207" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_F__to__changeTOOL_F" type="T_BOOL" byteoffset="1208" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1_0__changeTOOL_F__to__Init" type="T_BOOL" byteoffset="1209" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1_1__changeTOOL_F__to__ReceivedOrder" type="T_BOOL" byteoffset="1210" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Machine3" size="1211" nativesize="2352" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Machine3">
+      <UserDefElement iecname="inputOFF" type="T_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_INT" byteoffset="2" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machine" type="T_INT" byteoffset="4" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="line" type="T_INT" byteoffset="6" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceIN" type="T_MetaPiece" byteoffset="8" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="start" type="T_BOOL" byteoffset="18" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="finish" type="T_BOOL" byteoffset="19" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="ManualMode" type="T_BOOL" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_operate" type="T_BOOL" byteoffset="21" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_toolUP" type="T_BOOL" byteoffset="22" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="MM_toolDOWN" type="T_BOOL" byteoffset="23" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="free" type="T_BOOL" byteoffset="24" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_operating" type="T_BOOL" byteoffset="25" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_changingTOOL" type="T_BOOL" byteoffset="26" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool_Front" type="T_INT" byteoffset="28" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool_Back" type="T_INT" byteoffset="30" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="SCADA_Tool" type="T_INT" byteoffset="32" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="back" type="T_BOOL" byteoffset="34" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="front" type="T_BOOL" byteoffset="35" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="piece" type="T_MetaPiece" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ListTools" type="T_ARRAY__0__2__OF_INT" byteoffset="46" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="tool" type="T_INT" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="MachineOff" type="T_BOOL" byteoffset="54" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="machineOFF_debug" type="T_BOOL" byteoffset="55" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="start_change" type="T_BOOL" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="SFCCurrentStep" type="T_STRING" byteoffset="57" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_IsMachineOFF" type="T_SFCActionType" byteoffset="140" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_SCADA_operating" type="T_SFCActionType" byteoffset="268" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_4_" type="T_SFCActionType" byteoffset="396" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_free" type="T_SFCActionType" byteoffset="524" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_SCADA_changingTOOL" type="T_SFCActionType" byteoffset="652" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_3_" type="T_SFCActionType" byteoffset="780" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="_GVL_outputs_outputOFF_2_" type="T_SFCActionType" byteoffset="908" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init" type="T_SFCStepType" byteoffset="1036" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ReceivedORDER" type="T_SFCStepType" byteoffset="1052" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startTOOL" type="T_SFCStepType" byteoffset="1068" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="finished" type="T_SFCStepType" byteoffset="1084" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="flag" type="T_SFCStepType" byteoffset="1100" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Deciding" type="T_SFCStepType" byteoffset="1116" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_B" type="T_SFCStepType" byteoffset="1132" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="changeTOOL_B" type="T_SFCStepType" byteoffset="1148" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_F" type="T_SFCStepType" byteoffset="1164" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="changeTOOL_F" type="T_SFCStepType" byteoffset="1180" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Init__to__ReceivedORDER" type="T_BOOL" byteoffset="1196" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0__ReceivedORDER__to__startTOOL" type="T_BOOL" byteoffset="1197" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startTOOL__to__finished" type="T_BOOL" byteoffset="1198" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0_0__finished__to__Init" type="T_BOOL" byteoffset="1199" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch0_1__finished__to__flag" type="T_BOOL" byteoffset="1200" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="flag__to__Init" type="T_BOOL" byteoffset="1201" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1__ReceivedORDER__to__Deciding" type="T_BOOL" byteoffset="1202" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0__Deciding__to__startCHANGE_B" type="T_BOOL" byteoffset="1203" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_B__to__changeTOOL_B" type="T_BOOL" byteoffset="1204" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0_0__changeTOOL_B__to__Init" type="T_BOOL" byteoffset="1205" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_0_1__changeTOOL_B__to__ReceivedOrder" type="T_BOOL" byteoffset="1206" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1__Deciding__to__startCHANGE_F" type="T_BOOL" byteoffset="1207" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="startCHANGE_F__to__changeTOOL_F" type="T_BOOL" byteoffset="1208" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1_0__changeTOOL_F__to__Init" type="T_BOOL" byteoffset="1209" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Branch1_1_1__changeTOOL_F__to__ReceivedOrder" type="T_BOOL" byteoffset="1210" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Factory_Line_1" size="5980" nativesize="11848" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Factory_Line_1">
+      <UserDefElement iecname="inputOFF" type="T_ARRAY__0__4__OF_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_ARRAY__0__4__OF_INT" byteoffset="10" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="conveyourOUT" type="T_INT" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machineTOP" type="T_INT" byteoffset="22" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machineBOT" type="T_INT" byteoffset="24" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="line" type="T_INT" byteoffset="26" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceOUT" type="T_INT" byteoffset="28" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="PieceIN" type="T_MetaPiece" byteoffset="30" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="TOP_operating" type="T_BOOL" byteoffset="40" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="TOP_changingtool" type="T_BOOL" byteoffset="41" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="Tools_TOP" type="T_ARRAY__0__2__OF_INT" byteoffset="42" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="Tools_BOT" type="T_ARRAY__0__2__OF_INT" byteoffset="48" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="BOT_operating" type="T_BOOL" byteoffset="54" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="BOT_changingtool" type="T_BOOL" byteoffset="55" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="ConvOUT" type="T_Conveyor_WarehouseOUT_MP" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Machine_Top" type="T_Machine1" byteoffset="688" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Machine_Bot" type="T_Machine1" byteoffset="1904" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Conv_TOP" type="T_Conveyor_Machine" byteoffset="3120" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Conv_BOT" type="T_Conveyor_Machine" byteoffset="3748" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Conv" type="T_Conveyor" byteoffset="4376" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ConvIN" type="T_Conveyor_WarehouseIN" byteoffset="5180" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_Factory_Line_2" size="5972" nativesize="11848" typeclass="Userdef" pouclass="FUNCTION_BLOCK" iecname="Factory_Line_2">
+      <UserDefElement iecname="inputOFF" type="T_ARRAY__0__4__OF_INT" byteoffset="0" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="outputOFF" type="T_ARRAY__0__4__OF_INT" byteoffset="10" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="conveyourOUT" type="T_INT" byteoffset="20" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machineTOP" type="T_INT" byteoffset="22" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="machineBOT" type="T_INT" byteoffset="24" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="line" type="T_INT" byteoffset="26" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="pieceOUT" type="T_INT" byteoffset="28" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="PieceIN" type="T_MetaPiece" byteoffset="30" vartype="VAR_INPUT" access="ReadWrite" />
+      <UserDefElement iecname="TOP_operating" type="T_BOOL" byteoffset="40" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="TOP_changingtool" type="T_BOOL" byteoffset="41" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="Tools_TOP" type="T_ARRAY__0__2__OF_INT" byteoffset="42" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="Tools_BOT" type="T_ARRAY__0__2__OF_INT" byteoffset="48" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="BOT_operating" type="T_BOOL" byteoffset="54" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="BOT_changingtool" type="T_BOOL" byteoffset="55" vartype="VAR_OUTPUT" access="ReadWrite" />
+      <UserDefElement iecname="ConvOUT" type="T_Conveyor_WarehouseOUT_MP" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Machine_Top" type="T_Machine2" byteoffset="688" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Machine_Bot" type="T_Machine3" byteoffset="1900" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Conv_TOP" type="T_Conveyor_Machine" byteoffset="3112" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Conv_BOT" type="T_Conveyor_Machine" byteoffset="3740" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Conv" type="T_Conveyor" byteoffset="4368" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ConvIN" type="T_Conveyor_WarehouseIN" byteoffset="5172" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+  </TypeList>
+  <NodeList>
+    <Node name="Application">
+      <Node name="Constants">
+        <Node name="CompilerVersion" type="T_VERSION" access="Read" />
+        <Node name="RuntimeVersion" type="T_VERSION" access="Read" />
+      </Node>
+      <Node name="Factory_Entrance">
+        <Node name="C1" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C1_W" type="T_Conveyor_WarehouseIN" access="ReadWrite" />
+        <Node name="C2" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C2_W" type="T_Conveyor_WarehouseIN" access="ReadWrite" />
+        <Node name="C3" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C3_W" type="T_Conveyor_WarehouseIN" access="ReadWrite" />
+        <Node name="C4" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C4_W" type="T_Conveyor_WarehouseIN" access="ReadWrite" />
+      </Node>
+      <Node name="Factory_Exit">
+        <Node name="C1" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C2" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C3" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="C4" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="D1" type="T_DispatchOrder" access="ReadWrite" />
+        <Node name="D2" type="T_DispatchOrder" access="ReadWrite" />
+        <Node name="D3" type="T_DispatchOrder" access="ReadWrite" />
+        <Node name="D4" type="T_DispatchOrder" access="ReadWrite" />
+      </Node>
+      <Node name="Factory_Transformation">
+        <Node name="inputOFF_Line1" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="inputOFF_Line2" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="inputOFF_Line3" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="inputOFF_Line4" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="inputOFF_Line5" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="inputOFF_Line6" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="Line1" type="T_Factory_Line_1" access="ReadWrite" />
+        <Node name="Line2" type="T_Factory_Line_1" access="ReadWrite" />
+        <Node name="Line3" type="T_Factory_Line_1" access="ReadWrite" />
+        <Node name="Line4" type="T_Factory_Line_2" access="ReadWrite" />
+        <Node name="Line5" type="T_Factory_Line_2" access="ReadWrite" />
+        <Node name="Line6" type="T_Factory_Line_2" access="ReadWrite" />
+        <Node name="outputOFF_Line1" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="outputOFF_Line2" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="outputOFF_Line3" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="outputOFF_Line4" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="outputOFF_Line5" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+        <Node name="outputOFF_Line6" type="T_ARRAY__0__4__OF_INT" access="ReadWrite" />
+      </Node>
+      <Node name="GVL">
+        <Node name="current_tool" type="T_ARRAY__0__11__OF_INT" access="ReadWrite" />
+        <Node name="dispatch" type="T_ARRAY__0__3__OF_BOOL" access="ReadWrite" />
+        <Node name="inputs" type="T_ARRAY__0__200__OF_BOOL" access="ReadWrite" />
+        <Node name="lineIN" type="T_ARRAY__0__14__OF_MetaPiece" access="ReadWrite" />
+        <Node name="lineOUT" type="T_ARRAY__0__14__OF_INT" access="ReadWrite" />
+        <Node name="machineTime" type="T_ARRAY__0__11__OF_TIME" access="ReadWrite" />
+        <Node name="outputs" type="T_ARRAY__0__200__OF_BOOL" access="ReadWrite" />
+        <Node name="tool_time" type="T_ARRAY__0__5__OF_TIME" access="ReadWrite" />
+        <Node name="tools_BOT" type="T_ARRAY__0__1__OF_INT" access="ReadWrite" />
+        <Node name="tools_TOP" type="T_ARRAY__0__1__OF_INT" access="ReadWrite" />
+        <Node name="warehouse_out" type="T_ARRAY__0__14__OF_INT" access="ReadWrite" />
+      </Node>
+      <Node name="Warehouse_Exchange">
+        <Node name="Conv1" type="T_Conveyor" access="ReadWrite" />
+        <Node name="Conv2" type="T_Conveyor" access="ReadWrite" />
+        <Node name="Conv3" type="T_Conveyor" access="ReadWrite" />
+        <Node name="In" type="T_Conveyor_WarehouseIN" access="ReadWrite" />
+        <Node name="Out" type="T_Conveyor_WarehouseOUT_MP" access="ReadWrite" />
+        <Node name="PieceOut" type="T_INT" access="ReadWrite" />
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>

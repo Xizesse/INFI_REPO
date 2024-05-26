@@ -120,6 +120,9 @@
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Warehouse_Exchange.IN.pieceOUT",
         "timeMachineTop" : "AAAAAAA",
         "timeMachineBot" : "AAAAAAA"
+    },
+    "Dispatch":{
+        "dispatch" :"ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.dispatch"
     }
 }
 
