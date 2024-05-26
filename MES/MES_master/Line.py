@@ -26,6 +26,8 @@ class Line:
         self.piece_out_node_id = self.line_info['pieceOut']
         self.line_input_node_id = self.line_info['lineIn']
         self.line_output_node_id = self.line_info['lineOut']
+        self.machineTopTime_node_id = self.line_info['timeMachineTop']
+        self.machineBotTime_node_id = self.line_info['timeMachineBot']
 
         self.top_busy = False
         self.bot_busy = False
@@ -88,6 +90,15 @@ class Line:
         except Exception as e:
             messagebox.showerror("Error Getting Input Piece Type", str(e))
 
+    def get_machine_time(self): #Returns the type of the piece in the line input
+            try:
+                MTopTime = self.client.get_node(self.machineTopTime_node_id)
+                MTopTime_value = MTopTime.get_value()
+                MBotTime = self.client.get_node(self.machineBotTime_node_id)
+                MBotTime_value = MBotTime.get_value()
+                return MTopTime_value, MBotTime_value
+            except Exception as e:
+                messagebox.showerror("Error Getting Machine Time", str(e))
 
     def remove_output_piece(self): #Removes the piece from the line output
         try:

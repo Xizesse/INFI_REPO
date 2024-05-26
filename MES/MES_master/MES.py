@@ -34,7 +34,8 @@ class MES:
         self.time_of_the_day = 0
 
         #! CLIENTE OPC UA e GUI
-        url = "opc.tcp://172.27.64.1:4840"
+        #url = "opc.tcp://172.27.64.1:4840"
+        url = "opc.tcp://Alex:4840"
         self.client = Client(url)
         self.root = tk.Tk() 
         self.app = PiecesGUI(self, lambda: self.connect_to_server(self.app), lambda: self.disconnect_server(self.app)) 
@@ -202,6 +203,11 @@ class MES:
 
             #! Update the statistics
             
+            #update machine time
+            for line_id, line in self.lines_machines.items():
+                top_time, bot_time = line.get_machine_time()
+                self.stats.update_machineTime(line_id, top_time, bot_time)
+ 
             last_day = self.app.day_count
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 

@@ -108,6 +108,15 @@ class ShopFloorStatisticsWindow:
                 bottom_frame.config(bg="SystemButtonFace")
         self.window.after(1000, self.update_machine_statuses)
 
+    def update_machineTime(self, line_id, top_time, bot_time):
+        if 0 <= line_id - 1 < len(self.line_frames):
+            top_time_label = self.line_frames[line_id - 1][2]
+            bot_time_label = self.line_frames[line_id - 1][3]
+            
+            top_time_label.config(text=f"Total Time: {top_time/1000} s")
+            bot_time_label.config(text=f"Total Time: {bot_time/1000} s")
+        
+
     def update_purchasing_queue(self, purchases):
         self.purchasing_text.delete(1.0, tk.END)
         self.purchasing_text.insert(tk.END, "\n".join(str(p) for p in purchases))
