@@ -11,7 +11,7 @@ class ShopFloorStatisticsWindow:
 
         self.window = master
         self.window.title("Interface ERP - Statistics")
-        self.window.geometry("900x650")  # Increased window size for more space
+        self.window.geometry("1600x1600")  # Increased window size for more space
 
         self.initialize_tables()
         self.update_values()
@@ -61,12 +61,37 @@ class ShopFloorStatisticsWindow:
 
         self.prod_plan_tree.grid(row=2, column=2, padx=5, pady=5, sticky='n')
         
-        #!RAW MATERIAL ARRIVALS
+        
+        #!PURCHASING PLAN
         # Purchasing Plan Title
-        self.raw_material_arrivals_title_label = tk.Label(self.window, text="Raw Material Arrivals", font=("Arial", 12, "bold"))
-        self.raw_material_arrivals_title_label.grid(row=2, column=1, padx=5, pady=(250, 0), sticky='n')
+        self.purchase_plan_title_label = tk.Label(self.window, text="Purchasing Plan", font=("Arial", 12, "bold"))
+        self.purchase_plan_title_label.grid(row=1, column=3, padx=5, pady=(10, 0), sticky='n')
 
         # Purchasing Plan Table
+        self.purchase_plan_tree = ttk.Treeview(self.window, columns=("Arrival_date", "Quantity", "Workpiece", "Supplier", "Price PP", "Delivery_days", "Min_quantity")) 
+        self.purchase_plan_tree.heading("#0", text="Arrival_date")
+        self.purchase_plan_tree.heading("Quantity", text="Quantity")
+        self.purchase_plan_tree.heading("Workpiece", text="Workpiece")
+        self.purchase_plan_tree.heading("Supplier", text="Supplier")
+        self.purchase_plan_tree.heading("Price PP", text="Price PP")
+        self.purchase_plan_tree.heading("Delivery_days", text="Delivery_days")
+        self.purchase_plan_tree.heading("Min_quantity", text="Min_quantity")
+
+        # Set uniform width for columns
+        self.purchase_plan_tree.column("#0", minwidth=10, width=80)
+        self.purchase_plan_tree.column("Quantity", minwidth=10, width=80)
+        self.purchase_plan_tree.column("Workpiece", minwidth=10, width=80)
+        self.purchase_plan_tree.column("Supplier", minwidth=10, width=80)
+        self.purchase_plan_tree.column("Price PP", minwidth=10, width=80)
+        self.purchase_plan_tree.column("Delivery_days", minwidth=10, width=80)
+        self.purchase_plan_tree.column("Min_quantity", minwidth=10, width=80)
+
+        #!RAW MATERIAL ARRIVALS
+        # Raw Material Arrivals Title
+        self.raw_material_arrivals_title_label = tk.Label(self.window, text="Raw Material Arrivals", font=("Arial", 12, "bold"))
+        self.raw_material_arrivals_title_label.grid(row=2, column=3, padx=5, pady=(250, 0), sticky='n')
+
+        # Raw Material Arrivals Table
         self.raw_material_arrivals_tree = ttk.Treeview(self.window, columns=("P1_quantity", "P2_quantity"))
         self.raw_material_arrivals_tree.heading("#0", text="Arrival_date")
         self.raw_material_arrivals_tree.heading("P1_quantity", text="P1_quantity")
@@ -77,7 +102,7 @@ class ShopFloorStatisticsWindow:
         self.raw_material_arrivals_tree.column("P1_quantity", minwidth=10, width=80)
         self.raw_material_arrivals_tree.column("P2_quantity", minwidth=10, width=80)
 
-        self.raw_material_arrivals_tree.grid(row=3, column=1, padx=5, pady=10, sticky='n')
+        self.raw_material_arrivals_tree.grid(row=3, column=3, padx=5, pady=10, sticky='n')
 
         #!PROD QUANTITIES
         # Production Quantities Title
@@ -113,7 +138,7 @@ class ShopFloorStatisticsWindow:
         self.update_orders_data()
         self.update_production_plan_data()
         self.update_raw_material_arrivals_data()
-        #self.update_purchasing_plan_data()
+        self.update_purchasing_plan_data()
         self.update_prod_quantities_data()
         
         # Update the current date label
@@ -163,7 +188,7 @@ class ShopFloorStatisticsWindow:
 
         if purchasing_plan:
             for plan_entry in purchasing_plan:
-                self.purchase_plan_tree.insert("", "end", text=plan_entry.arrival_date, values=(plan_entry.p1_quantity, plan_entry.p2_quantity))
+                self.purchase_plan_tree.insert("", "end", text=plan_entry.arrival_date, values=(plan_entry.quantity, plan_entry.raw_order.piece, plan_entry.raw_order.supplier, plan_entry.raw_order.price_pp, plan_entry.raw_order.delivery_days, plan_entry.raw_order.min_quantity))
 
     def update_raw_material_arrivals_data(self):
         # Clear existing items in the Treeview
