@@ -77,21 +77,13 @@ class ShopFloorStatisticsWindow:
 
         self.update_machine_statuses()
 
-    def update_orders_data(self, orders_data, warehouse):
-        self.orders_tree.delete(*self.orders_tree.get_children())
-
-        quantities = {i: 0 for i in range(1, 10)}
-
-        for piece in list(warehouse.pieces.queue):
-            quantities[piece.final_type] += 1
+    def update_orders_data(self, orders_data):
+        try:
+            self.orders_tree.delete(*self.orders_tree.get_children())
+        except tk.TclError:
+            return
 
         for order in orders_data:
-            total_available = quantities[order.final_type]
-            if order.status not in ["Ready", "Dispatched"]:
-                if total_available >= order.quantity:
-                    order.status = "Ready"
-                    quantities[order.final_type] -= order.quantity
-
             self.orders_tree.insert("", "end", text=order.order_id, values=(
                 order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
 

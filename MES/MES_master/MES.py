@@ -15,6 +15,7 @@ from warehouse import Warehouse
 import DB
 from Orders import Order
 from Piece_to_produce import Piece_to_produce
+import math
 
 DBisWorking = False
 
@@ -45,29 +46,38 @@ class MES:
     
         #! PURCHASES - Array of (type)
         self.purchases = []
-        #self.purchases.append(2)
-        #self.purchases.append(2)
-        #self.purchases.append(2)
-        #self.purchases.append(1)
-        #self.purchases.append(1)
-        #self.purchases.append(1)
-        #self.purchases.append(2)
-        #self.purchases.append(2)
-        #self.purchases.append(2)
+        for _ in range(10):
+            self.purchases.append(1)
+            self.purchases.append(2)
+
 
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
-        self.production_orders.append(Piece_to_produce(1, 5, 10))
-        self.production_orders.append(Piece_to_produce(2, 6, 10))
-        self.production_orders.append(Piece_to_produce(3, 7, 10))
-        self.production_orders.append(Piece_to_produce(4, 9, 10))
+        self.production_orders.append(Piece_to_produce(1, 5, 5))
+        self.production_orders.append(Piece_to_produce(2, 6, 5))
+        self.production_orders.append(Piece_to_produce(3, 7, 5))
+        self.production_orders.append(Piece_to_produce(4, 9, 5))
+
+        self.production_orders.append(Piece_to_produce(5, 5, 10))
+        self.production_orders.append(Piece_to_produce(6, 6, 10))
+        self.production_orders.append(Piece_to_produce(7, 7, 10))
+        self.production_orders.append(Piece_to_produce(8, 9, 10))
+        
 
         #! DELIVERIES - Array of (orders) 
         self.deliveries = []
-        self.deliveries.append(Order(1, 5, 1, 10))
-        self.deliveries.append(Order(1, 6, 2, 10))
-        self.deliveries.append(Order(1, 7, 3, 10))
-        self.deliveries.append(Order(1, 9, 4, 10))
+        self.deliveries.append(Order(11, 9, 5, 3))
+
+        self.deliveries.append(Order(1, 5, 1, 5))
+        self.deliveries.append(Order(1, 6, 2, 5))
+        self.deliveries.append(Order(1, 7, 3, 5))
+        self.deliveries.append(Order(1, 9, 4, 5))
+
+        self.deliveries.append(Order(3, 5, 1, 10))
+        self.deliveries.append(Order(3, 6, 2, 10))
+        self.deliveries.append(Order(3, 7, 3, 10))
+        self.deliveries.append(Order(3, 9, 4, 10))
+        
         
         #!WAREHOUSES
         self.TopWarehouse = Warehouse(self.client)
@@ -76,7 +86,9 @@ class MES:
         for _ in range(20):
             piece = Piece(self.client, 0, 1, 0, 0, 0, False, False, 0, 0)
             self.TopWarehouse.put_piece_queue(piece)        
-
+        for _ in range(5):
+            piece = Piece(self.client, 0, 9, 9, 0, 0, False, False, 0, 0)
+            self.BotWarehouse.put_piece_queue(piece)
 
         #self.TopWarehouse.set_simulation_warehouse()
         #self.BotWarehouse.set_simulation_warehouse()
@@ -109,6 +121,8 @@ class MES:
             3: Line(self.client, nodes, "UnloadingDock3", 13, {}, {}),
             4: Line(self.client, nodes, "UnloadingDock4", 14, {}, {})
         }
+
+        self.dispatch_conveyor = [0, 0, 0, 0]
 
         self.ReverseConveyor = Line(self.client, nodes, "ReverseConveyor", 15, {}, {})
 
@@ -177,16 +191,13 @@ class MES:
             self.root.after(1000, self.MES_loop)
             return
 
-                
         
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   Beggining of the day actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
         if last_day != self.app.day_count:
             print("New day, good morning")
-
             #!Set current date in the DB
             if DBisWorking:
                 DB.set_current_date(self.app.day_count)
-
             #! Get the purchases for the day
                 newpurchases = DB.get_purchasing_queue(self.app.day_count) 
                 #add the new purchases to the purchases list
@@ -197,34 +208,41 @@ class MES:
                     self.production_orders.append(piece)
                 
             #! Get the deliveries for the day
-                self.deliveries = DB.get_deliveries() 
+                new_deliveries = DB.get_deliveries()
+                for order in new_deliveries:
+                    if order.order_id not in [o.order_id for o in self.deliveries]:
+                        self.deliveries.append(order) 
+
+            
+            self.check_ready_orders()
             self.update_deliveries()
+            
 
             #! Update the statistics
-            
+        
             last_day = self.app.day_count
 
         #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Permanent actions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
         if self.connected:
-        
             #! Purchase actions
-            #TODO
             self.update_loading_docks()
             #!Turn self.production_orders into pieces in the top warehouse
             self.update_pieces_w_orders()
             #!update all machines (Simpler algorith : Bottom machines then top machines)
             self.update_all_machines()
-            ##!Get the piece in each line output
+            ##!Get the piece in each line output 
             self.remove_all_output_piece()
             self.unload_ReverseConveyor()
             #!Send back up the unfinished pieces 
             self.send_unfinished_back_up()
             #! Delivery actions
-            self.process_ready_orders()
-            self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
+            self.process_dispatching_orders()
+            self.stats.update_orders_data(self.deliveries)
             self.stats.update_purchasing_queue(self.purchases)
             self.stats.update_production_queue(self.production_orders)
+
+            self.delivery()
 
         self.root.after(200, self.MES_loop)
 
@@ -241,6 +259,20 @@ class MES:
 
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!OPC UA Client Functions
+    def delivery(self):
+        if self.time_of_the_day > 45:
+            for order in self.deliveries:
+                if order.status == "Ready for Shipment":
+                    print("Order", order.order_id, "is ready for shipment")
+                    order.status = "Dispatched"
+                    for cnvyor in order.dispatch_conveyor.split(','):
+                        self.dispatch_conveyor[int(cnvyor) - 1] = 0
+                    order.dispatch_conveyor = ""
+
+                    #update the interface
+                    self.stats.update_orders_data(self.deliveries)
+
+                
 
     def connect_to_server(self, gui):
 
@@ -277,6 +309,20 @@ class MES:
         
     #######################################################################################################
     #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!MES Functions for logic 
+
+    def check_ready_orders(self):
+        print("cHECKING READY ORDERS")
+        #store the quantities of pieces 5 6 7 and 9 in the bot warehouse
+        quantities = {i: 0 for i in range(1, 10)}
+        for piece in list(self.BotWarehouse.pieces.queue):
+            quantities[piece.type] += 1
+        for order in self.deliveries:
+            total_available = quantities[order.final_type]
+            if order.status not in ["Ready", "Dispatched"]:
+                if total_available >= order.quantity:
+                    order.status = "Ready"
+                    quantities[order.final_type] -= order.quantity
+        self.stats.update_orders_data(self.deliveries)
 
     def update_loading_docks(self):
         for dock_id, dock in self.loading_docks.items():
@@ -490,51 +536,48 @@ class MES:
         return
 
     def update_deliveries(self):
-        available_docks = list(self.unloading_docks.keys())
-        remaining_pieces = {dock_id: 6 for dock_id in available_docks}
+        #available_docks = list(self.unloading_docks.keys())
+        available_docks = []
+        for dock_id, dock in self.unloading_docks.items():
+            if self.dispatch_conveyor[dock_id - 1] == 0:
+                available_docks.append(dock_id)
 
-        dock_piece_counts = {dock_id: 0 for dock_id in available_docks}
+
+
 
         for order in self.deliveries:
-            if order.status in ["Ready", "Dispatching"]:
+            if order.status in ["Ready"] and order.delivery_day < self.app.day_count:
+                print("Order", order.order_id, "is ready for dispatching")
                 pieces_to_unload = order.quantity
                 dispatch_conveyor = []
 
-                while pieces_to_unload > 0:
-                    if not available_docks:
-                        return
+                number_of_needed_docks = math.ceil(pieces_to_unload / 6)
+                if number_of_needed_docks > len(available_docks):
+                    return
+                else :
+                    while pieces_to_unload > 0:
+                            
+                        dock_id = available_docks[0]
+                        pieces_to_allocate = min(6, pieces_to_unload)
 
-                    dock_id = available_docks[0]
-                    pieces_to_allocate = min(remaining_pieces[dock_id], pieces_to_unload)
+                        pieces_to_unload -= pieces_to_allocate
 
-                    remaining_pieces[dock_id] -= pieces_to_allocate
-                    pieces_to_unload -= pieces_to_allocate
+                        dispatch_conveyor.append(str(dock_id))
 
-                    dock_piece_counts[dock_id] += pieces_to_allocate
-                    dispatch_conveyor.append(str(dock_id))
-
-                    if remaining_pieces[dock_id] == 0:
                         available_docks.pop(0)
 
-                order.dispatch_conveyor = ','.join(dispatch_conveyor)
+                        self.dispatch_conveyor[dock_id - 1] = order.order_id
 
-                for item in self.stats.orders_tree.get_children():
-                    if self.stats.orders_tree.item(item, "text") == order.order_id:
-                        self.stats.orders_tree.item(item, values=(
-                            order.quantity, order.final_type, order.delivery_day, order.status, order.dispatch_conveyor))
-                        break
-
-        for dock_id, count in dock_piece_counts.items():
-            self.stats.dock_frames[dock_id - 1].config(text=f"Pieces: {count}")
-        
-        self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
-
-    def process_ready_orders(self):
-        for order in self.deliveries:
-            if order.status in ["Ready", "Dispatching"] and order.dispatch_conveyor:
-                if order.status == "Ready":
                     order.status = "Dispatching"
 
+                order.dispatch_conveyor = ','.join(dispatch_conveyor)
+     
+        
+        
+
+    def process_dispatching_orders(self):
+        for order in self.deliveries:
+            if order.status in ["Dispatching"] and order.dispatch_conveyor:
                 conveyors = order.dispatch_conveyor.split(',')
                 for conveyor_id in conveyors:
                     conveyor_id = int(conveyor_id)
@@ -547,11 +590,11 @@ class MES:
                             order.pieces_loaded += 1
                             self.BotWarehouse.pieces.queue.remove(piece)
 
-                    if order.pieces_loaded >= order.quantity:
+                    if order.pieces_loaded == order.quantity:
                         order.status = "Ready for Shipment"
                         break
 
-                self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
+                #self.stats.update_orders_data(self.deliveries, self.BotWarehouse)
 
     def find_piece_in_warehouse(self, piece_type, warehouse):
         for piece in list(warehouse.pieces.queue):

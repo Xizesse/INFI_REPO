@@ -32,7 +32,6 @@ class Line:
 
     def load_piece(self, piece):
         try:
-            print(f"Loading piece {piece.id} into line {self.id}")
             #if self.is_Occupied():
             #    return
             #load the meta piece into the line input
@@ -88,7 +87,6 @@ class Line:
         except Exception as e:
             messagebox.showerror("Error Getting Input Piece Type", str(e))
 
-
     def remove_output_piece(self): #Removes the piece from the line output
         try:
             #new piece to return, and get all the parameters
@@ -111,12 +109,9 @@ class Line:
             type_node.set_value(ua.Variant(NO_PIECE, ua.VariantType.Int16))
            
             piece_to_return = Piece(self.client, id_value, type_value, 0, 0, 0, machinetop_value, machinebot_value, tooltop_value, toolbot_value)
-            print(piece_to_return)
             return piece_to_return
         except Exception as e:
             messagebox.showerror(f"Error Removing Output Piece from Line {self.id}", str(e))
-
-        
 
     def is_Occupied(self): #Returns True if the line is occupied
         try:

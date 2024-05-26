@@ -78,7 +78,6 @@ class PiecesGUI:
 
     
 
-
     def update_orders_display(self):
         self.orders_canvas.delete("all")
         self.orders_canvas.config(width=1200, height=600)
