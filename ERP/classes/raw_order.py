@@ -5,6 +5,9 @@ class Raw_order:
             self.min_quantity = min_quantity
             self.price_pp = price_pp
             self.delivery_days = delivery_days
+    
+    def __str__(self):
+        return f"Supplier: {self.supplier}, Piece: {self.piece}, Min Quantity: {self.min_quantity}, Price per piece: {self.price_pp}, Delivery days: {self.delivery_days}"
         
     @staticmethod
     def choose_raw_order(orders, piece_type, quantity, available_time):
@@ -51,3 +54,4 @@ final_to_raw = {
     "P7":"P2",
     "P9":"P2"
 }
+

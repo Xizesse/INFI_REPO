@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import db_interaction 
+import db
 import classes.Order
 import classes.ProductionPlan
 import classes.PurchasingPlan
@@ -60,24 +60,24 @@ class ShopFloorStatisticsWindow:
         self.prod_plan_tree.column("Order_id", minwidth=10, width=80)
 
         self.prod_plan_tree.grid(row=2, column=2, padx=5, pady=5, sticky='n')
-
-        #!PURCHASING PLAN
+        
+        #!RAW MATERIAL ARRIVALS
         # Purchasing Plan Title
-        self.purchase_plan_title_label = tk.Label(self.window, text="Purchasing Plan", font=("Arial", 12, "bold"))
-        self.purchase_plan_title_label.grid(row=2, column=1, padx=5, pady=(250, 0), sticky='n')
+        self.raw_material_arrivals_title_label = tk.Label(self.window, text="Raw Material Arrivals", font=("Arial", 12, "bold"))
+        self.raw_material_arrivals_title_label.grid(row=2, column=1, padx=5, pady=(250, 0), sticky='n')
 
         # Purchasing Plan Table
-        self.purchase_plan_tree = ttk.Treeview(self.window, columns=("P1_quantity", "P2_quantity"))
-        self.purchase_plan_tree.heading("#0", text="Arrival_date")
-        self.purchase_plan_tree.heading("P1_quantity", text="P1_quantity")
-        self.purchase_plan_tree.heading("P2_quantity", text="P2_quantity")
+        self.raw_material_arrivals_tree = ttk.Treeview(self.window, columns=("P1_quantity", "P2_quantity"))
+        self.raw_material_arrivals_tree.heading("#0", text="Arrival_date")
+        self.raw_material_arrivals_tree.heading("P1_quantity", text="P1_quantity")
+        self.raw_material_arrivals_tree.heading("P2_quantity", text="P2_quantity")
 
         # Set uniform width for columns
-        self.purchase_plan_tree.column("#0", minwidth=10, width=80)
-        self.purchase_plan_tree.column("P1_quantity", minwidth=10, width=80)
-        self.purchase_plan_tree.column("P2_quantity", minwidth=10, width=80)
+        self.raw_material_arrivals_tree.column("#0", minwidth=10, width=80)
+        self.raw_material_arrivals_tree.column("P1_quantity", minwidth=10, width=80)
+        self.raw_material_arrivals_tree.column("P2_quantity", minwidth=10, width=80)
 
-        self.purchase_plan_tree.grid(row=3, column=1, padx=5, pady=10, sticky='n')
+        self.raw_material_arrivals_tree.grid(row=3, column=1, padx=5, pady=10, sticky='n')
 
         #!PROD QUANTITIES
         # Production Quantities Title
@@ -108,19 +108,20 @@ class ShopFloorStatisticsWindow:
     
     def update_values(self):
 
-        db_interaction.connect_to_db() 
+        db.connect_to_db() 
 
         self.update_orders_data()
         self.update_production_plan_data()
-        self.update_purchasing_plan_data()
+        self.update_raw_material_arrivals_data()
+        #self.update_purchasing_plan_data()
         self.update_prod_quantities_data()
         
         # Update the current date label
-        current_date = db_interaction.get_current_date()  
+        current_date = db.get_current_date()  
         print(f"Current Date: {current_date}")
         self.current_date_label.config(text=f"Current Date: {current_date}")
 
-        db_interaction.close_db_connection() 
+        db.close_db_connection() 
         
         self.window.after(2*1000, self.update_values)  # Update every 5 seconds    
 
@@ -129,7 +130,7 @@ class ShopFloorStatisticsWindow:
         self.orders_tree.delete(*self.orders_tree.get_children())
         
         # Fetch initial order data
-        orders_data = db_interaction.get_orders()
+        orders_data = db.get_orders()
 
         if orders_data:
             for i, order in enumerate(orders_data, start=1):
@@ -139,7 +140,7 @@ class ShopFloorStatisticsWindow:
         # Clear existing items in the Treeview
         self.prod_plan_tree.delete(*self.prod_plan_tree.get_children())
 
-        production_plan = db_interaction.get_production_plan()
+        production_plan = db.get_production_plan()
 
         if production_plan:
             for plan_entry in production_plan:
@@ -149,7 +150,7 @@ class ShopFloorStatisticsWindow:
         # Clear existing items in the Treeview
         self.prod_quantities_tree.delete(*self.prod_quantities_tree.get_children())
 
-        prod_quantities = db_interaction.get_prod_quantities()
+        prod_quantities = db.get_prod_quantities()
 
         if prod_quantities:
             for plan_entry in prod_quantities:
@@ -158,15 +159,23 @@ class ShopFloorStatisticsWindow:
     def update_purchasing_plan_data(self):
         # Clear existing items in the Treeview
         self.purchase_plan_tree.delete(*self.purchase_plan_tree.get_children())
-        purchasing_plan = db_interaction.get_purchasing_plan()  
+        purchasing_plan = db.get_purchasing_plan()  
 
         if purchasing_plan:
             for plan_entry in purchasing_plan:
                 self.purchase_plan_tree.insert("", "end", text=plan_entry.arrival_date, values=(plan_entry.p1_quantity, plan_entry.p2_quantity))
 
+    def update_raw_material_arrivals_data(self):
+        # Clear existing items in the Treeview
+        self.raw_material_arrivals_tree.delete(*self.raw_material_arrivals_tree.get_children())
+        raw_material_arrivals = db.get_raw_material_arrivals()
+
+        if raw_material_arrivals:
+            for arrival in raw_material_arrivals:
+                self.raw_material_arrivals_tree.insert("", "end", text=arrival.arrival_date, values=(arrival.p1_quantity, arrival.p2_quantity))
     def update_current_date(self):
         # This function can be used later if your implementation involves retrieving the date dynamically
-        current_date = db_interaction.get_current_date()
+        current_date = db.get_current_date()
         self.current_date_label.config(text=f"Current Date: {current_date}")
 
 
