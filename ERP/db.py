@@ -458,20 +458,57 @@ def get_order(order_id):
 
     return order
 
-def get_raw_order(order_id):
+def get_raw_orders(order_id):
 
     global conn
 
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-        query = """SELECT * FROM infi.new_purchasing_plan WHERE order_id = %s"""
+        query = """SELECT supplier, workpiece, min_quantity, price_pp, delivery_days
+                    FROM infi.raw_order_plan AS rop
+                    JOIN infi.new_purchasing_plan AS npp ON rop.raw_order_id = npp.raw_order_id
+                    WHERE order_id = %s"""
 
         cursor.execute(query, (order_id,))
 
-        raw_order = cursor.fetchone()
+        results = cursor.fetchall()
 
-        raw_order = Raw_order(raw_order['supplier'], raw_order['workpiece'], raw_order['min_quantity'], raw_order['price_pp'], raw_order['delivery_days'])
+        raw_orders = []
+        for row in results:
+            
+            supplier = row['supplier']
+            workpiece = row['workpiece']
+            min_quantity = row['min_quantity']
+            price_pp = row['price_pp']
+            delivery_days = row['delivery_days']
+
+            raw_order = Raw_order(supplier, workpiece, min_quantity, price_pp, delivery_days)
+            raw_orders.append(raw_order)
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return []
+    
+    cursor.close()
+    return raw_orders
+
+def get_last_arrival_date(order_id):
+
+    global conn
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT MAX(arrival_date)
+                    FROM infi.raw_order_plan AS rop
+                    JOIN infi.new_purchasing_plan AS npp ON rop.raw_order_id = npp.raw_order_id
+                    WHERE order_id = %s"""
+
+        cursor.execute(query, (order_id,))
+
+        last_arrival_date = cursor.fetchone()
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
@@ -480,7 +517,8 @@ def get_raw_order(order_id):
 
     cursor.close()
 
-    return raw_order
+    return last_arrival_date
+
 if __name__ == "__main__":
     
     if len(sys.argv) > 1:

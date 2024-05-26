@@ -35,9 +35,15 @@ class Order:
             print(order)
 
 
-    def calculate_costs(self, raw_order, prod_time, dispatch_date, arrival_date):
+    def calculate_costs(self, purchasing_plan, prod_time, dispatch_date):
         prod_cost = prod_time * 1       # 1€ per hour
-        raw_cost = raw_order.price_pp * self.quantity
+
+        for plan in purchasing_plan:    #For each raw order used for this order
+            raw_order = plan.raw_order
+            raw_cost+= raw_order.price_pp * plan.quantity
+            if plan.arrival_date > arrival_date:
+                arrival_date = plan.arrival_date
+            
         deprec_cost = raw_cost * (dispatch_date - arrival_date) * 1  # 1% depreciation per day
         total_cost = raw_cost + prod_cost + deprec_cost
         unit_cost = total_cost / self.quantity
