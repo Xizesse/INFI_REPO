@@ -343,18 +343,77 @@ def insert_purchasing_plan(purchase_plan):
             price_pp, 
             delivery_days, 
             min_quantity
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s)""", 
-        (purchase_plan.arrival_date, 
-         purchase_plan.quantity, 
-         purchase_plan.raw_order.piece, 
-         purchase_plan.raw_order.supplier, 
-         purchase_plan.raw_order.price_pp, 
-         purchase_plan.raw_order.delivery_days, 
-         purchase_plan.raw_order.min_quantity))
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+        RETURNING raw_order_id;
+    """, 
+    (purchase_plan.arrival_date, 
+     purchase_plan.quantity, 
+     purchase_plan.raw_order.piece, 
+     purchase_plan.raw_order.supplier, 
+     purchase_plan.raw_order.price_pp, 
+     purchase_plan.raw_order.delivery_days, 
+     purchase_plan.raw_order.min_quantity))
     
+    new_id = cur.fetchone()[0]  # Fetching the returned primary key value
     conn.commit()
 
-    #print("Purchasing schedule inserted into purchasing_plan table.")
+    return new_id
+
+def insert_raw_order_plan(raw_order_plan):
+
+    global conn
+
+    cur = conn.cursor()
+
+    # Create the production_plan table if it doesn't exist
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
+            raw_order_id INTEGER REFERENCES infi.new_purchasing_plan(raw_order_id) PRIMARY KEY,
+            order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
+            used_quantity INTEGER NOT NULL
+        );
+    """)
+
+    # Insert the ordered data into the new table
+    cur.execute("INSERT INTO infi.raw_order_plan VALUES (%s, %s, %s)", (raw_order_plan.raw_order_id, raw_order_plan.order_id, raw_order_plan.used_quantity))
+
+    # Commit changes 
+    conn.commit()
+
+def get_raw_order_leftovers():
+
+    global conn
+
+    raw_order_plan = []
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """
+            SELECT 
+                workpiece,
+                quantity - COALESCE(SUM(used_quantity), 0) AS leftover_quantity
+            FROM 
+                infi.new_purchasing_plan 
+            LEFT JOIN 
+                infi.raw_order_plan USING(raw_order_id)
+            GROUP BY 
+                workpiece, quantity;""" 
+
+        cursor.execute(query)
+        result = cursor.fetchone() # Fetch all raw order plan entries
+
+        
+        p1_leftover = result["p1_leftover"]
+        p2_leftover = result["p2_leftover"]
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+
+    cursor.close()
+
+    return p1_leftover, p2_leftover
 
 if __name__ == "__main__":
 

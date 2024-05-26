@@ -10,14 +10,14 @@ class Raw_order:
         return f"Supplier: {self.supplier}, Piece: {self.piece}, Min Quantity: {self.min_quantity}, Price per piece: {self.price_pp}, Delivery days: {self.delivery_days}"
         
     @staticmethod
-    def choose_raw_order(orders, piece_type, quantity, available_time):
+    def choose_raw_order(piece_type, quantity, available_time):
         best_raw_order = None
         fastest_raw_order = None
 
         min_delivery_time = float('inf')
         min_cost = float('inf')
 
-        for order in orders:
+        for order in raw_orders:
 
             #print(f"Order: {order.supplier}, {order.piece}, {order.min_quantity}, {order.price_pp}, {order.delivery_days}")
             #print(f"Piece type: {piece_type}, Quantity: {quantity}, Available time: {available_time}")

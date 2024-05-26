@@ -1,13 +1,14 @@
 from UDP.udp_receiver import udp_receive
-from classes.Order import Order, parse_new_orders
+from classes.Order import parse_new_orders
 from classes.ProductionPlan import ProductionPlan
-from classes.PurchasingPlan import calculate_purchasing_plan
-from db import *
+from classes.PurchasingPlan import make_purchasing_plan
+from db import connect_to_db, close_db_connection, insert_new_orders, insert_production_plan, get_current_date
 
 
 if __name__ == "__main__":   
     while True:
         try:         
+            print("-------------------------------\n")
             # Connect to the database
             connect_to_db() 
             
@@ -28,10 +29,7 @@ if __name__ == "__main__":
                 order_prod_plan = ProductionPlan.calculate_production_start(new_order, current_date)
                 insert_production_plan(order_prod_plan)
 
-                order_purchase_plan = calculate_purchasing_plan(order_prod_plan, current_date)
-                insert_purchasing_plan(order_purchase_plan)
-                
-            print("-------------------------------\n")
+                make_purchasing_plan(order_prod_plan, current_date) #Calculates and inserts purchasing plan (raw orders and plan for each order)
             
             close_db_connection()
     
