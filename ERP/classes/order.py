@@ -1,4 +1,4 @@
-from classes.Raw_order import Raw_order
+from classes.raw_order import Raw_order
 import xml.etree.ElementTree as ET
 
 class Order:

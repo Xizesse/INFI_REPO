@@ -1,5 +1,5 @@
-from classes.Order import Order
-from classes.Raw_order import Raw_order
+from classes.order import Order
+from classes.raw_order import Raw_order
 from classes.PurchasingPlan import PurchasingPlan
 from db import get_order, get_raw_orders, get_last_arrival_date
 

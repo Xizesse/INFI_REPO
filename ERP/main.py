@@ -1,5 +1,5 @@
 from UDP.udp_receiver import udp_receive
-from classes.Order import parse_new_orders
+from classes.order import parse_new_orders
 from classes.ProductionPlan import ProductionPlan
 from classes.PurchasingPlan import make_purchasing_plan
 from db import connect_to_db, close_db_connection, insert_new_orders, insert_production_plan, get_current_date

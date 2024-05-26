@@ -1,4 +1,4 @@
-from classes.Raw_order import Raw_order, final_to_raw
+from classes.raw_order import Raw_order, final_to_raw
 
 class PurchasingPlan:
     def __init__(self, raw_order, arrival_date, quantity):

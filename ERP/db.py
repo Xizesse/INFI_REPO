@@ -1,8 +1,8 @@
 import psycopg2
 import psycopg2.extras
 import sys
-from classes.Order import Order
-from classes.Raw_order import Raw_order
+from classes.order import Order
+from classes.raw_order import Raw_order
 from classes.ProductionPlan import ProductionPlan, Prod_Quantities
 from classes.PurchasingPlan import PurchasingPlan, Raw_material_arrivals
 
