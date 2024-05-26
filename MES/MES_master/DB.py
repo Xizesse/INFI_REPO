@@ -45,14 +45,15 @@ def get_purchasing_queue(day):
         password='DWHyIHTiPP'
     )
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    
-    table_name = 'infi.purchasing_plan'
-    arrival_date_col = 'arrival_date'
-    columns = ['p1_quantity', 'p2_quantity']
 
-    # Prepare the SQL query with a WHERE clause to filter by the desired day
-    columns_str = ", ".join([extras.quote_ident(col, cursor) for col in [arrival_date_col] + columns])  # Safely quote identifiers
-    query = f"SELECT {columns_str} FROM {table_name} WHERE {arrival_date_col} = %s ORDER BY {arrival_date_col} ASC"
+
+    query = """SELECT 
+                    SUM(CASE WHEN workpiece = 'P1' THEN quantity ELSE 0 END) AS p1_quantity,
+                    SUM(CASE WHEN workpiece = 'P2' THEN quantity ELSE 0 END) AS p2_quantity
+                FROM infi.new_purchasing_plan
+                WHERE arrival_date = %s
+                GROUP BY arrival_date
+                ORDER BY arrival_date ASC;"""
 
     try:
         cursor.execute(query, (day,))
