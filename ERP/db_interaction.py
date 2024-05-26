@@ -56,7 +56,9 @@ def get_current_date():
 
     #Fetch current date
     current_date = cur.fetchone()
-    current_date = int(current_date[0])
+
+    if current_date:
+        current_date = int(current_date[0])
 
     return current_date
 
@@ -198,8 +200,114 @@ def get_purchasing_plan():
 
     return purchasing_plan
 
+def insert_new_orders(new_orders):
 
-# Example usage:
+    global conn
+    
+    cur = conn.cursor()
+
+    # Create orders table
+    try: 
+        cur.execute('''CREATE TABLE IF NOT EXISTS infi.orders
+                    (client TEXT,
+                    number INTEGER NOT NULL PRIMARY KEY, 
+                    workpiece TEXT NOT NULL,
+                    quantity INTEGER NOT NULL,
+                    due_date INTEGER NOT NULL,
+                    late_pen INTEGER,
+                    early_pen INTEGER)
+                    ''')
+    except Exception as e:
+        print("Error:", e)
+        return []
+
+    inserted_orders = []
+
+    for order in new_orders:
+        
+        try:
+            print(f"Inserting order {order.number}")
+            cur.execute("INSERT INTO infi.orders VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                        (order.client, order.number, order.piece, order.quantity, order.due_date, order.late_pen, order.early_pen))
+        except Exception as e:
+            print("Error:", e)
+            conn.rollback()
+            continue
+
+        else: 
+            print(f"Order inserted: {order}")
+            inserted_orders.append(order)
+            conn.commit()
+
+    return inserted_orders
+
+def insert_production_plan(order_prod_plan):
+
+    global conn
+
+    cur = conn.cursor()
+
+    try: 
+        # Create the production_plan table if it doesn't exist
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS infi.production_plan (
+                order_id INTEGER REFERENCES infi.orders(number) PRIMARY KEY,
+                start_date INTEGER NOT NULL
+            );
+        """)
+    except Exception as e:
+        print("Error:", e)
+        conn.rollback()
+        return
+
+    
+    # Insert the ordered data into the new table
+    cur.execute("INSERT INTO infi.production_plan VALUES (%s, %s)", (order_prod_plan.order_id, order_prod_plan.start_date))
+
+    # Commit changes 
+    conn.commit()
+
+def insert_purchasing_plan(purchase_plan):
+
+    global conn
+    
+    if purchase_plan is None:
+        return
+    
+    arrival_date, supplier, workpiece, quantity = purchase_plan
+
+    cur = conn.cursor()
+
+    # Create the production_plan table if it doesn't exist
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS infi.purchasing_plan (
+            arrival_date INTEGER PRIMARY KEY,
+            p1_quantity INTEGER,
+            p2_quantity INTEGER
+        );
+    """)
+
+    # Initialize quantities for each piece type
+    quantities = {
+        'P1': 0,
+        'P2': 0
+    }
+
+    quantities[workpiece] = quantity
+
+    cur.execute("""
+        INSERT INTO infi.purchasing_plan (arrival_date, p1_quantity, p2_quantity) 
+        VALUES (%s, %s, %s)
+        ON CONFLICT (arrival_date) DO UPDATE
+        SET p1_quantity = purchasing_plan.p1_quantity + excluded.p1_quantity,
+            p2_quantity = purchasing_plan.p2_quantity + excluded.p2_quantity;
+        """, (arrival_date, quantities['P1'], quantities['P2']))
+
+    # Commit changes
+    conn.commit()
+
+    #print("Purchasing schedule inserted into purchasing_plan table.")
+
 if __name__ == "__main__":
 
     if sys.argv[1] == "delete":
@@ -220,27 +328,13 @@ if __name__ == "__main__":
         except psycopg2.Error as e:
             print(f"Database error: {e}")
             conn.rollback()
+        try: 
+            cur.execute("DELETE FROM infi.todays_date")
+        except psycopg2.Error as e:
+            print(f"Database error: {e}")
+            conn.rollback()
         conn.commit()
         cur.close()
         close_db_connection()
         print("All tables cleared.")
         exit()
-
-    connect_to_db()
-
-    orders = get_orders()
-    for order in orders:
-        print(f" Client: {order.client}, Order ID: {order.number}, Quantity: {order.quantity}, Type: {order.piece}, Delivery Date: {order.due_date}, Late Penalty: {order.late_pen}, Early Penalty: {order.early_pen}")
-
-    production_plan = get_production_plan()
-    for entry in production_plan:
-        print(f" Order ID: {entry.order_id}, Start Date: {entry.start_date}")
-
-    purchasing_plan = get_purchasing_plan()
-    for entry in purchasing_plan:
-        print(f" Arrival Date: {entry.arrival_date}, P1 Quantity: {entry.p1_quantity}, P2 Quantity: {entry.p2_quantity}")
-
-    current_date = get_current_date()
-    print(f"Current Date: {current_date}")
-
-    close_db_connection()

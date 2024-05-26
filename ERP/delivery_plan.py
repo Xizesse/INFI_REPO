@@ -1,5 +1,5 @@
 import psycopg2
-from db_config import DB_CONFIG
+from db_interaction import DB_CONFIG
 
 def upload_delivery_plan(conn):
         

@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import db_config 
+import db_interaction 
 import classes.Order
 import classes.ProductionPlan
 import classes.PurchasingPlan
@@ -81,7 +81,7 @@ class ShopFloorStatisticsWindow:
 
         #!PROD QUANTITIES
         # Production Quantities Title
-        self.prod_quantities_title_label = tk.Label(self.window, text="Production Quantities Table", font=("Arial", 12, "bold"))
+        self.prod_quantities_title_label = tk.Label(self.window, text="Production Quantities", font=("Arial", 12, "bold"))
         self.prod_quantities_title_label.grid(row=2, column=2, padx=5, pady=(250, 0), sticky='n')
 
         # Production Quantities Table
@@ -108,7 +108,7 @@ class ShopFloorStatisticsWindow:
     
     def update_values(self):
 
-        db_config.connect_to_db() 
+        db_interaction.connect_to_db() 
 
         self.update_orders_data()
         self.update_production_plan_data()
@@ -116,11 +116,11 @@ class ShopFloorStatisticsWindow:
         self.update_prod_quantities_data()
         
         # Update the current date label
-        current_date = db_config.get_current_date()  
+        current_date = db_interaction.get_current_date()  
         print(f"Current Date: {current_date}")
         self.current_date_label.config(text=f"Current Date: {current_date}")
 
-        db_config.close_db_connection() 
+        db_interaction.close_db_connection() 
         
         self.window.after(2*1000, self.update_values)  # Update every 5 seconds    
 
@@ -129,7 +129,7 @@ class ShopFloorStatisticsWindow:
         self.orders_tree.delete(*self.orders_tree.get_children())
         
         # Fetch initial order data
-        orders_data = db_config.get_orders()
+        orders_data = db_interaction.get_orders()
 
         if orders_data:
             for i, order in enumerate(orders_data, start=1):
@@ -139,7 +139,7 @@ class ShopFloorStatisticsWindow:
         # Clear existing items in the Treeview
         self.prod_plan_tree.delete(*self.prod_plan_tree.get_children())
 
-        production_plan = db_config.get_production_plan()
+        production_plan = db_interaction.get_production_plan()
 
         if production_plan:
             for plan_entry in production_plan:
@@ -149,7 +149,7 @@ class ShopFloorStatisticsWindow:
         # Clear existing items in the Treeview
         self.prod_quantities_tree.delete(*self.prod_quantities_tree.get_children())
 
-        prod_quantities = db_config.get_prod_quantities()
+        prod_quantities = db_interaction.get_prod_quantities()
 
         if prod_quantities:
             for plan_entry in prod_quantities:
@@ -158,7 +158,7 @@ class ShopFloorStatisticsWindow:
     def update_purchasing_plan_data(self):
         # Clear existing items in the Treeview
         self.purchase_plan_tree.delete(*self.purchase_plan_tree.get_children())
-        purchasing_plan = db_config.get_purchasing_plan()  
+        purchasing_plan = db_interaction.get_purchasing_plan()  
 
         if purchasing_plan:
             for plan_entry in purchasing_plan:
@@ -166,7 +166,7 @@ class ShopFloorStatisticsWindow:
 
     def update_current_date(self):
         # This function can be used later if your implementation involves retrieving the date dynamically
-        current_date = db_config.get_current_date()
+        current_date = db_interaction.get_current_date()
         self.current_date_label.config(text=f"Current Date: {current_date}")
 
 

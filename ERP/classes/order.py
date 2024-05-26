@@ -1,3 +1,5 @@
+from classes.Raw_order import Raw_order
+import xml.etree.ElementTree as ET
 
 class Order:
     def __init__(self, client, number, piece, quantity, due_date, late_pen, early_pen):
@@ -32,7 +34,30 @@ class Order:
         for order in orders:
             print(order)
 
-    """  
-    def calculate_costs():
+
+    def calculate_costs(self, raw_order, prod_time, dispatch_date, arrival_date):
+        prod_cost = prod_time * 1       # 1€ per hour
+        raw_cost = raw_order.price_pp * self.quantity
+        deprec_cost = raw_cost * (dispatch_date - arrival_date) * 1  # 1% depreciation per day
         total_cost = raw_cost + prod_cost + deprec_cost
-    """
+        unit_cost = total_cost / self.quantity
+
+        return total_cost, unit_cost
+    
+
+def parse_new_orders(new_orders_file):
+    
+        # Parse XML data from file
+        tree = ET.parse(new_orders_file)
+        root = tree.getroot()
+
+        # Extract client data
+        client_name = root.find('Client').get('NameId')
+
+        new_orders = []
+        
+        for order in root.findall('Order'):
+            new_order = Order.parse_order(order, client_name)
+            new_orders.append(new_order)
+
+        return new_orders

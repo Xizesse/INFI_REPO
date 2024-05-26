@@ -1,11 +1,16 @@
 from classes.Raw_order import *
+from db_interaction import *
+
 
 leftover_P1 = 0
 leftover_P2 = 0
-
+    
 def calculate_purchasing_plan(order_prod_plan, current_date):
 
-    order_id, start_date, workpiece, quantity = order_prod_plan
+    order_id = order_prod_plan.order_id
+    start_date = order_prod_plan.start_date
+    workpiece = order_prod_plan.workpiece
+    quantity = order_prod_plan.quantity
 
     available_time = start_date - current_date  
 
@@ -56,43 +61,3 @@ def calculate_purchasing_plan(order_prod_plan, current_date):
 
     print(f"Purchasing plan: {purchase_plan} with leftover P1: {leftover_P1} + P2: {leftover_P2}")
     return purchase_plan
-
-
-def insert_purchasing_plan(conn, purchase_plan):
-
-    if purchase_plan is None:
-        return
-    
-    arrival_date, supplier, workpiece, quantity = purchase_plan
-
-    cur = conn.cursor()
-
-    # Create the production_plan table if it doesn't exist
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS infi.purchasing_plan (
-            arrival_date INTEGER PRIMARY KEY,
-            p1_quantity INTEGER,
-            p2_quantity INTEGER
-        );
-    """)
-
-    # Initialize quantities for each piece type
-    quantities = {
-        'P1': 0,
-        'P2': 0
-    }
-
-    quantities[workpiece] = quantity
-
-    cur.execute("""
-        INSERT INTO infi.purchasing_plan (arrival_date, p1_quantity, p2_quantity) 
-        VALUES (%s, %s, %s)
-        ON CONFLICT (arrival_date) DO UPDATE
-        SET p1_quantity = purchasing_plan.p1_quantity + excluded.p1_quantity,
-            p2_quantity = purchasing_plan.p2_quantity + excluded.p2_quantity;
-        """, (arrival_date, quantities['P1'], quantities['P2']))
-
-    # Commit changes
-    conn.commit()
-
-    #print("Purchasing schedule inserted into purchasing_plan table.")

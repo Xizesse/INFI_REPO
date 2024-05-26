@@ -4,3 +4,4 @@ class PurchasingPlan:
         self.p1_quantity = p1_quantity
         self.p2_quantity = p2_quantity
         
+        
