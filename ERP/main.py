@@ -30,7 +30,8 @@ if __name__ == "__main__":
                 insert_production_plan(order_prod_plan)
 
                 make_purchasing_plan(order_prod_plan, current_date) #Calculates and inserts purchasing plan (raw orders and plan for each order)
-            
+
+                print("\n")
             close_db_connection()
     
         except KeyboardInterrupt:
