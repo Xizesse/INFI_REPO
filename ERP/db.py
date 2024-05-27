@@ -179,7 +179,7 @@ def get_purchasing_plan():
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-        query = "SELECT * FROM infi.new_purchasing_plan ORDER BY arrival_date ASC"
+        query = "SELECT * FROM infi.purchasing_plan ORDER BY arrival_date ASC"
 
         cursor.execute(query)
         results = cursor.fetchall() # Fetch all purchasing plan entries
@@ -220,7 +220,7 @@ def get_raw_material_arrivals():
                         arrival_date,
                         SUM(CASE WHEN workpiece = 'P1' THEN quantity ELSE 0 END) AS p1_quantity,
                         SUM(CASE WHEN workpiece = 'P2' THEN quantity ELSE 0 END) AS p2_quantity
-                    FROM infi.new_purchasing_plan
+                    FROM infi.purchasing_plan
                     GROUP BY arrival_date
                     ORDER BY arrival_date;"""
 
@@ -254,7 +254,7 @@ def get_raw_order_leftovers(workpiece):
         #Leftover per raw_order_id
         query = """SELECT raw_order_id, SUM(quantity) - SUM(used_quantity) AS leftover  
            FROM infi.raw_order_plan
-           JOIN infi.new_purchasing_plan USING(raw_order_id)
+           JOIN infi.purchasing_plan USING(raw_order_id)
            WHERE workpiece = %s
            GROUP BY raw_order_id"""
 
@@ -398,7 +398,7 @@ def insert_purchasing_plan(purchase_plan):
 
     # Create the production_plan table if it doesn't exist
     cur.execute("""
-        CREATE TABLE IF NOT EXISTS infi.new_purchasing_plan (
+        CREATE TABLE IF NOT EXISTS infi.purchasing_plan (
             raw_order_id SERIAL PRIMARY KEY,
             arrival_date INTEGER NOT NULL,
             quantity INTEGER NOT NULL,
@@ -411,7 +411,7 @@ def insert_purchasing_plan(purchase_plan):
     """)
 
     cur.execute("""
-        INSERT INTO infi.new_purchasing_plan (
+        INSERT INTO infi.purchasing_plan (
             arrival_date, 
             quantity, 
             workpiece, 
@@ -446,7 +446,7 @@ def insert_raw_order_plan(raw_order_plan):
         CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
             plan_id SERIAL PRIMARY KEY,
             order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
-            raw_order_id INTEGER REFERENCES infi.new_purchasing_plan(raw_order_id) NOT NULL,
+            raw_order_id INTEGER REFERENCES infi.purchasing_plan(raw_order_id) NOT NULL,
             used_quantity INTEGER NOT NULL
         );
     """)
@@ -469,7 +469,7 @@ def update_raw_order_plan(plan_id, new_used_quantity):
         CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
             plan_id SERIAL PRIMARY KEY,
             order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
-            raw_order_id INTEGER REFERENCES infi.new_purchasing_plan(raw_order_id) NOT NULL,
+            raw_order_id INTEGER REFERENCES infi.purchasing_plan(raw_order_id) NOT NULL,
             used_quantity INTEGER NOT NULL
         );
     """)
@@ -544,7 +544,7 @@ def clear_all_tables():
         print(f"Database error: {e}")
         conn.rollback()
     try:
-        cur.execute("DELETE FROM infi.new_purchasing_plan")
+        cur.execute("DELETE FROM infi.purchasing_plan")
     except psycopg2.Error as e:
         print(f"Database error: {e}")
         conn.rollback()

@@ -50,7 +50,7 @@ def get_purchasing_queue(day):
     query = """SELECT 
                     SUM(CASE WHEN workpiece = 'P1' THEN quantity ELSE 0 END) AS p1_quantity,
                     SUM(CASE WHEN workpiece = 'P2' THEN quantity ELSE 0 END) AS p2_quantity
-                FROM infi.new_purchasing_plan
+                FROM infi.purchasing_plan
                 WHERE arrival_date = %s
                 GROUP BY arrival_date
                 ORDER BY arrival_date ASC;"""
