@@ -205,10 +205,15 @@ def set_current_date(current_date):
         conn.commit()
     except Exception as e:
         print(f"An error occurred: {e}")
-        cursor.rollback()
+        conn.rollback()
     
     #Updates current date
-    query = "UPDATE infi.todays_date SET date = %s;"
+    query = """
+    INSERT INTO infi.todays_date (date) 
+    VALUES (%s)
+    ON CONFLICT (date) 
+    DO UPDATE SET date = EXCLUDED.date;
+    """
     try:
         cursor.execute(query, (current_date,))
         conn.commit()
