@@ -13,11 +13,9 @@ DB_CONFIG = {
     "password": "DWHyIHTiPP"
 }
 
-conn = None
-
 def connect_to_db():
 
-    global conn
+    conn = None
 
     while True:
         try:
@@ -31,51 +29,56 @@ def connect_to_db():
             print(f"Error connecting to the database: {e}")
             continue
         else :
-            print("Connected to the database.")
             break
     return conn
 
-def close_db_connection():
-    global conn
-    conn.close()
-
 def get_current_date():
 
-    global conn
+    conn = connect_to_db()
     cur = conn.cursor()
+    
+    try:
 
-    query = """
-        SELECT date
-        FROM infi.todays_date
-    """
+        query = """
+            SELECT date
+            FROM infi.todays_date
+        """
 
-    try: 
         cur.execute(query)
+
+        # Fetch current date
+        current_date = cur.fetchone()
+
+        if current_date:
+            current_date = int(current_date[0])
+        else:
+            current_date = 0
+
     except psycopg2.Error as e:
         print(f"Database error: {e}")
-        connect_to_db()        
+        current_date = None
 
-    #Fetch current date
-    current_date = cur.fetchone()
-
-    if current_date:
-        current_date = int(current_date[0])
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
     return current_date
 
 def get_orders():
 
-    global conn
+    conn = connect_to_db()
   
-    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     
     query = """SELECT client, number, workpiece, quantity, due_date, late_pen, early_pen
             FROM infi.orders 
             ORDER BY due_date ASC;"""
 
     try:
-        cursor.execute(query)
-        results = cursor.fetchall() # Fetch all orders
+        cur.execute(query)
+        results = cur.fetchall() # Fetch all orders
 
         orders = []
 
@@ -95,27 +98,29 @@ def get_orders():
     
     except Exception as e:
         print(f"An error occurred: {e}")
-        connect_to_db()
-        cursor.close()
-        return None
-    else:
-        cursor.close()
-        return orders
+        orders = None
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+    return orders
 
 def get_production_plan():
 
-    global conn
+    conn = connect_to_db()
 
     production_plan = []
 
     try:
 
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
         query = "SELECT * FROM infi.production_plan ORDER BY start_date ASC"
 
-        cursor.execute(query)
-        results = cursor.fetchall() # Fetch all production plan entries
+        cur.execute(query)
+        results = cur.fetchall() # Fetch all production plan entries
 
         for row in results:
             
@@ -127,15 +132,21 @@ def get_production_plan():
 
     except Exception as e:
         print(f"An error occurred: {e}")
-        connect_to_db()
+        production_plan = None
     
-    cursor.close()
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
     return production_plan
 
 def get_prod_quantities():
+
+    conn = connect_to_db()
     try:
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
         query = """SELECT 
                 start_date,
@@ -148,8 +159,8 @@ def get_prod_quantities():
             GROUP BY start_date
             ORDER BY start_date;"""
 
-        cursor.execute(query)
-        results = cursor.fetchall() # Fetch all production plan entries
+        cur.execute(query)
+        results = cur.fetchall() # Fetch all production plan entries
 
         prod_quantities = []
         for row in results:
@@ -165,14 +176,19 @@ def get_prod_quantities():
             
     except Exception as e:
         print(f"An error occurred: {e}")
-        connect_to_db()
-        return None
+        prod_quantities = None
+        
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
     
     return prod_quantities
 
 def get_purchasing_plan():
 
-    global conn
+    conn = connect_to_db()
 
     purchasing_plan = []
 
@@ -201,15 +217,19 @@ def get_purchasing_plan():
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
-        connect_to_db()
+        purchasing_plan = None
 
-    cursor.close()
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
     return purchasing_plan
 
 def get_raw_material_arrivals():
 
-    global conn
+    conn = connect_to_db()
 
     raw_material_arrivals = []
 
@@ -238,15 +258,18 @@ def get_raw_material_arrivals():
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
-        connect_to_db()
-
-    cursor.close()
+        raw_material_arrivals = None
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
     return raw_material_arrivals
 
 def get_raw_order_leftovers(workpiece):
 
-    global conn
+    conn = connect_to_db()
 
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -264,16 +287,20 @@ def get_raw_order_leftovers(workpiece):
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
-        connect_to_db()
+        raw_order_leftovers = None
         return []
 
-    cursor.close()
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
     return raw_order_leftovers
 
 def get_order(order_id):
 
-    global conn
+    conn = connect_to_db()
 
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -288,16 +315,19 @@ def get_order(order_id):
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
-        connect_to_db()
-        return None
+        order = None
 
-    cursor.close()
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
     return order
 
 def get_dispatch_date(order_id):
 
-    global conn
+    conn = connect_to_db()
 
     try:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -313,21 +343,47 @@ def get_dispatch_date(order_id):
 
     except psycopg2.Error as e:
         print(f"Database error: {e}")
-        connect_to_db()
-        return None
+        dispatch_date = None
 
-    cursor.close()
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
     return dispatch_date
 
+def check_dispatched_orders(current_date):
+    
+    conn = connect_to_db()
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT order_id FROM infi.dispatches
+                WHERE dispatch_date = %s"""
+
+        cursor.execute(query, (current_date,))
+
+        dispatched_orders = cursor.fetchall()
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        connect_to_db()
+        return []
+
+    cursor.close()
+    conn.close()
+
+    return dispatched_orders
+
 def insert_new_orders(new_orders):
 
-    global conn
-    
+    conn = connect_to_db()
     cur = conn.cursor()
 
     # Create orders table
-    try: 
+    try:
         cur.execute('''CREATE TABLE IF NOT EXISTS infi.orders
                     (client TEXT,
                     number INTEGER NOT NULL PRIMARY KEY, 
@@ -344,27 +400,44 @@ def insert_new_orders(new_orders):
     inserted_orders = []
 
     for order in new_orders:
-        
-        try:
-            print(f"Inserting order {order.number}")
-            cur.execute("INSERT INTO infi.orders VALUES (%s, %s, %s, %s, %s, %s, %s)",
-                        (order.client, order.number, order.piece, order.quantity, order.due_date, order.late_pen, order.early_pen))
-        except Exception as e:
-            print("Error:", e)
-            conn.rollback()
-            continue
 
-        else: 
-            print(f"Order inserted: {order}")
-            inserted_orders.append(order)
-            conn.commit()
+        while True:
+            try:
+                print(f"Inserting order {order.number}")
+                cur.execute("INSERT INTO infi.orders VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                            (order.client, order.number, order.piece, order.quantity, order.due_date, order.late_pen, order.early_pen))
+                
+                print(f"Order inserted: {order}")   # Successfully inserted
+                inserted_orders.append(order)
+                break                               # Next order
+                
+            except psycopg2.InterfaceError as e:        # Error like "server closed unexpectedly"
+                print(f"Error: {e}")
+                conn = connect_to_db()                  #Connect to db again
+                cur = conn.cursor()         
+                continue                                # Try to insert it again
+            
+            except psycopg2.OperationalError as e:
+                print(f"Operational Error: {e}")
+                conn = connect_to_db()  # Reconnect to the database
+                cur = conn.cursor()
+                continue
+
+            except Exception as e:  # Error like duplicate pkey -> ignore order
+                print("Error:", e)
+                conn.rollback()     
+                break
+
+    conn.commit()   
+    # At the end close connection and cursor
+    cur.close()
+    conn.close()
 
     return inserted_orders
 
 def insert_production_plan(order_prod_plan):
 
-    global conn
-
+    conn = connect_to_db()
     cur = conn.cursor()
 
     try: 
@@ -381,86 +454,157 @@ def insert_production_plan(order_prod_plan):
         return
 
     
-    # Insert the ordered data into the new table
-    cur.execute("INSERT INTO infi.production_plan VALUES (%s, %s)", (order_prod_plan.order_id, order_prod_plan.start_date))
+    while True:
 
-    # Commit changes 
+        try:
+            # Insert the ordered data into the new table
+            cur.execute("INSERT INTO infi.production_plan VALUES (%s, %s)", (order_prod_plan.order_id, order_prod_plan.start_date))
+            break
+        except psycopg2.InterfaceError as e :        # Error like "server closed unexpectedly"
+                print(f"Error: {e}")
+                conn = connect_to_db()                  #Connect to db again
+                cur = conn.cursor()         
+                continue                                # Try to insert it again
+    
+        except psycopg2.OperationalError as e:
+                print(f"Operational Error: {e}")
+                conn = connect_to_db()  # Reconnect to the database
+                cur = conn.cursor()
+                continue    
+            
+        except Exception as e:  # Error like duplicate pkey -> ignore order
+                print("Error:", e)
+                conn.rollback()     
+                break   
+    
     conn.commit()
+    cur.close()
+    conn.close()
 
 def insert_purchasing_plan(purchase_plan):
 
-    global conn
-    
     if purchase_plan is None:
         return None
-        
+
+    conn = connect_to_db()
     cur = conn.cursor()
 
-    # Create the production_plan table if it doesn't exist
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS infi.purchasing_plan (
-            raw_order_id SERIAL PRIMARY KEY,
-            arrival_date INTEGER NOT NULL,
-            quantity INTEGER NOT NULL,
-            workpiece TEXT NOT NULL,
-            supplier TEXT NOT NULL,
-            price_pp FLOAT NOT NULL,
-            delivery_days INTEGER NOT NULL,
-            min_quantity INTEGER NOT NULL
-        );
-    """)
+    try: 
+        # Create the production_plan table if it doesn't exist
+        cur.execute("""
+                CREATE TABLE IF NOT EXISTS infi.purchasing_plan (
+                    raw_order_id SERIAL PRIMARY KEY,
+                    arrival_date INTEGER NOT NULL,
+                    quantity INTEGER NOT NULL,
+                    workpiece TEXT NOT NULL,
+                    supplier TEXT NOT NULL,
+                    price_pp FLOAT NOT NULL,
+                    delivery_days INTEGER NOT NULL,
+                    min_quantity INTEGER NOT NULL
+                );
+            """)
+    except Exception as e:
+        print("Error:", e)
+        conn.rollback()
+        return
 
-    cur.execute("""
-        INSERT INTO infi.purchasing_plan (
-            arrival_date, 
-            quantity, 
-            workpiece, 
-            supplier, 
-            price_pp, 
-            delivery_days, 
-            min_quantity
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s)
-        RETURNING raw_order_id;
-    """, 
-    (purchase_plan.arrival_date, 
-     purchase_plan.quantity, 
-     purchase_plan.raw_order.piece, 
-     purchase_plan.raw_order.supplier, 
-     purchase_plan.raw_order.price_pp, 
-     purchase_plan.raw_order.delivery_days, 
-     purchase_plan.raw_order.min_quantity))
+    new_id = None
+
+    while True:
+        try:
+            # Insert
+            cur.execute("""
+                INSERT INTO infi.purchasing_plan (
+                    arrival_date, 
+                    quantity, 
+                    workpiece, 
+                    supplier, 
+                    price_pp, 
+                    delivery_days, 
+                    min_quantity
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                RETURNING raw_order_id;
+            """, 
+            (purchase_plan.arrival_date, 
+             purchase_plan.quantity, 
+             purchase_plan.raw_order.piece, 
+             purchase_plan.raw_order.supplier, 
+             purchase_plan.raw_order.price_pp, 
+             purchase_plan.raw_order.delivery_days, 
+             purchase_plan.raw_order.min_quantity))
+            
+            new_id = cur.fetchone()[0]
+
+            break
+        except psycopg2.InterfaceError as e:        # Error like "server closed unexpectedly"
+                print(f"Error: {e}")
+                conn = connect_to_db()                  #Connect to db again
+                cur = conn.cursor()         
+                continue                                # Try to insert it again
+        
+        except psycopg2.OperationalError as e:
+                print(f"Operational Error: {e}")
+                conn = connect_to_db()  # Reconnect to the database
+                cur = conn.cursor()
+                continue
+        
+        except Exception as e:  # Error like duplicate pkey -> ignore order
+                print("Error:", e)
+                conn.rollback()     
+                break   
     
-    new_id = cur.fetchone()[0]  # Fetching the returned primary key value
     conn.commit()
+    cur.close()
+    conn.close()
 
     return new_id
 
 def insert_raw_order_plan(raw_order_plan):
 
-    global conn
-
+    conn = connect_to_db()
     cur = conn.cursor()
 
-    # Create the production_plan table if it doesn't exist
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
-            plan_id SERIAL PRIMARY KEY,
-            order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
-            raw_order_id INTEGER REFERENCES infi.purchasing_plan(raw_order_id) NOT NULL,
-            used_quantity INTEGER NOT NULL
-        );
-    """)
+    try:
+        # Create the production_plan table if it doesn't exist
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS infi.raw_order_plan (
+                plan_id SERIAL PRIMARY KEY,
+                order_id INTEGER REFERENCES infi.orders(number) NOT NULL,
+                raw_order_id INTEGER REFERENCES infi.purchasing_plan(raw_order_id) NOT NULL,
+                used_quantity INTEGER NOT NULL
+            );
+        """)
+    except Exception as e:
+        print("Error:", e)
+        conn.rollback()
+        return 
 
-    # Insert the ordered data into the new table
-    cur.execute("INSERT INTO infi.raw_order_plan (order_id, raw_order_id, used_quantity) VALUES (%s, %s, %s)", 
-                (raw_order_plan.order_id, raw_order_plan.raw_order_id, raw_order_plan.used_quantity))
-
+    while True:
+        try:
+            cur.execute("INSERT INTO infi.raw_order_plan (order_id, raw_order_id, used_quantity) VALUES (%s, %s, %s)", 
+                        (raw_order_plan.order_id, raw_order_plan.raw_order_id, raw_order_plan.used_quantity))
+            break
+        except psycopg2.InterfaceError as e:        # Error like "server closed unexpectedly"
+                    print(f"Error: {e}")
+                    conn = connect_to_db()                  #Connect to db again
+                    cur = conn.cursor()         
+                    continue                                # Try to insert it again
+                
+        except Exception as e:  # Error like duplicate pkey -> ignore order
+                    print("Error:", e)
+                    conn.rollback()     
+                    break       
+    
     # Commit changes 
     conn.commit()
 
+    #Close connection and cursor
+    cur.close()
+    conn.close()
+
 def update_raw_order_plan(plan_id, new_used_quantity):
 
-    global conn
+    conn = connect_to_db()
 
     cur = conn.cursor()
 
@@ -482,32 +626,11 @@ def update_raw_order_plan(plan_id, new_used_quantity):
         conn.rollback()
 
     cur.close()
-
-def check_dispatched_orders(current_date):
-    global conn
-
-    try:
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-        query = """SELECT order_id FROM infi.dispatches
-                WHERE dispatch_date = %s"""
-
-        cursor.execute(query, (current_date,))
-
-        dispatched_orders = cursor.fetchall()
-
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        connect_to_db()
-        return []
-
-    cursor.close()
-
-    return dispatched_orders
+    conn.close()
 
 def insert_costs(order_id, total_cost, unit_cost):
 
-    global conn
+    conn = connect_to_db()
 
     cur = conn.cursor()
     
@@ -531,51 +654,42 @@ def insert_costs(order_id, total_cost, unit_cost):
         conn.rollback()
 
     cur.close()
+    conn.close()
 
 def clear_all_tables():
+    conn = None
+    cur = None
+    tables = [
+        "infi.raw_order_plan",
+        "infi.purchasing_plan",
+        "infi.production_plan",
+        "infi.todays_date",
+        "infi.order_costs",
+        "infi.dispatches",
+        "infi.orders"
+    ]
+
+    try:
+        conn = connect_to_db()
+        cur = conn.cursor()
+        
+        for table in tables:
+            try:
+                cur.execute(f"DELETE FROM {table}")
+            except psycopg2.Error as e:
+                print(f"Database error while deleting from {table}: {e}")
+                conn.rollback()
+                continue
+
+        conn.commit()  # Commit all deletions if no errors occur
+        print("All tables cleared.")
+
+    except psycopg2.Error as e:
+        print(f"Database connection error: {e}")
+        if conn:
+            conn.rollback()
+
+    finally:
+        cur.close()
+        conn.close()
     
-    connection = connect_to_db()
-
-    cur = connection.cursor()
-
-    try: 
-        cur.execute("DELETE FROM infi.raw_order_plan")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-    try:
-        cur.execute("DELETE FROM infi.purchasing_plan")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-    try:
-        cur.execute("DELETE FROM infi.production_plan")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-    try:
-        cur.execute("DELETE FROM infi.orders")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-    try: 
-        cur.execute("DELETE FROM infi.todays_date")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-
-    try:
-        cur.execute("DELETE FROM infi.order_costs")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-    
-    try: 
-        cur.execute("DELETE FROM infi.dispatches")
-    except psycopg2.Error as e:
-        print(f"Database error: {e}")
-        conn.rollback()
-
-    connection.commit()
-    cur.close()
-    connection.close()

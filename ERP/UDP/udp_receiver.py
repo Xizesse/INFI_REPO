@@ -1,5 +1,6 @@
 def udp_receive():
     import socket
+    import errno
 
     new_file_path = "new_orders.xml"
 
@@ -33,11 +34,13 @@ def udp_receive():
                     break
 
         print(f"File received and saved as '{new_file_path}'")
-        return new_file_path
 
+    except socket.error as e:
+        new_file_path = None
     finally:
         # Close the socket
         sock.close()
+        return new_file_path
 
 if __name__ == "__main__":
     udp_receive()

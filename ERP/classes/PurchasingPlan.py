@@ -37,13 +37,13 @@ def calculate_purchasing_plan(order_prod_plan, current_date):
 
     available_time = start_date - current_date  
 
-    # Calculate the best supplier for the order
-    workpiece = final_to_raw[workpiece]
-
+    workpiece = final_to_raw[workpiece]   # Know what raw material to order
 
     #!HANDLE LEFTOVERS
-
+    
     raw_order_leftovers = get_raw_order_leftovers(workpiece)
+    
+    print(f"Raw Order Leftovers: {raw_order_leftovers}")
     
     if len(raw_order_leftovers) > 0:    # If we have leftovers
         for row in raw_order_leftovers:
@@ -73,6 +73,7 @@ def calculate_purchasing_plan(order_prod_plan, current_date):
                 new_raw_order_plan = Raw_order_plan(order_id, raw_order_id, used_quantity)
                 insert_raw_order_plan(new_raw_order_plan)
 
+    #! NEW RAW ORDER
     #If we need extra orders pick the best raw order
     if needed_quantity > 0:
         best_raw_order = Raw_order.choose_raw_order(workpiece, needed_quantity, available_time)
