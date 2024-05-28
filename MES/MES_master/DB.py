@@ -207,18 +207,23 @@ def set_current_date(current_date):
         print(f"An error occurred: {e}")
         conn.rollback()
     
-    #Updates current date
-    query = """
-    INSERT INTO infi.todays_date (date) 
-    VALUES (%s)
-    ON CONFLICT (date) 
-    DO UPDATE SET date = EXCLUDED.date;
-    """
+     # Ensure there's only one row by deleting existing rows
+    delete_existing_query = "DELETE FROM infi.todays_date;"
     try:
-        cursor.execute(query, (current_date,))
+        cursor.execute(delete_existing_query)
         conn.commit()
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while deleting existing rows: {e}")
+        conn.rollback()
+
+    # Insert the new current date
+    insert_query = "INSERT INTO infi.todays_date (date) VALUES (%s);"
+    try:
+        cursor.execute(insert_query, (current_date,))
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred while inserting the new date: {e}")
+        conn.rollback()
     finally:
         # Close the connection to the database
         cursor.close()
@@ -260,8 +265,7 @@ def set_dispatch_date(order_id, dispatch_date):
 
 
 if __name__ == '__main__':
-    # Example usage:
-    orders = get_deliveries()
-    print("Orders:")
-    for order in orders:
-        print(f"Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}")
+    
+    current_date = 10
+    set_current_date(current_date)
+    print("Current date set as", current_date)
