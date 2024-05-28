@@ -198,16 +198,20 @@ def set_current_date(current_date):
     )
     cursor = conn.cursor()
 
-    #Tries to create table if it doesn't exist
-    query = "CREATE TABLE IF NOT EXISTS infi.todays_date (date INTEGER PRIMARY KEY);"
+    # Try to create the table if it doesn't exist
+    create_table_query = """
+    CREATE TABLE IF NOT EXISTS infi.todays_date (
+        date INTEGER PRIMARY KEY
+    );
+    """
     try:
-        cursor.execute(query)
+        cursor.execute(create_table_query)
         conn.commit()
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred while creating the table: {e}")
         conn.rollback()
-    
-     # Ensure there's only one row by deleting existing rows
+
+    # Delete any existing rows to ensure only one row exists
     delete_existing_query = "DELETE FROM infi.todays_date;"
     try:
         cursor.execute(delete_existing_query)
@@ -222,7 +226,7 @@ def set_current_date(current_date):
         cursor.execute(insert_query, (current_date,))
         conn.commit()
     except Exception as e:
-        print(f"An error occurred while inserting the new date: {e}")
+        print(f"An error occurred while inserting the date: {e}")
         conn.rollback()
     finally:
         # Close the connection to the database
@@ -249,7 +253,7 @@ def set_dispatch_date(order_id, dispatch_date):
         conn.commit()
     except Exception as e:
         print(f"An error occurred: {e}")
-        cursor.rollback()
+        conn.rollback()
 
     #Inserts dispatch date for new dispatched order
     query = "INSERT INTO infi.dispatches (order_id, dispatch_date) VALUES (%s, %s);"
@@ -258,7 +262,7 @@ def set_dispatch_date(order_id, dispatch_date):
         conn.commit()
     except Exception as e:
         print(f"An error occurred: {e}")
-        cursor.rollback()
+        conn.rollback()
     finally:
         cursor.close()
         conn.close()

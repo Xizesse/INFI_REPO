@@ -383,19 +383,35 @@ def insert_new_orders(new_orders):
     cur = conn.cursor()
 
     # Create orders table
-    try:
-        cur.execute('''CREATE TABLE IF NOT EXISTS infi.orders
-                    (client TEXT,
-                    number INTEGER NOT NULL PRIMARY KEY, 
-                    workpiece TEXT NOT NULL,
-                    quantity INTEGER NOT NULL,
-                    due_date INTEGER NOT NULL,
-                    late_pen INTEGER,
-                    early_pen INTEGER)
-                    ''')
-    except Exception as e:
-        print("Error:", e)
-        return []
+    while True:
+        try:
+            cur.execute("""CREATE TABLE IF NOT EXISTS infi.orders (
+                client TEXT NOT NULL,
+                number INTEGER PRIMARY KEY,
+                workpiece TEXT NOT NULL,
+                quantity INTEGER NOT NULL,
+                due_date INTEGER NOT NULL,
+                late_pen INTEGER NOT NULL,
+                early_pen INTEGER NOT NULL
+            );
+            """)
+            break
+        except psycopg2.InterfaceError as e:        # Error like "server closed unexpectedly"
+            print(f"Error: {e}")
+            conn = connect_to_db()                  #Connect to db again
+            cur = conn.cursor()
+        
+        except psycopg2.OperationalError as e:      
+            print(f"Operational Error: {e}")
+            conn = connect_to_db()
+            cur = conn.cursor()
+
+        except Exception as e:  # Error like duplicate pkey -> ignore order
+                print("Error:", e)
+                conn.rollback()     
+                break
+        
+    conn.commit()
 
     inserted_orders = []
 
@@ -429,6 +445,7 @@ def insert_new_orders(new_orders):
                 break
 
     conn.commit()   
+    
     # At the end close connection and cursor
     cur.close()
     conn.close()
