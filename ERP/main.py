@@ -2,8 +2,8 @@ from UDP.udp_receiver import udp_receive
 from classes.order import parse_new_orders
 from classes.ProductionPlan import ProductionPlan
 from classes.PurchasingPlan import make_purchasing_plan
-from db import connect_to_db, insert_new_orders, insert_production_plan, get_current_date, check_dispatched_orders, get_order, insert_costs
-from db import clear_all_tables
+from erp_db import connect_to_db, insert_new_orders, insert_production_plan, get_current_date, check_dispatched_orders, get_order, insert_costs
+from erp_db import clear_all_tables
 
 if __name__ == "__main__":   
 
@@ -19,6 +19,7 @@ if __name__ == "__main__":
 
             #! UPDATE DISPATCHED ORDERS COSTS
             dispatched_orders_id = check_dispatched_orders(current_date) # Check if there are any orders that have been dispatched
+            dispatched_orders_id = [order[0] for order in dispatched_orders_id]    #Transform the list of tuples into a list of integers
             print(f"Dispatched Orders: {dispatched_orders_id}")
             for order_id in dispatched_orders_id:
                 print(f"Order {order_id} has been dispatched.")

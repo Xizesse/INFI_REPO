@@ -35,14 +35,14 @@ class Order:
 
     def calculate_costs(self):
 
-        from db import get_purchasing_plan, get_dispatch_date, insert_costs
+        from erp_db import get_purchasing_plan, get_dispatch_date, insert_costs
 
         purchasing_plan = get_purchasing_plan(self.number)
         
-        #dispatch_date = get_dispatch_date(self.number) 
-        
+        dispatch_date = get_dispatch_date(self.number) 
+
         ## Mock data 
-        dispatch_date = 10
+        #dispatch_date = 10
         ########
 
         prod_time = avg_machine_busy_times[self.piece]         # Average production time for this piece
