@@ -32,15 +32,28 @@ class Line:
         self.top_busy = False
         self.bot_busy = False
 
+        self.current_tool_top = 1
+        self.current_tool_bot = 1
+
+        self.total_time_top = 0
+        self.total_time_bot = 0
+
+
     def load_piece(self, piece):
         try:
-            #if self.is_Occupied():
-            #    return
+            if self.is_Occupied():
+                return
+            #load the ghost piece with the transformations for the piece
+            self.load_ghost_piece(piece)
+            #small delay to make sure the ghost piece is transmited
+            time.sleep(0.1) 
             #load the meta piece into the line input
             self.load_meta_piece(piece)
             #load the physical piece 
             self.load_physical_piece(piece)
-            piece.on_the_floor = True
+            
+            if self.get_input_piece_type() == piece.type:
+                piece.on_the_floor = True
         
         except Exception as e:
             messagebox.showerror("Error Loading the Piece", str(e))
@@ -58,9 +71,48 @@ class Line:
     def load_meta_piece(self, piece): #Loads the meta piece into the line input
         
         try:
+            if not piece.machinebot:
+                piece.toolbot = 0
+            if not piece.machinetop:
+                piece.tooltop = 0
+
+            if piece.machinetop:
+                self.current_tool_top = piece.tooltop
+                self.setTopBusy(True)
+            if piece.machinebot:
+                self.current_tool_bot = piece.toolbot
+                self.setBotBusy(True)
+
             #Set the type
             type_node = self.client.get_node(self.line_input_node_id + ".pieceTYPE")
             type_node.set_value(ua.Variant(piece.type, ua.VariantType.Int16))
+            #Set machine top
+            machine_top_node = self.client.get_node(self.line_input_node_id + ".machineTOP")
+            machine_top_node.set_value(ua.Variant((not piece.machinetop), ua.VariantType.Boolean))
+            #Set machine bot
+            machine_bot_node = self.client.get_node(self.line_input_node_id + ".machineBOT")
+            machine_bot_node.set_value(ua.Variant((not piece.machinebot), ua.VariantType.Boolean))
+            #Set tool top
+            
+            tool_top_node = self.client.get_node(self.line_input_node_id + ".toolTOP")
+            tool_top_node.set_value(ua.Variant(piece.tooltop, ua.VariantType.Int16))
+            #Set tool bot
+            tool_bot_node = self.client.get_node(self.line_input_node_id + ".toolBOT")
+            tool_bot_node.set_value(ua.Variant(piece.toolbot, ua.VariantType.Int16)) 
+            #Set ID
+            id_node = self.client.get_node(self.line_input_node_id + ".ID")
+            id_node.set_value(ua.Variant(piece.id, ua.VariantType.Int16))
+
+            
+    
+        except Exception as e:
+            messagebox.showerror("Error Loading Meta Piece", str(e))
+
+    def load_ghost_piece(self, piece):
+        try:
+            #Set the type
+            type_node = self.client.get_node(self.line_input_node_id + ".pieceTYPE")
+            type_node.set_value(ua.Variant(GHOST_PIECE, ua.VariantType.Int16))
             #Set machine top
             machine_top_node = self.client.get_node(self.line_input_node_id + ".machineTOP")
             machine_top_node.set_value(ua.Variant((not piece.machinetop), ua.VariantType.Boolean))
@@ -75,10 +127,16 @@ class Line:
             tool_bot_node.set_value(ua.Variant(piece.toolbot, ua.VariantType.Int16)) 
             #Set ID
             id_node = self.client.get_node(self.line_input_node_id + ".ID")
-            id_node.set_value(ua.Variant(piece.id, ua.VariantType.Int16))
+            id_node.set_value(ua.Variant(0, ua.VariantType.Int16))
 
         except Exception as e:
-            messagebox.showerror("Error Loading Meta Piece", str(e))
+            messagebox.showerror("Error Loading Ghost Piece", str(e))
+
+    def update_machine_busy(self):
+       pass
+        
+
+        
 
     def get_input_piece_type(self): #Returns the type of the piece in the line input
         try:
@@ -92,10 +150,10 @@ class Line:
     def get_machine_time(self): #Returns the type of the piece in the line input
             try:
                 MTopTime = self.client.get_node(self.machineTopTime_node_id)
-                MTopTime_value = MTopTime.get_value()
+                self.total_time_top = MTopTime.get_value()
                 MBotTime = self.client.get_node(self.machineBotTime_node_id)
-                MBotTime_value = MBotTime.get_value()
-                return MTopTime_value, MBotTime_value
+                self.total_time_top = MBotTime.get_value()
+                
             except Exception as e:
                 messagebox.showerror("Error Getting Machine Time", str(e))
 
@@ -104,7 +162,8 @@ class Line:
             #new piece to return, and get all the parameters
             type_node = self.client.get_node(self.line_output_node_id + ".pieceTYPE")
             type_value = type_node.get_value()
-            if type_value == NO_PIECE:
+            #hmm nas ghosts ignore right ? 
+            if type_value == NO_PIECE or type_value == GHOST_PIECE:
                 return None
             machinetop_node = self.client.get_node(self.line_output_node_id + ".machineTOP")
             machinetop_value = not machinetop_node.get_value()
@@ -139,16 +198,31 @@ class Line:
             return tool in self.bot_tools
 
     def isTopBusy(self):
+
+        node =self.line_info['toolTop']
+        self.top_busy = self.client.get_node(node).get_value()
         return self.top_busy
+        
     
     def isBotBusy(self):
+        node =self.line_info['toolBot']
+        self.bot_busy = self.client.get_node(node).get_value()
         return self.bot_busy
 
     def setTopBusy(self, state):
+        #MES will set as false
         self.top_busy = state
+        node =self.line_info['toolTop']
+        self.client.get_node(node).set_value(ua.Variant(state, ua.VariantType.Boolean))
+        print(f"Set Top Busy to {state}")
+
 
     def setBotBusy(self, state):
         self.bot_busy = state
+        print(f"Set Bot Busy to {state}")
+        node =self.line_info['toolBot']
+        self.client.get_node(node).set_value(ua.Variant(state, ua.VariantType.Boolean))
+
 
     def change_tool(self, new_tool, position):
         #send a ghost piece with the transformation
@@ -161,5 +235,6 @@ class Line:
                 ghost = Piece(0, GHOST_PIECE, 0, 0, 0, 0, 0, new_tool)
                 self.load_meta_piece(ghost)
 
-
+    
+ 
     ##Old functions

@@ -39,13 +39,17 @@ class ShopFloorStatisticsWindow:
             top_frame.pack(side="top", fill="x", expand=True, pady=10)  
             top_time_label = tk.Label(top_frame, text="Total Time: 0", font=('Helvetica', 8))
             top_time_label.pack(pady=10)
+            top_tool_label = tk.Label(top_frame, text="Current Tool: 0", font=('Helvetica', 8))  # New label for top tool
+            top_tool_label.pack(pady=5)
 
             bottom_frame = tk.LabelFrame(line_frame, text=f"Machine Bottom", padx=10, pady=10)
             bottom_frame.pack(side="top", fill="x", expand=True, pady=10)  
             bot_time_label = tk.Label(bottom_frame, text="Total Time: 0", font=('Helvetica', 8))
             bot_time_label.pack(pady=10)
-
-            self.line_frames.append((top_frame, bottom_frame, top_time_label, bot_time_label))
+            bot_tool_label = tk.Label(bottom_frame, text="Current Tool: 0", font=('Helvetica', 8))  # New label for bottom tool
+            bot_tool_label.pack(pady=5)
+            
+            self.line_frames.append((top_frame, bottom_frame, top_time_label, bot_time_label, top_tool_label, bot_tool_label))
 
         self.orders_tree = ttk.Treeview(self.window, columns=("Quantity", "Final Type", "Delivery Day", "Status", "Dispatch Conveyor"))
         self.orders_tree.heading("#0", text="Order ID")
@@ -75,7 +79,7 @@ class ShopFloorStatisticsWindow:
         self.production_text = tk.Text(self.production_label, height=10, width=50)
         self.production_text.pack()
 
-        self.update_machine_statuses()
+        #self.update_machine_statuses()
 
     def update_orders_data(self, orders_data):
         try:
@@ -89,16 +93,26 @@ class ShopFloorStatisticsWindow:
 
     def update_machine_statuses(self):
         for i, line in self.lines.items():
-            top_frame, bottom_frame, top_time_label, bot_time_label = self.line_frames[i - 1]
+            top_frame, bottom_frame, top_time_label, bot_time_label, top_tool_label, bot_tool_label = self.line_frames[i - 1]
             if line.isTopBusy():
                 top_frame.config(bg="green")
             else:
                 top_frame.config(bg="SystemButtonFace")
+                
+                
             if line.isBotBusy():
                 bottom_frame.config(bg="green")
+                
             else:
                 bottom_frame.config(bg="SystemButtonFace")
-        self.window.after(1000, self.update_machine_statuses)
+                
+                
+            bot_tool_label.config(text=f"Current Tool: {line.current_tool_bot}")
+            top_tool_label.config(text=f"Current Tool: {line.current_tool_top}")
+
+            line.get_machine_time()
+            top_time_label.config(text=f"Total Time: {line.total_time_top/1000} s")
+            bot_time_label.config(text=f"Total Time: {line.total_time_bot/1000} s")
 
     def update_machineTime(self, line_id, top_time, bot_time):
         if 0 <= line_id - 1 < len(self.line_frames):
