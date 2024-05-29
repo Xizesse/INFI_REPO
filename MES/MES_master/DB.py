@@ -258,10 +258,3 @@ def set_dispatch_date(order_id, dispatch_date):
         cursor.close()
         conn.close()
 
-
-if __name__ == '__main__':
-    # Example usage:
-    orders = get_deliveries()
-    print("Orders:")
-    for order in orders:
-        print(f"Order ID: {order.order_id}, Quantity: {order.quantity}, Type: {order.final_type}, Delivery Date: {order.delivery_day}")
