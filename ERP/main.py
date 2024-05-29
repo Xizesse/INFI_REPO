@@ -7,8 +7,7 @@ from erp_db import clear_all_tables
 
 if __name__ == "__main__":   
 
-    print("Clearing all tables...")
-    clear_all_tables() # Clear all tables in the database
+    #clear_all_tables() # Clear all tables in the database
 
     while True:
         try:         

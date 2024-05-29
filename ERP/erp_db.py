@@ -734,8 +734,9 @@ def get_order_raw_cost_info(order_id):
 
 def insert_costs(order_id, total_cost, unit_cost):
 
+    print("Clearing all tables...")
+    
     conn = connect_to_db()
-
     cur = conn.cursor()
     
     try:
@@ -798,6 +799,12 @@ def clear_all_tables():
     print("All tables cleared")
 
 if __name__ == '__main__':
+
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "clear":
+            clear_all_tables()
+            exit(0)
+
     # Example usage:
     dispatchs = dispatches()
     print("Dispatches:")

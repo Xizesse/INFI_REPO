@@ -36,25 +36,24 @@ class Order:
     def calculate_costs(self):
 
         from erp_db import get_dispatch_date, insert_costs, get_order_raw_cost_info
-        from ProductionPlan import avg_prod_times
+        from classes.ProductionPlan import avg_prod_times
 
         raw_orders = get_order_raw_cost_info(self.number)       # Get the raw orders used for this order
-        
         dispatch_date = get_dispatch_date(self.number) 
 
         prod_time = avg_prod_times[self.piece]         # Average production time for this piece
         
-        prod_cost = prod_time * 1       # 1€ per second 
+        prod_cost_pp = prod_time * 1       # 1€ per second 
 
         total_cost = 0
         for raw_order in raw_orders:    # For each raw order used for this order
 
             raw_cost = raw_order['price_pp'] * raw_order['used_quantity']  # Raw cost for the pieces used from this order
             deprec_cost = raw_cost * (dispatch_date - raw_order['arrival_date']) * 1  # 1% depreciation per day per piece 
-                     
             total_cost+= raw_cost + deprec_cost
-        
-        total_cost = total_cost + prod_cost * self.quantity    
+
+        prod_cost = prod_cost_pp * self.quantity
+        total_cost = total_cost + prod_cost    
         unit_cost = total_cost / self.quantity
 
         insert_costs(self.number, total_cost, unit_cost)
