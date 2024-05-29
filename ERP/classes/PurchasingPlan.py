@@ -28,7 +28,7 @@ class Raw_order_plan:
 
 def calculate_purchasing_plan(order_prod_plan, current_date):
 
-    from db import get_raw_order_leftovers, insert_raw_order_plan
+    from erp_db import get_raw_order_leftovers, insert_raw_order_plan
 
     order_id = order_prod_plan.order_id
     start_date = order_prod_plan.start_date
@@ -96,7 +96,7 @@ def calculate_purchasing_plan(order_prod_plan, current_date):
 
 def make_purchasing_plan(order_prod_plan, current_date):
 
-    from db import insert_purchasing_plan, insert_raw_order_plan
+    from erp_db import insert_purchasing_plan, insert_raw_order_plan
 
     purch_plan_result = calculate_purchasing_plan(order_prod_plan, current_date)
     if purch_plan_result is not None:
