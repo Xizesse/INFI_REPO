@@ -43,12 +43,12 @@ class ShopFloorStatisticsWindow:
         self.orders_tree.column("late_pen", minwidth=10, width=order_col_width+15)
         self.orders_tree.column("early_pen", minwidth=10, width=order_col_width+15)
 
-        self.orders_tree.grid(row=1, column=1, padx=20, pady=5, sticky='n')
+        self.orders_tree.grid(row=1, column=1, padx=20, pady=2, sticky='n')
 
         #!PRODUCTION PLAN
         # Production Plan Title
         self.prod_plan_title_label = tk.Label(self.window, text="Production Plan", font=("Arial", 12, "bold"))
-        self.prod_plan_title_label.grid(row=0, column=2, padx=10, pady=(10, 0), sticky='n')
+        self.prod_plan_title_label.grid(row=1, column=3, padx=10, pady=(250, 0), sticky='n')
 
         # Production Plan Table
         self.prod_plan_tree = ttk.Treeview(self.window, columns=("Order_id"), height=8)
@@ -59,13 +59,13 @@ class ShopFloorStatisticsWindow:
         self.prod_plan_tree.column("#0", minwidth=10, width=80)
         self.prod_plan_tree.column("Order_id", minwidth=10, width=80)
 
-        self.prod_plan_tree.grid(row=1, column=2, padx=10, pady=5, sticky='n')
+        self.prod_plan_tree.grid(row=2, column=3, padx=10, pady=5, sticky='n')
         
         
         #!PURCHASING PLAN
         # Purchasing Plan Title
         self.purchase_plan_title_label = tk.Label(self.window, text="Purchasing Plan", font=("Arial", 12, "bold"))
-        self.purchase_plan_title_label.grid(row=2, column=2, padx=10, pady=(250, 0), sticky='n')
+        self.purchase_plan_title_label.grid(row=1, column=2, padx=10, pady=(250, 0), sticky='n')
 
         # Purchasing Plan Table
         self.purchase_plan_tree = ttk.Treeview(self.window, columns=("Quantity", "Workpiece", "Supplier", "Price PP", "Delivery_days", "Min_quantity"), height=8) 
@@ -86,13 +86,13 @@ class ShopFloorStatisticsWindow:
         self.purchase_plan_tree.column("Delivery_days", minwidth=10, width=80)
         self.purchase_plan_tree.column("Min_quantity", minwidth=10, width=80)
 
-        self.purchase_plan_tree.grid(row=3, column=2, padx=10, pady=5, sticky='n')
+        self.purchase_plan_tree.grid(row=2, column=2, padx=10, pady=5, sticky='n')
         
 
         #!RAW MATERIAL ARRIVALS
         # Raw Material Arrivals Title
         self.raw_material_arrivals_title_label = tk.Label(self.window, text="Raw Material Arrivals", font=("Arial", 12, "bold"))
-        self.raw_material_arrivals_title_label.grid(row=1, column=3, padx=70, pady=(250, 0), sticky='n')
+        self.raw_material_arrivals_title_label.grid(row=0, column=2, padx=100, pady=(10, 0), sticky='n')
 
         # Raw Material Arrivals Table
         self.raw_material_arrivals_tree = ttk.Treeview(self.window, columns=("P1_quantity", "P2_quantity"), height=8)
@@ -105,12 +105,12 @@ class ShopFloorStatisticsWindow:
         self.raw_material_arrivals_tree.column("P1_quantity", minwidth=10, width=80)
         self.raw_material_arrivals_tree.column("P2_quantity", minwidth=10, width=80)
 
-        self.raw_material_arrivals_tree.grid(row=2, column=3, padx=70, pady=5, sticky='n')
+        self.raw_material_arrivals_tree.grid(row=1, column=2, padx=100, pady=5, sticky='n')
 
         #!PROD QUANTITIES
         # Production Quantities Title
         self.prod_quantities_title_label = tk.Label(self.window, text="Production Quantities", font=("Arial", 12, "bold"))
-        self.prod_quantities_title_label.grid(row=1, column=2, padx=10, pady=(250, 0), sticky='n')
+        self.prod_quantities_title_label.grid(row=0, column=3, padx=10, pady=(10, 0), sticky='n')
 
         # Production Quantities Table
         self.prod_quantities_tree = ttk.Treeview(self.window, columns=("P5_quantity", "P6_quantity", "P7_quantity", "P9_quantity"), height=8)
@@ -127,12 +127,12 @@ class ShopFloorStatisticsWindow:
         self.prod_quantities_tree.column("P7_quantity", minwidth=10, width=80)
         self.prod_quantities_tree.column("P9_quantity", minwidth=10, width=80)
 
-        self.prod_quantities_tree.grid(row=2, column=2, padx=10, pady=5, sticky='n')
+        self.prod_quantities_tree.grid(row=1, column=3, padx=10, pady=5, sticky='n')
 
         #!DISPATCHES
         # Dispatch Table Title
         self.dispatch_table_title_label = tk.Label(self.window, text="Dispatch Table", font=("Arial", 12, "bold"))
-        self.dispatch_table_title_label.grid(row=1, column=1, padx=20, pady=(250, 0), sticky='n')
+        self.dispatch_table_title_label.grid(row=2, column=1, padx=20, pady=(250, 0), sticky='n')
 
         # Dispatch Table
         self.dispatch_tree = ttk.Treeview(self.window, columns=("Dispatch_date"), height=8)
@@ -143,12 +143,12 @@ class ShopFloorStatisticsWindow:
         self.dispatch_tree.column("#0", minwidth=10, width=80)
         self.dispatch_tree.column("Dispatch_date", minwidth=10, width=100)
 
-        self.dispatch_tree.grid(row=2, column=1, padx=20, pady=5, sticky='n')
+        self.dispatch_tree.grid(row=3, column=1, padx=20, pady=5, sticky='n')
 
         #!ORDER COSTS
         # Order Costs Table Title
         self.order_costs_table_title_label = tk.Label(self.window, text="Order Costs Table", font=("Arial", 12, "bold"))
-        self.order_costs_table_title_label.grid(row=0, column=3, padx=70, pady=(10, 0), sticky='n')
+        self.order_costs_table_title_label.grid(row=2, column=2, padx=70, pady=(250, 0), sticky='n')
 
         # Order Costs Table
         self.order_costs_tree = ttk.Treeview(self.window, columns=("Total_cost", "Unit_cost"), height=8)
@@ -161,12 +161,12 @@ class ShopFloorStatisticsWindow:
         self.order_costs_tree.column("Total_cost", minwidth=10, width=100)
         self.order_costs_tree.column("Unit_cost", minwidth=10, width=100)
 
-        self.order_costs_tree.grid(row=1, column=3, padx=70, pady=5, sticky='n')      
+        self.order_costs_tree.grid(row=3, column=2, padx=70, pady=5, sticky='n')      
 
         #!CURRENT DATE
         current_date = 0    # Placeholder value
         self.current_date_label = tk.Label(self.window, text=f"Current Date: {current_date}", font=("Arial", 15, "bold"), fg="red")
-        self.current_date_label.grid(row=3, column=1, padx=30, pady=50, sticky='n')
+        self.current_date_label.grid(row=2, column=1, padx=30, pady=50, sticky='n')
     
     def update_values(self):
 
