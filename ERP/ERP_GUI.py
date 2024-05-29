@@ -239,7 +239,7 @@ class ShopFloorStatisticsWindow:
     def update_dispatch_data(self):
             # Clear existing items in the Treeview
             self.dispatch_tree.delete(*self.dispatch_tree.get_children())
-            dispatch_data = db.dispatches()  # Assume this function retrieves the dispatch data
+            dispatch_data = erp_db.dispatches()  # Assume this function retrieves the dispatch data
 
             if dispatch_data:
                 for dispatch_entry in dispatch_data:
@@ -248,7 +248,7 @@ class ShopFloorStatisticsWindow:
     def update_order_costs_data(self):
         # Clear existing items in the Treeview
         self.order_costs_tree.delete(*self.order_costs_tree.get_children())
-        order_costs_data = db.get_order_costs()  # Assume this function retrieves the order costs data
+        order_costs_data = erp_db.get_order_costs()  # Assume this function retrieves the order costs data
 
         if order_costs_data:
             for order_cost_entry in order_costs_data:
