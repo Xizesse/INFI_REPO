@@ -69,6 +69,7 @@ class Piece:
         self.tooltop = tool_top 
         self.toolbot = tool_bot 
         self.on_the_floor = False 
+        self.to_dispatch = False
 
     
        

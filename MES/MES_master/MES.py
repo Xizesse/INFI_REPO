@@ -48,8 +48,8 @@ class MES:
 
         #! PRODUCTION ORDERS - Array of (final_type) - Working :)
         self.production_orders = []
-        #self.production_orders.append(Piece_to_produce(1, 5, 5))
-        #self.production_orders.append(Piece_to_produce(2, 5, 5))
+        #self.production_orders.append(Piece_to_produce(1, 9, 2))
+        #self.production_orders.append(Piece_to_produce(2, 9, 3))
         #self.production_orders.append(Piece_to_produce(3, 5, 5))
         #self.production_orders.append(Piece_to_produce(4, 5, 5))
 
@@ -72,8 +72,8 @@ class MES:
         #! DELIVERIES - Array of (orders) 
         self.deliveries = []
         #self.deliveries.append(Order(quant, type, id, delivery day
-        #self.deliveries.append(Order(7, 9, 5, 2))
-        #self.deliveries.append(Order(3, 9, 4, 3))
+        self.deliveries.append(Order(8, 9, 5, 2))
+        self.deliveries.append(Order(3, 9, 4, 3))
         #self.deliveries.append(Order(2, 9, 5, 3))
 
         #self.deliveries.append(Order(2, 9, 5, 5))
@@ -195,7 +195,11 @@ class MES:
         self.app.update_orders_display()
         self.app.update_time_display()
         if DBisWorking:
-            DB.set_current_date(self.app.day_count)
+            try:
+                DB.set_current_date(self.app.day_count)
+            except Exception as e:    
+                messagebox.showerror("Error setting current date to ERP", str(e))
+                
         if self.automatic_mode:
             elapsed_time = time.time() - self.start_time
             self.time_of_the_day = int(elapsed_time)
@@ -346,11 +350,20 @@ class MES:
         #store the quantities of pieces 5 6 7 and 9 in the bot warehouse
         quantities = {i: 0 for i in range(1, 10)}
         for piece in list(self.BotWarehouse.pieces.queue):
-            quantities[piece.type] += 1
+            if not piece.to_dispatch:
+                quantities[piece.type] += 1
+
         for order in self.deliveries:
             total_available = quantities[order.final_type]
             if order.status not in ["Ready", "Dispatched", "Dispatching"]:
                 if total_available >= order.quantity:
+                    #mark order.quantity pieces as to_dispatch
+                    for _ in range(order.quantity):
+                       for piece in list(self.BotWarehouse.pieces.queue):
+                           if piece.type == order.final_type and not piece.to_dispatch:
+                               piece.to_dispatch = True
+                               break
+                               
                     order.status = "Ready"
                     quantities[order.final_type] -= order.quantity
         self.stats.update_orders_data(self.deliveries)
@@ -431,15 +444,12 @@ class MES:
     def next_piece(self, piece):
         path = self.transformation_paths.get((piece.type, piece.final_type))
         if not path:
-            print(f"No transformation path for piece from type {piece.type} to {piece.final_type}.")
             return None  # Return None if no path exists
         try:
             current_index = path.index(piece.type)
             if piece.tooltop and piece.toolbot:
-                print("Both tools are used in the transformation path.")
                 next_index = current_index + 2
             elif piece.tooltop or piece.toolbot:
-                print("Only one tool is used in the transformation path.")
                 next_index = current_index + 1
             if next_index < len(path):
                 return path[next_index]
@@ -477,7 +487,7 @@ class MES:
         if piece.on_the_floor:
             return
         #check if both machines are available
-        if line.isTopBusy() or line.isBotBusy():
+        if line.isTopBusy() :
             return
         #check if the piece has more than one transofarmation to do
         path = self.transformation_paths.get((piece.type, piece.final_type))
@@ -529,11 +539,12 @@ class MES:
 
         """ 
 
-        """
+        
         for piece in list(self.TopWarehouse.pieces.queue):
             if piece.id == 0 or piece.on_the_floor:
                 continue
             else:
+                flag_processed = False
                 #check for pairs
 
                 path = self.transformation_paths.get((piece.type, piece.final_type))
@@ -542,35 +553,40 @@ class MES:
                 first_transformation_tool = self.find_next_transformation(piece.type, path[1])
                 print("First transformation for piece of type", piece.type, " is ", first_transformation_tool)
 
-                flag_processed = False
-                if len(path) > 2:
-                    for _, line in self.lines_machines.items():
-                        if first_transformation_tool and line.has_tool(first_transformation_tool, 'top'): 
-                            temp_piece = Piece(self.client, piece.id, path[1], piece.final_type, piece.order_id, piece.delivery_day, False, False, first_transformation_tool, 0)
-                            second_transformation_tool = self.find_next_transformation(temp_piece.type, temp_piece.final_type)
-                            print("Second transformation for piece of type", piece.type, " is ", second_transformation_tool)
-                            for _, line in self.lines_machines.items():
-                                if line.is_Occupied():
-                                    continue
-                                if second_transformation_tool and line.has_tool(second_transformation_tool, 'bot'):
-                                    if line.current_tool_top == first_transformation_tool and line.current_tool_bot == second_transformation_tool:
-                                        print("Found a line with the correct machines")
-                                        self.update_pair_of_machines(line, piece) #hmmm and this function should be improved then
-                                        flag_processed = True
-                                    continue
+                #Let's check for bot machines with the first tool 
+                print("Looking for single bot machines")
+                for _, line in self.lines_machines.items():
+                    if line.is_Occupied():
+                        continue
+                    if first_transformation_tool and line.current_tool_bot == first_transformation_tool:
+                        print("\nFOUND A LINE WITH THE CORRECT BOT MACHINE ON LINE \n", line.id)
+                        self.update_machine(line, 'bot', piece)
+                        flag_processed = True
+                        break
+                if flag_processed:
+                    continue
 
-                if not flag_processed:
-                    print("No line with the correct machines, looking for single machines")
-                    #now let's check for bot machines with the first tool 
-                    for _, line in self.lines_machines.items():
-                        if line.is_Occupied():
-                            continue
-                        if first_transformation_tool and line.current_tool_bot == first_transformation_tool:
-                            print("Found a line with the correct bot machine")
-                            self.update_machine(line, 'bot', piece)
-                            flag_processed = True
-                            break
-        """
+                print("Looking for lines")
+                if len(path) > 2:
+                    print("Path has 2 or more transformation")
+                    temp_piece = Piece(self.client, piece.id, path[1], piece.final_type, piece.order_id, piece.delivery_day, False, False, first_transformation_tool, 0)
+                    second_transformation_tool = self.find_next_transformation(temp_piece.type, temp_piece.final_type)
+                    if not second_transformation_tool:
+                        continue
+                    print("Second transformation for piece of type", piece.type, " is ", second_transformation_tool)
+
+                    #check if the lines has the correct transformations tools
+                    print("Top and bot tools are ", first_transformation_tool, second_transformation_tool)
+                    print("Current tools are ", line.current_tool_top, line.current_tool_bot)
+                    if line.current_tool_bot == first_transformation_tool and line.current_tool_top == second_transformation_tool:
+                        print("\nFOUND A LINE WITH THE CORRECT TOOLS ON LINE \n", line.id)
+                        self.update_pair_of_machines(line, piece)
+                    
+                    
+                    
+                                    
+
+        
                 
 
               
@@ -688,7 +704,6 @@ class MES:
             leave = False
             for piece in list(self.BotWarehouse.pieces.queue):
                 if piece.final_type != piece.type and not piece.on_the_floor:
-                    print(f"Loading piecy of type {piece.type} into the reverse conveyor")
                     self.ReverseConveyor.load_piece(piece)
                     piece.on_the_floor = True
                     leave = True

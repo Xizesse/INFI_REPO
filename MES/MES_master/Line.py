@@ -152,7 +152,7 @@ class Line:
                 MTopTime = self.client.get_node(self.machineTopTime_node_id)
                 self.total_time_top = MTopTime.get_value()
                 MBotTime = self.client.get_node(self.machineBotTime_node_id)
-                self.total_time_top = MBotTime.get_value()
+                self.total_time_bot = MBotTime.get_value()
                 
             except Exception as e:
                 messagebox.showerror("Error Getting Machine Time", str(e))

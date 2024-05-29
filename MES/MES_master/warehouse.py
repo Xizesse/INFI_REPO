@@ -72,4 +72,3 @@ class Warehouse:
             new_piece = copy.deepcopy(piece, memo)
             new_warehouse.put_piece_queue(new_piece)
         return new_warehouse
-    
