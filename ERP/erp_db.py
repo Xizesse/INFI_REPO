@@ -74,9 +74,12 @@ def execute_query(query, params=None, fetch_all=True):
             results = None
             break
 
-    conn.commit()
-    cursor.close()
-    conn.close()
+    try:
+        conn.commit()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error committing and closing the connection: {e}")
 
     return results
 
