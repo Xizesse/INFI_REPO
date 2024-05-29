@@ -6,7 +6,9 @@
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[0]",
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line1.ConvIN.pieceOUT",
         "timeMachineTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[0]",
-        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[1]"
+        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[1]",
+        "toolTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[0]",
+        "toolBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[1]"
     },
     "Line2": {
         "description": "Production Line 2",
@@ -14,7 +16,9 @@
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[1]",
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line2.ConvIN.pieceOUT",
         "timeMachineTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[2]",
-        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[3]"
+        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[3]",
+        "toolTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[2]",
+        "toolBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[3]"
     },
     "Line3": {
         "description": "Production Line 3",
@@ -22,7 +26,9 @@
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[2]",
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line3.ConvIN.pieceOUT",
         "timeMachineTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[4]",
-        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[5]"
+        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[5]",
+        "toolTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[4]",
+        "toolBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[5]"
     },
     "Line4":{
         "description": "Production Line 4",
@@ -30,7 +36,9 @@
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[3]",
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line4.ConvIN.pieceOUT",
         "timeMachineTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[6]",
-        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[7]"
+        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[7]", 
+        "toolTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[6]",
+        "toolBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[7]"
     },
     "Line5": {
         "description": "Production Line 5",
@@ -38,7 +46,9 @@
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[4]",
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line5.ConvIN.pieceOUT",
         "timeMachineTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[8]",
-        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[9]"
+        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[9]",
+        "toolTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[8]",
+        "toolBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[9]"
     },
     "Line6": {
         "description": "Production Line 6",
@@ -46,7 +56,9 @@
         "lineIn" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.lineIN[5]",
         "lineOut" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.Factory_Transformation.Line6.ConvIN.pieceOUT",
         "timeMachineTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[10]",
-        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[11]"
+        "timeMachineBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineTime[11]",
+        "toolTop" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[10]",
+        "toolBot" : "ns=4;s=|var|CODESYS Control Win V3 x64.Application.GVL.machineBusy[11]"
     },
 
     "LoadingDock1":{

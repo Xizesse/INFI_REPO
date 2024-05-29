@@ -52,7 +52,17 @@ class Warehouse:
         piece4 = Piece(self.client, 3, 1, 6, 9, 11, False, False, 0, 0)
         self.put_piece_queue(piece4)
     
-    
+    def sort_queue_by_delivery_day(self):
+        # Sorts the queue by delivery day, but the id 0 is always last
+        sorted_queue = sorted(list(self.pieces.queue), key=lambda x: (x.delivery_day, x.id))
+        self.pieces.queue.clear()
+        for piece in sorted_queue:
+            if piece.id != 0:
+                self.pieces.put(piece)
+        for piece in sorted_queue:
+            if piece.id == 0:
+                self.pieces.put(piece)
+
     
     def __deepcopy__(self, memo):
         # Create a new instance of Warehouse
