@@ -20,7 +20,7 @@ class ProductionPlan:
             "P9": 3
         }
             
-        time_to_produce = new_order.quantity * avg_prod_times[new_order.piece]
+        time_to_produce = new_order.quantity * avg_prod_times[new_order.piece] * 1.5    # 1.5 to account for the time waiting for next one to finish
         time_to_produce = time_to_produce / available_lines[new_order.piece]
         start_date = new_order.due_date - math.ceil(time_to_produce)
 
@@ -43,9 +43,9 @@ class Prod_Quantities:
         self.p9_quantity = p9_quantity
 
 avg_prod_times = {   # average production time for each piece type
-        "P5": 2.2,
-        "P6": 2.2,
-        "P7": 2,
-        "P9": 2.1
+        "P5": 2.83,
+        "P6": 2.83,
+        "P7": 1.83,
+        "P9": 2.33
         }
         

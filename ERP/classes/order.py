@@ -36,12 +36,13 @@ class Order:
     def calculate_costs(self):
 
         from erp_db import get_dispatch_date, insert_costs, get_order_raw_cost_info
+        from ProductionPlan import avg_prod_times
 
         raw_orders = get_order_raw_cost_info(self.number)       # Get the raw orders used for this order
         
         dispatch_date = get_dispatch_date(self.number) 
 
-        prod_time = avg_machine_busy_times[self.piece]         # Average production time for this piece
+        prod_time = avg_prod_times[self.piece]         # Average production time for this piece
         
         prod_cost = prod_time * 1       # 1€ per second 
 
@@ -78,10 +79,4 @@ def parse_new_orders(new_orders_file):
 
         return new_orders
 
-avg_machine_busy_times = {
-    "P5": 1.58 * 60,
-    "P6": 1.58 * 60,
-    "P7": 1 * 60,
-    "P9": 1.5 * 60,
-}
 
