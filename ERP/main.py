@@ -22,10 +22,8 @@ if __name__ == "__main__":
             dispatched_orders_id = [order[0] for order in dispatched_orders_id]    #Transform the list of tuples into a list of integers
             print(f"Dispatched Orders: {dispatched_orders_id}")
             for order_id in dispatched_orders_id:
-                print(f"Order {order_id} has been dispatched.")
                 dispatched_order = get_order(order_id)
                 order_total_cost, order_unit_cost = dispatched_order.calculate_costs() # Calculate the costs of the dispatched order    
-                print(f"Total Cost: {order_total_cost}, Unit Cost: {order_unit_cost}")
 
             print("Waiting for new orders...")
 

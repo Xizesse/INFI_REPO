@@ -32,6 +32,47 @@ def connect_to_db():
             break
     return conn
 
+def execute_query(query, params=None, fetch_all=True):
+
+    conn = connect_to_db()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    while True:
+        try:
+            if params is not None:
+                cursor.execute(query, params)
+            else:
+                cursor.execute(query)
+
+            if fetch_all:
+                results = cursor.fetchall()
+            else:
+                results = cursor.fetchone()
+            break
+
+        except psycopg2.InterfaceError as e:    
+            print(f"Error: {e}")
+            conn = connect_to_db()
+            cursor = conn.cursor()
+            continue
+
+        except psycopg2.OperationalError as e:
+            print(f"Operational Error: {e}")
+            conn = connect_to_db()
+            cursor = conn.cursor()
+            continue
+            
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            results = []
+            break
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return results
+
 def get_current_date():
 
     conn = connect_to_db()
@@ -669,6 +710,18 @@ def update_raw_order_plan(plan_id, new_used_quantity):
     cur.close()
     conn.close()
 
+def get_order_raw_cost_info(order_id):
+
+    query = """SELECT arrival_date, used_quantity, price_pp
+                FROM infi.purchasing_plan 
+                JOIN infi.raw_order_plan USING(raw_order_id)
+                WHERE order_id = %s
+                ORDER BY arrival_date ASC """
+    
+    raw_cost_info = execute_query(query, (order_id,))
+
+    return raw_cost_info
+
 def insert_costs(order_id, total_cost, unit_cost):
 
     conn = connect_to_db()
@@ -688,7 +741,7 @@ def insert_costs(order_id, total_cost, unit_cost):
         conn.rollback()
 
     try:   
-        cur.execute("INSERT INTO infi.order_costs VALUES (%s, %s, %s)", (order_id, total_cost, unit_cost))
+        cur.execute("INSERT INTO infi.order_costs VALUES (%s, %s, %s) ON CONFLICT (order_id) DO NOTHING", (order_id, total_cost, unit_cost))
         conn.commit()
     except psycopg2.Error as e:
         print(f"Database error: {e}")

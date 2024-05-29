@@ -73,7 +73,7 @@ def execute_query(query, params=None, fetch_all=True):
             
         except Exception as e:
             print(f"An error occurred: {e}")
-            results = None
+            results = []
             break
 
     conn.commit()
@@ -226,8 +226,8 @@ if __name__ == '__main__':
     
     # Example usage of the functions
 
-    current_date = 3
-    delivery = (70, 10) # Order ID and dispatch date
+    current_date = 10
+    delivery = (905, 10) # Order ID and dispatch date
 
     set_current_date(current_date)
     set_dispatch_date(delivery[0], delivery[1])
