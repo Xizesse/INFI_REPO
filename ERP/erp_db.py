@@ -62,9 +62,16 @@ def execute_query(query, params=None, fetch_all=True):
             cursor = conn.cursor()
             continue
             
+        except psycopg2.ProgrammingError as e:
+            if "no results to fetch" in str(e):
+                results = []
+            else:
+                print(f"Programming Error: {e}")
+            break
+        
         except Exception as e:
             print(f"An error occurred: {e}")
-            results = []
+            results = None
             break
 
     conn.commit()
@@ -773,8 +780,6 @@ def get_order_costs():
     return order_costs
 
 def clear_all_tables():
-    conn = None
-    cur = None
     tables = [
         "infi.raw_order_plan",
         "infi.purchasing_plan",
@@ -785,30 +790,10 @@ def clear_all_tables():
         "infi.orders"
     ]
 
-    try:
-        conn = connect_to_db()
-        cur = conn.cursor()
-        
-        for table in tables:
-            try:
-                cur.execute(f"DELETE FROM {table}")
-            except psycopg2.Error as e:
-                print(f"Database error while deleting from {table}: {e}")
-                conn.rollback()
-                continue
+    for table in tables:
+        execute_query(f"DELETE FROM {table}")
+    print("All tables cleared")
 
-        conn.commit()  # Commit all deletions if no errors occur
-        print("All tables cleared.")
-
-    except psycopg2.Error as e:
-        print(f"Database connection error: {e}")
-        if conn:
-            conn.rollback()
-
-    finally:
-        cur.close()
-        conn.close()
-    
 if __name__ == '__main__':
     # Example usage:
     dispatchs = dispatches()

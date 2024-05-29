@@ -70,6 +70,13 @@ def execute_query(query, params=None, fetch_all=True):
             conn = connect_to_db()
             cursor = conn.cursor()
             continue
+        
+        except psycopg2.ProgrammingError as e:
+            if "no results to fetch" in str(e):
+                results = []
+            else:
+                print(f"Programming Error: {e}")
+            break
             
         except Exception as e:
             print(f"An error occurred: {e}")

@@ -21,10 +21,10 @@ def udp_receive():
     # Set timeout
     sock.settimeout(TIMEOUT)
 
-    try:
-        # Receive data until the buffer size is filled
-        with open(new_file_path, 'wb') as f:
-            while True:
+    while True:
+        try:    
+            
+            with open(new_file_path, 'wb') as f:
                 # Receive data from the client
                 data = sock.recv(BUFFER_SIZE)
                 f.write(data)
@@ -33,14 +33,17 @@ def udp_receive():
                 if len(data) < BUFFER_SIZE:
                     break
 
-        print(f"File received and saved as '{new_file_path}'")
-
-    except socket.error as e:
-        new_file_path = None
-    finally:
-        # Close the socket
-        sock.close()
-        return new_file_path
+        except KeyboardInterrupt:
+            print("Exiting...")
+            exit(0)
+        except socket.error as e:
+            new_file_path = None
+            break
+    
+        finally:
+            # Close the socket
+            sock.close()
+            return new_file_path
 
 if __name__ == "__main__":
     udp_receive()
