@@ -377,6 +377,30 @@ def check_dispatched_orders(current_date):
 
     return dispatched_orders
 
+def dispatches():
+    
+    conn = connect_to_db()
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT order_id, dispatch_date FROM infi.dispatches
+                   ORDER BY dispatch_date ASC"""
+
+        cursor.execute(query)
+
+        dispatched_orders = cursor.fetchall()
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        return []
+
+    finally:
+        cursor.close()
+        conn.close()
+
+    return dispatched_orders
+
 def insert_new_orders(new_orders):
 
     conn = connect_to_db()
@@ -673,6 +697,28 @@ def insert_costs(order_id, total_cost, unit_cost):
     cur.close()
     conn.close()
 
+def get_order_costs():
+    conn = connect_to_db()
+
+    try:
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+        query = """SELECT order_id, total_cost, unit_cost FROM infi.order_costs"""
+
+        cursor.execute(query)
+
+        order_costs = cursor.fetchall()
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        return []
+
+    finally:
+        cursor.close()
+        conn.close()
+
+    return order_costs
+
 def clear_all_tables():
     conn = None
     cur = None
@@ -710,3 +756,14 @@ def clear_all_tables():
         cur.close()
         conn.close()
     
+if __name__ == '__main__':
+    # Example usage:
+    dispatchs = dispatches()
+    print("Dispatches:")
+    for dispatch in dispatchs:
+        print(f"Order ID: {dispatch['order_id']}, Dispatch Date: {dispatch['dispatch_date']}")
+    # Example usage:
+    order_costs = get_order_costs()
+    print("Order Costs:")
+    for order_cost in order_costs:
+        print(f"Order ID: {order_cost['order_id']}, Total Cost: {order_cost['total_cost']}, Unit Cost: {order_cost['unit_cost']}")
