@@ -248,6 +248,7 @@ class MES:
 
         if self.connected:
             self.TopWarehouse.sort_queue_by_delivery_day()
+            self.sort_orders()
             #! Purchase actions
             self.update_loading_docks()
             #!Turn self.production_orders into pieces in the top warehouse
@@ -518,6 +519,12 @@ class MES:
         line.load_piece(piece)
 
         pass
+
+    def sort_orders(self):
+        self.production_orders.sort(key=lambda x: x.delivery_day)
+        self.deliveries.sort(key=lambda x: x.delivery_day)
+
+
     def update_all_machines(self):
 
         """Algoritmo de atualização de máquinas
