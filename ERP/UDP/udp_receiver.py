@@ -5,8 +5,8 @@ def udp_receive():
     new_file_path = "new_orders.xml"
 
     # Host and port to listen on
-    HOST = '127.0.0.1'  # Loopback address for same machine communication
-    PORT = 24680
+    HOST = '0.0.0.0'  # Address for  all interfaces
+    PORT = 24680    
     TIMEOUT = 2
 
     # Buffer size for receiving data (max payload size for IPv4 UDP packets)
